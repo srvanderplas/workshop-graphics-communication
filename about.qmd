@@ -8,7 +8,7 @@ title: "Course Description"
     Assistant Professor, University of Nebraska Lincoln
 -   [Heike Hofmann](mailto:hofmann@iastate.edu)\
     Professor, Iowa State University
--   [Emily Robinson](mailto:erobin17@calpoly.edu)\
+-   [Emily Robinson](mailto:erobin17@calpoly.edu) (tentative)\
     Assistant Professor, California Polytechnic University
 
 ## Target Audience
