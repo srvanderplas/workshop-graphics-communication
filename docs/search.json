@@ -18,7 +18,7 @@
     "href": "about.html#target-audience",
     "title": "Course Description",
     "section": "Target Audience",
-    "text": "Target Audience\nThis course is intended for practicing statisticians in industry, government, or academia who are responsible for communicating results of statistical analyses and data to non-statisticians."
+    "text": "Target Audience\nThis course is intended for practicing statisticians in industry, government, or academia who are responsible for communicating results of statistical analyses and data to non-statisticians.\n\nPrerequisites\nAttendees should be able to read data in, clean it, and visualize it using the language of their choice.\nExamples will be provided using ggplot2 code in R and seaborn or matplotlib in python. Instructors can assist students with R and python code during the workshop and will attempt to help with others; we do not promise familiarity with all programming languages in common use for data science."
   },
   {
     "objectID": "about.html#description",

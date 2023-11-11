@@ -15,6 +15,12 @@ title: "Course Description"
 
 This course is intended for practicing statisticians in industry, government, or academia who are responsible for communicating results of statistical analyses and data to non-statisticians.
 
+### Prerequisites
+
+Attendees should be able to read data in, clean it, and visualize it using the language of their choice.
+
+Examples will be provided using ggplot2 code in R and seaborn or matplotlib in python. Instructors can assist students with R and python code during the workshop and will attempt to help with others; we do not promise familiarity with all programming languages in common use for data science.
+
 ## Description
 
 This course will focus on strategies for creating data visualizations which make it easy for collaborators to gain insight from data. We will discuss different ways graphics are used during the analysis process, but will primarily focus on graphics used to communicate with non-statisticians: managers, stakeholders, and collaborators who may need to use graphics to make decisions and/or motivate changes. This course will also touch on topics such as accessibility and alt-text that are essential to ensuring that graphics meet regulatory requirements. The course will assume some familiarity with plotting packages such as base R graphics, ggplot2, seaborn, and/or matplotlib, but is not a "how to make graphics" course. Code for different plotting libraries will be provided and modified during the course.
@@ -24,7 +30,7 @@ This course will focus on strategies for creating data visualizations which make
 This schedule is highly tentative at this time.
 
 | Time             | Title                                   | Description                                                                                                                                                                                                                     |
-|-------------|------------------------------|------------------------------|
+|-----------------|----------------------------|----------------------------|
 | 8:30 - 9:00 AM   | Introductions and Setup                 | Instructors and students introduce themselves and get computers set up.                                                                                                                                                         |
 | 9:00 - 10:45 AM  | Fundamentals of Graphical Communication | The interaction between cognitive processes and graphics: how do we ensure people can read our charts?                                                                                                                          |
 | 10:45 - 11:00 AM | Break                                   |                                                                                                                                                                                                                                 |
