@@ -1,0 +1,35 @@
+---
+title: "Course Description"
+---
+
+## Instructors
+
+-   [Susan Vanderplas](mailto:susan.vanderplas@unl.edu)\
+    Assistant Professor, University of Nebraska Lincoln
+-   [Heike Hofmann](mailto:hofmann@iastate.edu)\
+    Professor, Iowa State University
+-   [Emily Robinson](mailto:erobin17@calpoly.edu)\
+    Assistant Professor, California Polytechnic University
+
+## Target Audience
+
+This course is intended for practicing statisticians in industry, government, or academia who are responsible for communicating results of statistical analyses and data to non-statisticians.
+
+## Description
+
+This course will focus on strategies for creating data visualizations which make it easy for collaborators to gain insight from data. We will discuss different ways graphics are used during the analysis process, but will primarily focus on graphics used to communicate with non-statisticians: managers, stakeholders, and collaborators who may need to use graphics to make decisions and/or motivate changes. This course will also touch on topics such as accessibility and alt-text that are essential to ensuring that graphics meet regulatory requirements. The course will assume some familiarity with plotting packages such as base R graphics, ggplot2, seaborn, and/or matplotlib, but is not a "how to make graphics" course. Code for different plotting libraries will be provided and modified during the course.
+
+## Schedule
+
+This schedule is highly tentative at this time.
+
+| Time              | Title                                   | Description                                                                                                                                                                                                            |
+|-------------|------------------------------|------------------------------|
+| 8:30 - 9:00 AM    | Introductions and Setup                 | Instructors and students introduce themselves and get computers set up.                                                                                                                                                |
+| 9:00 - 10:45 AM   | Fundamentals of Graphical Communication | The interaction between cognitive processes and graphics: how do we ensure people can read our charts?                                                                                                                 |
+| 10:45 - 11:00 AM  | Break                                   |                                                                                                                                                                                                                        |
+| 11:00 - 12:00 PM  | Exploratory Data Analysis               | Strategies for using graphics to generate insight about new data through rapid iteration.                                                                                                                              |
+| 12:00 - 1:00 PM   | Lunch                                   |                                                                                                                                                                                                                        |
+| 1:00 PM - 2:30 PM | Accessibility: more than just alt-text  | Accessibility guidelines applied to graphics. We will discuss color contrast rules, ways to help make graphics accessible to colorblind individuals, those with vision acuity loss, and those who use screen readers.  |
+| 2:30 - 2:45       | Break                                   |                                                                                                                                                                                                                        |
+| 2:45 - 5:00       | Workshop: Improving our graphics        | Working individually or in groups, we will improve existing graphics in order to apply the ideas in this workshop. Individuals can bring their own graphics to workshop or use graphics we've provided.                |
