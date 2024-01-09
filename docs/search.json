@@ -35,10 +35,24 @@
     "text": "Schedule\nThis schedule is highly tentative at this time.\n\n\n\n\n\n\n\n\nTime\nTitle\nDescription\n\n\n\n\n8:30 - 9:00 AM\nIntroductions and Setup\nInstructors and students introduce themselves and get computers set up.\n\n\n9:00 - 10:45 AM\nFundamentals of Graphical Communication\nThe interaction between cognitive processes and graphics: how do we ensure people can read our charts?\n\n\n10:45 - 11:00 AM\nBreak\n\n\n\n11:00 - 12:00 PM\nExploratory Data Analysis\nStrategies for using graphics to generate insight about new data through rapid iteration.\n\n\n12:00 - 1:00 PM\nLunch\n\n\n\n1:00 - 2:30 PM\nAccessibility: more than just alt-text\nAccessibility guidelines applied to graphics. We will discuss color contrast rules, ways to help make graphics accessible to colorblind individuals, those with vision acuity loss, and those who use screen readers.\n\n\n2:30 - 2:45 PM\nBreak\n\n\n\n2:45 - 3:15 PM\nThe Rules… and when to break them\nWe’ve spent the day up to this point discussing tactics for creating good data visualizations, but sometimes, the rules get in the way of effective communication with a specific audience. When is it ok to break these rules?\n\n\n3:15 - 3:30 PM\nBreak\n\n\n\n3:30 - 5:00 PM\nWorkshop: Improving our graphics\nWorking individually or in groups, we will improve existing graphics in order to apply the ideas in this workshop. Individuals can bring their own graphics to workshop or use graphics we’ve provided."
   },
   {
+    "objectID": "content/00-Setup.html",
+    "href": "content/00-Setup.html",
+    "title": "Setting Up for the Workshop",
+    "section": "",
+    "text": "This workshop is set up to be largely language-agnostic (at least with regard to programming language). We will provide examples using ggplot2 and seaborn or matplotlib in python.\nScreenshots will be provided using RStudio as an IDE for both R and Python, but you are free to use any IDE you wish for this workshop.\n\n\n\n\n\n\nSetting Up R, RStudio, and ggplot2\n\n\n\n\n\nStart here - Instructions for installing R and RStudio for Windows, Mac, and Linux\nOpen R or RStudio. Follow these instructions to install ggplot2 (or the whole tidyverse, if you prefer).\nIf you also plan to use python with RStudio, install the reticulate package after you have installed python.\n\n\n\n\n\n\n\n\n\nSetting Up Python, Seaborn, and Matplotlib\n\n\n\n\n\nStart here - Instructions for installing Python 3 for Windows, Mac, and Linux\nIf you wish, install a development environment such as VSCode or Spyder, or install R and RStudio to use RStudio as an IDE for python.\nInstall Seaborn, which will automatically install matplotlib."
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Workshop: Effective Graphics for Visual Communication with Data",
     "section": "",
     "text": "More Information will be added here as the course is developed."
+  },
+  {
+    "objectID": "content/contents.html",
+    "href": "content/contents.html",
+    "title": "Workshop Materials",
+    "section": "",
+    "text": "Fundamentals of Graphical Communication\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSetting Up for the Workshop\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   }
 ]

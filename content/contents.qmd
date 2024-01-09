@@ -1,0 +1,6 @@
+---
+title: "Workshop Materials"
+listing: 
+  contents: 
+    - "*.qmd"
+---

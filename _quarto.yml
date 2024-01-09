@@ -9,6 +9,10 @@ website:
       - href: index.qmd
         text: Home
       - about.qmd
+      - text: Materials
+        menu:
+          - "content/00-Setup.qmd"
+
 
 format:
   html:
