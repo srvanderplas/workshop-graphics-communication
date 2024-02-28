@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.489">
+<meta name="generator" content="quarto-1.3.340">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -20,7 +20,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -45,13 +64,7 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -61,8 +74,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-submit-button-title": "Submit"
   }
 }</script>
 
@@ -74,9 +86,9 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
+      <div class="navbar-brand-container">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Workshop: Effective Graphics for Visual Communication with Data</span>
     </a>
@@ -88,28 +100,28 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
-<span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
-<span class="menu-text">Course Description</span></a>
+    <a class="nav-link" href="../about.html" rel="" target="">
+ <span class="menu-text">Course Description</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-materials" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-materials" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
  <span class="menu-text">Materials</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-materials">    
         <li>
-    <a class="dropdown-item" href="../content/00-Setup.html">
+    <a class="dropdown-item" href="../content/00-Setup.html" rel="" target="">
  <span class="dropdown-text">Setting Up for the Workshop</span></a>
   </li>  
     </ul>
   </li>
 </ul>
-          </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools ms-auto">
 </div>
+          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -118,7 +130,28 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#a-quick-introduction-to-perception-and-cognition" id="toc-a-quick-introduction-to-perception-and-cognition" class="nav-link active" data-scroll-target="#a-quick-introduction-to-perception-and-cognition">A Quick Introduction to Perception and Cognition</a>
+  <ul class="collapse">
+  <li><a href="#hardware" id="toc-hardware" class="nav-link" data-scroll-target="#hardware">Hardware</a>
+  <ul class="collapse">
+  <li><a href="#the-eye" id="toc-the-eye" class="nav-link" data-scroll-target="#the-eye">The Eye</a></li>
+  <li><a href="#the-brain" id="toc-the-brain" class="nav-link" data-scroll-target="#the-brain">The Brain</a></li>
+  </ul></li>
+  <li><a href="#software" id="toc-software" class="nav-link" data-scroll-target="#software">Software</a></li>
+  </ul></li>
+  <li><a href="#the-psychology-of-charts" id="toc-the-psychology-of-charts" class="nav-link" data-scroll-target="#the-psychology-of-charts">The Psychology of Charts</a></li>
+  <li><a href="#strategies-for-readability" id="toc-strategies-for-readability" class="nav-link" data-scroll-target="#strategies-for-readability">Strategies for Readability</a>
+  <ul class="collapse">
+  <li><a href="#center-primary-comparisons" id="toc-center-primary-comparisons" class="nav-link" data-scroll-target="#center-primary-comparisons">Center Primary Comparisons</a></li>
+  <li><a href="#reduce-cognitive-load" id="toc-reduce-cognitive-load" class="nav-link" data-scroll-target="#reduce-cognitive-load">Reduce Cognitive Load</a></li>
+  </ul></li>
+  <li><a href="#testing-multiple-versions-of-a-chart" id="toc-testing-multiple-versions-of-a-chart" class="nav-link" data-scroll-target="#testing-multiple-versions-of-a-chart">Testing Multiple Versions of a Chart</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -138,14 +171,119 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
-
 </header>
 
+<section id="a-quick-introduction-to-perception-and-cognition" class="level1">
+<h1>A Quick Introduction to Perception and Cognition</h1>
+<p>In order to design graphics for the human perceptual system, we must understand, at a basic level, the makeup of the perceptual system. There are multiple levels of perception that must correctly function in order to perceive visual stimuli successfully, but a somewhat simplistic higher-level analogy would be that we must understand both the hardware and software of the human visual system to create effective graphics.</p>
+<p>The “hardware”, in this analogy, consists of the neurons that make up the eyes, optic nerve, and the brain itself. The higher-level functions (object recognition, working memory, etc.) comprise the “software” component. In addition, much like computer software, there are different programs running simultaneously; these programs may interact with each other, run sequentially, or run in parallel. Here, we provide an overview of the important components of the visual system that influence graphical perception. First, we discuss the grey-matter (hardware) components of the visual system, then we examine the higher-level cognitive heuristics (software) that order the raw input and construct our visual environment.</p>
+<section id="hardware" class="level2">
+<h2 class="anchored" data-anchor-id="hardware">Hardware</h2>
+<p>The physiology of perception is complex; what follows is a brief overview of the physiology of perception, focusing on the areas most important to the perception of statistical graphics. It is important to distinguish between the sensation (the retinal image) and the perception (the corresponding mental representation) of an object. This overview will entirely ignore the finer details of the organization of the brain: feature detector cells, specific processing units for certain types of visual stimuli, and most of the experiments and incidents that led to our current understanding of how the brain processes visual information. A more thorough presentation of these aspects of perception can be found in <span class="citation" data-cites="goldsteinSensationPerception2022">Goldstein and Cacciamani (<a href="#ref-goldsteinSensationPerception2022" role="doc-biblioref">2022</a>)</span>.</p>
+<section id="the-eye" class="level3">
+<h3 class="anchored" data-anchor-id="the-eye">The Eye</h3>
+<p>The eye is a complex apparatus, but for our purposes, the most important component of the eye is the retina, which contains the sensory cells responsible for transforming light waves into electrical information in the form of neural signals. These sensory cells are specialized neurons, known as rods and cones, which perceive light intensity (brightness) and wavelength (color), respectively. One section of the retina, known as the fovea, contains only cones; the rest of the retina contains a mixture of rods and cones. <a href="#fig-retina-diagram">Figure&nbsp;1</a> depicts the structure of the eye with a closeup of the retina.</p>
+<div id="fig-retina-diagram" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Figure_36_05_02.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;1: The human eye, with closeup of receptor cells in the retina.<span class="fig-citation"><a href="https://commons.wikimedia.org/wiki/File:Figure_36_05_02.png">Image Source</a> <a href="https://creativecommons.org/licenses/by/4.0/deed.en">License</a> Authors: OpenStax Copyright Holders: Rice University Publishers: OpenStax OpenStax Biology</span></figcaption>
+</figure>
+</div>
+<p>Another important region of the retina is the blindspot, the area where the optic nerve exits the eye to connect the retina to the brain. There are no rods or cones in this region of the retina, and any vision in the region of space that maps onto this point is a result of two mechanisms: binocular vision (the other eye fills in the missing information) and your brain “filling in” what it believes should be there.</p>
+<div id="fig-color-range" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="../fig/Absorption-Spectra-Retina.svg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;2: Absorption spectra of rods and short (blue), medium (green), and long (red) wave cones. <span class="fig-citation">Image modified from <a href="https://commons.wikimedia.org/wiki/File:Spectre_absorption_des_cones.svg">Pancrat’s Wikimedia Commons work</a>. <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">License</a>.</span></figcaption>
+</figure>
+</div>
+<p><a href="#fig-color-range">Figure&nbsp;2</a> shows the responsiveness of rods and each of the three types of cones to wavelengths of light in the visual spectrum. As a result of the response of cone cells to different wavelengths of light, humans with normal color vision can better distinguish colors in the yellow-green portion of the color spectrum compared to colors in the red or blue portions of the spectrum.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Implications for Color Schemes
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Rainbow-style color schemes are seldom appropriate for conveying numerical values, because the correspondence between perceived information and the displayed information is not accurately maintained by the visual system <span class="citation" data-cites="golebiowska2022a liuSomewhereRainbowEmpirical2018a borlandRainbowColorMap2007 lightEndRainbowColor2004">(<a href="#ref-golebiowska2022a" role="doc-biblioref">Golebiowska and Coltekin 2022</a>; <a href="#ref-liuSomewhereRainbowEmpirical2018a" role="doc-biblioref">Liu and Heer 2018</a>; <a href="#ref-borlandRainbowColorMap2007" role="doc-biblioref">Borland and Taylor 2007</a>; <a href="#ref-lightEndRainbowColor2004" role="doc-biblioref">Light and Bartlein 2004</a>)</span>. Rainbow schemes may perform slightly better in situations where the goal is to emphasize distributions of values <span class="citation" data-cites="redaRainbowColormapsWhat2022">(<a href="#ref-redaRainbowColormapsWhat2022" role="doc-biblioref">Reda 2022</a>)</span>, but this effect is small relative to the disadvantages of rainbow color schemes for accessibility and interpretability.</p>
+<p>Moreover, if a viewer has any level of color vision impairment (colloquially, ‘color blindness’), the viewer cannot perceive the full spectrum of colors. An estimated 5% of the population (10% of males, less than 1% of females) has some form of color vision impairment. Rainbow color schemes perform particularly poorly when color vision is impaired.</p>
+</div>
+</div>
+</section>
+<section id="the-brain" class="level3">
+<h3 class="anchored" data-anchor-id="the-brain">The Brain</h3>
+<p>Once light hits the retina and causes a signal in the receptor cells, the information travels along the optic nerve and into the brain. Multiple neighboring rods are connected to the same neuron, where each cone is connected to a single neuron. The combined wiring of rod cells is responsible for the <a href="https://en.wikipedia.org/wiki/Grid_illusion#Theories">Hermann grid illusion</a> and the <a href="https://en.wikipedia.org/wiki/Mach_bands">Mach bands</a> seen in <a href="#fig-inhibition-illusions">Figure&nbsp;3</a>. Both of these illusions are a product of lateral inhibition, which is a result of the wiring of rod cells in the retina. Essentially, neurons can only fire at a specific rate, so when neighboring cells are all stimulated simultaneously, the combined neuron cannot fire fast enough to pass on all of the signals, causing <em>inhibition</em>. The <a href="https://en.wikipedia.org/wiki/Grid_illusion#Theories">specifics of this response</a> and its relationship with the wiring of the receptor cells are too complex for this summary.</p>
+<div id="fig-inhibition-illusions" class="quarto-layout-panel">
+<figure class="figure">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/b/be/HermannGrid.svg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Hermann grid illusion <span class="fig-citation"><a href="https://en.wikipedia.org/wiki/File:HermannGrid.svg">Image Source</a>. <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en">License</a>.</span></figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../fig/Mach-Bands.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Mach Bands <span class="fig-citation"><a href="https://commons.wikimedia.org/wiki/File:Bandes_de_mach.PNG">Image Source</a>. <a href="https://en.wikipedia.org/wiki/en:Free_Art_License">License</a>.</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3: Illusions which are thought to arise due to inhibition. In the Hermann grid illusion, dark blobs appear at the intersection of the white lines. In the Mach band illusion, the region where different shaded bands meet seems to have more contrast.</figcaption><p></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="software" class="level2">
+<h2 class="anchored" data-anchor-id="software">Software</h2>
+</section>
+</section>
+<section id="the-psychology-of-charts" class="level1">
+<h1>The Psychology of Charts</h1>
+</section>
+<section id="strategies-for-readability" class="level1">
+<h1>Strategies for Readability</h1>
+<section id="center-primary-comparisons" class="level2">
+<h2 class="anchored" data-anchor-id="center-primary-comparisons">Center Primary Comparisons</h2>
+</section>
+<section id="reduce-cognitive-load" class="level2">
+<h2 class="anchored" data-anchor-id="reduce-cognitive-load">Reduce Cognitive Load</h2>
+</section>
+</section>
+<section id="testing-multiple-versions-of-a-chart" class="level1">
+<h1>Testing Multiple Versions of a Chart</h1>
+<p>http://homepage.stat.uiowa.edu/~luke/classes/STAT4580-2024/notes.html#mostly-data-visualization</p>
 
 
 
+</section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-borlandRainbowColorMap2007" class="csl-entry" role="listitem">
+Borland, D., and R. M. Taylor. 2007. <span>“Rainbow <span>Color Map</span> (<span>Still</span>) <span>Considered Harmful</span>.”</span> <em>IEEE Computer Graphics and Applications</em> 27 (2): 14–17. <a href="https://doi.org/10.1109/mcg.2007.323435">https://doi.org/10.1109/mcg.2007.323435</a>.
+</div>
+<div id="ref-goldsteinSensationPerception2022" class="csl-entry" role="listitem">
+Goldstein, E. Bruce, and Laura Cacciamani. 2022. <em>Sensation and Perception</em>. Eleventh edition. <span>Australia</span>: <span>Cengage</span>.
+</div>
+<div id="ref-golebiowska2022a" class="csl-entry" role="listitem">
+Golebiowska, I. M., and A. Coltekin. 2022. <span>“Rainbow Dash: <span>Intuitiveness</span>, Interpretability and Memorability of the Rainbow Color Scheme in Visualization.”</span> <em>IEEE Transactions on Visualization and Computer Graphics</em> 28, 07: 2722–33. <a href="https://doi.org/10.1109/TVCG.2020.3035823">https://doi.org/10.1109/TVCG.2020.3035823</a>.
+</div>
+<div id="ref-lightEndRainbowColor2004" class="csl-entry" role="listitem">
+Light, Adam, and Patrick J Bartlein. 2004. <span>“The End of the Rainbow? <span>Color</span> Schemes for Improved Data Graphics.”</span> <em>Eos, Transactions American Geophysical Union</em> 85 (40): 385–91. <a href="https://doi.org/10.1029/2004EO400002">https://doi.org/10.1029/2004EO400002</a>.
+</div>
+<div id="ref-liuSomewhereRainbowEmpirical2018a" class="csl-entry" role="listitem">
+Liu, Yang, and Jeffrey Heer. 2018. <span>“Somewhere <span>Over</span> the <span>Rainbow</span>: <span>An Empirical Assessment</span> of <span>Quantitative Colormaps</span>.”</span> In <em>Proceedings of the 2018 <span>CHI Conference</span> on <span>Human Factors</span> in <span>Computing Systems</span></em>, 1–12. <span>Montreal QC Canada</span>: <span>ACM</span>. <a href="https://doi.org/10.1145/3173574.3174172">https://doi.org/10.1145/3173574.3174172</a>.
+</div>
+<div id="ref-redaRainbowColormapsWhat2022" class="csl-entry" role="listitem">
+Reda, Khairi. 2022. <span>“Rainbow <span>Colormaps</span>: <span>What</span> Are They Good and Bad For?”</span> <em>IEEE Transactions on Visualization and Computer Graphics</em>, 1–15. <a href="https://doi.org/10.1109/TVCG.2022.3214771">https://doi.org/10.1109/TVCG.2022.3214771</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -225,9 +363,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -237,17 +376,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -260,128 +390,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    const typesetMath = (el) => {
-      if (window.MathJax) {
-        // MathJax Typeset
-        window.MathJax.typeset([el]);
-      } else if (window.katex) {
-        // KaTeX Render
-        var mathElements = el.getElementsByClassName("math");
-        var macros = [];
-        for (var i = 0; i < mathElements.length; i++) {
-          var texText = mathElements[i].firstChild;
-          if (mathElements[i].tagName == "SPAN") {
-            window.katex.render(texText.data, mathElements[i], {
-              displayMode: mathElements[i].classList.contains('display'),
-              throwOnError: false,
-              macros: macros,
-              fleqn: false
-            });
-          }
-        }
-      }
-    }
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        for (let i = 0; i < 2; i++) {
-          container.appendChild(note.children[i].cloneNode(true));
-        }
-        typesetMath(container);
-        return container.innerHTML
-      } else {
-        typesetMath(note);
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      typesetMath(note);
-      return note.innerHTML;
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -425,7 +433,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -451,32 +458,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -537,7 +518,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-
 
 
 
