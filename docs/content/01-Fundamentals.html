@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.489">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,6 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -65,13 +64,7 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -94,9 +87,9 @@ div.csl-indent {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
+      <div class="navbar-brand-container">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Workshop: Effective Graphics for Visual Communication with Data</span>
     </a>
@@ -108,28 +101,36 @@ div.csl-indent {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
-<span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
-<span class="menu-text">Course Description</span></a>
+    <a class="nav-link" href="../about.html" rel="" target="">
+ <span class="menu-text">Course Description</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-materials" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-materials" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
  <span class="menu-text">Materials</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-materials">    
         <li>
-    <a class="dropdown-item" href="../content/00-Setup.html">
+    <a class="dropdown-item" href="../content/contents.html" rel="" target="">
+ <span class="dropdown-text">Workshop Materials</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../content/00-Setup.html" rel="" target="">
  <span class="dropdown-text">Setting Up for the Workshop</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../content/01-Fundamentals.html" rel="" target="">
+ <span class="dropdown-text">Fundamentals of Graphical Communication</span></a>
   </li>  
     </ul>
   </li>
 </ul>
-          </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools ms-auto">
 </div>
+          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -155,7 +156,10 @@ div.csl-indent {
   <li><a href="#object-perception" id="toc-object-perception" class="nav-link" data-scroll-target="#object-perception">Object Perception</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#the-psychology-of-charts" id="toc-the-psychology-of-charts" class="nav-link" data-scroll-target="#the-psychology-of-charts">The Psychology of Charts</a></li>
+  <li><a href="#the-psychology-of-charts" id="toc-the-psychology-of-charts" class="nav-link" data-scroll-target="#the-psychology-of-charts">The Psychology of Charts</a>
+  <ul class="collapse">
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  </ul></li>
   <li><a href="#strategies-for-readability" id="toc-strategies-for-readability" class="nav-link" data-scroll-target="#strategies-for-readability">Strategies for Readability</a>
   <ul class="collapse">
   <li><a href="#center-primary-comparisons" id="toc-center-primary-comparisons" class="nav-link" data-scroll-target="#center-primary-comparisons">Center Primary Comparisons</a></li>
@@ -183,9 +187,7 @@ div.csl-indent {
   </div>
   
 
-
 </header>
-
 
 <section id="a-quick-introduction-to-perception-and-cognition" class="level1">
 <h1>A Quick Introduction to Perception and Cognition</h1>
@@ -196,29 +198,21 @@ div.csl-indent {
 <p>The physiology of perception is complex; what follows is a brief overview of the physiology of perception, focusing on the areas most important to the perception of statistical graphics. It is important to distinguish between the sensation (the retinal image) and the perception (the corresponding mental representation) of an object. This overview will entirely ignore the finer details of the organization of the brain: feature detector cells, specific processing units for certain types of visual stimuli, and most of the experiments and incidents that led to our current understanding of how the brain processes visual information. A more thorough presentation of these aspects of perception can be found in <span class="citation" data-cites="goldsteinSensationPerception2022">Goldstein and Cacciamani (<a href="#ref-goldsteinSensationPerception2022" role="doc-biblioref">2022</a>)</span>.</p>
 <section id="the-eye" class="level3">
 <h3 class="anchored" data-anchor-id="the-eye">The Eye</h3>
-<p>The eye is a complex apparatus, but for our purposes, the most important component of the eye is the retina, which contains the sensory cells responsible for transforming light waves into electrical information in the form of neural signals. These sensory cells are specialized neurons, known as rods and cones, which perceive light intensity (brightness) and wavelength (color), respectively. One section of the retina, known as the fovea, contains only cones; the rest of the retina contains a mixture of rods and cones. <a href="#fig-retina-diagram" class="quarto-xref">Figure&nbsp;1</a> depicts the structure of the eye with a closeup of the retina.</p>
+<p>The eye is a complex apparatus, but for our purposes, the most important component of the eye is the retina, which contains the sensory cells responsible for transforming light waves into electrical information in the form of neural signals. These sensory cells are specialized neurons, known as rods and cones, which perceive light intensity (brightness) and wavelength (color), respectively. One section of the retina, known as the fovea, contains only cones; the rest of the retina contains a mixture of rods and cones. <a href="#fig-retina-diagram">Figure&nbsp;1</a> depicts the structure of the eye with a closeup of the retina.</p>
 <div id="fig-retina-diagram" class="quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-retina-diagram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Figure_36_05_02.png" class="img-fluid figure-img">
-</div>
-<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-retina-diagram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: The human eye, with closeup of receptor cells in the retina.<span class="fig-citation"><a href="https://commons.wikimedia.org/wiki/File:Figure_36_05_02.png">Image Source</a> <a href="https://creativecommons.org/licenses/by/4.0/deed.en">License</a> Authors: OpenStax Copyright Holders: Rice University Publishers: OpenStax OpenStax Biology</span>
-</figcaption>
+<figure class="figure">
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Figure_36_05_02.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;1: The human eye, with closeup of receptor cells in the retina.<span class="fig-citation"><a href="https://commons.wikimedia.org/wiki/File:Figure_36_05_02.png">Image Source</a> <a href="https://creativecommons.org/licenses/by/4.0/deed.en">License</a> Authors: OpenStax Copyright Holders: Rice University Publishers: OpenStax OpenStax Biology</span></figcaption>
 </figure>
 </div>
 <p>Another important region of the retina is the blindspot, the area where the optic nerve exits the eye to connect the retina to the brain. There are no rods or cones in this region of the retina, and any vision in the region of space that maps onto this point is a result of two mechanisms: binocular vision (the other eye fills in the missing information) and your brain “filling in” what it believes should be there.</p>
 <div id="fig-color-range" class="quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-color-range-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../fig/Absorption-Spectra-Retina.svg" class="img-fluid figure-img">
-</div>
-<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-color-range-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: Absorption spectra of rods and short (blue), medium (green), and long (red) wave cones. <span class="fig-citation">Image modified from <a href="https://commons.wikimedia.org/wiki/File:Spectre_absorption_des_cones.svg">Pancrat’s Wikimedia Commons work</a>. <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">License</a>.</span>
-</figcaption>
+<figure class="figure">
+<p><img src="../fig/Absorption-Spectra-Retina.svg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;2: Absorption spectra of rods and short (blue), medium (green), and long (red) wave cones. <span class="fig-citation">Image modified from <a href="https://commons.wikimedia.org/wiki/File:Spectre_absorption_des_cones.svg">Pancrat’s Wikimedia Commons work</a>. <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">License</a>.</span></figcaption>
 </figure>
 </div>
-<p><a href="#fig-color-range" class="quarto-xref">Figure&nbsp;2</a> shows the responsiveness of rods and each of the three types of cones to wavelengths of light in the visual spectrum. As a result of the response of cone cells to different wavelengths of light, humans with normal color vision can better distinguish colors in the yellow-green portion of the color spectrum compared to colors in the red or blue portions of the spectrum.</p>
+<p><a href="#fig-color-range">Figure&nbsp;2</a> shows the responsiveness of rods and each of the three types of cones to wavelengths of light in the visual spectrum. As a result of the response of cone cells to different wavelengths of light, humans with normal color vision can better distinguish colors in the yellow-green portion of the color spectrum compared to colors in the red or blue portions of the spectrum.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -236,28 +230,28 @@ Implications for Color Schemes
 </section>
 <section id="the-brain" class="level3">
 <h3 class="anchored" data-anchor-id="the-brain">The Brain</h3>
-<p>Once light hits the retina and causes a signal in the receptor cells, the information travels along the optic nerve and into the brain. Multiple neighboring rods are connected to the same neuron, where each cone is connected to a single neuron. The combined wiring of rod cells is responsible for the <a href="https://en.wikipedia.org/wiki/Grid_illusion#Theories">Hermann grid illusion</a> and the <a href="https://en.wikipedia.org/wiki/Mach_bands">Mach bands</a> seen in <a href="#fig-inhibition-illusions" class="quarto-xref">Figure&nbsp;3</a>. Both of these illusions are a product of lateral inhibition, which is a result of the wiring of rod cells in the retina. Essentially, neurons can only fire at a specific rate, so when neighboring cells are all stimulated simultaneously, the combined neuron cannot fire fast enough to pass on all of the signals, causing <em>inhibition</em>. The <a href="https://en.wikipedia.org/wiki/Grid_illusion#Theories">specifics of this response</a> and its relationship with the wiring of the receptor cells are too complex for this summary.</p>
+<p>Once light hits the retina and causes a signal in the receptor cells, the information travels along the optic nerve and into the brain. Multiple neighboring rods are connected to the same neuron, where each cone is connected to a single neuron. The combined wiring of rod cells is responsible for the <a href="https://en.wikipedia.org/wiki/Grid_illusion#Theories">Hermann grid illusion</a> and the <a href="https://en.wikipedia.org/wiki/Mach_bands">Mach bands</a> seen in <a href="#fig-inhibition-illusions">Figure&nbsp;3</a>. Both of these illusions are a product of lateral inhibition, which is a result of the wiring of rod cells in the retina. Essentially, neurons can only fire at a specific rate, so when neighboring cells are all stimulated simultaneously, the combined neuron cannot fire fast enough to pass on all of the signals, causing <em>inhibition</em>. The <a href="https://en.wikipedia.org/wiki/Grid_illusion#Theories">specifics of this response</a> and its relationship with the wiring of the receptor cells are too complex for this summary.</p>
 <div id="fig-inhibition-illusions" class="quarto-layout-panel">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-inhibition-illusions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="figure">
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-figure quarto-figure-center quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/b/be/HermannGrid.svg" class="img-fluid figure-img"></p>
-<figcaption>Hermann grid illusion <span class="fig-citation"><a href="https://en.wikipedia.org/wiki/File:HermannGrid.svg">Image Source</a>. <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en">License</a>.</span></figcaption>
+<figcaption class="figure-caption">Hermann grid illusion <span class="fig-citation"><a href="https://en.wikipedia.org/wiki/File:HermannGrid.svg">Image Source</a>. <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en">License</a>.</span></figcaption>
 </figure>
 </div>
-<div class="quarto-figure quarto-figure-center quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../fig/Mach-Bands.png" class="img-fluid figure-img"></p>
-<figcaption>Mach Bands <span class="fig-citation"><a href="https://commons.wikimedia.org/wiki/File:Bandes_de_mach.PNG">Image Source</a>. <a href="https://en.wikipedia.org/wiki/en:Free_Art_License">License</a>.</span></figcaption>
+<figcaption class="figure-caption">Mach Bands <span class="fig-citation"><a href="https://commons.wikimedia.org/wiki/File:Bandes_de_mach.PNG">Image Source</a>. <a href="https://en.wikipedia.org/wiki/en:Free_Art_License">License</a>.</span></figcaption>
 </figure>
 </div>
 </div>
 </div>
-<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-inhibition-illusions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: Illusions which are thought to arise due to inhibition. In the Hermann grid illusion, dark blobs appear at the intersection of the white lines. In the Mach band illusion, the region where different shaded bands meet seems to have more contrast than the middle of the bands.
-</figcaption>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3: Illusions which are thought to arise due to inhibition. In the Hermann grid illusion, dark blobs appear at the intersection of the white lines. In the Mach band illusion, the region where different shaded bands meet seems to have more contrast than the middle of the bands.</figcaption><p></p>
 </figure>
 </div>
 <p>Once neural impulses have left the retina through the optic nerve, they travel to the visual cortex by way of several specialized structures within the brain that process lower-level signals. Receptor cells in the visual cortex respond to specific angles, spatial locations, colors, and intensities, and arrays of these special ‘feature detector cells’ process the information into a form used by higher-level processes <span class="citation" data-cites="hubelReceptiveFieldsBinocular1962">(<a href="#ref-hubelReceptiveFieldsBinocular1962" role="doc-biblioref">Hubel and Wiesel 1962</a>)</span>. These higher-level processes are what we have previously called ‘software’: they are not directly related to the physical brain, but they do process information heuristically to produce higher-level reasoning and conclusions. In the next section, we explore some of the higher-level processes responsible for visual perception.</p>
@@ -274,19 +268,15 @@ Figure&nbsp;3: Illusions which are thought to arise due to inhibition. In the He
 <p>Within the brain, attention is important because it allows different regions of the brain which process color, shape, and position to integrate these perceptions into a multifaceted mental representation of the object <span class="citation" data-cites="goldsteinSensationPerception2022">(<a href="#ref-goldsteinSensationPerception2022" role="doc-biblioref">Goldstein and Cacciamani 2022</a>)</span>. This process, known as binding, is essential to coherently encode a scene into working memory. Feature integration theory <span class="citation" data-cites="treismanFeatureIntegrationTheoryAttention1980">(<a href="#ref-treismanFeatureIntegrationTheoryAttention1980" role="doc-biblioref">Treisman 1980</a>)</span> suggests that these separate streams of information are initially encoded in the preattentive stage of object perception; focusing on the object triggers the binding of these separate streams into a single coherent stream of information. Many single features, such as color, length, and texture are <em>preattentive</em>, because they can be pinpointed in an image without focused attention (and thus can be located faster), but specific combinations of color and shape require attention (because the features must be bound together) and are thus more difficult to search. Preattentive features are generally processed in parallel (that is, the entire scene is processed nearly simultaneously), while features requiring attention are processed serially.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-parallel-serial" class="quarto-figure quarto-figure-center anchored" width="672">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-parallel-serial-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="01-Fundamentals_files/figure-html/fig-parallel-serial-1.png" class="img-fluid figure-img" width="672">
-</div>
-<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-parallel-serial-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4: Features detected serially or in parallel.
-</figcaption>
+<div id="fig-parallel-serial" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="01-Fundamentals_files/figure-html/fig-parallel-serial-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;4: Features detected serially or in parallel. In general, features detected in parallel are processed pre-attentively, while features detected serially require focused attention.</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Examples of features processed serially and in parallel are shown in <a href="#fig-parallel-serial" class="quarto-xref">Figure&nbsp;4</a> [<span class="citation" data-cites="helander1997handbook">Helander, Landauer, and Prabhu (<a href="#ref-helander1997handbook" role="doc-biblioref">1997</a>)</span>; Chapter 6].</p>
+<p>Examples of features processed serially and in parallel are shown in <a href="#fig-parallel-serial">Figure&nbsp;4</a> [<span class="citation" data-cites="helander1997handbook">Helander, Landauer, and Prabhu (<a href="#ref-helander1997handbook" role="doc-biblioref">1997</a>)</span>; Chapter 6].</p>
 <p>Feature integration as a result of attention enables the brain to process a figure holistically and integrate all of the separate aspects of the object into a single perceptual experience. This processing is important for the most basic visual processes we take for granted, including object perception.</p>
 </section>
 <section id="object-perception" class="level3">
@@ -304,15 +294,11 @@ Figure&nbsp;4: Features detected serially or in parallel.
 <li><strong>Uniform Connectedness</strong> A connected region of objects is perceived as a single unit.</li>
 <li><strong>Synchrony</strong> Events occurring at the same time will be perceived as belonging together.</li>
 </ul>
-<p>These principles are demonstrated in <a href="#fig-gestalt" class="quarto-xref">Figure&nbsp;5</a>.</p>
+<p>These principles are demonstrated in <a href="#fig-gestalt">Figure&nbsp;5</a>.</p>
 <div id="fig-gestalt" class="quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-gestalt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../fig/gestalt.svg" class="img-fluid figure-img">
-</div>
-<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-gestalt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5: Gestalt principles of grouping
-</figcaption>
+<figure class="figure">
+<p><img src="../fig/gestalt.svg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;5: Gestalt principles of grouping</figcaption>
 </figure>
 </div>
 </section>
@@ -321,6 +307,9 @@ Figure&nbsp;5: Gestalt principles of grouping
 <section id="the-psychology-of-charts" class="level1">
 <h1>The Psychology of Charts</h1>
 <p>In this section, we’ll primarily focus on how the concepts introduced previously apply to statistical graphics. At first glance, the cognitive psychology introduced above may seem unrelated to graphics and perception; however, this could not be further from the truth. It is critical to understand and consider perception and cognition when creating graphics which facilitate easy comprehension of the underlying data in visual form.</p>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
+</section>
 </section>
 <section id="strategies-for-readability" class="level1">
 <h1>Strategies for Readability</h1>
@@ -339,7 +328,7 @@ Figure&nbsp;5: Gestalt principles of grouping
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-borlandRainbowColorMap2007" class="csl-entry" role="listitem">
 Borland, D., and R. M. Taylor. 2007. <span>“Rainbow <span>Color Map</span> (<span>Still</span>) <span>Considered Harmful</span>.”</span> <em>IEEE Computer Graphics and Applications</em> 27 (2): 14–17. <a href="https://doi.org/10.1109/mcg.2007.323435">https://doi.org/10.1109/mcg.2007.323435</a>.
 </div>
@@ -447,9 +436,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -459,17 +449,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -482,128 +463,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    const typesetMath = (el) => {
-      if (window.MathJax) {
-        // MathJax Typeset
-        window.MathJax.typeset([el]);
-      } else if (window.katex) {
-        // KaTeX Render
-        var mathElements = el.getElementsByClassName("math");
-        var macros = [];
-        for (var i = 0; i < mathElements.length; i++) {
-          var texText = mathElements[i].firstChild;
-          if (mathElements[i].tagName == "SPAN") {
-            window.katex.render(texText.data, mathElements[i], {
-              displayMode: mathElements[i].classList.contains('display'),
-              throwOnError: false,
-              macros: macros,
-              fleqn: false
-            });
-          }
-        }
-      }
-    }
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        for (let i = 0; i < 2; i++) {
-          container.appendChild(note.children[i].cloneNode(true));
-        }
-        typesetMath(container);
-        return container.innerHTML
-      } else {
-        typesetMath(note);
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      typesetMath(note);
-      return note.innerHTML;
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -647,7 +506,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -673,32 +531,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -759,7 +591,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-
 
 
 

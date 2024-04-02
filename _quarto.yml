@@ -11,7 +11,9 @@ website:
       - about.qmd
       - text: Materials
         menu:
+          - "content/contents.qmd"
           - "content/00-Setup.qmd"
+          - "content/01-Fundamentals.qmd"
 
 
 format:
