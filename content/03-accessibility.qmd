@@ -1,3 +1,25 @@
 ---
 title: "Accessibility: More than just Alt-text"
 ---
+
+
+- Basic overview of types of different accessibility concerns
+    - Blind/Low Vision
+    - Data & numerical literacy
+    - Processing disorders - dyslexia, dyscalculia, ADHD
+
+- Approaches to navigating disability
+    - Screen reader  - try out navigating with a screen reader around this site. 
+    
+- Visual Solutions
+    - Low vision support
+    
+    - Level 1: Basic compliance/communication
+        - Alt text
+        - Data Tables
+    - Level 2: Engagement
+        - Keyboard navigation of visualization content
+        - Sonification [@sakhardandeComparingUserPerformance2019;@acarturkDevelopingVerbalAssistance2014]
+        - Physicalization [@watanabeEffectivenessTactileScatter2018;@goncuUsabilityAccessibleBar2010]
+
+
