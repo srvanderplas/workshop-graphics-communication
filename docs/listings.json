@@ -2,10 +2,10 @@
   {
     "listing": "/content/contents.html",
     "items": [
-      "/content/03-accessibility.html",
-      "/content/02-eda.html",
-      "/content/01-Fundamentals.html",
       "/content/00-Setup.html",
+      "/content/01-Fundamentals.html",
+      "/content/02-eda.html",
+      "/content/03-accessibility.html",
       "/content/04-rules.html",
       "/content/05-workshop.html"
     ]

@@ -1,6 +1,27 @@
 ---
 title: "Fundamentals of Graphical Communication"
+fig-cap-location: margin
 ---
+```{r setup, include = F}
+
+suppressMessages(library(ggplot2))
+suppressMessages(library(gridExtra))
+suppressMessages(library(dplyr))
+suppressMessages(library(tidyr))
+suppressMessages(library(purrr))
+suppressMessages(library(ggthemes))
+
+# Empty theme definition
+new_theme_empty <- theme_void(base_size=16)
+# new_theme_empty$line <- element_blank()
+# new_theme_empty$strip.text <- element_blank()
+# new_theme_empty$axis.text <- element_blank()
+# new_theme_empty$plot.title <- element_blank()
+# new_theme_empty$axis.title <- element_blank()
+# new_theme_empty$plot.margin <- structure(c(0, 0, -1, -1), unit = "lines", valid.unit = 3L, class = "unit")
+# 
+
+```
 
 # A Quick Introduction to Perception and Cognition
 
@@ -50,15 +71,24 @@ Once neural impulses have left the retina through the optic nerve, they travel t
 
 Many of the processes for visual perception run simultaneously; in absence of a strict temporal ordering, we will start with the more basic tasks of visual perception and proceed towards higher-level processes.
 
-### Attention and Perception
+### Selective Attention
 
-In many tasks, it is necessary to pay attention to many parallel input streams simultaneously; this is particularly true for complex tasks like driving a car. These tasks demand divided attention; the brain must process many different sources of information in parallel. By contrast, most image recognition tasks require selective attention, that is, focusing on specific objects and ignoring everything else. The brain accomplishes this attention through several mechanisms.
+In many tasks, it is necessary to pay attention to many parallel input streams simultaneously; this is particularly true for complex tasks like driving a car. 
+These tasks demand divided attention; the brain must process many different sources of information in parallel. 
+By contrast, most image recognition tasks require selective attention, that is, focusing on specific objects and ignoring everything else. 
 
-Selective attention is accomplished by focusing the fovea (the area with the highest visual acuity) on the object. For instance, if the object is a page of text, each word will pass through the fovea, producing a focused stream of visual input. This stream of input consists of saccades (jumps between points of focus) and pauses in which the visual information is relayed to the brain.
+Selective attention is accomplished by focusing the fovea (the area with the highest visual acuity) on the object. 
+For instance, if the object is a page of text, each word will pass through the fovea, producing a focused stream of visual input. 
+This stream of input consists of saccades (jumps between points of focus) and pauses in which the visual information is relayed to the brain.
 
-Selective attention is generally necessary for perception to occur, though there is some information that is encoded automatically. The ["gorilla" film](http://www.theinvisiblegorilla.com/videos.html) experiment demonstrates that even when there is attention focused on a task, information extraneous to that task is not always encoded, that is, when participants focused on counting the number of passes between players in the basketball game, many did not notice the gorilla walking through the middle of the court. It is important to understand which parts of a visual stimulus are the focus of a given perceptual task, because most of the information encoded by the brain is a result of selective attention. Eye-tracking can be an important tool useful to understand these perceptual processes, but participants may also be able to self-report which parts of a stimulus contributed to their decision.
+Selective attention is generally necessary for perception to occur, though there is some information that is encoded automatically. The ["gorilla" film](http://www.theinvisiblegorilla.com/videos.html) experiment demonstrates that even when there is attention focused on a task, information extraneous to that task is not always encoded, that is, when participants focused on counting the number of passes between players in the basketball game, many did not notice the gorilla walking through the middle of the court. 
+It is important to understand which parts of a visual stimulus are the focus of a given perceptual task, because most of the information encoded by the brain is a result of selective attention. 
+Eye-tracking can be an important tool useful to understand these perceptual processes, but participants may also be able to self-report which parts of a stimulus contributed to their decision.
 
-Within the brain, attention is important because it allows different regions of the brain which process color, shape, and position to integrate these perceptions into a multifaceted mental representation of the object [@goldsteinSensationPerception2022]. This process, known as binding, is essential to coherently encode a scene into working memory. Feature integration theory [@treismanFeatureIntegrationTheoryAttention1980] suggests that these separate streams of information are initially encoded in the preattentive stage of object perception; focusing on the object triggers the binding of these separate streams into a single coherent stream of information. Many single features, such as color, length, and texture are *preattentive*, because they can be pinpointed in an image without focused attention (and thus can be located faster), but specific combinations of color and shape require attention (because the features must be bound together) and are thus more difficult to search. Preattentive features are generally processed in parallel (that is, the entire scene is processed nearly simultaneously), while features requiring attention are processed serially.
+Within the brain, attention is important because it allows different regions of the brain which process color, shape, and position to integrate these perceptions into a multifaceted mental representation of the object [@goldsteinSensationPerception2022].
+This process, known as binding, is essential to coherently encode a scene into working memory. Feature integration theory [@treismanFeatureIntegrationTheoryAttention1980] suggests that these separate streams of information are initially encoded in the preattentive stage of object perception; focusing on the object triggers the binding of these separate streams into a single coherent stream of information. 
+Many single features, such as color, length, and texture are *preattentive*, because they can be pinpointed in an image without focused attention (and thus can be located faster), but specific combinations of color and shape require attention (because the features must be bound together) and are thus more difficult to search. 
+Preattentive features are generally processed in parallel (that is, the entire scene is processed nearly simultaneously), while features requiring attention are processed serially.
 
 ```{r}
 #| label: fig-parallel-serial
@@ -66,23 +96,10 @@ Within the brain, attention is important because it allows different regions of 
 #| message: false
 #| warning: false
 #| include: true
+#| layout-ncol: 2
+#| fig-width: 4
+#| fig-height: 5
 #| fig-cap: Features detected serially or in parallel. In general, features detected in parallel are processed pre-attentively, while features detected serially require focused attention.
-
-suppressMessages(library(ggplot2))
-suppressMessages(library(gridExtra))
-suppressMessages(library(dplyr))
-suppressMessages(library(tidyr))
-suppressMessages(library(purrr))
-
-# Empty theme definition
-new_theme_empty <- theme_bw(base_size=16)
-new_theme_empty$line <- element_blank()
-new_theme_empty$strip.text <- element_blank()
-new_theme_empty$axis.text <- element_blank()
-# new_theme_empty$plot.title <- element_blank()
-new_theme_empty$axis.title <- element_blank()
-# new_theme_empty$plot.margin <- structure(c(0, 0, -1, -1), unit = "lines", valid.unit = 3L, class = "unit")
-
 
 parallel.points <- data.frame(
   color = c("red", "orange", "yellow", "green", "blue",
@@ -194,7 +211,8 @@ serial <- ggplot() + new_theme_empty +
   geom_text(aes(x=-0.5, y=rev(1:5), label=c("Shape", "Area", "Curvature", "Containment", "Orientation")), hjust=0, vjust=.5) +
   ggtitle("Serial Detection") 
 
-grid.arrange(parallel, serial, ncol=2)
+parallel
+serial
 
 ```
 
@@ -222,13 +240,104 @@ These principles are demonstrated in @fig-gestalt.
 
 ![Gestalt principles of grouping](../fig/gestalt.svg){#fig-gestalt}
 
+### Memory
+
+@miller1956magical suggested that active memory can contain only 7 (plus or minus two) chunks of information. 
+A chunk of information could be a single letter or number, a meaningful collection of several letters or numbers (e.g. a word or an area code), or an association. 
+This limitation is important in designing information for graphical consumption. 
+For instance,  the number of categories in legends should be limited to 7, to allow a viewer to store the associations within the legend and then use that information to understand the graph. 
+Abuse of this limitation is referred to as a "color mapping attack" in @conti2005attacking, a paper detailing the various ways to "attack" a human visualization system. 
+Similarly, viewers should not be expected to remember more than 7 "chunks" of information from a single graph. 
+Due to these limitations in memory, when a single color scale is used to represent more than one order of magnitude of variation, using a logarithmic scale provides more optimal information scaling than using a linear color scale [@sun2012framework; @varshney2013we]. 
+### Information Integration
+Integrating multiple dimensions of information (or mentally combining multiple graphics) is another area which can strain the ability of the brain to utilize information effectively. 
+Well-constructed graphs can help the brain to integrate information by connecting points across dimensions (through the use of regression lines, clustering, etc.), which creates "chunks" of information that can then be stored in memory in a more compressed format.
+Gestalt principles of grouping are useful heuristics in part because they help define how these chunks of information form.
+In chart design, creating chunks of information is useful because this allows people to draw conclusions from multiple sets of data across multiple dimensions [@gattis1996mapping]. 
+Poorly created graphics may make this task harder or even promote the encoding of misleading chunks; for instance, data that is overplotted may obscure the important trend and may also produce chunks which lead to the wrong associations being stored in memory.
+This integration limitation is very much related to short-term memory, but is also constrained by mental effort limitations and processing capacity. 
+As a result, it is important to reduce the effort required to integrate multiple graphics. 
+
+
+### Resource Limitations
+
+Human attention is limited; thus visualizations which do not focus attention on important aspects of the data are likely to confuse the reader.
+
+> "The greatest value of a picture is when it forces us to notice what we never expected to see".  [@eda]
+
+When there are too many salient features to notice anything in particular, attention is split too many ways to gain useful information from the picture. 
+Graphics should present data in a controlled fashion, so that focused attention is rewarded with useful information taken from the graph. 
+@conti2005attacking describes graphs that do not follow this principle as "processing attacks", in that the overload the "CPU" with needless calculations and mental manipulations that are ultimately futile to understanding the data. 
+
+The consequence of the limits of human perception and processing capacity is that there is a limited amount of information one can expect to portray graphically; thus graphics should be designed to most efficiently communicate information so that this cognitive overload does not occur. 
+The next section presents studies which examine the perception of graphs and charts directly across a wide range of perceptual levels and experimental conditions. 
+
 # The Psychology of Charts
 
 In this section, we'll  primarily focus on how the concepts introduced previously apply to statistical graphics. 
 At first glance, the cognitive psychology introduced above may seem unrelated to graphics and perception; however, this could not be further from the truth. 
 It is critical to understand and consider perception and cognition when creating graphics which facilitate easy comprehension of the underlying data in visual form. 
 
-## 
+Graphics are useful in part because they summarize information in a form which is easier to understand and mentally manipulate. 
+Thus, graphics serve as a form of **external cognition** - pre-processing information in a form that is (or should be) easier to digest and understand.
+
+## Preattentive Perception
+
+
+
+```{r preattentive, echo = F}
+#| fig-subcap: ['Shape', 'Color', 'Interference', 'Dual Encoding']
+#| fig-cap: Shape and color are detected preattentively, but when used to encode different information, the combination is no longer preattentive. When shape and color are used to encode the same information (dual encoding), the combination is detected preattentively and is more accessible to individuals with perceptual disabilities such as colorblindness.
+#| layout-ncol: 2
+set.seed(153253)
+
+data <- data.frame(expand.grid(x=1:6, y=1:6), color=sample(c(1,2), 36, replace=TRUE)) %>%
+  mutate(x = x + rnorm(36, 0, .25), 
+         y = y + rnorm(36, 0, .25),
+         shape1 = c(rep(2, 15), 1, rep(2, 20)) %>% factor(),
+         color1 = factor(1, levels = c(1,2)),
+         shape2 = color1,
+         color2 = c(rep(2, 10), 1, rep(2, 25)) %>% factor(),
+         shape3 = c(rep(2, 15), 1, rep(2, 20)) %>% factor(),
+         color3 = shape3,
+         shape4 = sample(c(1, 2), size = 36, replace = T) %>% factor(),
+         color4 = sample(c(1, 2), size = 36, replace = T) %>% factor()
+         )
+
+ggplot(data, aes(x = x, y = y, color = color1, shape = shape1)) + 
+  geom_point(size = I(5)) + 
+  scale_shape_manual(guide = "none", values = c(19, 15)) + 
+  scale_color_discrete(guide = "none") + 
+  coord_fixed() + 
+  new_theme_empty
+
+
+ggplot(data, aes(x = x, y = y, color = color2, shape = shape2)) + 
+  geom_point(size = I(5)) + 
+  scale_shape_manual(guide = "none", values = c(19, 15)) + 
+  scale_color_discrete(guide = "none") + 
+  coord_fixed() + 
+  new_theme_empty
+
+
+ggplot(data, aes(x = x, y = y, color = color4, shape = shape4)) + 
+  geom_point(size = I(5)) + 
+  scale_shape_manual(guide = "none", values = c(19, 15)) + 
+  scale_color_discrete(guide = "none") + 
+  coord_fixed() + 
+  new_theme_empty
+
+
+ggplot(data, aes(x = x, y = y, color = color3, shape = shape3)) + 
+  geom_point(size = I(5)) + 
+  scale_shape_manual(guide = "none", values = c(19, 15)) + 
+  scale_color_discrete(guide = "none") + 
+  coord_fixed() + 
+  new_theme_empty
+
+```
+
+
 
 # Strategies for Readability
 
