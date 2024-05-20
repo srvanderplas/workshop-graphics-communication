@@ -1,5 +1,5 @@
 ---
-title: "Fundamentals of Graphical Communication"
+title: "Accessibility: More than just Alt-text"
 format: revealjs
 ---
 

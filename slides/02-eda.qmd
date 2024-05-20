@@ -1,5 +1,5 @@
 ---
-title: "Fundamentals of Graphical Communication"
+title: "Exploratory Data Analysis"
 format: revealjs
 ---
 
