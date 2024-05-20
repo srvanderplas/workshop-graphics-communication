@@ -1,6 +1,5 @@
 ---
 title: "Fundamentals of Graphical Communication"
-fig-cap-location: margin
 ---
 ```{r setup, include = F}
 
@@ -37,7 +36,7 @@ The physiology of perception is complex; what follows is a brief overview of the
 
 The eye is a complex apparatus, but for our purposes, the most important component of the eye is the retina, which contains the sensory cells responsible for transforming light waves into electrical information in the form of neural signals. These sensory cells are specialized neurons, known as rods and cones, which perceive light intensity (brightness) and wavelength (color), respectively. One section of the retina, known as the fovea, contains only cones; the rest of the retina contains a mixture of rods and cones. @fig-retina-diagram depicts the structure of the eye with a closeup of the retina.
 
-![The human eye, with closeup of receptor cells in the retina.[[Image Source](https://commons.wikimedia.org/wiki/File:Figure_36_05_02.png) [License](https://creativecommons.org/licenses/by/4.0/deed.en) Authors: OpenStax Copyright Holders: Rice University Publishers: OpenStax OpenStax Biology]{.fig-citation}](https://upload.wikimedia.org/wikipedia/commons/9/9e/Figure_36_05_02.png){#fig-retina-diagram}
+![The human eye, with closeup of receptor cells in the retina. [[Image Source](https://commons.wikimedia.org/wiki/File:Figure_36_05_02.png) [License](https://creativecommons.org/licenses/by/4.0/deed.en) Authors: OpenStax Copyright Holders: Rice University Publishers: OpenStax OpenStax Biology]{.fig-citation}](https://upload.wikimedia.org/wikipedia/commons/9/9e/Figure_36_05_02.png){#fig-retina-diagram}
 
 Another important region of the retina is the blindspot, the area where the optic nerve exits the eye to connect the retina to the brain. There are no rods or cones in this region of the retina, and any vision in the region of space that maps onto this point is a result of two mechanisms: binocular vision (the other eye fills in the missing information) and your brain "filling in" what it believes should be there.
 
@@ -57,10 +56,14 @@ Moreover, if a viewer has any level of color vision impairment (colloquially, 'c
 
 Once light hits the retina and causes a signal in the receptor cells, the information travels along the optic nerve and into the brain. Multiple neighboring rods are connected to the same neuron, where each cone is connected to a single neuron. The combined wiring of rod cells is responsible for the [Hermann grid illusion](https://en.wikipedia.org/wiki/Grid_illusion#Theories) and the [Mach bands](https://en.wikipedia.org/wiki/Mach_bands) seen in @fig-inhibition-illusions. Both of these illusions are a product of lateral inhibition, which is a result of the wiring of rod cells in the retina. Essentially, neurons can only fire at a specific rate, so when neighboring cells are all stimulated simultaneously, the combined neuron cannot fire fast enough to pass on all of the signals, causing *inhibition*. The [specifics of this response](https://en.wikipedia.org/wiki/Grid_illusion#Theories) and its relationship with the wiring of the receptor cells are too complex for this summary.
 
-::: {#fig-inhibition-illusions layout-ncol="2"}
-![Hermann grid illusion [[Image Source](https://en.wikipedia.org/wiki/File:HermannGrid.svg). [License](https://creativecommons.org/publicdomain/zero/1.0/deed.en).]{.fig-citation}](https://upload.wikimedia.org/wikipedia/commons/b/be/HermannGrid.svg)
+::: {#fig-inhibition-illusions}
+::: {layout-ncol=2}
 
-![Mach Bands [[Image Source](https://commons.wikimedia.org/wiki/File:Bandes_de_mach.PNG). [License](https://en.wikipedia.org/wiki/en:Free_Art_License).]{.fig-citation}](../fig/Mach-Bands.png)
+![Hermann grid illusion [[Image Source](https://en.wikipedia.org/wiki/File:HermannGrid.svg). [License](https://creativecommons.org/publicdomain/zero/1.0/deed.en).]{.fig-citation}](https://upload.wikimedia.org/wikipedia/commons/b/be/HermannGrid.svg){#fig-hermann-grid}
+
+![Mach Bands [[Image Source](https://commons.wikimedia.org/wiki/File:Bandes_de_mach.PNG). [License](https://en.wikipedia.org/wiki/en:Free_Art_License).]{.fig-citation}](../fig/Mach-Bands.png){#fig-mach-bands}
+
+:::
 
 Illusions which are thought to arise due to inhibition. In the Hermann grid illusion, dark blobs appear at the intersection of the white lines. In the Mach band illusion, the region where different shaded bands meet seems to have more contrast than the middle of the bands.
 :::
@@ -90,16 +93,15 @@ This process, known as binding, is essential to coherently encode a scene into w
 Many single features, such as color, length, and texture are *preattentive*, because they can be pinpointed in an image without focused attention (and thus can be located faster), but specific combinations of color and shape require attention (because the features must be bound together) and are thus more difficult to search. 
 Preattentive features are generally processed in parallel (that is, the entire scene is processed nearly simultaneously), while features requiring attention are processed serially.
 
-```{r}
-#| label: fig-parallel-serial
+::: {#fig-parallel-serial}
+```{r parallel-serial}
+#| layout-ncol: 2
 #| echo: false
 #| message: false
 #| warning: false
 #| include: true
-#| layout-ncol: 2
 #| fig-width: 4
 #| fig-height: 5
-#| fig-cap: Features detected serially or in parallel. In general, features detected in parallel are processed pre-attentively, while features detected serially require focused attention.
 
 parallel.points <- data.frame(
   color = c("red", "orange", "yellow", "green", "blue",
@@ -216,6 +218,9 @@ serial
 
 ```
 
+Features detected serially or in parallel. In general, features detected in parallel are processed pre-attentively, while features detected serially require focused attention.
+:::
+
 Examples of features processed serially and in parallel are shown in @fig-parallel-serial [@helander1997handbook; Chapter 6].
 
 Feature integration as a result of attention enables the brain to process a figure holistically and integrate all of the separate aspects of the object into a single perceptual experience. This processing is important for the most basic visual processes we take for granted, including object perception.
@@ -249,7 +254,10 @@ For instance,  the number of categories in legends should be limited to 7, to al
 Abuse of this limitation is referred to as a "color mapping attack" in @conti2005attacking, a paper detailing the various ways to "attack" a human visualization system. 
 Similarly, viewers should not be expected to remember more than 7 "chunks" of information from a single graph. 
 Due to these limitations in memory, when a single color scale is used to represent more than one order of magnitude of variation, using a logarithmic scale provides more optimal information scaling than using a linear color scale [@sun2012framework; @varshney2013we]. 
+
+
 ### Information Integration
+
 Integrating multiple dimensions of information (or mentally combining multiple graphics) is another area which can strain the ability of the brain to utilize information effectively. 
 Well-constructed graphs can help the brain to integrate information by connecting points across dimensions (through the use of regression lines, clustering, etc.), which creates "chunks" of information that can then be stored in memory in a more compressed format.
 Gestalt principles of grouping are useful heuristics in part because they help define how these chunks of information form.
@@ -283,10 +291,15 @@ Thus, graphics serve as a form of **external cognition** - pre-processing inform
 
 ## Preattentive Perception
 
+As discussed in @fig-parallel-serial, some features are processed pre-attentively, in parallel, while some features require conscious attention. 
+When choosing features for data display, viewers will have an easier time when the feature chosen is processed in parallel than if the same data is shown using a feature that is processed serially. 
 
+However, it is important not to overdo it! 
+Combinations of preattentive features used to show different dimensions of the data are processed serially, requiring much more effort, in an effect known as *interference*. 
 
 ```{r preattentive, echo = F}
-#| fig-subcap: ['Shape', 'Color', 'Interference', 'Dual Encoding']
+#| label: fig-preattentive
+#| fig-subcap: ['Color', 'Shape', 'Interference', 'Dual Encoding']
 #| fig-cap: Shape and color are detected preattentively, but when used to encode different information, the combination is no longer preattentive. When shape and color are used to encode the same information (dual encoding), the combination is detected preattentively and is more accessible to individuals with perceptual disabilities such as colorblindness.
 #| layout-ncol: 2
 set.seed(153253)
@@ -304,13 +317,6 @@ data <- data.frame(expand.grid(x=1:6, y=1:6), color=sample(c(1,2), 36, replace=T
          color4 = sample(c(1, 2), size = 36, replace = T) %>% factor()
          )
 
-ggplot(data, aes(x = x, y = y, color = color1, shape = shape1)) + 
-  geom_point(size = I(5)) + 
-  scale_shape_manual(guide = "none", values = c(19, 15)) + 
-  scale_color_discrete(guide = "none") + 
-  coord_fixed() + 
-  new_theme_empty
-
 
 ggplot(data, aes(x = x, y = y, color = color2, shape = shape2)) + 
   geom_point(size = I(5)) + 
@@ -319,6 +325,13 @@ ggplot(data, aes(x = x, y = y, color = color2, shape = shape2)) +
   coord_fixed() + 
   new_theme_empty
 
+
+ggplot(data, aes(x = x, y = y, color = color1, shape = shape1)) + 
+  geom_point(size = I(5)) + 
+  scale_shape_manual(guide = "none", values = c(19, 15)) + 
+  scale_color_discrete(guide = "none") + 
+  coord_fixed() + 
+  new_theme_empty
 
 ggplot(data, aes(x = x, y = y, color = color4, shape = shape4)) + 
   geom_point(size = I(5)) + 
@@ -337,6 +350,159 @@ ggplot(data, aes(x = x, y = y, color = color3, shape = shape3)) +
 
 ```
 
+
+Interference is demonstrated in @fig-preattentive; the different point in (a) and (b) is easy to pick out, but it is much harder in (c) to separate shape and color in order to pick out differences. 
+This is because when color and shape are used to show different features, we must consider every combination of color and shape used and individually search for points matching that description -- an operation which requires a lot of time and cognitive effort. 
+Not all combinations of color and shape are problematic, however: (d) uses color and shape to show the same variable (*dual-encoding*), which is useful for individuals who are color blind or may have trouble perceiving shapes. 
+The two preattentive features support each other when used in this way, making it even easier to pick out the one mismatched point than in conditions (a), (b), or (c). 
+
+
+## Conscious Perception
+
+While it is useful to understand the psychology of perception and the implications of preattentive perception for understanding how much cognitive effort an operation takes,  analysts are more concerned about conscious perception that occurs with attention. 
+We care about questions like:
+
+- Which parts of the graph are the most useful for answering a question?
+- How is information  from the graph combined with pre-existing knowledge?
+- How does a graph promote understanding of the underlying data?
+
+Several different types of models have been proposed to describe this process, but overall, "task models" and "integration models" are most consistent with available empirical evidence.
+
+### Task Based Processing
+
+An example of task-based processing [@ratwani2008thinking] is shown in @fig-task-steps.
+
+
+```{r task-steps}
+#| fig-width: 5
+#| fig-height: 5
+#| out-width: 50%
+#| fig-cap: Task-based steps for evaluating the relationship between eruption length and time between eruptions for Old Faithful?
+#| echo: false
+#| label: fig-task-steps
+#| message: false
+#| warning: false
+
+library(datasets)
+library(ggplot2)
+data(faithful)
+ggplot(faithful, aes(waiting, eruptions)) + 
+  geom_jitter() + 
+  xlab("Time Between Eruptions (minutes)") + 
+  ylab("Eruption Length (minutes)") + 
+  ggtitle("Old Faithful Eruptions") + 
+  geom_smooth(method="lm") + 
+  theme_bw()
+```
+
+
+**Question:** What is the relationship between the length of the eruption and the time between eruptions for Old Faithful?
+
+1. Understand the question:
+
+    - Identify "length of eruption" and "time between eruptions" as things to search for in the graph.
+    
+2. Search for identified quantities:
+
+    - Look for "length of eruption" on the axes and determine that the $y$-coordinate contains that information. 
+    - Look for "time between eruptions" on the axes and determine that the $x$-coordinate contains that information. 
+    - Verify that these quantities are what are sought by re-reading the question.
+    
+3. Sense-making and Storytelling: 
+
+    - Establish that as the time between eruptions increases, the length of the eruption increases. 
+    - Note that there seems to be a bimodal distribution of points
+    
+4. Answer the question:
+
+    - As time between eruptions increases, length of the eruption increases.
+
+In practice, the search portion of the task based framework is implicitly connected to the sense-making and storytelling portion, and viewers iterate between the two steps several times before finally proceeding to step 4. 
+The time required for each step may change based on the reader's familiarity with the task, the chart style, and the background knowledge required to interpret the data. 
+Viewers who are familiar with similar graphics may be able to encode information faster and in larger chunks, answering the question more quickly [@carpenter1998model].
+
+### Information Integration
+
+Charts designed to promote chunking do so by providing viewers with cues for important features. 
+This can help participants come to conclusions supported by the data and statistical modeling underlying the visual representation, reducing cognitive load. 
+
+@fig-grouping-help shows the same data using three different representations, with an additional representation illustrating the viewer's mental model. 
+In the first figure, (a), viewers are provided with no additional information and must group points together mentally to make sense of the data; this grouping action takes some cognitive effort, producing something like the second figure, (b). 
+The designer could make this chunking effort less resource-intensive by 
+
+```{r}
+#| label: fig-grouping-help
+#| fig.cap: When graphical features such as clustering are important, using aesthetics to promote chunking of the information can help readers make sense of the data more efficiently. 
+#| fig.subcap:
+#|   - Data with no additional aesthetics
+#|   - Perceived chunks in mental representation
+#|   - Data, color used to provide chunking information
+#|   - Data, color + shape  used to provide chunking information
+#| layout-ncol: 2
+#| echo: false
+
+set.seed(42335253)
+N <- 40
+sigma <- .25
+data <- tibble(
+  x = purrr::map(c(3, 3.5, 4), ~rnorm(N, ., sigma)) %>% unlist(),
+  y = purrr::map(c(4, 3, 4), ~rnorm(N, ., sigma)) %>% unlist(),
+  group = rep(LETTERS[1:3], each = N)
+)
+
+kmres <- kmeans(data[,1:2], 3)
+
+data$group_km <- kmres$cluster
+data <- data %>%
+  group_by(group_km) %>%
+  mutate(group_km = table(group) %>% sort(decreasing = T) %>% names() %>% `[`(1))
+
+library(ggplot2)
+library(ggforce)
+
+ggplot(data=data, aes(x=x, y=y)) + 
+  geom_point(size = 3, shape = 1) + 
+  theme_bw() + 
+  coord_fixed()
+
+ggplot(data=data, aes(x=x, y=y)) + 
+  geom_point(size = 3) + 
+  theme_bw() + 
+  geom_mark_ellipse(aes(fill = group_km), expand = unit(1, "mm"), alpha = .1, color = NA) + 
+  
+  scale_fill_brewer(palette="Set1", guide='none')  + 
+  coord_fixed()
+
+ggplot(data=data, aes(x=x, y=y, color = group_km)) + 
+  geom_point(size = 3) + 
+  scale_color_brewer(palette="Set1", guide='none')  + 
+  theme_bw() + 
+  coord_fixed()
+
+
+ggplot(data=data, aes(x=x, y=y, color = group_km, shape = group_km)) + 
+  geom_point(size = 3) + 
+  scale_color_brewer(palette="Set1", guide='none')  + 
+  scale_shape_discrete(guide='none', solid = F)  + 
+  theme_bw() + 
+  coord_fixed()
+```
+
+Analyzing graphs using task-based models emphasizes the importance of spatial relationships between graphical elements.
+The gestalt laws of proximity and similarity dictate that items which are close together or physically similar (the same shape or color) are perceived as a group; this spatial perception creates "chunks" of the graph which may be encoded as single objects and thus reduce the mental bandwidth necessary to process the image. 
+@fig-grouping-help shows the advantage of "chunks" in graphs: in (a) there are 120 points that could be grouped into the three clusters shown in (b), but when the clustering is provided using aesthetics, the Gestalt similarity heuristic naturally groups the points for us, without much additional labor.
+
+As charts become more complex, it can be difficult to consider all of the perceptual processes which might affect perception and use of a specific visualization. 
+In these cases, cognitive models and frameworks can be extremely useful [@padillaCaseCognitiveModels2018;@padillaDecisionMakingVisualizations2018]. 
+By assessing the interactions between the visualization and the cognitive model, it may be possible to identify potential areas of difficulty that can be addressed in a revised design.
+
+
+Of graphics that present information of similar complexity, graphics that require less effort to understand and search for relevant information are preferable [@clevelandElementsGraphingData1985]. 
+More complex models of the graphical perception process suggest that data are integrated on a visual level and then on a cognitive level, to form successive clusters of information. 
+Once these clusters are formed, additional information can be integrated by comparing and contrasting different clusters to understand the higher-level meaning in the graph [@ratwani2008thinking]. 
+Graph types which cater to this hierarchical clustering mechanism may be more easily understood by viewers than graphs that do not provide information in a manner easily assimilated by the human brain. 
+Facetted charts may be particularly useful for mapping multidimensional data to provide "chunks" of information in a relevant manner, pre-digested for integration into the viewer's working conceptual understanding of the dataset. 
+Additionally, color schemes and appropriate labeling of graph features which reduce the amount of work necessary to integrate numerical information from a legend into the visual representation of the graph facilitate graphical inference [@carpenter1998model].
 
 
 # Strategies for Readability

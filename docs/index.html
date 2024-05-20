@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.4.489">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -60,7 +60,6 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -193,7 +192,8 @@ ul.task-list li input[type="checkbox"] {
 <tr class="even">
 <td>9:00 - 10:45 AM</td>
 <td><a href="./content/01-Fundamentals.html">Fundamentals of Graphical Communication</a></td>
-<td>The interaction between cognitive processes and graphics: how do we ensure people can read our charts?</td>
+<td>The interaction between cognitive processes and graphics: how do we ensure people can read our charts?<br>
+<a href="./slides/01-Fundamentals.html" title="Fundamentals of Graphical Communication Slides">Slides</a></td>
 </tr>
 <tr class="odd">
 <td>10:45 - 11:00 AM</td>
@@ -203,7 +203,8 @@ ul.task-list li input[type="checkbox"] {
 <tr class="even">
 <td>11:00 - 12:00 PM</td>
 <td><a href="./content/02-eda.html">Exploratory Data Analysis</a></td>
-<td>Strategies for using graphics to generate insight about new data through rapid iteration.</td>
+<td>Strategies for using graphics to generate insight about new data through rapid iteration.<br>
+<a href="./slides/02-eda.html" title="Exploratory Data Analysis slides">Slides</a></td>
 </tr>
 <tr class="odd">
 <td>12:00 - 1:00 PM</td>
@@ -213,7 +214,8 @@ ul.task-list li input[type="checkbox"] {
 <tr class="even">
 <td>1:00 - 2:30 PM</td>
 <td><a href="./content/03-accessibility.html">Accessibility: more than just alt-text</a></td>
-<td>Accessibility guidelines applied to graphics. We will discuss color contrast rules, ways to help make graphics accessible to colorblind individuals, those with vision acuity loss, and those who use screen readers.</td>
+<td>Accessibility guidelines applied to graphics. We will discuss color contrast rules, ways to help make graphics accessible to colorblind individuals, those with vision acuity loss, and those who use screen readers.<br>
+<a href="./slides/03-accessibility.html" title="Accessibility slides">Slides</a></td>
 </tr>
 <tr class="odd">
 <td>2:30 - 2:45 PM</td>
@@ -223,7 +225,8 @@ ul.task-list li input[type="checkbox"] {
 <tr class="even">
 <td>2:45 - 3:15 PM</td>
 <td><a href="./content/04-rules.html">The Rules… and when to break them</a></td>
-<td>We’ve spent the day up to this point discussing tactics for creating good data visualizations, but sometimes, the rules get in the way of effective communication with a specific audience. When is it ok to break these rules?</td>
+<td>We’ve spent the day up to this point discussing tactics for creating good data visualizations, but sometimes, the rules get in the way of effective communication with a specific audience. When is it ok to break these rules?<br>
+<a href="./slides/04-rules.html" title="Rules slides">Slides</a></td>
 </tr>
 <tr class="odd">
 <td>3:15 - 3:30 PM</td>
@@ -370,28 +373,38 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
+    const typesetMath = (el) => {
+      if (window.MathJax) {
+        // MathJax Typeset
+        window.MathJax.typeset([el]);
+      } else if (window.katex) {
+        // KaTeX Render
+        var mathElements = el.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            window.katex.render(texText.data, mathElements[i], {
+              displayMode: mathElements[i].classList.contains('display'),
+              throwOnError: false,
+              macros: macros,
+              fleqn: false
+            });
+          }
+        }
+      }
+    }
     if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
       if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
+        typesetMath(container);
         return container.innerHTML
       } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
+        typesetMath(note);
         return note.innerHTML;
       }
     } else {
@@ -400,15 +413,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
+      typesetMath(note);
+      return note.innerHTML;
     }
   }
   for (var i=0; i<xrefs.length; i++) {
