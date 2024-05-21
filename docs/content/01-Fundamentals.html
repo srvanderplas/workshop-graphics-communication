@@ -192,6 +192,12 @@ div.csl-indent {
   <li><a href="#task-based-processing" id="toc-task-based-processing" class="nav-link" data-scroll-target="#task-based-processing">Task Based Processing</a></li>
   <li><a href="#information-integration-1" id="toc-information-integration-1" class="nav-link" data-scroll-target="#information-integration-1">Information Integration</a></li>
   </ul></li>
+  <li><a href="#simple-charts" id="toc-simple-charts" class="nav-link" data-scroll-target="#simple-charts">Simple Charts</a>
+  <ul class="collapse">
+  <li><a href="#color-shape-and-discriminability" id="toc-color-shape-and-discriminability" class="nav-link" data-scroll-target="#color-shape-and-discriminability">Color, Shape, and Discriminability</a></li>
+  <li><a href="#other-considerations" id="toc-other-considerations" class="nav-link" data-scroll-target="#other-considerations">Other Considerations</a></li>
+  </ul></li>
+  <li><a href="#complex-domain-specific-charts" id="toc-complex-domain-specific-charts" class="nav-link" data-scroll-target="#complex-domain-specific-charts">Complex, Domain-Specific Charts</a></li>
   </ul></li>
   <li><a href="#strategies-for-readability" id="toc-strategies-for-readability" class="nav-link" data-scroll-target="#strategies-for-readability">Strategies for Readability</a>
   <ul class="collapse">
@@ -585,8 +591,70 @@ Figure&nbsp;8: When graphical features such as clustering are important, using a
 </div>
 <p>Analyzing graphs using task-based models emphasizes the importance of spatial relationships between graphical elements. The gestalt laws of proximity and similarity dictate that items which are close together or physically similar (the same shape or color) are perceived as a group; this spatial perception creates “chunks” of the graph which may be encoded as single objects and thus reduce the mental bandwidth necessary to process the image. <a href="#fig-grouping-help" class="quarto-xref">Figure&nbsp;8</a> shows the advantage of “chunks” in graphs: in (a) there are 120 points that could be grouped into the three clusters shown in (b), but when the clustering is provided using aesthetics, the Gestalt similarity heuristic naturally groups the points for us, without much additional labor.</p>
 <p>As charts become more complex, it can be difficult to consider all of the perceptual processes which might affect perception and use of a specific visualization. In these cases, cognitive models and frameworks can be extremely useful <span class="citation" data-cites="padillaCaseCognitiveModels2018 padillaDecisionMakingVisualizations2018">(<a href="#ref-padillaCaseCognitiveModels2018" role="doc-biblioref">Padilla 2018</a>; <a href="#ref-padillaDecisionMakingVisualizations2018" role="doc-biblioref">Padilla et al. 2018</a>)</span>. By assessing the interactions between the visualization and the cognitive model, it may be possible to identify potential areas of difficulty that can be addressed in a revised design.</p>
-<p>Of graphics that present information of similar complexity, graphics that require less effort to understand and search for relevant information are preferable <span class="citation" data-cites="clevelandElementsGraphingData1985">(<a href="#ref-clevelandElementsGraphingData1985" role="doc-biblioref">Cleveland 1985</a>)</span>. More complex models of the graphical perception process suggest that data are integrated on a visual level and then on a cognitive level, to form successive clusters of information. Once these clusters are formed, additional information can be integrated by comparing and contrasting different clusters to understand the higher-level meaning in the graph <span class="citation" data-cites="ratwani2008thinking">(<a href="#ref-ratwani2008thinking" role="doc-biblioref">Ratwani, Trafton, and Boehm-Davis 2008</a>)</span>. Graph types which cater to this hierarchical clustering mechanism may be more easily understood by viewers than graphs that do not provide information in a manner easily assimilated by the human brain. Facetted charts may be particularly useful for mapping multidimensional data to provide “chunks” of information in a relevant manner, pre-digested for integration into the viewer’s working conceptual understanding of the dataset. Additionally, color schemes and appropriate labeling of graph features which reduce the amount of work necessary to integrate numerical information from a legend into the visual representation of the graph facilitate graphical inference <span class="citation" data-cites="carpenter1998model">(<a href="#ref-carpenter1998model" role="doc-biblioref">Carpenter and Shah 1998</a>)</span>.</p>
+<p>Of graphics that present information of similar complexity, graphics that require less effort to understand and search for relevant information are preferable <span class="citation" data-cites="clevelandElementsGraphingData1985">(<a href="#ref-clevelandElementsGraphingData1985" role="doc-biblioref">William S. Cleveland 1985</a>)</span>. More complex models of the graphical perception process suggest that data are integrated on a visual level and then on a cognitive level, to form successive clusters of information. Once these clusters are formed, additional information can be integrated by comparing and contrasting different clusters to understand the higher-level meaning in the graph <span class="citation" data-cites="ratwani2008thinking">(<a href="#ref-ratwani2008thinking" role="doc-biblioref">Ratwani, Trafton, and Boehm-Davis 2008</a>)</span>. Graph types which cater to this hierarchical clustering mechanism may be more easily understood by viewers than graphs that do not provide information in a manner easily assimilated by the human brain. Facetted charts may be particularly useful for mapping multidimensional data to provide “chunks” of information in a relevant manner, pre-digested for integration into the viewer’s working conceptual understanding of the dataset. Additionally, color schemes and appropriate labeling of graph features which reduce the amount of work necessary to integrate numerical information from a legend into the visual representation of the graph facilitate graphical inference <span class="citation" data-cites="carpenter1998model">(<a href="#ref-carpenter1998model" role="doc-biblioref">Carpenter and Shah 1998</a>)</span>.</p>
 </section>
+</section>
+<section id="simple-charts" class="level2">
+<h2 class="anchored" data-anchor-id="simple-charts">Simple Charts</h2>
+<p>A series of experiments by <span class="citation" data-cites="clevelandGraphicalPerceptionTheory1984 clevelandGraphicalPerceptionGraphical1985 clevelandGraphicalPerceptionVisual1987">(<a href="#ref-clevelandGraphicalPerceptionTheory1984" role="doc-biblioref">William S. Cleveland and McGill 1984</a>, <a href="#ref-clevelandGraphicalPerceptionGraphical1985" role="doc-biblioref">1985</a>, <a href="#ref-clevelandGraphicalPerceptionVisual1987" role="doc-biblioref">1987</a>)</span> examined basic perceptual tasks, establishing the relative accuracy of comparisons made using different graphical elements. This ranking is shown in <a href="#tbl-task-hierarchy" class="quarto-xref">Table&nbsp;1</a>. Other researchers <span class="citation" data-cites="carswellChoosingSpecifiersEvaluation1992">(<a href="#ref-carswellChoosingSpecifiersEvaluation1992" role="doc-biblioref">C. M. Carswell 1992</a>)</span> have examined a wide range of studies beyond those conducted by Cleveland &amp; McGill and used meta-analysis to collapse this ranking into position/length/angle and area/volume, as the difference in accuracy between categories 1, 2, and 3 is small compared to categories 4 and 5.</p>
+<div id="tbl-task-hierarchy" class="anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="table quarto-float-caption quarto-float-tbl" id="tbl-task-hierarchy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Cleveland &amp; McGill’s ordering of graphical tasks by accuracy. Higher ranking tasks are easier for viewers than low-ranking tasks and should be preferred in graphical design.
+</figcaption>
+<div aria-describedby="tbl-task-hierarchy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<thead>
+<tr class="header">
+<th>Rank</th>
+<th>Task</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Position (common scale)</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Position (non-aligned scale)</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Length, Direction, Angle, Slope</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Area</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Volume, Density, Curvature</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Shading, Color Saturation, Color Hue</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>It is important to note that the task asked of participants and the type of chart are both important: when presented with a line graph, viewers are more likely to summarize the graph in terms of the slope of the trend line (even when the x-axis is discrete); when presented with a bar graph, viewers summarize the information using discrete comparisons <span class="citation" data-cites="carswell1987information shah2005cambridge">(<a href="#ref-carswell1987information" role="doc-biblioref">M. C. Carswell and Wickens 1987</a>; <a href="#ref-shah2005cambridge" role="doc-biblioref">Shah and Miyake 2005</a>)</span>. The task and the graph format interact to influence viewer perceptions, thus, when creating graphics, statisticians should match appropriate graphical formats to meaningful conclusions about the data.</p>
+<section id="color-shape-and-discriminability" class="level3">
+<h3 class="anchored" data-anchor-id="color-shape-and-discriminability">Color, Shape, and Discriminability</h3>
+<p>While shading, color saturation, and color hue rank poorly in the task hierarchy, this does not mean that they should be used to display information. Rather, it is important to remember that the feature hierarchy in <a href="#tbl-task-hierarchy" class="quarto-xref">Table&nbsp;1</a> was assembled based on numerical estimation accuracy. Estimation accuracy is not the only purpose of a chart - in fact, in general, if estimation accuracy is the only goal, a table is a better representation. While viewers may not be able to correlate a specific color to a specific numerical value, color is capable of providing ordinal information (this point is more saturated than that point) and even order of magnitude level comparisons. As color is a pre-attentive feature processed in parallel, the use of color is a trade-off between numerical precision and cognitive resources (speed and working memory).</p>
+<p>It is important to consider working memory when constructing graphical scales (particularly when utilizing a discrete scale for categorical data), but it is also important to consider feature selection and discriminability as well. Color is generally believed to be preferrable for representing strata on a scatterplot <span class="citation" data-cites="clevelandGraphicalPerceptionTheory1984">(<a href="#ref-clevelandGraphicalPerceptionTheory1984" role="doc-biblioref">William S. Cleveland and McGill 1984</a>)</span>, but <span class="citation" data-cites="lewandowsky1989discriminating">Lewandowsky and Spence (<a href="#ref-lewandowsky1989discriminating" role="doc-biblioref">1989</a>)</span> found that if color is not available or appropriate, shapes, intensity, or discriminable letters may be utilized without a significant decrease in accuracy.</p>
+<p>Discriminable letters are those which do not share physical features such as closure and symmetry, such as the letters H, Q, and X; confusable letters, such as H, E, and F, are associated with significantly less accurate perception. <span class="citation" data-cites="demiralpLearningPerceptualKernels2014">Demiralp, Bernstein, and Heer (<a href="#ref-demiralpLearningPerceptualKernels2014" role="doc-biblioref">2014</a>)</span> synthesized experimental evaluations of stimuli to create “perceptual kernels” describing the perceived distance between values; multidimensional scaling of the resulting distance matrix produces four distinct groups of shapes which share features (triangles with various degrees of rotation, squares and diamonds, and non-convex shapes such as x, +, and *). This separation suggests that feature integration underlies many of the processing speed effects found in studies examining discrete palettes and scales: palettes which are composed of confusable shapes, letters, or colors will require more processing time (and decrease accuracy) compared with discriminable palettes.</p>
+</section>
+<section id="other-considerations" class="level3">
+<h3 class="anchored" data-anchor-id="other-considerations">Other Considerations</h3>
+<p>Other graph features can also influence viewer inferences: multiple studies suggest that our mental schematic for a graph is most consistent with a <span class="math inline">\(45^\circ\)</span> trend line <span class="citation" data-cites="clevelandShapeParameterTwoVariable1988 tverskyPerceptualConceptualFactors1989">(<a href="#ref-clevelandShapeParameterTwoVariable1988" role="doc-biblioref">William S. Cleveland, McGill, and McGill 1988</a>; <a href="#ref-tverskyPerceptualConceptualFactors1989" role="doc-biblioref">Tversky and Schiano 1989</a>)</span>. “Banking to <span class="math inline">\(45^\circ\)</span>” is a commonly-cited recommendation for optimal graphics (it is also quite old, according to <span class="citation" data-cites="wickham2013graphical">Wickham (<a href="#ref-wickham2013graphical" role="doc-biblioref">2013</a>)</span>).</p>
+<p>Axis scale transformations can make it easier for viewers to spot outliers of data conforming to skewed distributions (though this does require some domain-specific knowledge of statistical distributions), and appropriately labeled graphs can reduce the working memory requirements by reducing the number of back-and-forth comparisons required to pass information into working memory <span class="citation" data-cites="shah2005cambridge">(<a href="#ref-shah2005cambridge" role="doc-biblioref">Shah and Miyake 2005</a>)</span>.</p>
+</section>
+</section>
+<section id="complex-domain-specific-charts" class="level2">
+<h2 class="anchored" data-anchor-id="complex-domain-specific-charts">Complex, Domain-Specific Charts</h2>
 </section>
 </section>
 <section id="strategies-for-readability" class="level1">
@@ -613,11 +681,32 @@ Borland, D., and R. M. Taylor. 2007. <span>“Rainbow <span>Color Map</span> (<s
 <div id="ref-carpenter1998model" class="csl-entry" role="listitem">
 Carpenter, Patricia A, and Priti Shah. 1998. <span>“A Model of the Perceptual and Conceptual Processes in Graph Comprehension.”</span> <em>Journal of Experimental Psychology: Applied</em> 4 (2): 75.
 </div>
+<div id="ref-carswellChoosingSpecifiersEvaluation1992" class="csl-entry" role="listitem">
+Carswell, C Melody. 1992. <span>“Choosing Specifiers: An Evaluation of the Basic Tasks Model of Graphical Perception.”</span> <em>Human Factors</em> 34 (5): 535–54. <a href="https://doi.org/10.1177/001872089203400503">https://doi.org/10.1177/001872089203400503</a>.
+</div>
+<div id="ref-carswell1987information" class="csl-entry" role="listitem">
+Carswell, Melody C, and Christopher D Wickens. 1987. <span>“Information Integration and the Object Display an Interaction of Task Demands and Display Superiority.”</span> <em>Ergonomics</em> 30 (3): 511–27.
+</div>
 <div id="ref-clevelandElementsGraphingData1985" class="csl-entry" role="listitem">
 Cleveland, William S. 1985. <em>The Elements of Graphing Data</em>. Vol. 2. Wadsworth Advanced Books; Software Monterey, <span>CA</span>.
 </div>
+<div id="ref-clevelandShapeParameterTwoVariable1988" class="csl-entry" role="listitem">
+Cleveland, William S., Marylyn E. McGill, and Robert McGill. 1988. <span>“The Shape Parameter of a Two-Variable Graph.”</span> <em>Journal of the American Statistical Association</em> 83 (402): 289–300. <a href="https://doi.org/10.1080/01621459.1988.10478598">https://doi.org/10.1080/01621459.1988.10478598</a>.
+</div>
+<div id="ref-clevelandGraphicalPerceptionTheory1984" class="csl-entry" role="listitem">
+Cleveland, William S., and Robert McGill. 1984. <span>“Graphical Perception: Theory, Experimentation, and Application to the Development of Graphical Methods.”</span> <em>Journal of the American Statistical Association</em> 79 (387): 531–54. <a href="https://doi.org/10.1080/01621459.1984.10478080">https://doi.org/10.1080/01621459.1984.10478080</a>.
+</div>
+<div id="ref-clevelandGraphicalPerceptionGraphical1985" class="csl-entry" role="listitem">
+———. 1985. <span>“Graphical Perception and Graphical Methods for Analyzing Scientific Data.”</span> <em>Science</em> 229 (4716): 828–33. <a href="https://doi.org/10.1126/science.229.4716.828">https://doi.org/10.1126/science.229.4716.828</a>.
+</div>
+<div id="ref-clevelandGraphicalPerceptionVisual1987" class="csl-entry" role="listitem">
+———. 1987. <span>“Graphical Perception: The Visual Decoding of Quantitative Information on Graphical Displays of Data.”</span> <em>Journal of the Royal Statistical Society. Series A (General)</em> 150 (3): 192. <a href="https://doi.org/10.2307/2981473">https://doi.org/10.2307/2981473</a>.
+</div>
 <div id="ref-conti2005attacking" class="csl-entry" role="listitem">
 Conti, Gregory, Mustaque Ahamad, and John Stasko. 2005. <span>“Attacking Information Visualization System Usability Overloading and Deceiving the Human.”</span> In <em>Proceedings of the 2005 Symposium on Usable Privacy and Security</em>, 89–100. ACM.
+</div>
+<div id="ref-demiralpLearningPerceptualKernels2014" class="csl-entry" role="listitem">
+Demiralp, Ç., M. S. Bernstein, and J. Heer. 2014. <span>“Learning Perceptual Kernels for Visualization Design.”</span> <em><span>IEEE</span> Transactions on Visualization and Computer Graphics</em> 20 (12): 1933–43. <a href="https://doi.org/10.1109/TVCG.2014.2346978">https://doi.org/10.1109/TVCG.2014.2346978</a>.
 </div>
 <div id="ref-gattis1996mapping" class="csl-entry" role="listitem">
 Gattis, Merideth, and Keith J Holyoak. 1996. <span>“Mapping Conceptual to Spatial Relations in Visual Reasoning.”</span> <em>Journal of Experimental Psychology: Learning, Memory, and Cognition</em> 22 (1): 231.
@@ -633,6 +722,9 @@ Helander, M. G., T. K. Landauer, and P. V. Prabhu. 1997. <em>Handbook of Human-C
 </div>
 <div id="ref-hubelReceptiveFieldsBinocular1962" class="csl-entry" role="listitem">
 Hubel, D. H., and T. N. Wiesel. 1962. <span>“Receptive Fields, Binocular Interaction and Functional Architecture in the Cat’s Visual Cortex.”</span> <em>The Journal of Physiology</em> 160 (1): 106–54. <a href="https://doi.org/10.1113/jphysiol.1962.sp006837">https://doi.org/10.1113/jphysiol.1962.sp006837</a>.
+</div>
+<div id="ref-lewandowsky1989discriminating" class="csl-entry" role="listitem">
+Lewandowsky, Stephan, and Ian Spence. 1989. <span>“Discriminating Strata in Scatterplots.”</span> <em>Journal of the American Statistical Association</em> 84 (407): 682–88.
 </div>
 <div id="ref-lightEndRainbowColor2004" class="csl-entry" role="listitem">
 Light, Adam, and Patrick J Bartlein. 2004. <span>“The End of the Rainbow? <span>Color</span> Schemes for Improved Data Graphics.”</span> <em>Eos, Transactions American Geophysical Union</em> 85 (40): 385–91. <a href="https://doi.org/10.1029/2004EO400002">https://doi.org/10.1029/2004EO400002</a>.
@@ -655,6 +747,9 @@ Ratwani, Raj M, J Gregory Trafton, and Deborah A Boehm-Davis. 2008. <span>“Thi
 <div id="ref-redaRainbowColormapsWhat2022" class="csl-entry" role="listitem">
 Reda, Khairi. 2022. <span>“Rainbow <span>Colormaps</span>: <span>What</span> Are They Good and Bad For?”</span> <em>IEEE Transactions on Visualization and Computer Graphics</em>, 1–15. <a href="https://doi.org/10.1109/TVCG.2022.3214771">https://doi.org/10.1109/TVCG.2022.3214771</a>.
 </div>
+<div id="ref-shah2005cambridge" class="csl-entry" role="listitem">
+Shah, Priti, and Akira Miyake. 2005. <em>The Cambridge Handbook of Visuospatial Thinking</em>. Cambridge University Press.
+</div>
 <div id="ref-sun2012framework" class="csl-entry" role="listitem">
 Sun, John Z, Grace I Wang, Vivek K Goyal, and Lav R Varshney. 2012. <span>“A Framework for Bayesian Optimality of Psychophysical Laws.”</span> <em>Journal of Mathematical Psychology</em> 56 (6): 495–501.
 </div>
@@ -664,8 +759,14 @@ Treisman, Anne M. 1980. <span>“A <span>Feature-Integration Theory</span> of <s
 <div id="ref-eda" class="csl-entry" role="listitem">
 Tukey, John. 1977. <em>Exploratory Data Analysis</em>. Reading, Massachusetts: Addison-Wesley.
 </div>
+<div id="ref-tverskyPerceptualConceptualFactors1989" class="csl-entry" role="listitem">
+Tversky, Barbara, and Diane J Schiano. 1989. <span>“Perceptual and Conceptual Factors in Distortions in Memory for Graphs and Maps.”</span> <em>Journal of Experimental Psychology: General</em> 118 (4): 387. <a href="https://doi.org/10.1037/0096-3445.118.4.387">https://doi.org/10.1037/0096-3445.118.4.387</a>.
+</div>
 <div id="ref-varshney2013we" class="csl-entry" role="listitem">
 Varshney, Lav R, and John Z Sun. 2013. <span>“Why Do We Perceive Logarithmically?”</span> <em>Significance</em> 10 (1): 28–31.
+</div>
+<div id="ref-wickham2013graphical" class="csl-entry" role="listitem">
+Wickham, Hadley. 2013. <span>“Graphical Criticism: Some Historical Notes.”</span> <em>Journal of Computational and Graphical Statistics</em> 22 (1): 38–44. <a href="https://doi.org/10.1080/10618600.2012.761140">https://doi.org/10.1080/10618600.2012.761140</a>.
 </div>
 </div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
