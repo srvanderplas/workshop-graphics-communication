@@ -428,7 +428,7 @@ This can help participants come to conclusions supported by the data and statist
 
 @fig-grouping-help shows the same data using three different representations, with an additional representation illustrating the viewer's mental model. 
 In the first figure, (a), viewers are provided with no additional information and must group points together mentally to make sense of the data; this grouping action takes some cognitive effort, producing something like the second figure, (b). 
-The designer could make this chunking effort less resource-intensive by 
+The designer could make this chunking effort less resource-intensive by explicitly coloring by the variable determining groups (if it is known) or by e.g. k-means output, if the clustering is important to the problem at hand. 
 
 ```{r}
 #| label: fig-grouping-help
@@ -497,6 +497,11 @@ In these cases, cognitive models and frameworks can be extremely useful [@padill
 By assessing the interactions between the visualization and the cognitive model, it may be possible to identify potential areas of difficulty that can be addressed in a revised design.
 
 
+**Graphical conventions** are another form of chunking strategy we all use.
+@fig-inverse-y is one example of what happens when such conventions are violated - the chart inverts the y-axis so that 0 is at the top of the chart and 1000 is at the bottom. When combined with the area chart type, this initially gives the impression of a decline in the population shown on the y-axis, rather than an increase. 
+
+![Adherence to graphical conventions facilitates fast and accurate chart comprehension. Violating these conventions can result in misunderstandings and increased comprehension time. [Figure from @padillaDecisionMakingVisualizations2018.]{.fig-citation}](../fig/Padilla-Inverse-y.png){#fig-inverse-y}
+
 Of graphics that present information of similar complexity, graphics that require less effort to understand and search for relevant information are preferable [@clevelandElementsGraphingData1985]. 
 More complex models of the graphical perception process suggest that data are integrated on a visual level and then on a cognitive level, to form successive clusters of information. 
 Once these clusters are formed, additional information can be integrated by comparing and contrasting different clusters to understand the higher-level meaning in the graph [@ratwani2008thinking]. 
@@ -546,16 +551,98 @@ Other graph features can also influence viewer inferences: multiple studies sugg
 
 Axis scale transformations can make it easier for viewers to spot outliers of data conforming to skewed distributions (though this does require some domain-specific knowledge of statistical distributions), and appropriately labeled graphs can reduce the working memory requirements by reducing the number of back-and-forth comparisons required to pass information into working memory [@shah2005cambridge]. 
 
-## Complex, Domain-Specific Charts
+### Example - Palmer Penguin Species
+
+Consider the process of assessing the average of two bars in a bar chart such as @fig-penguin-introspection. @fig-cognitive-model-bar-avg (2nd tab) shows the cognitive operations one might require to understand the chart and compute the numerical average between the bars. @fig-cognitive-model-memory shows a more conceptual model that includes information storage and access from working memory. 
+
+::: panel-tabset
+#### Plot
+
+```{r}
+#| echo: false
+#| label: fig-penguin-introspection
+#| fig-cap: Palmer Penguin data collected by species. What is the average number of Adelie and Chinstrap Penguins measured? What steps do you go through to calculate this average?
+#| out-width: 75%
+library(palmerpenguins)
+data(penguins)
+ggplot(penguins, aes(x = species)) + 
+  geom_bar(aes(fill = species)) +
+  scale_fill_manual("Penguin\nSpecies", values = c("#ff7400", "#c05ccb", "#056e76")) + 
+  xlab("Species") + 
+  ylab("# Penguins Measured") + 
+  ggtitle("Frequency of Penguins by Species") + 
+  theme_bw()
+```
+
+#### Cognitive Processes
+![A cognitive model of processes involved in computing the average height of two bars. [From Padilla et al (2018), an adaptation of Pinker (1990)]{.fig-citation}](../fig/padilla-vis-comprehension.png){#fig-cognitive-model-bar-avg}
+
+#### Working Memory
+
+![A more abstract cognitive model that includes working memory [From Padilla et al.  (2018)]{.fig-citation}](../fig/padilla-vis-decision-making.png){#fig-cognitive-model-memory}
+
+:::
+
+If we change chart types, the mental effort required to determine the average number of Chinstrap and Adelie penguins measured may be much more difficult, or even (nearly) impossible.
+
+::: panel-tabset
+
+#### Bar Chart
+
+![Annotated illustration of cognitive processes for estimating average bar height.](../fig/penguin-bar-annotated.svg)
+
+#### Stacked Bar Chart
+
+```{r fig-penguin-stacked}
+#| eval: false
+#| include: false
+ggplot(penguins, aes(x = 1)) + 
+  geom_bar(aes(fill = species), position = "stack") +
+  scale_fill_manual("Penguin\nSpecies", values = c("#ff7400", "#c05ccb", "#056e76")) + 
+  ylab("# Penguins Measured") + 
+  ggtitle("Frequency of Penguins by Species") + 
+  theme_bw() + 
+  coord_flip() + 
+  theme(axis.title.y = element_blank(), axis.text.y = element_blank(), axis.ticks.y = element_blank())
+```
+![Annotated illustration of cognitive processes for estimating average bar height in a stacked bar chart.](../fig/penguin-stacked-bar-annotated.svg)
 
 
+#### Pie Chart
 
-# Strategies for Readability
+```{r fig-penguin-pie}
+#| eval: false
+#| include: false
+ggplot(penguins, aes(x = 1)) + 
+  geom_bar(aes(fill = species), position = "stack") +
+  scale_fill_manual("Penguin\nSpecies", values = c("#ff7400", "#c05ccb", "#056e76")) + 
+  ylab("# Penguins Measured") + 
+  ggtitle("Frequency of Penguins by Species") + 
+  theme_bw() + 
+  coord_polar(theta="y") +
+  theme(axis.title.y = element_blank(), axis.text.y = element_blank(), axis.ticks.y = element_blank())
+```
 
-## Center Primary Comparisons
+![Annotated illustration of cognitive processes for estimating average slice size in a pie chart.](../fig/penguin-pie-annotated.svg)
 
-## Reduce Cognitive Load
+:::
 
-# Testing Multiple Versions of a Chart
+As these examples show, the rough processes involved in estimation are similar for the three versions of the chart, but the amount of working memory involved is not. In the bar chart, it is possible to scaffold the estimate completely off of the axis, without having to subtract or divide explicitly - the midpoint between the two bars can be estimated visually. 
+This is an illustration of the advantage of comparisons between position on an aligned scale relative to not aligned scales. 
 
-http://homepage.stat.uiowa.edu/\~luke/classes/STAT4580-2024/notes.html#mostly-data-visualization
+# Conclusion: Strategies for Readability
+
+With all of the information here, it can be hard to know what to focus on when you're making design choices for a graphic. 
+Here are a few strategies:
+
+1. Focus on the most important comparisons, making it as easy as possible to visually process important data features.
+
+2. For variables where accuracy is important, use $x$ and $y$ axes. Show less important variables using other aesthetics - color, shape, size, etc.
+
+3. As much as possible, reduce cognitive load for your viewers. This can take many forms, including putting labels directly on the chart rather than in a legend. However, be careful - too much clutter can make it hard to identify the important information.
+
+4. When looking at a chart, talk through what comparisons you're making audibly. Then, show a friend the same chart and have them do the same exercise. Many of the processes your brain uses can be observed via introspection; this is a useful way to document and examine the cognitive processes you're using and any obstacles you encounter that could be fixed via a redesign.
+
+<!-- # Testing Multiple Versions of a Chart -->
+
+<!-- http://homepage.stat.uiowa.edu/\~luke/classes/STAT4580-2024/notes.html#mostly-data-visualization -->

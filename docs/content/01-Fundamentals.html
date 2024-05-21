@@ -196,15 +196,10 @@ div.csl-indent {
   <ul class="collapse">
   <li><a href="#color-shape-and-discriminability" id="toc-color-shape-and-discriminability" class="nav-link" data-scroll-target="#color-shape-and-discriminability">Color, Shape, and Discriminability</a></li>
   <li><a href="#other-considerations" id="toc-other-considerations" class="nav-link" data-scroll-target="#other-considerations">Other Considerations</a></li>
+  <li><a href="#example---palmer-penguin-species" id="toc-example---palmer-penguin-species" class="nav-link" data-scroll-target="#example---palmer-penguin-species">Example - Palmer Penguin Species</a></li>
   </ul></li>
-  <li><a href="#complex-domain-specific-charts" id="toc-complex-domain-specific-charts" class="nav-link" data-scroll-target="#complex-domain-specific-charts">Complex, Domain-Specific Charts</a></li>
   </ul></li>
-  <li><a href="#strategies-for-readability" id="toc-strategies-for-readability" class="nav-link" data-scroll-target="#strategies-for-readability">Strategies for Readability</a>
-  <ul class="collapse">
-  <li><a href="#center-primary-comparisons" id="toc-center-primary-comparisons" class="nav-link" data-scroll-target="#center-primary-comparisons">Center Primary Comparisons</a></li>
-  <li><a href="#reduce-cognitive-load" id="toc-reduce-cognitive-load" class="nav-link" data-scroll-target="#reduce-cognitive-load">Reduce Cognitive Load</a></li>
-  </ul></li>
-  <li><a href="#testing-multiple-versions-of-a-chart" id="toc-testing-multiple-versions-of-a-chart" class="nav-link" data-scroll-target="#testing-multiple-versions-of-a-chart">Testing Multiple Versions of a Chart</a></li>
+  <li><a href="#conclusion-strategies-for-readability" id="toc-conclusion-strategies-for-readability" class="nav-link" data-scroll-target="#conclusion-strategies-for-readability">Conclusion: Strategies for Readability</a></li>
   </ul>
 </nav>
     </div>
@@ -527,7 +522,7 @@ Figure&nbsp;7: Task-based steps for evaluating the relationship between eruption
 <section id="information-integration-1" class="level3">
 <h3 class="anchored" data-anchor-id="information-integration-1">Information Integration</h3>
 <p>Charts designed to promote chunking do so by providing viewers with cues for important features. This can help participants come to conclusions supported by the data and statistical modeling underlying the visual representation, reducing cognitive load.</p>
-<p><a href="#fig-grouping-help" class="quarto-xref">Figure&nbsp;8</a> shows the same data using three different representations, with an additional representation illustrating the viewer’s mental model. In the first figure, (a), viewers are provided with no additional information and must group points together mentally to make sense of the data; this grouping action takes some cognitive effort, producing something like the second figure, (b). The designer could make this chunking effort less resource-intensive by</p>
+<p><a href="#fig-grouping-help" class="quarto-xref">Figure&nbsp;8</a> shows the same data using three different representations, with an additional representation illustrating the viewer’s mental model. In the first figure, (a), viewers are provided with no additional information and must group points together mentally to make sense of the data; this grouping action takes some cognitive effort, producing something like the second figure, (b). The designer could make this chunking effort less resource-intensive by explicitly coloring by the variable determining groups (if it is known) or by e.g.&nbsp;k-means output, if the clustering is important to the problem at hand.</p>
 <div id="fig-grouping-help" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-grouping-help-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -591,6 +586,17 @@ Figure&nbsp;8: When graphical features such as clustering are important, using a
 </div>
 <p>Analyzing graphs using task-based models emphasizes the importance of spatial relationships between graphical elements. The gestalt laws of proximity and similarity dictate that items which are close together or physically similar (the same shape or color) are perceived as a group; this spatial perception creates “chunks” of the graph which may be encoded as single objects and thus reduce the mental bandwidth necessary to process the image. <a href="#fig-grouping-help" class="quarto-xref">Figure&nbsp;8</a> shows the advantage of “chunks” in graphs: in (a) there are 120 points that could be grouped into the three clusters shown in (b), but when the clustering is provided using aesthetics, the Gestalt similarity heuristic naturally groups the points for us, without much additional labor.</p>
 <p>As charts become more complex, it can be difficult to consider all of the perceptual processes which might affect perception and use of a specific visualization. In these cases, cognitive models and frameworks can be extremely useful <span class="citation" data-cites="padillaCaseCognitiveModels2018 padillaDecisionMakingVisualizations2018">(<a href="#ref-padillaCaseCognitiveModels2018" role="doc-biblioref">Padilla 2018</a>; <a href="#ref-padillaDecisionMakingVisualizations2018" role="doc-biblioref">Padilla et al. 2018</a>)</span>. By assessing the interactions between the visualization and the cognitive model, it may be possible to identify potential areas of difficulty that can be addressed in a revised design.</p>
+<p><strong>Graphical conventions</strong> are another form of chunking strategy we all use. <a href="#fig-inverse-y" class="quarto-xref">Figure&nbsp;9</a> is one example of what happens when such conventions are violated - the chart inverts the y-axis so that 0 is at the top of the chart and 1000 is at the bottom. When combined with the area chart type, this initially gives the impression of a decline in the population shown on the y-axis, rather than an increase.</p>
+<div id="fig-inverse-y" class="quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-inverse-y-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../fig/Padilla-Inverse-y.png" class="img-fluid figure-img">
+</div>
+<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-inverse-y-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: Adherence to graphical conventions facilitates fast and accurate chart comprehension. Violating these conventions can result in misunderstandings and increased comprehension time. <span class="fig-citation">Figure from <span class="citation" data-cites="padillaDecisionMakingVisualizations2018">Padilla et al. (<a href="#ref-padillaDecisionMakingVisualizations2018" role="doc-biblioref">2018</a>)</span>.</span>
+</figcaption>
+</figure>
+</div>
 <p>Of graphics that present information of similar complexity, graphics that require less effort to understand and search for relevant information are preferable <span class="citation" data-cites="clevelandElementsGraphingData1985">(<a href="#ref-clevelandElementsGraphingData1985" role="doc-biblioref">William S. Cleveland 1985</a>)</span>. More complex models of the graphical perception process suggest that data are integrated on a visual level and then on a cognitive level, to form successive clusters of information. Once these clusters are formed, additional information can be integrated by comparing and contrasting different clusters to understand the higher-level meaning in the graph <span class="citation" data-cites="ratwani2008thinking">(<a href="#ref-ratwani2008thinking" role="doc-biblioref">Ratwani, Trafton, and Boehm-Davis 2008</a>)</span>. Graph types which cater to this hierarchical clustering mechanism may be more easily understood by viewers than graphs that do not provide information in a manner easily assimilated by the human brain. Facetted charts may be particularly useful for mapping multidimensional data to provide “chunks” of information in a relevant manner, pre-digested for integration into the viewer’s working conceptual understanding of the dataset. Additionally, color schemes and appropriate labeling of graph features which reduce the amount of work necessary to integrate numerical information from a legend into the visual representation of the graph facilitate graphical inference <span class="citation" data-cites="carpenter1998model">(<a href="#ref-carpenter1998model" role="doc-biblioref">Carpenter and Shah 1998</a>)</span>.</p>
 </section>
 </section>
@@ -652,23 +658,99 @@ Table&nbsp;1: Cleveland &amp; McGill’s ordering of graphical tasks by accuracy
 <p>Other graph features can also influence viewer inferences: multiple studies suggest that our mental schematic for a graph is most consistent with a <span class="math inline">\(45^\circ\)</span> trend line <span class="citation" data-cites="clevelandShapeParameterTwoVariable1988 tverskyPerceptualConceptualFactors1989">(<a href="#ref-clevelandShapeParameterTwoVariable1988" role="doc-biblioref">William S. Cleveland, McGill, and McGill 1988</a>; <a href="#ref-tverskyPerceptualConceptualFactors1989" role="doc-biblioref">Tversky and Schiano 1989</a>)</span>. “Banking to <span class="math inline">\(45^\circ\)</span>” is a commonly-cited recommendation for optimal graphics (it is also quite old, according to <span class="citation" data-cites="wickham2013graphical">Wickham (<a href="#ref-wickham2013graphical" role="doc-biblioref">2013</a>)</span>).</p>
 <p>Axis scale transformations can make it easier for viewers to spot outliers of data conforming to skewed distributions (though this does require some domain-specific knowledge of statistical distributions), and appropriately labeled graphs can reduce the working memory requirements by reducing the number of back-and-forth comparisons required to pass information into working memory <span class="citation" data-cites="shah2005cambridge">(<a href="#ref-shah2005cambridge" role="doc-biblioref">Shah and Miyake 2005</a>)</span>.</p>
 </section>
+<section id="example---palmer-penguin-species" class="level3">
+<h3 class="anchored" data-anchor-id="example---palmer-penguin-species">Example - Palmer Penguin Species</h3>
+<p>Consider the process of assessing the average of two bars in a bar chart such as <a href="#fig-penguin-introspection" class="quarto-xref">Figure&nbsp;10</a>. <a href="#fig-cognitive-model-bar-avg" class="quarto-xref">Figure&nbsp;11</a> (2nd tab) shows the cognitive operations one might require to understand the chart and compute the numerical average between the bars. <a href="#fig-cognitive-model-memory" class="quarto-xref">Figure&nbsp;12</a> shows a more conceptual model that includes information storage and access from working memory.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Plot</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Cognitive Processes</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Working Memory</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-penguin-introspection" class="quarto-figure quarto-figure-center anchored" width="75%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-penguin-introspection-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="01-Fundamentals_files/figure-html/fig-penguin-introspection-1.png" class="img-fluid figure-img" style="width:75.0%">
+</div>
+<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-penguin-introspection-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: Palmer Penguin data collected by species. What is the average number of Adelie and Chinstrap Penguins measured? What steps do you go through to calculate this average?
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div id="fig-cognitive-model-bar-avg" class="quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cognitive-model-bar-avg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../fig/padilla-vis-comprehension.png" class="img-fluid figure-img">
+</div>
+<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-cognitive-model-bar-avg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11: A cognitive model of processes involved in computing the average height of two bars. <span class="fig-citation">From Padilla et al (2018), an adaptation of Pinker (1990)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<div id="fig-cognitive-model-memory" class="quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cognitive-model-memory-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../fig/padilla-vis-decision-making.png" class="img-fluid figure-img">
+</div>
+<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-cognitive-model-memory-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12: A more abstract cognitive model that includes working memory <span class="fig-citation">From Padilla et al.&nbsp;(2018)</span>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>If we change chart types, the mental effort required to determine the average number of Chinstrap and Adelie penguins measured may be much more difficult, or even (nearly) impossible.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Bar Chart</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Stacked Bar Chart</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">Pie Chart</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../fig/penguin-bar-annotated.svg" class="img-fluid figure-img"></p>
+<figcaption>Annotated illustration of cognitive processes for estimating average bar height.</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../fig/penguin-stacked-bar-annotated.svg" class="img-fluid figure-img"></p>
+<figcaption>Annotated illustration of cognitive processes for estimating average bar height in a stacked bar chart.</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../fig/penguin-pie-annotated.svg" class="img-fluid figure-img"></p>
+<figcaption>Annotated illustration of cognitive processes for estimating average slice size in a pie chart.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>As these examples show, the rough processes involved in estimation are similar for the three versions of the chart, but the amount of working memory involved is not. In the bar chart, it is possible to scaffold the estimate completely off of the axis, without having to subtract or divide explicitly - the midpoint between the two bars can be estimated visually. This is an illustration of the advantage of comparisons between position on an aligned scale relative to not aligned scales.</p>
 </section>
-<section id="complex-domain-specific-charts" class="level2">
-<h2 class="anchored" data-anchor-id="complex-domain-specific-charts">Complex, Domain-Specific Charts</h2>
 </section>
 </section>
-<section id="strategies-for-readability" class="level1">
-<h1>Strategies for Readability</h1>
-<section id="center-primary-comparisons" class="level2">
-<h2 class="anchored" data-anchor-id="center-primary-comparisons">Center Primary Comparisons</h2>
-</section>
-<section id="reduce-cognitive-load" class="level2">
-<h2 class="anchored" data-anchor-id="reduce-cognitive-load">Reduce Cognitive Load</h2>
-</section>
-</section>
-<section id="testing-multiple-versions-of-a-chart" class="level1">
-<h1>Testing Multiple Versions of a Chart</h1>
-<p>http://homepage.stat.uiowa.edu/~luke/classes/STAT4580-2024/notes.html#mostly-data-visualization</p>
+<section id="conclusion-strategies-for-readability" class="level1">
+<h1>Conclusion: Strategies for Readability</h1>
+<p>With all of the information here, it can be hard to know what to focus on when you’re making design choices for a graphic. Here are a few strategies:</p>
+<ol type="1">
+<li><p>Focus on the most important comparisons, making it as easy as possible to visually process important data features.</p></li>
+<li><p>For variables where accuracy is important, use <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> axes. Show less important variables using other aesthetics - color, shape, size, etc.</p></li>
+<li><p>As much as possible, reduce cognitive load for your viewers. This can take many forms, including putting labels directly on the chart rather than in a legend. However, be careful - too much clutter can make it hard to identify the important information.</p></li>
+<li><p>When looking at a chart, talk through what comparisons you’re making audibly. Then, show a friend the same chart and have them do the same exercise. Many of the processes your brain uses can be observed via introspection; this is a useful way to document and examine the cognitive processes you’re using and any obstacles you encounter that could be fixed via a redesign.</p></li>
+</ol>
+<!-- # Testing Multiple Versions of a Chart -->
+<!-- http://homepage.stat.uiowa.edu/\~luke/classes/STAT4580-2024/notes.html#mostly-data-visualization -->
 
 
 
