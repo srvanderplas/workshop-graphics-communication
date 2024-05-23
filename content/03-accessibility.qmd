@@ -2,6 +2,21 @@
 title: "Accessibility: More than just Alt-text"
 ---
 
+Graphics are one of the primary tools for science or data communication, and are powerful because they make use of our visual system in a way that off-loads much of the work of processing the data, freeing cognitive resources up to consider the content rather than the representation.
+Unfortunately, not everyone can leverage their visual systems in this way, due to differences in the visual system or in information processing systems within the brain.
+There are a wide range of issues which may impact how effectively people can use graphics, including colorblindness, poor visual acuity, blindness, dyslexia, dyscalculia, and even differences in data literacy and numerical literacy. 
+In some sense, it can be useful to go through the introspection process when looking at a graph, and consider what perceptual and cognitive resources are required to complete each step when looking at a chart. 
+Ultimately, as scientists and people working with data, we need to work to make our data representations accessible. 
+The specifics of which populations we focus on, and how we adapt existing representations (or create new ones) are based on the target audience(s), and will differ across different disciplines. 
+For instance, if you are designing graphics to be used in Air Traffic Controller trainings, you likely do not need to accommodate Blind and Low Vision (BLV) individuals or even consider color-blindness. 
+However, if you are creating graphics to be consumed by a general web audience, it is important to consider a range of visual impairments and accommodations. 
+
+
+This is an active area of research in data science, information visualization, and design. 
+It is always useful to see what new solutions have come out recently, because there are new developments in this area on a regular basis.
+
+
+
 
 - Basic overview of types of different accessibility concerns
     - Blind/Low Vision
@@ -9,7 +24,7 @@ title: "Accessibility: More than just Alt-text"
     - Processing disorders - dyslexia, dyscalculia, ADHD
 
 - Approaches to navigating disability
-    - Screen reader  - try out navigating with a screen reader around this site. 
+    - Screen reader  - try out navigating with a screen reader around this site. I've spent very little time on things like alt-text mainly for the purposes of demonstration.
     
 - Visual Solutions
     - Low vision support
