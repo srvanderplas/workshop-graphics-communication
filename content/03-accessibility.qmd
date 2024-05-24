@@ -16,6 +16,159 @@ This is an active area of research in data science, information visualization, a
 It is always useful to see what new solutions have come out recently, because there are new developments in this area on a regular basis.
 
 
+# Adapting Existing Graphics
+
+One of the simplest ways to increase accessibility of graphics is to ensure that they meet basic guidelines for discoverability and distinguishability.
+Discoverability ensures that screen-reader users know that the graphic exists; this requires designing the entire web page with these users in mind, but is critical to ensuring equal access to information for blind and low-vision users.
+Creating graphics which adhere to contrast, color selection, font size, and other distinguishability guidelines helps low-vision people, those with sensory processing issues, and people with colorblindness use existing data representations effectively.
+
+## Discoverability
+
+### Alt Text
+
+When retrofitting an existing page for accessibility, it may not be possible to make charts and graphics fully accessible to individuals who are blind or using screen-readers. In these cases, it is important to write good alt-text for each graph that is intended to convey information (it is fine to skip alt-text for purely decorative images). 
+
+Good alt-text is:
+
+- concise
+- accurate
+- relevant
+- context-dependent - the same image may require different alt-text depending on the broader context of the web page.
+
+Graphs are some of the hardest images to fully describe in alt-text, in part because providing the same information that the image provides may require thousands of words, full data tables, or other accommodations. 
+The alt text field in HTML does not allow for paragraphs, line breaks, and other structural elements; as a result, it is often better to include a short description in the alt-text field and a longer description (or table) as part of the web page [source](https://sc.edu/about/offices_and_divisions/digital-accessibility/toolbox/best_practices/alternative_text/charts-diagrams/index.php). 
+Linking the alt-text and the longer description together may facilitate keyboard navigation between the two, making the navigation process less cognitively intensive for screen reader users.
+
+### Page Structure
+
+The entire web-page structure is important to consider when designing to include screen-reader users. 
+Sighted users may be able to take in the web page structure visually and determine which elements to focus on; screen reader users have to take in the page structure audibly, and in sequence. Some users describe it as "viewing a web page through a straw".
+
+It is important to provide a contextual overview first, and then provide specific data and details in a structured hierarchy.
+We can update the "information seeking mantra" of overview, zoom and filter, details on demand to "gist", "supporting methods" (contextual information), and "details" (actual data content). 
+The structure of the page needs to support understanding when navigated hierarchically. 
+Information embedded in visual design themes (font sizes, colors, nesting, space) need to be explicitly accessible via aria- fields to be accessible to screen reader users.
+
+::: {callout-tip}
+#### Navigating with a Screen Reader
+
+{{< video https://youtu.be/SRT0vCCRjRA >}}
+
+:::
+
+## Discriminability
+
+In addition to the information below, which includes some web references, there is a lovely series of Observable posts on accessibility, contrast, and color choice for data visualization. [Check it out!](https://observablehq.com/@frankelavsky/chartability-contrast-series)
+
+### Color selection
+
+We'll first approach color selection with color impairment (aka "colorblindness", though most color impaired people can see some colors) in mind, though many of the considerations here factor into contrast considerations later.
+There are several approaches to accommodating color impairment:
+
+1. Avoid red and green combinations. This helps but is not sufficient, particularly for those who have trouble with red and blue, rather than green.
+
+2. Use palettes designed to be "colorblind-friendly", such as [David Nichol's](https://davidmathlogic.com/colorblind/#%23D81B60-%231E88E5-%23FFC107-%23004D40), [Okabe-Ito's](https://jfly.uni-koeln.de/color/), [Paul Tol's](https://thenode.biologists.com/data-visualization-with-flying-colors/research/). Colorbrewer's colorblind friendly palettes are less useful than these options.
+
+3. Design your graphic so that it is functional in greyscale. This will make it safe for all types of color impairment.
+
+4. Dual-encode colors with other attributes, such as shape or linetype. 
+
+It can be difficult to fully accommodate those with color impairment, particularly when working with graphics that use many different hues. Keep in mind that even people with full color vision cannot keep more than $7 \pm 2$ items in working memory - so using many different colors is problematic for everyone, not just for those with impaired color vision. 
+
+### Contrast
+
+It can be hard to see content that does not have much contrast against the background. 
+People with low vision rely on contrast even more than the rest of the population; in addition, individuals with color impairment tend to rely on contrast cues to determine whether ambiguous colors are, in fact, different.
+
+W3C (World Wide Web Consortium) creates Web Content Accessibility Guidelines (WCAG) to provide a standard of accessible online content. [These guidelines](https://www.w3.org/TR/WCAG21/) have recommendations for creating alt-text, how to ensure accessibility of different types of media, and standards for how to make content distinguishable.
+
+WCAG guidelines are provided on a scale from A (basic accessibility) to AAA (most accessible). 
+
+::: {.callout collapse="false"}
+#### (A) guidelines for distinguishability:
+
+- [Color is not used as the only visual means of conveying information, indicating an action, prompting a response, or distinguishing a visual element.](https://www.w3.org/TR/WCAG21/#use-of-color)
+
+- [Audio Control: If any audio on a Web page plays automatically for more than 3 seconds, either a mechanism is available to pause or stop the audio, or a mechanism is available to control audio volume independently from the overall system volume level.](https://www.w3.org/TR/WCAG21/#audio-control)
+:::
+
+
+::: {.callout collapse="false"}
+#### (AA) guidelines for distinguishability:
+
+- [Contrast: The visual presentation of text and images of text has a contrast ratio of at least 4.5:1, except for the following:](https://www.w3.org/TR/WCAG21/#contrast-minimum) 
+    - Large Text: Large-scale text and images of large-scale text have a contrast ratio of at least 3:1; 
+    - Incidental: Text or images of text that are part of an inactive user interface component, that are pure decoration, that are not visible to anyone, or that are part of a picture that contains significant other visual content, have no contrast requirement. 
+    - Logo: Text that is part of a logo or brand name has no contrast requirement.
+
+- [Resize Text: Except for captions and images of text, text can be resized without assistive technology up to 200 percent without loss of content or functionality.](https://www.w3.org/TR/WCAG21/#resize-text)
+
+- [Images of Text: If the technologies being used can achieve the visual presentation, text is used to convey information rather than images of text except for the following:](https://www.w3.org/TR/WCAG21/#images-of-text)
+    - Customizable: The image of text can be visually customized to the user's requirements; 
+    - Essential: A particular presentation of text is essential to the information being conveyed. Logotypes (text that is part of a logo or brand name) are considered essential.
+
+- [Reflow: Content can be presented without loss of information or functionality, and without requiring scrolling in two dimensions for:](https://www.w3.org/TR/WCAG21/#reflow)
+    - Vertical scrolling content at a width equivalent to 320 CSS pixels;
+    - Horizontal scrolling content at a height equivalent to 256 CSS pixels.
+    - Except for parts of the content which require two-dimensional layout for usage or meaning.
+    
+- [Non-text Contrast: The visual presentation of the following have a contrast ratio of at least 3:1 against adjacent color(s):](https://www.w3.org/TR/WCAG21/#non-text-contrast)
+    - User Interface Components: Visual information required to identify user interface components and states, except for inactive components or where the appearance of the component is determined by the user agent and not modified by the author;
+    - Graphical Objects: Parts of graphics required to understand the content, except when a particular presentation of graphics is essential to the information being conveyed. 
+    
+- [Text Spacing: In content implemented using markup languages that support the following text style properties, no loss of content or functionality occurs by setting all of the following and by changing no other style property:](https://www.w3.org/TR/WCAG21/#text-spacing)
+    - Line height (line spacing) to at least 1.5 times the font size;
+    - Spacing following paragraphs to at least 2 times the font size;
+    - Letter spacing (tracking) to at least 0.12 times the font size;
+    - Word spacing to at least 0.16 times the font size.
+    - Exception: Human languages and scripts that do not make use of one or more of these text style properties in written text can conform using only the properties that exist for that combination of language and script.
+    
+- [Content on Hover or Focus: Where receiving and then removing pointer hover or keyboard focus triggers additional content to become visible and then hidden, the following are true:](https://www.w3.org/TR/WCAG21/#content-on-hover-or-focus)
+    - Dismissible: A mechanism is available to dismiss the additional content without moving pointer hover or keyboard focus, unless the additional content communicates an input error or does not obscure or replace other content;
+    - Hoverable: If pointer hover can trigger the additional content, then the pointer can be moved over the additional content without the additional content disappearing;
+    - Persistent: The additional content remains visible until the hover or focus trigger is removed, the user dismisses it, or its information is no longer valid.
+    - Exception: The visual presentation of the additional content is controlled by the user agent and is not modified by the author.
+:::
+   
+
+::: {.callout collapse="false"} 
+#### (AAA) guidelines for distinguishability:
+
+- [Enhanced Contrast: The visual presentation of text and images of text has a contrast ratio of at least 7:1, except for the following:](https://www.w3.org/TR/WCAG21/#contrast-enhanced)
+    - Large Text: Large-scale text and images of large-scale text have a contrast ratio of at least 4.5:1;
+    - Incidental: Text or images of text that are part of an inactive user interface component, that are pure decoration, that are not visible to anyone, or that are part of a picture that contains significant other visual content, have no contrast requirement.
+    - Logotypes: Text that is part of a logo or brand name has no contrast requirement.
+
+- [Low or No Background Audio: For prerecorded audio-only content that (1) contains primarily speech in the foreground, (2) is not an audio CAPTCHA or audio logo, and (3) is not vocalization intended to be primarily musical expression such as singing or rapping, at least one of the following is true:](https://www.w3.org/TR/WCAG21/#low-or-no-background-audio)
+    - No Background: The audio does not contain background sounds.
+    - Turn Off: The background sounds can be turned off.
+    - 20 dB: The background sounds are at least 20 decibels lower than the foreground speech content, with the exception of occasional sounds that last for only one or two seconds.
+    
+- [Visual Presentation: For the visual presentation of blocks of text, a mechanism is available to achieve the following:](https://www.w3.org/TR/WCAG21/#visual-presentation)
+    - Foreground and background colors can be selected by the user.
+    - Width is no more than 80 characters or glyphs (40 if CJK).
+    - Text is not justified (aligned to both the left and the right margins).
+    - Line spacing (leading) is at least space-and-a-half within paragraphs, and paragraph spacing is at least 1.5 times larger than the line spacing.
+    - Text can be resized without assistive technology up to 200 percent in a way that does not require the user to scroll horizontally to read a line of text on a full-screen window.
+
+- [Images of Text: Images of text are only used for pure decoration or where a particular presentation of text is essential to the information being conveyed.](https://www.w3.org/TR/WCAG21/#images-of-text-no-exception)
+:::
+
+You can use [https://www.accessibilitychecker.org/](https://www.accessibilitychecker.org/) to check the compliance of your website. 
+
+[Chartability](https://chartability.fizz.studio/) is a set of heuristics for ensuring accessibility of data visualizations (and the pages that contain them). It's created by BLV designers and is designed to help you locate accessibility barriers in data visualizations. They maintain an audit [workbook](https://chartability.github.io/POUR-CAF/) that has tests that help identify design failures.
+
+
+# Creating More Accessible Graphics
+
+In general, charts created as images, which are the default in many systems such as `ggplot`, `matplotlib`, and `SAS`, require alt-text, inclusion of data tables, and other modifications that still do not produce full accessibility. 
+By contrast, `d3`, `Observable.js`, `Highcharts.js`, and other `svg`-based web graphics allow for some navigation within the chart by screen reader users. 
+However, these tools still require some extra planning to design charts that are accessible and well-formatted for screen-reader users.
+
+
+The [OLLi](https://mitvis.github.io/olli/) project works within Observable and Vega/VegaLite visualizations to create a navigable, hierarchical tree for keyboard navigation and descriptions. 
+
+
 
 
 - Basic overview of types of different accessibility concerns

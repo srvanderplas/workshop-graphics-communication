@@ -1,0 +1,45 @@
+---
+title: "Observable Penguins with Olli"
+engine: knitr
+include-before-body:
+  text: |
+    <!-- olli -->
+    <script src="https://cdn.jsdelivr.net/npm/olli@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/olli-adapters@2"></script>
+---
+
+
+```{ojs}
+data=FileAttachment("../data/penguins.csv").csv({typed: true})
+```
+
+If we want to use Olli with Observable, we need to separate the plot command from the plot specification:
+
+```{ojs}
+
+penguinChart = ({
+  marks: [
+    Plot.dot(data, {x: "bill_length_mm", y: "bill_depth_mm", fill: "species"})
+  ],
+  color: {legend: true}
+})
+
+```
+
+```{ojs}
+//| label: fig-penguin-plot
+//| code-fold: show
+
+// Create plot with specification
+Plot.plot(penguinChart);
+```
+
+```{ojs}
+//| echo: true
+// Create Olli adapters
+OlliAdapters.ObservablePlotAdapter(penguinChart).then((olliVisSpec) => {
+document
+.getElementById("fig-penguin-plot")
+.append(olli(olliVisSpec));
+})
+```

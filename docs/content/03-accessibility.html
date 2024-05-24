@@ -86,6 +86,8 @@ div.csl-indent {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -162,7 +164,26 @@ div.csl-indent {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#adapting-existing-graphics" id="toc-adapting-existing-graphics" class="nav-link active" data-scroll-target="#adapting-existing-graphics">Adapting Existing Graphics</a>
+  <ul class="collapse">
+  <li><a href="#discoverability" id="toc-discoverability" class="nav-link" data-scroll-target="#discoverability">Discoverability</a>
+  <ul class="collapse">
+  <li><a href="#alt-text" id="toc-alt-text" class="nav-link" data-scroll-target="#alt-text">Alt Text</a></li>
+  <li><a href="#page-structure" id="toc-page-structure" class="nav-link" data-scroll-target="#page-structure">Page Structure</a></li>
+  </ul></li>
+  <li><a href="#discriminability" id="toc-discriminability" class="nav-link" data-scroll-target="#discriminability">Discriminability</a>
+  <ul class="collapse">
+  <li><a href="#color-selection" id="toc-color-selection" class="nav-link" data-scroll-target="#color-selection">Color selection</a></li>
+  <li><a href="#contrast" id="toc-contrast" class="nav-link" data-scroll-target="#contrast">Contrast</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#creating-more-accessible-graphics" id="toc-creating-more-accessible-graphics" class="nav-link" data-scroll-target="#creating-more-accessible-graphics">Creating More Accessible Graphics</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -186,6 +207,175 @@ div.csl-indent {
 </header>
 
 
+<p>Graphics are one of the primary tools for science or data communication, and are powerful because they make use of our visual system in a way that off-loads much of the work of processing the data, freeing cognitive resources up to consider the content rather than the representation. Unfortunately, not everyone can leverage their visual systems in this way, due to differences in the visual system or in information processing systems within the brain. There are a wide range of issues which may impact how effectively people can use graphics, including colorblindness, poor visual acuity, blindness, dyslexia, dyscalculia, and even differences in data literacy and numerical literacy. In some sense, it can be useful to go through the introspection process when looking at a graph, and consider what perceptual and cognitive resources are required to complete each step when looking at a chart. Ultimately, as scientists and people working with data, we need to work to make our data representations accessible. The specifics of which populations we focus on, and how we adapt existing representations (or create new ones) are based on the target audience(s), and will differ across different disciplines. For instance, if you are designing graphics to be used in Air Traffic Controller trainings, you likely do not need to accommodate Blind and Low Vision (BLV) individuals or even consider color-blindness. However, if you are creating graphics to be consumed by a general web audience, it is important to consider a range of visual impairments and accommodations.</p>
+<p>This is an active area of research in data science, information visualization, and design. It is always useful to see what new solutions have come out recently, because there are new developments in this area on a regular basis.</p>
+<section id="adapting-existing-graphics" class="level1">
+<h1>Adapting Existing Graphics</h1>
+<p>One of the simplest ways to increase accessibility of graphics is to ensure that they meet basic guidelines for discoverability and distinguishability. Discoverability ensures that screen-reader users know that the graphic exists; this requires designing the entire web page with these users in mind, but is critical to ensuring equal access to information for blind and low-vision users. Creating graphics which adhere to contrast, color selection, font size, and other distinguishability guidelines helps low-vision people, those with sensory processing issues, and people with colorblindness use existing data representations effectively.</p>
+<section id="discoverability" class="level2">
+<h2 class="anchored" data-anchor-id="discoverability">Discoverability</h2>
+<section id="alt-text" class="level3">
+<h3 class="anchored" data-anchor-id="alt-text">Alt Text</h3>
+<p>When retrofitting an existing page for accessibility, it may not be possible to make charts and graphics fully accessible to individuals who are blind or using screen-readers. In these cases, it is important to write good alt-text for each graph that is intended to convey information (it is fine to skip alt-text for purely decorative images).</p>
+<p>Good alt-text is:</p>
+<ul>
+<li>concise</li>
+<li>accurate</li>
+<li>relevant</li>
+<li>context-dependent - the same image may require different alt-text depending on the broader context of the web page.</li>
+</ul>
+<p>Graphs are some of the hardest images to fully describe in alt-text, in part because providing the same information that the image provides may require thousands of words, full data tables, or other accommodations. The alt text field in HTML does not allow for paragraphs, line breaks, and other structural elements; as a result, it is often better to include a short description in the alt-text field and a longer description (or table) as part of the web page <a href="https://sc.edu/about/offices_and_divisions/digital-accessibility/toolbox/best_practices/alternative_text/charts-diagrams/index.php">source</a>. Linking the alt-text and the longer description together may facilitate keyboard navigation between the two, making the navigation process less cognitively intensive for screen reader users.</p>
+</section>
+<section id="page-structure" class="level3">
+<h3 class="anchored" data-anchor-id="page-structure">Page Structure</h3>
+<p>The entire web-page structure is important to consider when designing to include screen-reader users. Sighted users may be able to take in the web page structure visually and determine which elements to focus on; screen reader users have to take in the page structure audibly, and in sequence. Some users describe it as “viewing a web page through a straw”.</p>
+<p>It is important to provide a contextual overview first, and then provide specific data and details in a structured hierarchy. We can update the “information seeking mantra” of overview, zoom and filter, details on demand to “gist”, “supporting methods” (contextual information), and “details” (actual data content). The structure of the page needs to support understanding when navigated hierarchically. Information embedded in visual design themes (font sizes, colors, nesting, space) need to be explicitly accessible via aria- fields to be accessible to screen reader users.</p>
+<section id="navigating-with-a-screen-reader" class="level4 {callout-tip}">
+<h4 class="anchored" data-anchor-id="navigating-with-a-screen-reader">Navigating with a Screen Reader</h4>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/SRT0vCCRjRA" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+</section>
+</section>
+</section>
+<section id="discriminability" class="level2">
+<h2 class="anchored" data-anchor-id="discriminability">Discriminability</h2>
+<p>In addition to the information below, which includes some web references, there is a lovely series of Observable posts on accessibility, contrast, and color choice for data visualization. <a href="https://observablehq.com/@frankelavsky/chartability-contrast-series">Check it out!</a></p>
+<section id="color-selection" class="level3">
+<h3 class="anchored" data-anchor-id="color-selection">Color selection</h3>
+<p>We’ll first approach color selection with color impairment (aka “colorblindness”, though most color impaired people can see some colors) in mind, though many of the considerations here factor into contrast considerations later. There are several approaches to accommodating color impairment:</p>
+<ol type="1">
+<li><p>Avoid red and green combinations. This helps but is not sufficient, particularly for those who have trouble with red and blue, rather than green.</p></li>
+<li><p>Use palettes designed to be “colorblind-friendly”, such as <a href="https://davidmathlogic.com/colorblind/#%23D81B60-%231E88E5-%23FFC107-%23004D40">David Nichol’s</a>, <a href="https://jfly.uni-koeln.de/color/">Okabe-Ito’s</a>, <a href="https://thenode.biologists.com/data-visualization-with-flying-colors/research/">Paul Tol’s</a>. Colorbrewer’s colorblind friendly palettes are less useful than these options.</p></li>
+<li><p>Design your graphic so that it is functional in greyscale. This will make it safe for all types of color impairment.</p></li>
+<li><p>Dual-encode colors with other attributes, such as shape or linetype.</p></li>
+</ol>
+<p>It can be difficult to fully accommodate those with color impairment, particularly when working with graphics that use many different hues. Keep in mind that even people with full color vision cannot keep more than <span class="math inline">\(7 \pm 2\)</span> items in working memory - so using many different colors is problematic for everyone, not just for those with impaired color vision.</p>
+</section>
+<section id="contrast" class="level3">
+<h3 class="anchored" data-anchor-id="contrast">Contrast</h3>
+<p>It can be hard to see content that does not have much contrast against the background. People with low vision rely on contrast even more than the rest of the population; in addition, individuals with color impairment tend to rely on contrast cues to determine whether ambiguous colors are, in fact, different.</p>
+<p>W3C (World Wide Web Consortium) creates Web Content Accessibility Guidelines (WCAG) to provide a standard of accessible online content. <a href="https://www.w3.org/TR/WCAG21/">These guidelines</a> have recommendations for creating alt-text, how to ensure accessibility of different types of media, and standards for how to make content distinguishable.</p>
+<p>WCAG guidelines are provided on a scale from A (basic accessibility) to AAA (most accessible).</p>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+(A) guidelines for distinguishability:
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<ul>
+<li><p><a href="https://www.w3.org/TR/WCAG21/#use-of-color">Color is not used as the only visual means of conveying information, indicating an action, prompting a response, or distinguishing a visual element.</a></p></li>
+<li><p><a href="https://www.w3.org/TR/WCAG21/#audio-control">Audio Control: If any audio on a Web page plays automatically for more than 3 seconds, either a mechanism is available to pause or stop the audio, or a mechanism is available to control audio volume independently from the overall system volume level.</a></p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+(AA) guidelines for distinguishability:
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<ul>
+<li><p><a href="https://www.w3.org/TR/WCAG21/#contrast-minimum">Contrast: The visual presentation of text and images of text has a contrast ratio of at least 4.5:1, except for the following:</a></p>
+<ul>
+<li>Large Text: Large-scale text and images of large-scale text have a contrast ratio of at least 3:1;</li>
+<li>Incidental: Text or images of text that are part of an inactive user interface component, that are pure decoration, that are not visible to anyone, or that are part of a picture that contains significant other visual content, have no contrast requirement.</li>
+<li>Logo: Text that is part of a logo or brand name has no contrast requirement.</li>
+</ul></li>
+<li><p><a href="https://www.w3.org/TR/WCAG21/#resize-text">Resize Text: Except for captions and images of text, text can be resized without assistive technology up to 200 percent without loss of content or functionality.</a></p></li>
+<li><p><a href="https://www.w3.org/TR/WCAG21/#images-of-text">Images of Text: If the technologies being used can achieve the visual presentation, text is used to convey information rather than images of text except for the following:</a></p>
+<ul>
+<li>Customizable: The image of text can be visually customized to the user’s requirements;</li>
+<li>Essential: A particular presentation of text is essential to the information being conveyed. Logotypes (text that is part of a logo or brand name) are considered essential.</li>
+</ul></li>
+<li><p><a href="https://www.w3.org/TR/WCAG21/#reflow">Reflow: Content can be presented without loss of information or functionality, and without requiring scrolling in two dimensions for:</a></p>
+<ul>
+<li>Vertical scrolling content at a width equivalent to 320 CSS pixels;</li>
+<li>Horizontal scrolling content at a height equivalent to 256 CSS pixels.</li>
+<li>Except for parts of the content which require two-dimensional layout for usage or meaning.</li>
+</ul></li>
+<li><p><a href="https://www.w3.org/TR/WCAG21/#non-text-contrast">Non-text Contrast: The visual presentation of the following have a contrast ratio of at least 3:1 against adjacent color(s):</a></p>
+<ul>
+<li>User Interface Components: Visual information required to identify user interface components and states, except for inactive components or where the appearance of the component is determined by the user agent and not modified by the author;</li>
+<li>Graphical Objects: Parts of graphics required to understand the content, except when a particular presentation of graphics is essential to the information being conveyed.</li>
+</ul></li>
+<li><p><a href="https://www.w3.org/TR/WCAG21/#text-spacing">Text Spacing: In content implemented using markup languages that support the following text style properties, no loss of content or functionality occurs by setting all of the following and by changing no other style property:</a></p>
+<ul>
+<li>Line height (line spacing) to at least 1.5 times the font size;</li>
+<li>Spacing following paragraphs to at least 2 times the font size;</li>
+<li>Letter spacing (tracking) to at least 0.12 times the font size;</li>
+<li>Word spacing to at least 0.16 times the font size.</li>
+<li>Exception: Human languages and scripts that do not make use of one or more of these text style properties in written text can conform using only the properties that exist for that combination of language and script.</li>
+</ul></li>
+<li><p><a href="https://www.w3.org/TR/WCAG21/#content-on-hover-or-focus">Content on Hover or Focus: Where receiving and then removing pointer hover or keyboard focus triggers additional content to become visible and then hidden, the following are true:</a></p>
+<ul>
+<li>Dismissible: A mechanism is available to dismiss the additional content without moving pointer hover or keyboard focus, unless the additional content communicates an input error or does not obscure or replace other content;</li>
+<li>Hoverable: If pointer hover can trigger the additional content, then the pointer can be moved over the additional content without the additional content disappearing;</li>
+<li>Persistent: The additional content remains visible until the hover or focus trigger is removed, the user dismisses it, or its information is no longer valid.</li>
+<li>Exception: The visual presentation of the additional content is controlled by the user agent and is not modified by the author.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+(AAA) guidelines for distinguishability:
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<ul>
+<li><a href="https://www.w3.org/TR/WCAG21/#contrast-enhanced">Enhanced Contrast: The visual presentation of text and images of text has a contrast ratio of at least 7:1, except for the following:</a>
+<ul>
+<li>Large Text: Large-scale text and images of large-scale text have a contrast ratio of at least 4.5:1;</li>
+<li>Incidental: Text or images of text that are part of an inactive user interface component, that are pure decoration, that are not visible to anyone, or that are part of a picture that contains significant other visual content, have no contrast requirement.</li>
+<li>Logotypes: Text that is part of a logo or brand name has no contrast requirement.</li>
+</ul></li>
+<li><a href="https://www.w3.org/TR/WCAG21/#low-or-no-background-audio">Low or No Background Audio: For prerecorded audio-only content that (1) contains primarily speech in the foreground, (2) is not an audio CAPTCHA or audio logo, and (3) is not vocalization intended to be primarily musical expression such as singing or rapping, at least one of the following is true:</a>
+<ul>
+<li>No Background: The audio does not contain background sounds.</li>
+<li>Turn Off: The background sounds can be turned off.</li>
+<li>20 dB: The background sounds are at least 20 decibels lower than the foreground speech content, with the exception of occasional sounds that last for only one or two seconds.</li>
+</ul></li>
+<li><a href="https://www.w3.org/TR/WCAG21/#visual-presentation">Visual Presentation: For the visual presentation of blocks of text, a mechanism is available to achieve the following:</a>
+<ul>
+<li>Foreground and background colors can be selected by the user.</li>
+<li>Width is no more than 80 characters or glyphs (40 if CJK).</li>
+<li>Text is not justified (aligned to both the left and the right margins).</li>
+<li>Line spacing (leading) is at least space-and-a-half within paragraphs, and paragraph spacing is at least 1.5 times larger than the line spacing.</li>
+<li>Text can be resized without assistive technology up to 200 percent in a way that does not require the user to scroll horizontally to read a line of text on a full-screen window.</li>
+</ul></li>
+<li><a href="https://www.w3.org/TR/WCAG21/#images-of-text-no-exception">Images of Text: Images of text are only used for pure decoration or where a particular presentation of text is essential to the information being conveyed.</a></li>
+</ul>
+</div>
+</div>
+</div>
+<p>You can use <a href="https://www.accessibilitychecker.org/">https://www.accessibilitychecker.org/</a> to check the compliance of your website.</p>
+<p><a href="https://chartability.fizz.studio/">Chartability</a> is a set of heuristics for ensuring accessibility of data visualizations (and the pages that contain them). It’s created by BLV designers and is designed to help you locate accessibility barriers in data visualizations. They maintain an audit <a href="https://chartability.github.io/POUR-CAF/">workbook</a> that has tests that help identify design failures.</p>
+</section>
+</section>
+</section>
+<section id="creating-more-accessible-graphics" class="level1">
+<h1>Creating More Accessible Graphics</h1>
+<p>In general, charts created as images, which are the default in many systems such as <code>ggplot</code>, <code>matplotlib</code>, and <code>SAS</code>, require alt-text, inclusion of data tables, and other modifications that still do not produce full accessibility. By contrast, <code>d3</code>, <code>Observable.js</code>, <code>Highcharts.js</code>, and other <code>svg</code>-based web graphics allow for some navigation within the chart by screen reader users. However, these tools still require some extra planning to design charts that are accessible and well-formatted for screen-reader users.</p>
+<p>The <a href="https://mitvis.github.io/olli/">OLLi</a> project works within Observable and Vega/VegaLite visualizations to create a navigable, hierarchical tree for keyboard navigation and descriptions.</p>
 <ul>
 <li>Basic overview of types of different accessibility concerns
 <ul>
@@ -195,7 +385,7 @@ div.csl-indent {
 </ul></li>
 <li>Approaches to navigating disability
 <ul>
-<li>Screen reader - try out navigating with a screen reader around this site.</li>
+<li>Screen reader - try out navigating with a screen reader around this site. I’ve spent very little time on things like alt-text mainly for the purposes of demonstration.</li>
 </ul></li>
 <li>Visual Solutions
 <ul>
@@ -216,6 +406,7 @@ div.csl-indent {
 
 
 
+</section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-acarturkDevelopingVerbalAssistance2014" class="csl-entry" role="listitem">
