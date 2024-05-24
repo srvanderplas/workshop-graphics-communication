@@ -1,6 +1,7 @@
 ---
 title: "Observable Penguins with Olli"
 engine: knitr
+toc: true
 include-before-body:
   text: |
     <!-- olli -->

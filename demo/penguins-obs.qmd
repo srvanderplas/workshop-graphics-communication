@@ -1,11 +1,7 @@
 ---
 title: "Observable Penguins"
+toc: true
 engine: knitr
-include-before-body:
-  text: |
-    <!-- olli -->
-    <script src="https://cdn.jsdelivr.net/npm/olli@2"></script>
-    <script src="https://cdn.jsdelivr.net/npm/olli-adapters@2"></script>
 ---
 
 
