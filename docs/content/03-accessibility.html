@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -85,6 +119,8 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
+<script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -376,6 +412,121 @@ div.csl-indent {
 <h1>Creating More Accessible Graphics</h1>
 <p>In general, charts created as images, which are the default in many systems such as <code>ggplot</code>, <code>matplotlib</code>, and <code>SAS</code>, require alt-text, inclusion of data tables, and other modifications that still do not produce full accessibility. By contrast, <code>d3</code>, <code>Observable.js</code>, <code>Highcharts.js</code>, and other <code>svg</code>-based web graphics allow for some navigation within the chart by screen reader users. However, these tools still require some extra planning to design charts that are accessible and well-formatted for screen-reader users.</p>
 <p>The <a href="https://mitvis.github.io/olli/">OLLi</a> project works within Observable and Vega/VegaLite visualizations to create a navigable, hierarchical tree for keyboard navigation and descriptions.</p>
+<p>Let’s consider three different pages produced using quarto to showcase the penguins data.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">ggplot2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Observable.js</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Observable.js + Olli</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="03-accessibility_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>A plot of the palmer penguins data, showing bill length in mm on the x axis and bill depth in mm on the y axis. Points are colored by species. For each species, there is a positive relationship between bill depth and bill length, with each species occupying a different region of the space. Adelie penguins have shorter, deeper bills. Chinstrap penguins have longer, deeper bills. Gentoo penguins have longer, shallower bills.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="195" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 194;"><span id="cb2-195"><a href="#cb2-195" aria-hidden="true" tabindex="-1"></a>data<span class="op">=</span><span class="fu">FileAttachment</span>(<span class="st">"../data/penguins.csv"</span>)<span class="op">.</span><span class="fu">csv</span>({<span class="dt">typed</span><span class="op">:</span> <span class="kw">true</span>})</span>
+<span id="cb2-196"><a href="#cb2-196" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb2-197"><a href="#cb2-197" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb2-198"><a href="#cb2-198" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">dot</span>(data<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"bill_length_mm"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"bill_depth_mm"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"species"</span>})</span>
+<span id="cb2-199"><a href="#cb2-199" aria-hidden="true" tabindex="-1"></a>  ]<span class="op">,</span></span>
+<span id="cb2-200"><a href="#cb2-200" aria-hidden="true" tabindex="-1"></a>  <span class="dt">color</span><span class="op">:</span> {<span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span>}</span>
+<span id="cb2-201"><a href="#cb2-201" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="fig-ojs-cell-1" class="cell quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ojs-cell-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display">
+<div id="fig-ojs-cell-1-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-ojs-cell-1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="ojs-cell-1-1" data-nodetype="declaration">
+
+</div>
+</div>
+<figcaption class="figure quarto-subfloat-caption quarto-subfloat-fig" id="fig-ojs-cell-1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="fig-ojs-cell-1-2" class="quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-ojs-cell-1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="ojs-cell-1-2" data-nodetype="expression">
+
+</div>
+</div>
+<figcaption class="figure quarto-subfloat-caption quarto-subfloat-fig" id="fig-ojs-cell-1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-ojs-cell-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: A plot of the palmer penguins data, showing bill length in mm on the x axis and bill depth in mm on the y axis. Points are colored by species. For each species, there is a positive relationship between bill depth and bill length, with each species occupying a different region of the space. Adelie penguins have shorter, deeper bills. Chinstrap penguins have longer, deeper bills. Gentoo penguins have longer, shallower bills.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" data-startfrom="208" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 207;"><span id="cb3-208"><a href="#cb3-208" aria-hidden="true" tabindex="-1"></a><span class="co">//| echo: false</span></span>
+<span id="cb3-209"><a href="#cb3-209" aria-hidden="true" tabindex="-1"></a>penguinChart <span class="op">=</span> ({</span>
+<span id="cb3-210"><a href="#cb3-210" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb3-211"><a href="#cb3-211" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">dot</span>(data<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"bill_length_mm"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"bill_depth_mm"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"species"</span>})</span>
+<span id="cb3-212"><a href="#cb3-212" aria-hidden="true" tabindex="-1"></a>  ]<span class="op">,</span></span>
+<span id="cb3-213"><a href="#cb3-213" aria-hidden="true" tabindex="-1"></a>  <span class="dt">color</span><span class="op">:</span> {<span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span>}</span>
+<span id="cb3-214"><a href="#cb3-214" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="222" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 221;"><span id="cb4-222"><a href="#cb4-222" aria-hidden="true" tabindex="-1"></a><span class="co">// Create plot with specification</span></span>
+<span id="cb4-223"><a href="#cb4-223" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>(penguinChart)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="fig-penguin-plot" class="cell-output cell-output-display quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-penguin-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="ojs-cell-3" data-nodetype="expression">
+
+</div>
+</div>
+<figcaption class="figure quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-penguin-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="228" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 227;"><span id="cb5-228"><a href="#cb5-228" aria-hidden="true" tabindex="-1"></a><span class="co">// Create Olli adapters</span></span>
+<span id="cb5-229"><a href="#cb5-229" aria-hidden="true" tabindex="-1"></a>OlliAdapters<span class="op">.</span><span class="fu">ObservablePlotAdapter</span>(penguinChart)<span class="op">.</span><span class="fu">then</span>((olliVisSpec) <span class="kw">=&gt;</span> {</span>
+<span id="cb5-230"><a href="#cb5-230" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span></span>
+<span id="cb5-231"><a href="#cb5-231" aria-hidden="true" tabindex="-1"></a><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">"fig-penguin-plot"</span>)</span>
+<span id="cb5-232"><a href="#cb5-232" aria-hidden="true" tabindex="-1"></a><span class="op">.</span><span class="fu">append</span>(<span class="fu">olli</span>(olliVisSpec))<span class="op">;</span></span>
+<span id="cb5-233"><a href="#cb5-233" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-4" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <ul>
 <li>Basic overview of types of different accessibility concerns
 <ul>
@@ -422,6 +573,17 @@ Sakhardande, Prabodh, Anirudha Joshi, Charudatta Jadhav, and Manjiri Joshi. 2019
 Watanabe, Tetsuya, and Hikaru Mizukami. 2018. <span>“Effectiveness of Tactile Scatter Plots: Comparison of Non-Visual Data Representations.”</span> In <em>Computers Helping People with Special Needs</em>, edited by Klaus Miesenberger and Georgios Kouroupetroglou, 628–35. Cham: Springer International Publishing. <a href="https://doi.org/10.1007/978-3-319-94277-3_97">https://doi.org/10.1007/978-3-319-94277-3_97</a>.
 </div>
 </div></section></div></main> <!-- /main -->
+<script type="ojs-module-contents">
+{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"\ndata=FileAttachment(\"../data/penguins.csv\").csv({typed: true})\nPlot.plot({\n  marks: [\n    Plot.dot(data, {x: \"bill_length_mm\", y: \"bill_depth_mm\", fill: \"species\"})\n  ],\n  color: {legend: true}\n})\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"\n//| echo: false\npenguinChart = ({\n  marks: [\n    Plot.dot(data, {x: \"bill_length_mm\", y: \"bill_depth_mm\", fill: \"species\"})\n  ],\n  color: {legend: true}\n})\n\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"// Create plot with specification\nPlot.plot(penguinChart);\n"},{"methodName":"interpret","cellName":"ojs-cell-4","inline":false,"source":"// Create Olli adapters\nOlliAdapters.ObservablePlotAdapter(penguinChart).then((olliVisSpec) => {\ndocument\n.getElementById(\"fig-penguin-plot\")\n.append(olli(olliVisSpec));\n})\n"}]}
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../content";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

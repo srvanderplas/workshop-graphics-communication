@@ -169,6 +169,71 @@ However, these tools still require some extra planning to design charts that are
 The [OLLi](https://mitvis.github.io/olli/) project works within Observable and Vega/VegaLite visualizations to create a navigable, hierarchical tree for keyboard navigation and descriptions. 
 
 
+Let's consider three different pages produced using quarto to showcase the penguins data. 
+
+::: panel-tabset
+
+### ggplot2
+
+```{r}
+#| echo: false
+#| fig-cap: A plot of the palmer penguins data, showing bill length in mm on the x axis and bill depth in mm on the y axis. Points are colored by species. For each species, there is a positive relationship between bill depth and bill length, with each species occupying a different region of the space. Adelie penguins have shorter, deeper bills. Chinstrap penguins have longer, deeper bills. Gentoo penguins have longer, shallower bills. 
+
+data <- read.csv("../data/penguins.csv")
+library(ggplot2)
+ggplot(data, aes(x = bill_length_mm, y = bill_depth_mm, color = species)) + geom_point()
+```
+
+
+### Observable.js
+
+
+```{ojs}
+//| echo: false
+//| fig-cap: A plot of the palmer penguins data, showing bill length in mm on the x axis and bill depth in mm on the y axis. Points are colored by species. For each species, there is a positive relationship between bill depth and bill length, with each species occupying a different region of the space. Adelie penguins have shorter, deeper bills. Chinstrap penguins have longer, deeper bills. Gentoo penguins have longer, shallower bills. 
+
+data=FileAttachment("../data/penguins.csv").csv({typed: true})
+Plot.plot({
+  marks: [
+    Plot.dot(data, {x: "bill_length_mm", y: "bill_depth_mm", fill: "species"})
+  ],
+  color: {legend: true}
+})
+```
+
+
+### Observable.js + Olli
+
+
+```{ojs}
+
+//| echo: false
+penguinChart = ({
+  marks: [
+    Plot.dot(data, {x: "bill_length_mm", y: "bill_depth_mm", fill: "species"})
+  ],
+  color: {legend: true}
+})
+
+```
+
+```{ojs}
+//| label: fig-penguin-plot
+//| echo: false
+// Create plot with specification
+Plot.plot(penguinChart);
+```
+
+```{ojs}
+//| echo: false
+// Create Olli adapters
+OlliAdapters.ObservablePlotAdapter(penguinChart).then((olliVisSpec) => {
+document
+.getElementById("fig-penguin-plot")
+.append(olli(olliVisSpec));
+})
+```
+:::
 
 
 - Basic overview of types of different accessibility concerns
