@@ -211,7 +211,6 @@ Plot.plot({
 
 
 ```{ojs}
-
 //| echo: false
 penguinChart = ({
   marks: [
@@ -238,6 +237,7 @@ document
 .append(olli(olliVisSpec));
 })
 ```
+
 :::
 
 
