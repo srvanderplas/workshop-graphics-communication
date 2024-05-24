@@ -1,5 +1,10 @@
 ---
 title: "Accessibility: More than just Alt-text"
+include-before-body:
+  text: |
+    <!-- olli -->
+    <script src="https://cdn.jsdelivr.net/npm/olli@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/olli-adapters@2"></script>
 ---
 
 Graphics are one of the primary tools for science or data communication, and are powerful because they make use of our visual system in a way that off-loads much of the work of processing the data, freeing cognitive resources up to consider the content rather than the representation.
