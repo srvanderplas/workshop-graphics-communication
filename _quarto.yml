@@ -1,6 +1,9 @@
 project:
   type: website
   output-dir: docs
+  preview:
+    port: 7777
+
 
 website:
   title: "Workshop: Effective Graphics for Visual Communication with Data"

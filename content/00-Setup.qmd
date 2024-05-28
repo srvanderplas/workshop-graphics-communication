@@ -3,7 +3,7 @@ title: "Setting Up for the Workshop"
 image: ../fig/construction_site.jpg
 ---
 
-This workshop is set up to be largely language-agnostic (at least with regard to programming language). We will provide examples using `ggplot2` and `seaborn` or `matplotlib` in python.
+This workshop is set up to be largely language-agnostic (at least with regard to programming language). We will provide examples (as necessary) using `ggplot2` in R and `seaborn` or `matplotlib` in python.
 
 Screenshots will be provided using RStudio as an IDE for both R and Python, but you are free to use any IDE you wish for this workshop.
 
