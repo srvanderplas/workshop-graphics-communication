@@ -1,6 +1,13 @@
 ---
 title: "Fundamentals of Graphical Communication"
-format: revealjs
+format: 
+  revealjs:
+    theme: [default, inverse.scss]
+    include-in-header: |
+      <style>
+      @import url('https://fonts.googleapis.com/css2?family=Handlee&family=Montserrat:ital,wght@0,400;0,500;1,400;1,500&family=Roboto:ital,wght@0,500;1,500&display=swap');
+      </style>
+
 ---
 
 # Overview: Perception & Cognitive Psych
@@ -43,4 +50,12 @@ Notice that we have better color differentiation in the yellow-green portion of 
 
 - Lots of additional processing -- "software"
 
-## 
+## Selective Attention
+
+{{< video https://youtu.be/vJG698U2Mvo width="1600" height="900" start = "4">}}
+
+## Selective Attention
+
+[**Preattentive** features]{.cerulean .emph .large} such as color, shape, position, are integrated and applied to single objects through [**focused attention**]{.purple .emph .large}
+
+<div class="tenor-gif-embed" data-postid="16119656" data-share-method="host" data-aspect-ratio="2.2069" data-width="100%"><a href="https://tenor.com/view/eyes-on-me-focus-pay-attention-look-at-me-pay-attention-to-me-gif-16119656">Eyes On Me Focus Sticker</a>from <a href="https://tenor.com/search/eyes+on+me-stickers">Eyes On Me Stickers</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
