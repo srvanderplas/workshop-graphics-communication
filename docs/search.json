@@ -144,7 +144,7 @@
     "href": "content/02-eda.html",
     "title": "Exploratory Data Analysis",
     "section": "",
-    "text": "You have a new dataset and it’s time to dig in. You may have some information about how the data was collected (or not!), but you almost certainly don’t already know what’s in the data - what artifacts, data entry errors, missing data, and outliers may show up. Exploratory Data Analysis, or EDA, is like an exploratory hike through unknown territory. You may have prepared ahead of time - you may have a map, hiking boots, and so on, but you cannot predict what wildlife you will see or what obstacles you might encounter."
+    "text": "You have a new dataset and it’s time to dig in. You may have some information about how the data was collected (or not!), but you almost certainly don’t already know what’s in the data - what artifacts, data entry errors, missing data, and outliers may show up. Exploratory Data Analysis, or EDA, is like an exploratory hike through unknown territory. You may have prepared ahead of time - you may have a map, hiking boots, and so on, but you cannot predict what wildlife you will see or what obstacles you might encounter.\nThroughout this section, we’ll use the palmerpenguins data to illustrate different ways to explore data."
   },
   {
     "objectID": "content/02-eda.html#one-dimensional-summaries",

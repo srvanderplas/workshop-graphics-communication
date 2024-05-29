@@ -8,7 +8,34 @@ Exploratory Data Analysis, or EDA, is like an exploratory hike through unknown t
 You may have prepared ahead of time - you may have a map, hiking boots, and so on, but you cannot predict what wildlife you will see or what obstacles you might encounter.
 
 
-# Examining the Data Structure
+
+Throughout this section, we'll use the `palmerpenguins` data to illustrate different ways to explore data.
+
+::: panel-tabset
+## R
+
+```{r}
+# Run if you don't have the package installed
+# install.packages("palmerpenguins")
+library(palmerpenguins)
+head(penguins)
+```
+
+## Python
+
+```{python}
+from palmerpenguins import load_penguins
+penguins = load_penguins()
+penguins.head()
+```
+
+:::
+
+
+
+
+
+# Examining the Data
 
 Roger Peng's e-book "Exploratory Data Analysis with R" contains a [checklist](https://bookdown.org/rdpeng/exdata/exploratory-data-analysis-checklist.html) for EDA that is a useful starting point. 
 
@@ -35,22 +62,46 @@ This checklist covers mostly numerical summaries, but these numerical summaries 
 10. Follow up - do you have the right data to answer your question? Do you need additional data? Do you need to adjust your question?
 
 
+# Numerical EDA
+
+It is often good to calculate some basic summary statistics for each variable, along with the assessments above and the graphical summaries we'll focus on in this section.
+
+::: panel-tabset
+
+## R
+The `skimr` package in R produces very visually appealing numerical summaries.
+
+```{r}
+library(skimr)
+skim(penguins)
+```
+
+
+## Python
+
+The `skimpy` package in python is modeled on the `skimr` R package, but somehow has a much better name. 
+
+```{python}
+from skimpy import skim
+skim(penguins)
+```
+
+:::
+
+
 # Graphical EDA
 
 When examining a data set, it is often useful to start out by examining single variables. 
 We often care about distributions of data, both for getting to know the dataset and for considering modeling possibilities once we transition to confirmatory data analysis. 
 
-Throughout this section, we'll use the `palmerpenguins` data.
+The following chunks load in the graphics packages we'll use for the rest of this section.
 
 ::: panel-tabset
+
 ## R
 
 ```{r}
-# Run if you don't have the package installed
-# install.packages("palmerpenguins")
 library(ggplot2)
-library(palmerpenguins)
-head(penguins)
 ```
 
 ## Python
@@ -59,15 +110,9 @@ head(penguins)
 import seaborn as sns 
 import seaborn.objects as so
 import matplotlib.pyplot as plt
-from palmerpenguins import load_penguins
-penguins = load_penguins()
-penguins.head()
 ```
 
 :::
-
-
-
 
 ## One-dimensional summaries
 
@@ -291,6 +336,9 @@ Scatter plot matrices allow us to examine relationships between many sets of two
 #### R
 
 ```{r, message = F, warning = F}
+#| fig-width: 8
+#| fig-height: 8
+#| out-width: 100%
 library(GGally)
 ggpairs(penguins, columns = 3:6, aes(color = species))
 ```
@@ -298,6 +346,9 @@ ggpairs(penguins, columns = 3:6, aes(color = species))
 #### Python
 
 ```{python}
+#| fig-width: 8
+#| fig-height: 8
+#| out-width: 100%
 penguin_measures = penguins.drop("year", axis = 1)
 sns.pairplot(penguin_measures, hue = "species")
 plt.close()
