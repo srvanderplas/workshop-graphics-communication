@@ -1,0 +1,6 @@
+---
+title: "Accessibility: More than just Alt-text"
+format: 
+  revealjs:
+    theme: [default, inverse.scss]
+---

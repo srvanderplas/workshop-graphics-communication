@@ -1,6 +1,26 @@
 ---
 title: "Fundamentals of Graphical Communication"
 ---
+```{r setup, include = F}
+
+suppressMessages(library(ggplot2))
+suppressMessages(library(gridExtra))
+suppressMessages(library(dplyr))
+suppressMessages(library(tidyr))
+suppressMessages(library(purrr))
+suppressMessages(library(ggthemes))
+
+# Empty theme definition
+new_theme_empty <- theme_void(base_size=16)
+# new_theme_empty$line <- element_blank()
+# new_theme_empty$strip.text <- element_blank()
+# new_theme_empty$axis.text <- element_blank()
+# new_theme_empty$plot.title <- element_blank()
+# new_theme_empty$axis.title <- element_blank()
+# new_theme_empty$plot.margin <- structure(c(0, 0, -1, -1), unit = "lines", valid.unit = 3L, class = "unit")
+# 
+
+```
 
 # A Quick Introduction to Perception and Cognition
 
@@ -16,7 +36,7 @@ The physiology of perception is complex; what follows is a brief overview of the
 
 The eye is a complex apparatus, but for our purposes, the most important component of the eye is the retina, which contains the sensory cells responsible for transforming light waves into electrical information in the form of neural signals. These sensory cells are specialized neurons, known as rods and cones, which perceive light intensity (brightness) and wavelength (color), respectively. One section of the retina, known as the fovea, contains only cones; the rest of the retina contains a mixture of rods and cones. @fig-retina-diagram depicts the structure of the eye with a closeup of the retina.
 
-![The human eye, with closeup of receptor cells in the retina.[[Image Source](https://commons.wikimedia.org/wiki/File:Figure_36_05_02.png) [License](https://creativecommons.org/licenses/by/4.0/deed.en) Authors: OpenStax Copyright Holders: Rice University Publishers: OpenStax OpenStax Biology]{.fig-citation}](https://upload.wikimedia.org/wikipedia/commons/9/9e/Figure_36_05_02.png){#fig-retina-diagram}
+![The human eye, with closeup of receptor cells in the retina. [[Image Source](https://commons.wikimedia.org/wiki/File:Figure_36_05_02.png) [License](https://creativecommons.org/licenses/by/4.0/deed.en) Authors: OpenStax Copyright Holders: Rice University Publishers: OpenStax OpenStax Biology]{.fig-citation}](https://upload.wikimedia.org/wikipedia/commons/9/9e/Figure_36_05_02.png){#fig-retina-diagram}
 
 Another important region of the retina is the blindspot, the area where the optic nerve exits the eye to connect the retina to the brain. There are no rods or cones in this region of the retina, and any vision in the region of space that maps onto this point is a result of two mechanisms: binocular vision (the other eye fills in the missing information) and your brain "filling in" what it believes should be there.
 
@@ -36,10 +56,14 @@ Moreover, if a viewer has any level of color vision impairment (colloquially, 'c
 
 Once light hits the retina and causes a signal in the receptor cells, the information travels along the optic nerve and into the brain. Multiple neighboring rods are connected to the same neuron, where each cone is connected to a single neuron. The combined wiring of rod cells is responsible for the [Hermann grid illusion](https://en.wikipedia.org/wiki/Grid_illusion#Theories) and the [Mach bands](https://en.wikipedia.org/wiki/Mach_bands) seen in @fig-inhibition-illusions. Both of these illusions are a product of lateral inhibition, which is a result of the wiring of rod cells in the retina. Essentially, neurons can only fire at a specific rate, so when neighboring cells are all stimulated simultaneously, the combined neuron cannot fire fast enough to pass on all of the signals, causing *inhibition*. The [specifics of this response](https://en.wikipedia.org/wiki/Grid_illusion#Theories) and its relationship with the wiring of the receptor cells are too complex for this summary.
 
-::: {#fig-inhibition-illusions layout-ncol="2"}
-![Hermann grid illusion [[Image Source](https://en.wikipedia.org/wiki/File:HermannGrid.svg). [License](https://creativecommons.org/publicdomain/zero/1.0/deed.en).]{.fig-citation}](https://upload.wikimedia.org/wikipedia/commons/b/be/HermannGrid.svg)
+::: {#fig-inhibition-illusions}
+::: {layout-ncol=2}
 
-![Mach Bands [[Image Source](https://commons.wikimedia.org/wiki/File:Bandes_de_mach.PNG). [License](https://en.wikipedia.org/wiki/en:Free_Art_License).]{.fig-citation}](../fig/Mach-Bands.png)
+![Hermann grid illusion [[Image Source](https://en.wikipedia.org/wiki/File:HermannGrid.svg). [License](https://creativecommons.org/publicdomain/zero/1.0/deed.en).]{.fig-citation}](https://upload.wikimedia.org/wikipedia/commons/b/be/HermannGrid.svg){#fig-hermann-grid}
+
+![Mach Bands [[Image Source](https://commons.wikimedia.org/wiki/File:Bandes_de_mach.PNG). [License](https://en.wikipedia.org/wiki/en:Free_Art_License).]{.fig-citation}](../fig/Mach-Bands.png){#fig-mach-bands}
+
+:::
 
 Illusions which are thought to arise due to inhibition. In the Hermann grid illusion, dark blobs appear at the intersection of the white lines. In the Mach band illusion, the region where different shaded bands meet seems to have more contrast than the middle of the bands.
 :::
@@ -50,39 +74,34 @@ Once neural impulses have left the retina through the optic nerve, they travel t
 
 Many of the processes for visual perception run simultaneously; in absence of a strict temporal ordering, we will start with the more basic tasks of visual perception and proceed towards higher-level processes.
 
-### Attention and Perception
+### Selective Attention
 
-In many tasks, it is necessary to pay attention to many parallel input streams simultaneously; this is particularly true for complex tasks like driving a car. These tasks demand divided attention; the brain must process many different sources of information in parallel. By contrast, most image recognition tasks require selective attention, that is, focusing on specific objects and ignoring everything else. The brain accomplishes this attention through several mechanisms.
+In many tasks, it is necessary to pay attention to many parallel input streams simultaneously; this is particularly true for complex tasks like driving a car. 
+These tasks demand divided attention; the brain must process many different sources of information in parallel. 
+By contrast, most image recognition tasks require selective attention, that is, focusing on specific objects and ignoring everything else. 
 
-Selective attention is accomplished by focusing the fovea (the area with the highest visual acuity) on the object. For instance, if the object is a page of text, each word will pass through the fovea, producing a focused stream of visual input. This stream of input consists of saccades (jumps between points of focus) and pauses in which the visual information is relayed to the brain.
+Selective attention is accomplished by focusing the fovea (the area with the highest visual acuity) on the object. 
+For instance, if the object is a page of text, each word will pass through the fovea, producing a focused stream of visual input. 
+This stream of input consists of saccades (jumps between points of focus) and pauses in which the visual information is relayed to the brain.
 
-Selective attention is generally necessary for perception to occur, though there is some information that is encoded automatically. The ["gorilla" film](http://www.theinvisiblegorilla.com/videos.html) experiment demonstrates that even when there is attention focused on a task, information extraneous to that task is not always encoded, that is, when participants focused on counting the number of passes between players in the basketball game, many did not notice the gorilla walking through the middle of the court. It is important to understand which parts of a visual stimulus are the focus of a given perceptual task, because most of the information encoded by the brain is a result of selective attention. Eye-tracking can be an important tool useful to understand these perceptual processes, but participants may also be able to self-report which parts of a stimulus contributed to their decision.
+Selective attention is generally necessary for perception to occur, though there is some information that is encoded automatically. The ["gorilla" film](http://www.theinvisiblegorilla.com/videos.html) experiment demonstrates that even when there is attention focused on a task, information extraneous to that task is not always encoded, that is, when participants focused on counting the number of passes between players in the basketball game, many did not notice the gorilla walking through the middle of the court. 
+It is important to understand which parts of a visual stimulus are the focus of a given perceptual task, because most of the information encoded by the brain is a result of selective attention. 
+Eye-tracking can be an important tool useful to understand these perceptual processes, but participants may also be able to self-report which parts of a stimulus contributed to their decision.
 
-Within the brain, attention is important because it allows different regions of the brain which process color, shape, and position to integrate these perceptions into a multifaceted mental representation of the object [@goldsteinSensationPerception2022]. This process, known as binding, is essential to coherently encode a scene into working memory. Feature integration theory [@treismanFeatureIntegrationTheoryAttention1980] suggests that these separate streams of information are initially encoded in the preattentive stage of object perception; focusing on the object triggers the binding of these separate streams into a single coherent stream of information. Many single features, such as color, length, and texture are *preattentive*, because they can be pinpointed in an image without focused attention (and thus can be located faster), but specific combinations of color and shape require attention (because the features must be bound together) and are thus more difficult to search. Preattentive features are generally processed in parallel (that is, the entire scene is processed nearly simultaneously), while features requiring attention are processed serially.
+Within the brain, attention is important because it allows different regions of the brain which process color, shape, and position to integrate these perceptions into a multifaceted mental representation of the object [@goldsteinSensationPerception2022].
+This process, known as binding, is essential to coherently encode a scene into working memory. Feature integration theory [@treismanFeatureIntegrationTheoryAttention1980] suggests that these separate streams of information are initially encoded in the preattentive stage of object perception; focusing on the object triggers the binding of these separate streams into a single coherent stream of information. 
+Many single features, such as color, length, and texture are *preattentive*, because they can be pinpointed in an image without focused attention (and thus can be located faster), but specific combinations of color and shape require attention (because the features must be bound together) and are thus more difficult to search. 
+Preattentive features are generally processed in parallel (that is, the entire scene is processed nearly simultaneously), while features requiring attention are processed serially.
 
-```{r}
-#| label: fig-parallel-serial
+::: {#fig-parallel-serial}
+```{r parallel-serial}
+#| layout-ncol: 2
 #| echo: false
 #| message: false
 #| warning: false
 #| include: true
-#| fig-cap: Features detected serially or in parallel. In general, features detected in parallel are processed pre-attentively, while features detected serially require focused attention.
-
-suppressMessages(library(ggplot2))
-suppressMessages(library(gridExtra))
-suppressMessages(library(dplyr))
-suppressMessages(library(tidyr))
-suppressMessages(library(purrr))
-
-# Empty theme definition
-new_theme_empty <- theme_bw(base_size=16)
-new_theme_empty$line <- element_blank()
-new_theme_empty$strip.text <- element_blank()
-new_theme_empty$axis.text <- element_blank()
-# new_theme_empty$plot.title <- element_blank()
-new_theme_empty$axis.title <- element_blank()
-# new_theme_empty$plot.margin <- structure(c(0, 0, -1, -1), unit = "lines", valid.unit = 3L, class = "unit")
-
+#| fig-width: 4
+#| fig-height: 5
 
 parallel.points <- data.frame(
   color = c("red", "orange", "yellow", "green", "blue",
@@ -194,9 +213,13 @@ serial <- ggplot() + new_theme_empty +
   geom_text(aes(x=-0.5, y=rev(1:5), label=c("Shape", "Area", "Curvature", "Containment", "Orientation")), hjust=0, vjust=.5) +
   ggtitle("Serial Detection") 
 
-grid.arrange(parallel, serial, ncol=2)
+parallel
+serial
 
 ```
+
+Features detected serially or in parallel. In general, features detected in parallel are processed pre-attentively, while features detected serially require focused attention.
+:::
 
 Examples of features processed serially and in parallel are shown in @fig-parallel-serial [@helander1997handbook; Chapter 6].
 
@@ -223,17 +246,64 @@ These principles are demonstrated in @fig-gestalt.
 ![Gestalt principles of grouping](../fig/gestalt.svg){#fig-gestalt}
 
 ### Visual Memory
-We have discussed how visual stimuli are perceived and how objects are recognized; we now must examine how visual stimuli are encoded into memory. Most researchers believe that visual perceptions are encoded in an analog fashion, so that the memory of an image is closely related to the perception of that same image [@cognition]. Other theories suggest that visual perceptions are encoded semantically, that is, the description of a visual scene would be encoded, rather than a mental ``image" of that scene. Both theories are likely at least partially correct, but the analog encoding of visual images is more relevant to statistical graphics because the accuracy of the stored image has the potential to affect recall of the contents of that image (and thus what people remember about a particular graphic). Experimental evidence for analog encoding includes the mental rotation task, where participants must determine whether or not a figure is a rotation of a target figure, as shown in @fig-mentalRotation. @shepard1988mental showed that reaction time was proportional to the angle of rotation of the stimuli, which suggests that participants were mentally rotating the figure as they would rotate a three-dimensional figure in space. 
+We have discussed how visual stimuli are perceived and how objects are recognized; we now must examine how visual stimuli are encoded into memory. 
+Most researchers believe that visual perceptions are encoded in an analog fashion, so that the memory of an image is closely related to the perception of that same image [@cognition].
+Other theories suggest that visual perceptions are encoded semantically, that is, the description of a visual scene would be encoded, rather than a mental ``image" of that scene. 
+Both theories are likely at least partially correct, but the analog encoding of visual images is more relevant to statistical graphics because the accuracy of the stored image has the potential to affect recall of the contents of that image (and thus what people remember about a particular graphic). 
+Experimental evidence for analog encoding includes the mental rotation task, where participants must determine whether or not a figure is a rotation of a target figure, as shown in @fig-mentalRotation. 
+@shepard1988mental showed that reaction time was proportional to the angle of rotation of the stimuli, which suggests that participants were mentally rotating the figure as they would rotate a three-dimensional figure in space. 
 
 ![Rotation task from @shepard1988mental. Are the two images the same? [[Image Source](https://en.wikipedia.org/wiki/Mental_rotation#/media/File:Mental_rotation_task_(diagram)_(cropped).jpg) [License](https://commons.wikimedia.org/wiki/File:Mental_rotation_task_(diagram)_(cropped).jpg?uselang=en#Licensing)]{.fig-citation}](../fig/Mental_rotation_task_(diagram)_(cropped).jpg){#fig-mentalRotation}
 
-In addition, @kosslyn1978visual showed that mental representation of distances in a figure are accurate and that the time to encode those distances is proportional to the distances in the actual figure. These studies suggest that the memory of an image (statistical graphic or otherwise) is a reasonably accurate facsimile of the original image (though the accuracy of the mental representation is of course likely to be moderated by attention and recall ability). 
+In addition, @kosslyn1978visual showed that mental representation of distances in a figure are accurate and that the time to encode those distances is proportional to the distances in the actual figure. 
+These studies suggest that the memory of an image (statistical graphic or otherwise) is a reasonably accurate facsimile of the original image (though the accuracy of the mental representation is of course likely to be moderated by attention and recall ability). 
 
-The analog encoding of mental images is stored alongside the *gist* of an image. That is, a semantic (textual) description of the image is stored alongside its' analog representation in memory. In some cases, recall ability is more consistent with the semantic encoding of images; that is, when shown an ambiguous figure and immediately asked for a description, participants could not give an alternate interpretation of the figure after the experiment was complete. In the case of  figure @fig-ambiguousrabbit, participants who initially said the figure was a duck did not report having viewed a picture of a rabbit after the experiment, even though the image is consistent with either interpretation. This suggests that in some cases, verbal encoding of a figure (i.e. describing it as a duck) disrupts the mental representation of the picture. This is common in other types of memories as well: when the gist of a passage is stored, the actual content of the passage is no longer accessible. In other words, we would expect that if someone had to interpret a graph, they would remember the interpretation much more strongly than the actual graph, even if that interpretation was incorrect or incomplete. 
+The analog encoding of mental images is stored alongside the *gist* of an image. 
+That is, a semantic (textual) description of the image is stored alongside its' analog representation in memory. 
+In some cases, recall ability is more consistent with the semantic encoding of images; that is, when shown an ambiguous figure and immediately asked for a description, participants could not give an alternate interpretation of the figure after the experiment was complete.
+In the case of  figure @fig-ambiguousrabbit, participants who initially said the figure was a duck did not report having viewed a picture of a rabbit after the experiment, even though the image is consistent with either interpretation. 
+This suggests that in some cases, verbal encoding of a figure (i.e. describing it as a duck) disrupts the mental representation of the picture. 
+This is common in other types of memories as well: when the gist of a passage is stored, the actual content of the passage is no longer accessible. 
+In other words, we would expect that if someone had to interpret a graph, they would remember the interpretation much more strongly than the actual graph, even if that interpretation was incorrect or incomplete. 
 
 ![An ambiguous image that could be either a rabbit or a duck. When participants were asked to identify the image initially, they could not provide an alternate interpretation of the figure later. [Redrawn by the author, [inspired by](https://printerval.com/uk/rabbit-duck-bunny-bird-optical-illusion-funny-gift-t-shirt-p519851)]{.fig-citation}](../fig/duck-rabbit.svg){#fig-ambiguousrabbit}
 
 The "software" of the visual system much more complex than the few topics discussed here, but understanding attention, object perception, and how images are stored for later retrieval in the brain will make designing statistical graphics for the visual system easier and will also help with evaluating graphics based on the capabilities of the human visual system. 
+
+### Working Memory
+
+@miller1956magical suggested that active memory can contain only 7 (plus or minus two) chunks of information. 
+A chunk of information could be a single letter or number, a meaningful collection of several letters or numbers (e.g. a word or an area code), or an association. 
+This limitation is important in designing information for graphical consumption. 
+For instance,  the number of categories in legends should be limited to 7, to allow a viewer to store the associations within the legend and then use that information to understand the graph. 
+Abuse of this limitation is referred to as a "color mapping attack" in @conti2005attacking, a paper detailing the various ways to "attack" a human visualization system. 
+Similarly, viewers should not be expected to remember more than 7 "chunks" of information from a single graph. 
+Due to these limitations in memory, when a single color scale is used to represent more than one order of magnitude of variation, using a logarithmic scale provides more optimal information scaling than using a linear color scale [@sun2012framework; @varshney2013we]. 
+
+
+### Information Integration
+
+Integrating multiple dimensions of information (or mentally combining multiple graphics) is another area which can strain the ability of the brain to utilize information effectively. 
+Well-constructed graphs can help the brain to integrate information by connecting points across dimensions (through the use of regression lines, clustering, etc.), which creates "chunks" of information that can then be stored in memory in a more compressed format.
+Gestalt principles of grouping are useful heuristics in part because they help define how these chunks of information form.
+In chart design, creating chunks of information is useful because this allows people to draw conclusions from multiple sets of data across multiple dimensions [@gattis1996mapping]. 
+Poorly created graphics may make this task harder or even promote the encoding of misleading chunks; for instance, data that is overplotted may obscure the important trend and may also produce chunks which lead to the wrong associations being stored in memory.
+This integration limitation is very much related to short-term memory, but is also constrained by mental effort limitations and processing capacity. 
+As a result, it is important to reduce the effort required to integrate multiple graphics. 
+
+
+### Resource Limitations
+
+Human attention is limited; thus visualizations which do not focus attention on important aspects of the data are likely to confuse the reader.
+
+> "The greatest value of a picture is when it forces us to notice what we never expected to see".  [@eda]
+
+When there are too many salient features to notice anything in particular, attention is split too many ways to gain useful information from the picture. 
+Graphics should present data in a controlled fashion, so that focused attention is rewarded with useful information taken from the graph. 
+@conti2005attacking describes graphs that do not follow this principle as "processing attacks", in that the overload the "CPU" with needless calculations and mental manipulations that are ultimately futile to understanding the data. 
+
+The consequence of the limits of human perception and processing capacity is that there is a limited amount of information one can expect to portray graphically; thus graphics should be designed to most efficiently communicate information so that this cognitive overload does not occur. 
+The next section presents studies which examine the perception of graphs and charts directly across a wide range of perceptual levels and experimental conditions. 
 
 # The Psychology of Charts
 
@@ -241,14 +311,363 @@ In this section, we'll  primarily focus on how the concepts introduced previousl
 At first glance, the cognitive psychology introduced above may seem unrelated to graphics and perception; however, this could not be further from the truth. 
 It is critical to understand and consider perception and cognition when creating graphics which facilitate easy comprehension of the underlying data in visual form. 
 
-## 
+Graphics are useful in part because they summarize information in a form which is easier to understand and mentally manipulate. 
+Thus, graphics serve as a form of **external cognition** - pre-processing information in a form that is (or should be) easier to digest and understand.
 
-# Strategies for Readability
+## Preattentive Perception
 
-## Center Primary Comparisons
+As discussed in @fig-parallel-serial, some features are processed pre-attentively, in parallel, while some features require conscious attention. 
+When choosing features for data display, viewers will have an easier time when the feature chosen is processed in parallel than if the same data is shown using a feature that is processed serially. 
 
-## Reduce Cognitive Load
+However, it is important not to overdo it! 
+Combinations of preattentive features used to show different dimensions of the data are processed serially, requiring much more effort, in an effect known as *interference*. 
 
-# Testing Multiple Versions of a Chart
+```{r preattentive, echo = F}
+#| label: fig-preattentive
+#| fig-subcap: ['Color', 'Shape', 'Interference', 'Dual Encoding']
+#| fig-cap: Shape and color are detected preattentively, but when used to encode different information, the combination is no longer preattentive. When shape and color are used to encode the same information (dual encoding), the combination is detected preattentively and is more accessible to individuals with perceptual disabilities such as colorblindness.
+#| layout-ncol: 2
+set.seed(153253)
 
-http://homepage.stat.uiowa.edu/\~luke/classes/STAT4580-2024/notes.html#mostly-data-visualization
+data <- data.frame(expand.grid(x=1:6, y=1:6), color=sample(c(1,2), 36, replace=TRUE)) %>%
+  mutate(x = x + rnorm(36, 0, .25), 
+         y = y + rnorm(36, 0, .25),
+         shape1 = c(rep(2, 15), 1, rep(2, 20)) %>% factor(),
+         color1 = factor(1, levels = c(1,2)),
+         shape2 = color1,
+         color2 = c(rep(2, 10), 1, rep(2, 25)) %>% factor(),
+         shape3 = c(rep(2, 15), 1, rep(2, 20)) %>% factor(),
+         color3 = shape3,
+         shape4 = sample(c(1, 2), size = 36, replace = T) %>% factor(),
+         color4 = sample(c(1, 2), size = 36, replace = T) %>% factor()
+         )
+
+
+ggplot(data, aes(x = x, y = y, color = color2, shape = shape2)) + 
+  geom_point(size = I(5)) + 
+  scale_shape_manual(guide = "none", values = c(19, 15)) + 
+  scale_color_discrete(guide = "none") + 
+  coord_fixed() + 
+  new_theme_empty
+
+
+ggplot(data, aes(x = x, y = y, color = color1, shape = shape1)) + 
+  geom_point(size = I(5)) + 
+  scale_shape_manual(guide = "none", values = c(19, 15)) + 
+  scale_color_discrete(guide = "none") + 
+  coord_fixed() + 
+  new_theme_empty
+
+ggplot(data, aes(x = x, y = y, color = color4, shape = shape4)) + 
+  geom_point(size = I(5)) + 
+  scale_shape_manual(guide = "none", values = c(19, 15)) + 
+  scale_color_discrete(guide = "none") + 
+  coord_fixed() + 
+  new_theme_empty
+
+
+ggplot(data, aes(x = x, y = y, color = color3, shape = shape3)) + 
+  geom_point(size = I(5)) + 
+  scale_shape_manual(guide = "none", values = c(19, 15)) + 
+  scale_color_discrete(guide = "none") + 
+  coord_fixed() + 
+  new_theme_empty
+
+```
+
+
+Interference is demonstrated in @fig-preattentive; the different point in (a) and (b) is easy to pick out, but it is much harder in (c) to separate shape and color in order to pick out differences. 
+This is because when color and shape are used to show different features, we must consider every combination of color and shape used and individually search for points matching that description -- an operation which requires a lot of time and cognitive effort. 
+Not all combinations of color and shape are problematic, however: (d) uses color and shape to show the same variable (*dual-encoding*), which is useful for individuals who are color blind or may have trouble perceiving shapes. 
+The two preattentive features support each other when used in this way, making it even easier to pick out the one mismatched point than in conditions (a), (b), or (c). 
+
+
+## Conscious Perception
+
+While it is useful to understand the psychology of perception and the implications of preattentive perception for understanding how much cognitive effort an operation takes,  analysts are more concerned about conscious perception that occurs with attention. 
+We care about questions like:
+
+- Which parts of the graph are the most useful for answering a question?
+- How is information  from the graph combined with pre-existing knowledge?
+- How does a graph promote understanding of the underlying data?
+
+Several different types of models have been proposed to describe this process, but overall, "task models" and "integration models" are most consistent with available empirical evidence.
+
+### Task Based Processing
+
+An example of task-based processing [@ratwani2008thinking] is shown in @fig-task-steps.
+
+
+```{r task-steps}
+#| fig-width: 5
+#| fig-height: 5
+#| out-width: 50%
+#| fig-cap: Task-based steps for evaluating the relationship between eruption length and time between eruptions for Old Faithful?
+#| echo: false
+#| label: fig-task-steps
+#| message: false
+#| warning: false
+
+library(datasets)
+library(ggplot2)
+data(faithful)
+ggplot(faithful, aes(waiting, eruptions)) + 
+  geom_jitter() + 
+  xlab("Time Between Eruptions (minutes)") + 
+  ylab("Eruption Length (minutes)") + 
+  ggtitle("Old Faithful Eruptions") + 
+  geom_smooth(method="lm") + 
+  theme_bw()
+```
+
+
+**Question:** What is the relationship between the length of the eruption and the time between eruptions for Old Faithful?
+
+1. Understand the question:
+
+    - Identify "length of eruption" and "time between eruptions" as things to search for in the graph.
+    
+2. Search for identified quantities:
+
+    - Look for "length of eruption" on the axes and determine that the $y$-coordinate contains that information. 
+    - Look for "time between eruptions" on the axes and determine that the $x$-coordinate contains that information. 
+    - Verify that these quantities are what are sought by re-reading the question.
+    
+3. Sense-making and Storytelling: 
+
+    - Establish that as the time between eruptions increases, the length of the eruption increases. 
+    - Note that there seems to be a bimodal distribution of points
+    
+4. Answer the question:
+
+    - As time between eruptions increases, length of the eruption increases.
+
+In practice, the search portion of the task based framework is implicitly connected to the sense-making and storytelling portion, and viewers iterate between the two steps several times before finally proceeding to step 4. 
+The time required for each step may change based on the reader's familiarity with the task, the chart style, and the background knowledge required to interpret the data. 
+Viewers who are familiar with similar graphics may be able to encode information faster and in larger chunks, answering the question more quickly [@carpenter1998model].
+
+### Information Integration
+
+Charts designed to promote chunking do so by providing viewers with cues for important features. 
+This can help participants come to conclusions supported by the data and statistical modeling underlying the visual representation, reducing cognitive load. 
+
+@fig-grouping-help shows the same data using three different representations, with an additional representation illustrating the viewer's mental model. 
+In the first figure, (a), viewers are provided with no additional information and must group points together mentally to make sense of the data; this grouping action takes some cognitive effort, producing something like the second figure, (b). 
+The designer could make this chunking effort less resource-intensive by explicitly coloring by the variable determining groups (if it is known) or by e.g. k-means output, if the clustering is important to the problem at hand. 
+
+```{r}
+#| label: fig-grouping-help
+#| fig.cap: When graphical features such as clustering are important, using aesthetics to promote chunking of the information can help readers make sense of the data more efficiently. 
+#| fig.subcap:
+#|   - Data with no additional aesthetics
+#|   - Perceived chunks in mental representation
+#|   - Data, color used to provide chunking information
+#|   - Data, color + shape  used to provide chunking information
+#| layout-ncol: 2
+#| echo: false
+
+set.seed(42335253)
+N <- 40
+sigma <- .25
+data <- tibble(
+  x = purrr::map(c(3, 3.5, 4), ~rnorm(N, ., sigma)) %>% unlist(),
+  y = purrr::map(c(4, 3, 4), ~rnorm(N, ., sigma)) %>% unlist(),
+  group = rep(LETTERS[1:3], each = N)
+)
+
+kmres <- kmeans(data[,1:2], 3)
+
+data$group_km <- kmres$cluster
+data <- data %>%
+  group_by(group_km) %>%
+  mutate(group_km = table(group) %>% sort(decreasing = T) %>% names() %>% `[`(1))
+
+library(ggplot2)
+library(ggforce)
+
+ggplot(data=data, aes(x=x, y=y)) + 
+  geom_point(size = 3, shape = 1) + 
+  theme_bw() + 
+  coord_fixed()
+
+ggplot(data=data, aes(x=x, y=y)) + 
+  geom_point(size = 3) + 
+  theme_bw() + 
+  geom_mark_ellipse(aes(fill = group_km), expand = unit(1, "mm"), alpha = .1, color = NA) + 
+  
+  scale_fill_brewer(palette="Set1", guide='none')  + 
+  coord_fixed()
+
+ggplot(data=data, aes(x=x, y=y, color = group_km)) + 
+  geom_point(size = 3) + 
+  scale_color_brewer(palette="Set1", guide='none')  + 
+  theme_bw() + 
+  coord_fixed()
+
+
+ggplot(data=data, aes(x=x, y=y, color = group_km, shape = group_km)) + 
+  geom_point(size = 3) + 
+  scale_color_brewer(palette="Set1", guide='none')  + 
+  scale_shape_discrete(guide='none', solid = F)  + 
+  theme_bw() + 
+  coord_fixed()
+```
+
+Analyzing graphs using task-based models emphasizes the importance of spatial relationships between graphical elements.
+The gestalt laws of proximity and similarity dictate that items which are close together or physically similar (the same shape or color) are perceived as a group; this spatial perception creates "chunks" of the graph which may be encoded as single objects and thus reduce the mental bandwidth necessary to process the image. 
+@fig-grouping-help shows the advantage of "chunks" in graphs: in (a) there are 120 points that could be grouped into the three clusters shown in (b), but when the clustering is provided using aesthetics, the Gestalt similarity heuristic naturally groups the points for us, without much additional labor.
+
+As charts become more complex, it can be difficult to consider all of the perceptual processes which might affect perception and use of a specific visualization. 
+In these cases, cognitive models and frameworks can be extremely useful [@padillaCaseCognitiveModels2018;@padillaDecisionMakingVisualizations2018]. 
+By assessing the interactions between the visualization and the cognitive model, it may be possible to identify potential areas of difficulty that can be addressed in a revised design.
+
+
+**Graphical conventions** are another form of chunking strategy we all use.
+@fig-inverse-y is one example of what happens when such conventions are violated - the chart inverts the y-axis so that 0 is at the top of the chart and 1000 is at the bottom. When combined with the area chart type, this initially gives the impression of a decline in the population shown on the y-axis, rather than an increase. 
+
+![Adherence to graphical conventions facilitates fast and accurate chart comprehension. Violating these conventions can result in misunderstandings and increased comprehension time. [Figure from @padillaDecisionMakingVisualizations2018.]{.fig-citation}](../fig/Padilla-Inverse-y.png){#fig-inverse-y}
+
+Of graphics that present information of similar complexity, graphics that require less effort to understand and search for relevant information are preferable [@clevelandElementsGraphingData1985]. 
+More complex models of the graphical perception process suggest that data are integrated on a visual level and then on a cognitive level, to form successive clusters of information. 
+Once these clusters are formed, additional information can be integrated by comparing and contrasting different clusters to understand the higher-level meaning in the graph [@ratwani2008thinking]. 
+Graph types which cater to this hierarchical clustering mechanism may be more easily understood by viewers than graphs that do not provide information in a manner easily assimilated by the human brain. 
+Facetted charts may be particularly useful for mapping multidimensional data to provide "chunks" of information in a relevant manner, pre-digested for integration into the viewer's working conceptual understanding of the dataset. 
+Additionally, color schemes and appropriate labeling of graph features which reduce the amount of work necessary to integrate numerical information from a legend into the visual representation of the graph facilitate graphical inference [@carpenter1998model].
+
+
+## Simple Charts
+
+A series of experiments by [@clevelandGraphicalPerceptionTheory1984;@clevelandGraphicalPerceptionGraphical1985;@clevelandGraphicalPerceptionVisual1987] examined basic perceptual tasks, establishing the relative accuracy of comparisons made using different graphical elements. This ranking is shown in @tbl-task-hierarchy. 
+Other researchers [@carswellChoosingSpecifiersEvaluation1992] have examined a wide range of studies beyond those conducted by Cleveland & McGill and used meta-analysis to collapse this ranking into position/length/angle and area/volume, as the difference in accuracy between categories 1, 2, and 3 is small compared to categories 4 and 5.
+
+Rank | Task
+--- | ---
+1 | Position (common scale)
+2 | Position (non-aligned scale)
+3 | Length, Direction, Angle, Slope
+4 | Area 
+5 | Volume, Density, Curvature
+6 | Shading, Color Saturation, Color Hue
+
+: Cleveland & McGill's ordering of graphical tasks by accuracy. Higher ranking tasks are easier for viewers than low-ranking tasks and should be preferred in graphical design. {#tbl-task-hierarchy}
+
+It is important to note that the task asked of participants and the type of chart are both important: when presented with a line graph, viewers are more likely to summarize the graph in terms of the slope of the trend line (even when the x-axis is discrete); when presented with a bar graph, viewers summarize the information using discrete comparisons [@carswell1987information;@shah2005cambridge]. 
+The task and the graph format interact to influence viewer perceptions, thus, when creating graphics, statisticians should match appropriate graphical formats to meaningful conclusions about the data. 
+
+### Color, Shape, and Discriminability
+
+While shading, color saturation, and color hue rank poorly in the task hierarchy, this does not mean that they should be used to display information. 
+Rather, it is important to remember that the feature hierarchy in @tbl-task-hierarchy was assembled based on numerical estimation accuracy.
+Estimation accuracy is not the only purpose of a chart - in fact, in general, if estimation accuracy is the only goal, a table is a better representation. 
+While viewers may not be able to correlate a specific color to a specific numerical value, color is capable of providing ordinal information (this point is more saturated than that point) and even order of magnitude level comparisons. 
+As color is a pre-attentive feature processed in parallel, the use of color is a trade-off between numerical precision and cognitive resources (speed and working memory). 
+
+
+It is important to consider working memory when constructing graphical scales (particularly when utilizing a discrete scale for categorical data), but it is also important to consider feature selection and discriminability as well. 
+Color is generally believed to be preferrable for representing strata on a scatterplot [@clevelandGraphicalPerceptionTheory1984], but @lewandowsky1989discriminating found that if color is not available or appropriate, shapes, intensity, or discriminable letters may be utilized without a significant decrease in accuracy. 
+
+Discriminable letters are those which do not share physical features such as closure and symmetry, such as the letters H, Q, and X; confusable letters, such as H, E, and F, are associated with significantly less accurate perception. @demiralpLearningPerceptualKernels2014 synthesized experimental evaluations of stimuli to create "perceptual kernels" describing the perceived distance between values; multidimensional scaling of the resulting distance matrix produces four distinct groups of shapes which share features (triangles with various degrees of rotation, squares and diamonds, and non-convex shapes such as x, +, and *). 
+This separation suggests that feature integration underlies many of the processing speed effects found in studies examining discrete palettes and scales: palettes which are composed of confusable shapes, letters, or colors will require more processing time (and decrease accuracy) compared with discriminable palettes.
+
+### Other Considerations
+
+Other graph features can also influence viewer inferences: multiple studies suggest that our mental schematic for a graph is most consistent with a $45^\circ$ trend line [@clevelandShapeParameterTwoVariable1988;@tverskyPerceptualConceptualFactors1989]. 
+"Banking to $45^\circ$" is a commonly-cited recommendation for optimal graphics (it is also quite old, according to @wickham2013graphical).
+
+Axis scale transformations can make it easier for viewers to spot outliers of data conforming to skewed distributions (though this does require some domain-specific knowledge of statistical distributions), and appropriately labeled graphs can reduce the working memory requirements by reducing the number of back-and-forth comparisons required to pass information into working memory [@shah2005cambridge]. 
+
+### Example - Palmer Penguin Species
+
+Consider the process of assessing the average of two bars in a bar chart such as @fig-penguin-introspection. @fig-cognitive-model-bar-avg (2nd tab) shows the cognitive operations one might require to understand the chart and compute the numerical average between the bars. @fig-cognitive-model-memory shows a more conceptual model that includes information storage and access from working memory. 
+
+::: panel-tabset
+#### Plot
+
+```{r}
+#| echo: false
+#| label: fig-penguin-introspection
+#| fig-cap: Palmer Penguin data collected by species. What is the average number of Adelie and Chinstrap Penguins measured? What steps do you go through to calculate this average?
+#| out-width: 75%
+library(palmerpenguins)
+data(penguins)
+ggplot(penguins, aes(x = species)) + 
+  geom_bar(aes(fill = species)) +
+  scale_fill_manual("Penguin\nSpecies", values = c("#ff7400", "#c05ccb", "#056e76")) + 
+  xlab("Species") + 
+  ylab("# Penguins Measured") + 
+  ggtitle("Frequency of Penguins by Species") + 
+  theme_bw()
+```
+
+#### Cognitive Processes
+![A cognitive model of processes involved in computing the average height of two bars. [From Padilla et al (2018), an adaptation of Pinker (1990)]{.fig-citation}](../fig/padilla-vis-comprehension.png){#fig-cognitive-model-bar-avg}
+
+#### Working Memory
+
+![A more abstract cognitive model that includes working memory [From Padilla et al.  (2018)]{.fig-citation}](../fig/padilla-vis-decision-making.png){#fig-cognitive-model-memory}
+
+:::
+
+If we change chart types, the mental effort required to determine the average number of Chinstrap and Adelie penguins measured may be much more difficult, or even (nearly) impossible.
+
+::: panel-tabset
+
+#### Bar Chart
+
+![Annotated illustration of cognitive processes for estimating average bar height.](../fig/penguin-bar-annotated.svg)
+
+#### Stacked Bar Chart
+
+```{r fig-penguin-stacked}
+#| eval: false
+#| include: false
+ggplot(penguins, aes(x = 1)) + 
+  geom_bar(aes(fill = species), position = "stack") +
+  scale_fill_manual("Penguin\nSpecies", values = c("#ff7400", "#c05ccb", "#056e76")) + 
+  ylab("# Penguins Measured") + 
+  ggtitle("Frequency of Penguins by Species") + 
+  theme_bw() + 
+  coord_flip() + 
+  theme(axis.title.y = element_blank(), axis.text.y = element_blank(), axis.ticks.y = element_blank())
+```
+![Annotated illustration of cognitive processes for estimating average bar height in a stacked bar chart.](../fig/penguin-stacked-bar-annotated.svg)
+
+
+#### Pie Chart
+
+```{r fig-penguin-pie}
+#| eval: false
+#| include: false
+ggplot(penguins, aes(x = 1)) + 
+  geom_bar(aes(fill = species), position = "stack") +
+  scale_fill_manual("Penguin\nSpecies", values = c("#ff7400", "#c05ccb", "#056e76")) + 
+  ylab("# Penguins Measured") + 
+  ggtitle("Frequency of Penguins by Species") + 
+  theme_bw() + 
+  coord_polar(theta="y") +
+  theme(axis.title.y = element_blank(), axis.text.y = element_blank(), axis.ticks.y = element_blank())
+```
+
+![Annotated illustration of cognitive processes for estimating average slice size in a pie chart.](../fig/penguin-pie-annotated.svg)
+
+:::
+
+As these examples show, the rough processes involved in estimation are similar for the three versions of the chart, but the amount of working memory involved is not. In the bar chart, it is possible to scaffold the estimate completely off of the axis, without having to subtract or divide explicitly - the midpoint between the two bars can be estimated visually. 
+This is an illustration of the advantage of comparisons between position on an aligned scale relative to not aligned scales. 
+
+# Conclusion: Strategies for Readability
+
+With all of the information here, it can be hard to know what to focus on when you're making design choices for a graphic. 
+Here are a few strategies:
+
+1. Focus on the most important comparisons, making it as easy as possible to visually process important data features.
+
+2. For variables where accuracy is important, use $x$ and $y$ axes. Show less important variables using other aesthetics - color, shape, size, etc.
+
+3. As much as possible, reduce cognitive load for your viewers. This can take many forms, including putting labels directly on the chart rather than in a legend. However, be careful - too much clutter can make it hard to identify the important information.
+
+4. When looking at a chart, talk through what comparisons you're making audibly. Then, show a friend the same chart and have them do the same exercise. Many of the processes your brain uses can be observed via introspection; this is a useful way to document and examine the cognitive processes you're using and any obstacles you encounter that could be fixed via a redesign.
+
+<!-- # Testing Multiple Versions of a Chart -->
+
+<!-- http://homepage.stat.uiowa.edu/\~luke/classes/STAT4580-2024/notes.html#mostly-data-visualization -->

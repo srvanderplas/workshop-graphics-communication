@@ -1,3 +1,357 @@
 ---
 title: "Exploratory Data Analysis"
 ---
+
+You have a new dataset and it's time to dig in. 
+You may have some information about how the data was collected (or not!), but you almost certainly don't already know what's *in* the data - what artifacts, data entry errors, missing data, and outliers may show up.
+Exploratory Data Analysis, or EDA, is like an exploratory hike through unknown territory. 
+You may have prepared ahead of time - you may have a map, hiking boots, and so on, but you cannot predict what wildlife you will see or what obstacles you might encounter.
+
+
+
+Throughout this section, we'll use the `palmerpenguins` data to illustrate different ways to explore data.
+
+::: panel-tabset
+## R
+
+```{r}
+# Run if you don't have the package installed
+# install.packages("palmerpenguins")
+library(palmerpenguins)
+head(penguins)
+```
+
+## Python
+
+```{python}
+from palmerpenguins import load_penguins
+penguins = load_penguins()
+penguins.head()
+```
+
+:::
+
+
+
+
+
+# Examining the Data
+
+Roger Peng's e-book "Exploratory Data Analysis with R" contains a [checklist](https://bookdown.org/rdpeng/exdata/exploratory-data-analysis-checklist.html) for EDA that is a useful starting point. 
+
+This checklist covers mostly numerical summaries, but these numerical summaries can be incredibly useful for getting familiar with the data before proceeding with a graphical exploration. 
+
+1. Formulate your question - come up with at least one question to guide your analysis. This prevents you from trying to explore too many paths at once. (You don't necessarily need to stick to this path if you find another interesting one, though.)
+
+2. Read in your data
+
+3. Check the packaging - look at the number of rows and columns and ensure they match your expectations.
+
+4. Examine the structure of your data (e.g. using `str()` in R or `DataFrame.info()` in pandas)
+
+5. Look at the top and the bottom of your data using functions like `head()` and `tail()`
+
+6. Check your "n"s - examine counts of data by relevant variables, like location, participant, time to ensure the data matches your expectations.
+
+7. Validate with at least one external data source - check that the observations in your data fall within an acceptable range defined by some outside data source.
+
+8. Try the easy solution first - get a simple answer to your question with a quick plot or table
+
+9. Challenge your solution - spend a bit more time answering your question by e.g. summarizing your data across a relevant dimension or examining the effect of important covariates.
+
+10. Follow up - do you have the right data to answer your question? Do you need additional data? Do you need to adjust your question?
+
+
+# Numerical EDA
+
+It is often good to calculate some basic summary statistics for each variable, along with the assessments above and the graphical summaries we'll focus on in this section.
+
+::: panel-tabset
+
+## R
+The `skimr` package in R produces very visually appealing numerical summaries.
+
+```{r}
+library(skimr)
+skim(penguins)
+```
+
+
+## Python
+
+The `skimpy` package in python is modeled on the `skimr` R package, but somehow has a much better name. 
+
+```{python}
+from skimpy import skim
+skim(penguins)
+```
+
+:::
+
+
+# Graphical EDA
+
+When examining a data set, it is often useful to start out by examining single variables. 
+We often care about distributions of data, both for getting to know the dataset and for considering modeling possibilities once we transition to confirmatory data analysis. 
+
+The following chunks load in the graphics packages we'll use for the rest of this section.
+
+::: panel-tabset
+
+## R
+
+```{r}
+library(ggplot2)
+```
+
+## Python
+
+```{python}
+import seaborn as sns 
+import seaborn.objects as so
+import matplotlib.pyplot as plt
+```
+
+:::
+
+## One-dimensional summaries
+
+There are several basic options for distribution assessment:
+
+- Boxplots (numerical data) - visually simple graphical five-number summaries
+- Histograms (numerical data) - show full distribution of the data, useful for assessing skewness, etc.
+- Density plot (numerical data) - continuous version of histogram
+- Barplots (categorical data) - categorical equivalent of histogram.
+
+It is often common to initially make these plots for one variable and then to begin to explore conditional distributions by drawing multiple plots for different values of a different variable.
+
+The following examples show exploratory plots for the `palmerpenguins` data. 
+
+### Boxplots
+
+::: panel-tabset
+#### R
+```{r}
+ggplot(penguins) + geom_boxplot(aes(y = body_mass_g))
+ggplot(penguins) + geom_boxplot(aes(x = sex, y = body_mass_g))
+ggplot(penguins) + geom_boxplot(aes(x = species, y = body_mass_g))
+```
+
+
+#### Python
+
+```{python}
+
+sns.boxplot(data = penguins, y = "body_mass_g")
+plt.show()
+plt.close()
+
+sns.boxplot(data = penguins, x = "sex", y = "body_mass_g")
+plt.show()
+plt.close()
+
+
+sns.boxplot(data = penguins, x = "species", y = "body_mass_g")
+plt.show()
+plt.close()
+```
+
+
+:::
+
+### Histograms
+
+::: panel-tabset
+
+#### R
+
+```{r}
+ggplot(penguins) + geom_histogram(aes(x = body_mass_g))
+ggplot(penguins) + geom_histogram(aes(x = body_mass_g, fill = sex), alpha = .5, position = "identity")
+ggplot(penguins) + geom_histogram(aes(x = body_mass_g, fill = species), alpha = .5, position = "identity")
+```
+
+
+#### Python
+
+```{python}
+(
+  so.Plot(penguins, x = "body_mass_g")
+    .add(so.Bars(), so.Hist(bins=30))
+    .show()
+)
+plt.close()
+
+(
+  so.Plot(penguins, x = "body_mass_g", color = "sex")
+    .add(so.Bars(alpha=.5), so.Hist(bins=30))
+    .show()
+)
+plt.close()
+
+(
+  so.Plot(penguins, x = "body_mass_g", color = "species")
+    .add(so.Bars(alpha=.5), so.Hist(bins=30))
+    .show()
+)
+plt.close()
+```
+:::
+
+### Density Plots
+
+
+::: panel-tabset
+
+#### R
+
+```{r}
+ggplot(penguins) + geom_density(aes(x = body_mass_g))
+ggplot(penguins) + geom_density(aes(x = body_mass_g, fill = sex), alpha = .5)
+ggplot(penguins) + geom_density(aes(x = body_mass_g, fill = species), alpha = .5)
+```
+
+
+#### Python
+
+```{python}
+so.Plot(penguins, x = "body_mass_g").add(so.Area(), so.KDE()).show()
+plt.close()
+
+(
+  so.Plot(penguins, x = "body_mass_g", color = "sex")
+    .add(so.Area(), so.KDE(common_norm=False))
+    .show()
+)
+plt.close()
+
+(
+  so.Plot(penguins, x = "body_mass_g", color = "species")
+    .add(so.Area(), so.KDE(common_norm=False))
+    .show()
+)
+plt.close()
+```
+:::
+
+### Bar Plots
+
+
+::: panel-tabset
+
+#### R
+
+```{r}
+ggplot(penguins) + geom_bar(aes(x = species))
+ggplot(penguins) + geom_bar(aes(x = species, fill = sex), position = "dodge")
+ggplot(penguins) + geom_bar(aes(x = species, fill = island))
+```
+
+
+#### Python
+
+```{python}
+(
+  so.Plot(penguins, x = "species")
+    .add(so.Bar(), so.Count())
+    .show()
+)
+plt.close()
+
+(
+  so.Plot(penguins, x = "species", color = "sex")
+    .add(so.Bar(), so.Count(), so.Dodge())
+    .show()
+)
+plt.close()
+
+(
+  so.Plot(penguins, x = "species", color = "island")
+    .add(so.Bar(), so.Count(), so.Stack())
+    .show()
+)
+plt.close()
+```
+:::
+
+
+## Two-dimensional summaries
+
+Some of the one-dimensional summaries discussed above are easily modified into two dimensional summaries by coloring by or faceting by another variable. 
+Other two-dimensional summaries require different types of plots: for instance, scatter plots, which show two numerical variables and can be modified to use color, shape, and facets to include even more information. 
+
+### Scatterplots
+
+::: panel-tabset
+
+#### R
+
+```{r}
+ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point() 
+
+ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm, color = species)) +
+  geom_point() 
+
+ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm, color = species)) +
+  geom_point() +
+  facet_wrap(~year)
+```
+
+#### Python
+
+```{python}
+(
+  so.Plot(penguins, x = "bill_length_mm", y = "bill_depth_mm")
+    .add(so.Dot())
+    .show()
+)
+plt.close()
+
+(
+  so.Plot(penguins, x = "bill_length_mm", y = "bill_depth_mm", color = "species")
+    .add(so.Dot())
+    .show()
+)
+plt.close()
+
+(
+  so.Plot(penguins, x = "bill_length_mm", y = "bill_depth_mm", color = "species")
+    .facet("year")
+    .add(so.Dot())
+    .show()
+)
+plt.close()
+```
+
+:::
+
+### Scatter plot Matrices
+
+Sometimes, we want to examine conditional relationships between many different variables at a time - for instance, to identify highly correlated variables when considering fitting a linear model.
+Scatter plot matrices allow us to examine relationships between many sets of two variables at once.
+
+::: panel-tabset
+
+#### R
+
+```{r, message = F, warning = F}
+#| fig-width: 8
+#| fig-height: 8
+#| out-width: 100%
+library(GGally)
+ggpairs(penguins, columns = 3:6, aes(color = species))
+```
+
+#### Python
+
+```{python}
+#| fig-width: 8
+#| fig-height: 8
+#| out-width: 100%
+penguin_measures = penguins.drop("year", axis = 1)
+sns.pairplot(penguin_measures, hue = "species")
+plt.close()
+```
+
+:::

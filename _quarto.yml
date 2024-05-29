@@ -1,6 +1,9 @@
 project:
   type: website
   output-dir: docs
+  preview:
+    port: 7777
+
 
 website:
   title: "Workshop: Effective Graphics for Visual Communication with Data"
@@ -14,6 +17,10 @@ website:
           - "content/contents.qmd"
           - "content/00-Setup.qmd"
           - "content/01-Fundamentals.qmd"
+          - "content/02-eda.qmd"
+          - "content/03-accessibility.qmd"
+          - "content/04-rules.qmd"
+          - "content/05-workshop.qmd"
 
 
 format:

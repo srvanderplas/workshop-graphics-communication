@@ -1,0 +1,26 @@
+---
+title: "Observable Penguins"
+toc: true
+engine: knitr
+---
+
+
+```{ojs}
+data=FileAttachment("../data/penguins.csv").csv({typed: true})
+```
+
+We can create a tabular representation of the full dataset:
+```{ojs}
+Inputs.table(data)
+```
+
+Let's create a simple scatterplot of `bill_length_mm` vs `bill_depth_mm`:
+
+```{ojs}
+Plot.plot({
+  marks: [
+    Plot.dot(data, {x: "bill_length_mm", y: "bill_depth_mm", fill: "species"})
+  ],
+  color: {legend: true}
+})
+```

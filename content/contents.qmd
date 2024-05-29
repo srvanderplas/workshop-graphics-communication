@@ -1,6 +1,6 @@
 ---
 title: "Workshop Materials"
 listing: 
-  contents: 
-    - "*.qmd"
+  contents: "../content/*.qmd"
+  sort: filename
 ---

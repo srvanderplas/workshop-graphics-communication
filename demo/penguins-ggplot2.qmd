@@ -1,0 +1,14 @@
+---
+title: "Ggplot2 Penguins"
+toc: true
+engine: knitr
+---
+
+Let's create a plot of the penguins data using ggplot2.
+
+```{r}
+data <- read.csv("../data/penguins.csv")
+library(ggplot2)
+ggplot(data, aes(x = bill_length_mm, y = bill_depth_mm, color = species)) + geom_point()
+```
+

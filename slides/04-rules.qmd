@@ -1,0 +1,6 @@
+---
+title: "Rules... and when to break them"
+format: 
+  revealjs:
+    theme: [default, inverse.scss]
+---

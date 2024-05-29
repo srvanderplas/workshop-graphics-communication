@@ -1,0 +1,56 @@
+---
+title: "Fundamentals of Graphical Communication"
+format: 
+  revealjs:
+    theme: [default, inverse.scss]
+---
+
+# Overview: Perception & Cognitive Psych
+
+![](../fig/descartes-perception-timeline.svg)
+
+## The Eye
+
+![The human eye, with closeup of receptor cells in the retina. [[Image Source](https://commons.wikimedia.org/wiki/File:Figure_36_05_02.png) [License](https://creativecommons.org/licenses/by/4.0/deed.en) Authors: OpenStax Copyright Holders: Rice University Publishers: OpenStax OpenStax Biology]{.fig-citation}](https://upload.wikimedia.org/wikipedia/commons/9/9e/Figure_36_05_02.png){#fig-retina-diagram}
+
+::: notes
+
+Important parts:
+
+- rods and cones - transform light waves into neural signals
+  - rods: light intensity (light/dark)
+  - cones: light wavelength (color)
+- blindspot - region where the optic nerve exits the back of the eye. We don't notice this because our brain compensates.
+- fovea - region of mostly cones, highest acuity, but you can't notice e.g. faint stars because you have so many fewer rods in this area. Focusing on a point involves looking at it with your fovea, generally speaking.
+:::
+
+## Color Vision
+
+
+![Absorption spectra of rods and short (blue), medium (green), and long (red) wave cones. [Image modified from [Pancrat's Wikimedia Commons work](https://commons.wikimedia.org/wiki/File:Spectre_absorption_des_cones.svg). [License](https://creativecommons.org/licenses/by-sa/3.0/deed.en).]{.fig-citation}](../fig/Absorption-Spectra-Retina.svg){#fig-color-range}
+
+::: notes
+
+Notice that we have better color differentiation in the yellow-green portion of the visual spectrum, compared to red/blue. Sun's light is primarily yellow, most plants are green - this is evolutionary optimization at work. It also is one reason why rainbow color schemes are hard to use - we differentiate different parts of the spectrum with higher resolution, so rainbows don't map to perceptual space well.
+:::
+
+## The Brain (Hardware)
+
+- Signals from the retina are integrated - multiple rods combined together
+  - Results in optical illusions - Hermann grid, Mach bands
+
+- Feature detectors - parts of the brain that recognize lines at specific angles, in spatial arrays
+
+- Specialized modules for e.g. face detection
+
+- Lots of additional processing -- "software"
+
+## Selective Attention
+
+{{< video https://youtu.be/vJG698U2Mvo width="1600" height="900" start = "4">}}
+
+## Selective Attention
+
+[**Preattentive** features]{.cerulean .emph .large} such as color, shape, position, are integrated and applied to single objects through [**focused attention**]{.purple .emph .large}
+
+<div class="tenor-gif-embed" data-postid="16119656" data-share-method="host" data-aspect-ratio="2.2069" data-width="100%"><a href="https://tenor.com/view/eyes-on-me-focus-pay-attention-look-at-me-pay-attention-to-me-gif-16119656">Eyes On Me Focus Sticker</a>from <a href="https://tenor.com/search/eyes+on+me-stickers">Eyes On Me Stickers</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
