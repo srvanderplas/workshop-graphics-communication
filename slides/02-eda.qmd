@@ -5,3 +5,97 @@ format:
     theme: [default, inverse.scss]
 ---
 
+> "Far better an approximate answer to the right question, which is often vague, than an exact answer to the wrong question, which can always be made precise."
+> 
+> — John Tukey
+
+## Guiding Questions
+
+- What does this data have to tell me about the topic?
+
+- Is the data reliable?
+
+- Is the data complete?
+
+- How are the variables distributed?
+
+- How are the variables related?
+
+
+## Question Generation
+
+- Does the structure of the data match your expectations?
+
+- Did the data read in correctly?
+
+- How does the data fit in context?
+
+- Do the observations make sense? 
+
+    - scale
+    - missingness
+    - relationships with other variables
+
+## Numerical EDA
+
+- Basic summary statistics
+
+- Made easier with tools like `skimr` and `skimpy` that tabulate summaries and sparkline charts
+
+```{r, include = F}
+library(datasauRus)
+new_data <- datasaurus_dozen
+names(new_data) <- c("group", "V1", "V2")
+```
+
+```{r}
+#| echo: true
+#| results: false
+library(skimr)
+skim(new_data)
+```
+
+## Numerical EDA {.smaller}
+
+```{r}
+#| echo: false
+library(skimr)
+summary(skim(new_data))
+```
+
+## Numerical EDA {.smaller}
+
+```{r}
+#| echo: false
+#| results: markup
+library(skimr)
+get_first_bit <- function(x) {
+  tmp <- partition(x)[[1]]
+  names(tmp)[1] <- "var"
+  list(tmp[,1:3], tmp[,c(1, 4:8)])
+}
+res <- skim(new_data) |> get_first_bit() |> purrr::map(knitr::kable) 
+res[[1]]
+```
+```{r}
+#| echo: false
+#| results: markup
+res[[2]]
+```
+
+
+## Numerical EDA {.smaller}
+
+```{r}
+#| echo: false
+#| results: markup
+library(skimr)
+get_sec_bit <- function(x) {
+  tmp <- partition(x)[[2]]
+  names(tmp)[1] <- "var"
+  list(tmp[,1:5], tmp[,c(1, 6:11)])
+}
+res <- skim(new_data) |> get_sec_bit() |> purrr::map(knitr::kable) 
+res[[1]]
+res[[2]]
+```
