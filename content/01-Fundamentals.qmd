@@ -247,13 +247,13 @@ These principles are demonstrated in @fig-gestalt.
 
 ### Visual Memory
 We have discussed how visual stimuli are perceived and how objects are recognized; we now must examine how visual stimuli are encoded into memory. 
-Most researchers believe that visual perceptions are encoded in an analog fashion, so that the memory of an image is closely related to the perception of that same image [@cognition].
+Visual perceptions are thought to be encoded in an analog fashion, so that the memory of an image is closely related to the perception of that same image.
 Other theories suggest that visual perceptions are encoded semantically, that is, the description of a visual scene would be encoded, rather than a mental ``image" of that scene. 
 Both theories are likely at least partially correct, but the analog encoding of visual images is more relevant to statistical graphics because the accuracy of the stored image has the potential to affect recall of the contents of that image (and thus what people remember about a particular graphic). 
 Experimental evidence for analog encoding includes the mental rotation task, where participants must determine whether or not a figure is a rotation of a target figure, as shown in @fig-mentalRotation. 
-@shepard1988mental showed that reaction time was proportional to the angle of rotation of the stimuli, which suggests that participants were mentally rotating the figure as they would rotate a three-dimensional figure in space. 
+@shepardMentalRotationEffects1988 showed that reaction time was proportional to the angle of rotation of the stimuli, which suggests that participants were mentally rotating the figure as they would rotate a three-dimensional figure in space. 
 
-![Rotation task from @shepard1988mental. Are the two images the same? [[Image Source](https://en.wikipedia.org/wiki/Mental_rotation#/media/File:Mental_rotation_task_(diagram)_(cropped).jpg) [License](https://commons.wikimedia.org/wiki/File:Mental_rotation_task_(diagram)_(cropped).jpg?uselang=en#Licensing)]{.fig-citation}](../fig/Mental_rotation_task_(diagram)_(cropped).jpg){#fig-mentalRotation}
+![Rotation task from @shepardMentalRotationEffects1988. Are the two images the same? [[Image Source](https://en.wikipedia.org/wiki/Mental_rotation#/media/File:Mental_rotation_task_(diagram)_(cropped).jpg) [License](https://commons.wikimedia.org/wiki/File:Mental_rotation_task_(diagram)_(cropped).jpg?uselang=en#Licensing)]{.fig-citation}](../fig/Mental_rotation_task_(diagram)_(cropped).jpg){#fig-mentalRotation}
 
 In addition, @kosslyn1978visual showed that mental representation of distances in a figure are accurate and that the time to encode those distances is proportional to the distances in the actual figure. 
 These studies suggest that the memory of an image (statistical graphic or otherwise) is a reasonably accurate facsimile of the original image (though the accuracy of the mental representation is of course likely to be moderated by attention and recall ability). 
