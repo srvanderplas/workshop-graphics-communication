@@ -204,8 +204,12 @@ div.csl-indent {
   <ul>
   <li><a href="#rules-and-guidelines-for-graphics" id="toc-rules-and-guidelines-for-graphics" class="nav-link active" data-scroll-target="#rules-and-guidelines-for-graphics">Rules and Guidelines for Graphics</a></li>
   <li><a href="#case-study-rainbow-color-schemes" id="toc-case-study-rainbow-color-schemes" class="nav-link" data-scroll-target="#case-study-rainbow-color-schemes">Case Study: Rainbow Color Schemes</a></li>
-  <li><a href="#case-study-polar-charts" id="toc-case-study-polar-charts" class="nav-link" data-scroll-target="#case-study-polar-charts">Case Study: Polar Charts</a></li>
-  <li><a href="#case-study" id="toc-case-study" class="nav-link" data-scroll-target="#case-study">Case Study: ??</a></li>
+  <li><a href="#case-study-polar-charts" id="toc-case-study-polar-charts" class="nav-link" data-scroll-target="#case-study-polar-charts">Case Study: Polar Charts</a>
+  <ul class="collapse">
+  <li><a href="#r" id="toc-r" class="nav-link" data-scroll-target="#r">R</a></li>
+  <li><a href="#python" id="toc-python" class="nav-link" data-scroll-target="#python">Python</a></li>
+  </ul></li>
+  <li><a href="#case-study" id="toc-case-study" class="nav-link" data-scroll-target="#case-study">Case Study:</a></li>
   </ul>
 </nav>
     </div>
@@ -527,6 +531,18 @@ div.csl-indent {
 </section>
 <section id="case-study-polar-charts" class="level1">
 <h1>Case Study: Polar Charts</h1>
+<p>Comparisons on polar scales are typically less accurate than comparisons on Cartesian scales, because positions are aligned along a common scale and take place over a single direction <span class="citation" data-cites="hofmannGraphicalTestsPower2012">(<a href="#ref-hofmannGraphicalTestsPower2012" role="doc-biblioref">Hofmann et al. 2012</a>)</span>.</p>
+<p>You are working for an institution whose employees are largely ex-military, and familiar with navigating via compass. You want to provide information on the average direction of high wind speeds (gusts <span class="math inline">\(\geq 50\)</span> mph) in a location over the course of a year, to assist with placement of two sets of emergency equipment to minimize the probability that a single high-wind event compromises both locations.</p>
+<p>Data source: <a href="https://open-meteo.com/en/docs/historical-weather-api#latitude=40.3978&amp;longitude=-95.6581&amp;start_date=2000-01-01&amp;end_date=2009-12-31&amp;hourly=temperature_2m,weather_code,wind_speed_10m,wind_speed_100m,wind_direction_10m,wind_direction_100m,wind_gusts_10m">Open-Meteo.com</a>. <a href="../data/open-meteo-40.39N95.70W305m.csv">Link to saved CSV</a></p>
+<p>You do some initial data cleaning and preparation to answer your question</p>
+<p>::: panel-tabset</p>
+<section id="r" class="level2">
+<h2 class="anchored" data-anchor-id="r">R</h2>
+</section>
+<section id="python" class="level2">
+<h2 class="anchored" data-anchor-id="python">Python</h2>
+<p>Consider the following two versions of the same chart:</p>
+</section>
 </section>
 <section id="case-study" class="level1">
 
@@ -535,7 +551,7 @@ div.csl-indent {
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">Case Study: ??</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">Case Study:</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-borlandRainbowColorMap2007" class="csl-entry" role="listitem">
 Borland, D., and R. M. Taylor. 2007. <span>“Rainbow <span>Color Map</span> (<span>Still</span>) <span>Considered Harmful</span>.”</span> <em>IEEE Computer Graphics and Applications</em> 27 (2): 14–17. <a href="https://doi.org/10.1109/mcg.2007.323435">https://doi.org/10.1109/mcg.2007.323435</a>.
 </div>
@@ -562,6 +578,9 @@ Haemer, Kenneth W. 1951. <span>“The Pseudo Third Dimension.”</span> <em>The 
 </div>
 <div id="ref-harrowerColorBrewerOrgOnline2003" class="csl-entry" role="listitem">
 Harrower, Mark, and Cynthia A. Brewer. 2003. <span>“<span>ColorBrewer</span>.org: An Online Tool for Selecting Colour Schemes for Maps.”</span> <em>The Cartographic Journal</em> 40 (1): 27–37. <a href="https://doi.org/10.1179/000870403235002042">https://doi.org/10.1179/000870403235002042</a>.
+</div>
+<div id="ref-hofmannGraphicalTestsPower2012" class="csl-entry" role="listitem">
+Hofmann, Heike, Lendie Follett, Mahbubul Majumder, and Dianne Cook. 2012. <span>“Graphical Tests for Power Comparison of Competing Designs.”</span> <em><span>IEEE</span> Transactions on Visualization and Computer Graphics</em> 18 (12): 2441–48. <a href="https://doi.org/10.1109/TVCG.2012.230">https://doi.org/10.1109/TVCG.2012.230</a>.
 </div>
 <div id="ref-JointCommitteeStandards1915" class="csl-entry" role="listitem">
 <span>“Joint Committee on Standards for Graphic Presentation.”</span> 1915. <em>Quarterly Publications of the American Statistical Association</em> 14 (112): 790–97. <a href="https://doi.org/10.2307/2965153">https://doi.org/10.2307/2965153</a>.

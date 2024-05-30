@@ -231,7 +231,33 @@ ggplot(penguins) +
 
 # Case Study: Polar Charts
 
-Comparisons on polar scales are typically less accurate than comparisons on Cartesian scales, because positions are aligned and of parallel information [. 
+Comparisons on polar scales are typically less accurate than comparisons on Cartesian scales, because positions are aligned along a common scale and take place over a single direction [@hofmannGraphicalTestsPower2012]. 
+
+You are working for an institution whose employees are largely ex-military, and familiar with navigating via compass. 
+You want to provide information on the average direction of high wind speeds (gusts $\geq 50$ mph) in a location over the course of a year, to assist with placement of two sets of emergency equipment to minimize the probability that a single high-wind event compromises both locations.
+
+Data source: [Open-Meteo.com](https://open-meteo.com/en/docs/historical-weather-api#latitude=40.3978&longitude=-95.6581&start_date=2000-01-01&end_date=2009-12-31&hourly=temperature_2m,weather_code,wind_speed_10m,wind_speed_100m,wind_direction_10m,wind_direction_100m,wind_gusts_10m). [Link to saved CSV](../data/open-meteo-40.39N95.70W305m.csv)
+
+You do some initial data cleaning and preparation to answer your question
+
+::: panel-tabset
+
+## R
+```{r}
+
+```
+
+## Python
+```{python}
+
+```
+
+
+Consider the following two versions of the same chart:
+
+```{r}
+
+```
 
 
 # Case Study: 
