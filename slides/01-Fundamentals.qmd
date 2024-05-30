@@ -3,7 +3,30 @@ title: "Fundamentals of Graphical Communication"
 format: 
   revealjs:
     theme: [default, inverse.scss]
+    slideAspectRatio: "16:9"
+execute:
+  warning: false
+  message: false
 ---
+
+```{r}
+#| label: setup
+#| include: false
+#| message: false
+suppressMessages(library(tidyverse))
+suppressMessages(library(ggthemes))
+
+# Empty theme definition
+new_theme_empty <- theme_void(base_size=16)
+# new_theme_empty$line <- element_blank()
+# new_theme_empty$strip.text <- element_blank()
+# new_theme_empty$axis.text <- element_blank()
+# new_theme_empty$plot.title <- element_blank()
+# new_theme_empty$axis.title <- element_blank()
+# new_theme_empty$plot.margin <- structure(c(0, 0, -1, -1), unit = "lines", valid.unit = 3L, class = "unit")
+# 
+
+```
 
 # Overview: Perception & Cognitive Psych
 
@@ -37,7 +60,7 @@ Notice that we have better color differentiation in the yellow-green portion of 
 ## The Brain (Hardware)
 
 - Signals from the retina are integrated - multiple rods combined together
-  - Results in optical illusions - Hermann grid, Mach bands
+  - Results in optical illusions - [Hermann grid](https://en.wikipedia.org/wiki/Grid_illusion#Theories), [Mach bands](https://en.wikipedia.org/wiki/Mach_bands)
 
 - Feature detectors - parts of the brain that recognize lines at specific angles, in spatial arrays
 
@@ -47,10 +70,484 @@ Notice that we have better color differentiation in the yellow-green portion of 
 
 ## Selective Attention
 
-{{< video https://youtu.be/vJG698U2Mvo width="1600" height="900" start = "4">}}
+{{< video https://youtu.be/vJG698U2Mvo width="1600" height="850" start = "4">}}
 
 ## Selective Attention
 
 [**Preattentive** features]{.cerulean .emph .large} such as color, shape, position, are integrated and applied to single objects through [**focused attention**]{.purple .emph .large}
 
 <div class="tenor-gif-embed" data-postid="16119656" data-share-method="host" data-aspect-ratio="2.2069" data-width="100%"><a href="https://tenor.com/view/eyes-on-me-focus-pay-attention-look-at-me-pay-attention-to-me-gif-16119656">Eyes On Me Focus Sticker</a>from <a href="https://tenor.com/search/eyes+on+me-stickers">Eyes On Me Stickers</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
+## Object Perception
+
+![](../fig/gestalt.svg)
+
+## Memory & Cognitive Load
+
++ **Visual Memory** -- Analog encoding affects recall of image content, relevant to statistical graphics.
+
++ **Working Memory** -- Active memory can contain about 7 chunks of information [@miller1956magical]; therefore, design graphics with $\le$ 7 categories to match memory capacity.
+
++ **Information Integration** -- Effective graphs help the brain integrate information across dimensions by creating "chunks" of information.
+
++ **Resource Limitations** -- Human attention is limited; focus on important data aspects.
+
+# The Psychology of Charts
+
+## Preattentive Perception (Color)
+
+```{r}
+#| fig-align: center
+knitr::include_graphics("https://srvanderplas.github.io/workshop-graphics-communication/content/01-Fundamentals_files/figure-html/fig-preattentive-1.png")
+```
+
+## Preattentive Perception (Shape)
+
+```{r}
+#| fig-align: center
+knitr::include_graphics("https://srvanderplas.github.io/workshop-graphics-communication/content/01-Fundamentals_files/figure-html/fig-preattentive-2.png")
+```
+
+## Preattentive Perception (Interference)
+
+```{r}
+#| fig-align: center
+knitr::include_graphics("https://srvanderplas.github.io/workshop-graphics-communication/content/01-Fundamentals_files/figure-html/fig-preattentive-3.png")
+```
+
+## Preattentive Perception (Dual Encoding)
+
+```{r}
+#| fig-align: center
+knitr::include_graphics("https://srvanderplas.github.io/workshop-graphics-communication/content/01-Fundamentals_files/figure-html/fig-preattentive-4.png")
+```
+
+
+## Concious Perception
+
++ Which parts of the graph are the most useful for answering a question?
++ How is information from the graph combined with pre-existing knowledge?
++ How does a graph promote understanding of the underlying data?
+
+## Task Based Processing
+
+**Question:** What is the relationship between the length of the eruption and the time between eruptions for Old Faithful?
+
+:::: columns
+::: column
+
+```{r task-steps}
+#| fig-width: 5
+#| fig-height: 5
+#| out-width: 80%
+#| echo: false
+#| message: false
+#| warning: false
+
+library(datasets)
+library(ggplot2)
+data(faithful)
+ggplot(faithful, aes(waiting, eruptions)) + 
+  geom_jitter() + 
+  xlab("Time Between Eruptions (minutes)") + 
+  ylab("Eruption Length (minutes)") + 
+  ggtitle("Old Faithful Eruptions") + 
+  geom_smooth(method="lm") + 
+  theme_bw()
+```
+
+Source: @ratwani2008thinking
+
+:::
+::: column
+
+1. Understand the question
+2. Search for identified quantities
+3. Sense-making and Storytelling
+4. Answer the question
+:::
+::::
+
+::: notes
+**Question:** What is the relationship between the length of the eruption and the time between eruptions for Old Faithful?
+
+1. Understand the question:
+
+    - Identify "length of eruption" and "time between eruptions" as things to search for in the graph.
+    
+2. Search for identified quantities:
+
+    - Look for "length of eruption" on the axes and determine that the $y$-coordinate contains that information. 
+    - Look for "time between eruptions" on the axes and determine that the $x$-coordinate contains that information. 
+    - Verify that these quantities are what are sought by re-reading the question.
+    
+3. Sense-making and Storytelling: 
+
+    - Establish that as the time between eruptions increases, the length of the eruption increases. 
+    - Note that there seems to be a bimodal distribution of points
+    
+4. Answer the question:
+
+    - As time between eruptions increases, length of the eruption increases.
+:::
+
+## Information Integration
+
+```{r}
+#| echo: false
+#| layout-ncol: 2
+
+set.seed(42335253)
+N <- 40
+sigma <- .25
+data <- tibble(
+  x = purrr::map(c(3, 3.5, 4), ~rnorm(N, ., sigma)) %>% unlist(),
+  y = purrr::map(c(4, 3, 4), ~rnorm(N, ., sigma)) %>% unlist(),
+  group = rep(LETTERS[1:3], each = N)
+)
+
+kmres <- kmeans(data[,1:2], 3)
+
+data$group_km <- kmres$cluster
+data <- data %>%
+  group_by(group_km) %>%
+  mutate(group_km = table(group) %>% sort(decreasing = T) %>% names() %>% `[`(1))
+
+library(ggplot2)
+library(ggforce)
+
+ggplot(data=data, aes(x=x, y=y)) + 
+  geom_point(size = 3, shape = 1) + 
+  theme_bw() + 
+  coord_fixed()
+
+ggplot(data=data, aes(x=x, y=y)) + 
+  geom_point(size = 3) + 
+  theme_bw() + 
+  geom_mark_ellipse(aes(fill = group_km), expand = unit(1, "mm"), alpha = .1, color = NA) + 
+  
+  scale_fill_brewer(palette="Set1", guide='none')  + 
+  coord_fixed()
+
+ggplot(data=data, aes(x=x, y=y, color = group_km)) + 
+  geom_point(size = 3) + 
+  scale_color_brewer(palette="Set1", guide='none')  + 
+  theme_bw() + 
+  coord_fixed()
+
+
+ggplot(data=data, aes(x=x, y=y, color = group_km, shape = group_km)) + 
+  geom_point(size = 3) + 
+  scale_color_brewer(palette="Set1", guide='none')  + 
+  scale_shape_discrete(guide='none', solid = F)  + 
+  theme_bw() + 
+  coord_fixed()
+```
+
+## A note about graphical conventions
+
+```{r}
+#| fig-align: center
+#| out-width: 50%
+knitr::include_graphics("../fig/Padilla-Inverse-y.png")
+```
+
+Image source: @padillaDecisionMakingVisualizations2018
+
+## Simple Charts
+
+Rank | Task
+--- | ---
+1 | Position (common scale)
+2 | Position (non-aligned scale)
+3 | Length, Direction, Angle, Slope
+4 | Area 
+5 | Volume, Density, Curvature
+6 | Shading, Color Saturation, Color Hue
+
+Sources: @clevelandGraphicalPerceptionTheory1984; @clevelandGraphicalPerceptionGraphical1985; @clevelandGraphicalPerceptionVisual1987
+
+## Color, Shape, Discriminability + Other Considerations {.scrollable}
+
++ Color provides ordinal and magnitude information, trading off numerical precision for cognitive efficiency.
++ Graphical scales must balance working memory demands with feature selection and discriminability.
++ Shapes and discriminable letters (H, Q, X) can effectively replace color without reducing accuracy.
++ Perceptual studies show that confusable shapes, letters, or colors increase processing time and decrease accuracy.
++ Trend lines and axis transformations aid in data interpretation and reduce cognitive load.
++ Labeled graphs reduce memory load by minimizing comparisons.
+
+## Example -- Palmer Penguin Species {.scrollable}
+
+Palmer Penguin data collected by species. What is the average number of Adelie and Chinstrap Penguins measured? What steps do you go through to calculate this average?
+
+::: panel-tabset
+#### Plot
+
+```{r}
+#| echo: false
+#| out-width: 75%
+library(palmerpenguins)
+data(penguins)
+ggplot(penguins, aes(x = species)) + 
+  geom_bar(aes(fill = species)) +
+  scale_fill_manual("Penguin\nSpecies", values = c("#ff7400", "#c05ccb", "#056e76")) + 
+  xlab("Species") + 
+  ylab("# Penguins Measured") + 
+  ggtitle("Frequency of Penguins by Species") + 
+  theme_bw()
+```
+
+#### Cognitive Processes
+![](../fig/padilla-vis-comprehension.png)
+
+Image source: Padilla et al (2018), an adaptation of Pinker (1990)
+
+#### Working Memory
+
+![](../fig/padilla-vis-decision-making.png)
+
+Image source: Padilla et al. (2018)
+
+:::
+
+## Example -- Palmer Penguin Species
+
+::: panel-tabset
+
+#### Bar Chart
+
+![](../fig/penguin-bar-annotated.svg)
+
+#### Stacked Bar Chart
+![](../fig/penguin-stacked-bar-annotated.svg)
+
+
+#### Pie Chart
+![](../fig/penguin-pie-annotated.svg)
+
+:::
+
+## Conclusion: Strategies for Readability {.scrollable}
+
+::: {.incremental}
+
+1. Focus on the most important comparisons, making it as easy as possible to visually process important data features.
+
+2. For variables where accuracy is important, use $x$ and $y$ axes. Show less important variables using other aesthetics - color, shape, size, etc.
+
+3. As much as possible, reduce cognitive load for your viewers. This can take many forms, including putting labels directly on the chart rather than in a legend.
+
+4. When looking at a chart, talk through what comparisons you're making audibly. Then, show a friend the same chart and have them do the same exercise.
+:::
+
+::: notes
+1. Focus on the most important comparisons, making it as easy as possible to visually process important data features.
+
+2. For variables where accuracy is important, use $x$ and $y$ axes. Show less important variables using other aesthetics - color, shape, size, etc.
+
+3. As much as possible, reduce cognitive load for your viewers. This can take many forms, including putting labels directly on the chart rather than in a legend. However, be careful - too much clutter can make it hard to identify the important information.
+
+4. When looking at a chart, talk through what comparisons you're making audibly. Then, show a friend the same chart and have them do the same exercise. Many of the processes your brain uses can be observed via introspection; this is a useful way to document and examine the cognitive processes you're using and any obstacles you encounter that could be fixed via a redesign.
+:::
+
+# You try! Let's critique and/or redesign a graph...
+
+```{r}
+#| eval: false
+#| include: false
+childcare_costs <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-05-09/childcare_costs.csv')
+counties <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-05-09/counties.csv')
+
+# join + clean data
+va_childcare <- full_join(counties,
+                 childcare_costs,
+                 ) |> 
+  filter(state_abbreviation == "VA") |> 
+  pivot_longer(cols = c(starts_with("mfcc_"), starts_with("mc_")),
+               names_to = c("center_type", "development_stage"),
+               values_to = "median_weekly_childcare_cost",
+               names_sep = "_"
+               ) |>
+  mutate(across(.cols = c(county_name, state_abbreviation, development_stage), 
+                .fns = ~ as.factor(.x)
+                ),
+         center_type = fct_recode(center_type,
+                                  "Family" = "mfcc",
+                                  "Center" = "mc"),
+         development_stage = str_to_title(development_stage),
+         ) |> 
+  filter(study_year > 2008) |> 
+  select(state_abbreviation, county_name, study_year, center_type, development_stage, median_weekly_childcare_cost) |> 
+  filter(county_name == "Richmond County")
+
+write_csv(va_childcare, here::here("data", "richmond-va-childcare.csv"))
+```
+
+## The Data: Weekly Childcare Costs {.scrollable}
+
+Download data and/or read directly from URL at
+
+<https://raw.githubusercontent.com/earobinson95/data-for-download/main/richmond-va-childcare.csv>
+
++ `state_abbreviation` VA
++ `county_name` Richmond County only
++ `study_year` 2009 - 2018
++ `center_type` Family / Center
++ `development_stage` Infant / Toddler / Preschool
++ `median_weekly_childcare_cost` in U.S. dollars
+
+Source: <https://www.dol.gov/agencies/wb/topics/featured-childcare>
+
+## The Data: Weekly Childcare Costs {.scrollable}
+
+```{r}
+#| echo: false
+richmond_childcare <- read_csv("https://raw.githubusercontent.com/earobinson95/data-for-download/main/richmond-va-childcare.csv")
+
+richmond_childcare |> 
+  DT::datatable(options = list(
+    autoWidth = TRUE,
+    columnDefs = list(list(width = '150px', targets = "_all")))
+  )
+```
+
+## The Research Question
+
+How do historical trends of full-time weekly median price charged for childcare differ between family-based and center-based care in Richmond, VA for each of the development stages?
+
+<br>
+
+Ask yourself...
+
++ What are the most important comparisons you want to make?
+
+::: notes
++ What is the "surprise" in this graph?
++ What question does this graph answer? What is the answer?
++ What do you wonder from the graph?
+:::
+
+## A (not very good) starting point... {.scrollable}
+
+::: panel-tabset
+### R (ggplot2)
+
+```{r}
+#| code-fold: true
+#| echo: true
+
+# read in the data and reorder the development stages
+richmond_childcare <- read_csv("https://raw.githubusercontent.com/earobinson95/data-for-download/main/richmond-va-childcare.csv") |> 
+  mutate(development_stage = fct_relevel(development_stage,
+                                         "Infant", "Toddler", "Preschool")
+         )
+```
+
+```{r}
+#| code-fold: true
+#| echo: true
+
+# a pretty bad start
+richmond_childcare |> 
+  filter(county_name == "Richmond County") |> 
+  ggplot(aes(x = study_year, 
+             y = median_weekly_childcare_cost,
+             fill = development_stage
+             )
+         ) +
+  geom_bar(stat = "identity",
+           position = "dodge") +
+  facet_wrap(~ center_type) +
+  scale_x_continuous(limits = c(2008, 2018),
+                     breaks = seq(2008, 2018, 2)
+                     ) +
+  scale_y_continuous(labels = scales::dollar) +
+  scale_fill_manual(values = c("#ff7400", "#c05ccb", "#056e76")) +
+  labs(x = "Study Year",
+       y = "Median Weekly Childcare Cost",
+       fill = "Development Stage") +
+  theme_bw()
+```
+
+```{r}
+#| code-fold: true
+#| echo: true
+
+# a slightly better start?
+richmond_childcare |> 
+  filter(county_name == "Richmond County") |> 
+  ggplot(aes(x = study_year, 
+             y = median_weekly_childcare_cost,
+             color = development_stage,
+             shape = center_type
+             )
+         ) +
+  geom_point() +
+  scale_x_continuous(limits = c(2008, 2018),
+                     breaks = seq(2008, 2018, 2)
+                     ) +
+  scale_y_continuous(labels = scales::dollar) +
+  scale_color_manual(values = c("#ff7400", "#c05ccb", "#056e76")) +
+  labs(x = "Study Year",
+       y = "Median Weekly Childcare Cost",
+       color = "Development Stage",
+       shape = "Center Type") +
+  theme_bw()
+```
+
+### Python
+
+```{python}
+#| code-fold: true
+#| echo: true
+
+import pandas as pd
+from plotnine import *
+import requests
+
+# Read in the data
+url = "https://raw.githubusercontent.com/earobinson95/data-for-download/main/richmond-va-childcare.csv"
+richmond_childcare = pd.read_csv(url)
+
+# Reorder the development stages
+richmond_childcare['development_stage'] = pd.Categorical(
+    richmond_childcare['development_stage'],
+    categories=["Infant", "Toddler", "Preschool"],
+    ordered=True
+)
+
+# First plot: Bar plot
+p1 = (ggplot(richmond_childcare, aes(x='study_year', 
+                                    y='median_weekly_childcare_cost', 
+                                    fill='development_stage')) +
+      geom_bar(stat='identity', position='dodge') +
+      facet_wrap('~center_type') +
+      scale_x_continuous(limits=(2008, 2018), breaks=range(2008, 2019, 2)) +
+      scale_y_continuous(labels=lambda l: ["${:,.0f}".format(v) for v in l]) +
+      scale_fill_manual(values=["#ff7400", "#c05ccb", "#056e76"]) +
+      labs(x="Study Year", y="Median Weekly Childcare Cost", fill="Development Stage") +
+      theme_bw()
+     )
+
+print(p1)
+
+# Second plot: Scatter plot
+p2 = (ggplot(richmond_childcare, aes(x='study_year', 
+                                    y='median_weekly_childcare_cost', 
+                                    color='development_stage', 
+                                    shape='center_type')) +
+      geom_point() +
+      scale_x_continuous(limits=(2008, 2018), breaks=range(2008, 2019, 2)) +
+      scale_y_continuous(labels=lambda l: ["${:,.0f}".format(v) for v in l]) +
+      scale_color_manual(values=["#ff7400", "#c05ccb", "#056e76"]) +
+      labs(x="Study Year", y="Median Weekly Childcare Cost", color="Development Stage", shape = "Center Type") +
+      theme_bw()
+     )
+
+print(p2)
+```
+:::
+
+## Share yours!
+
+Upload your redesigned graphic (even if you sketched or critiqued it!) to <https://bit.ly/sdss-redesign-the-graphic>.
