@@ -3,7 +3,56 @@ title: "Exploratory Data Analysis"
 format: 
   revealjs:
     theme: [default, inverse.scss]
+    navigation-mode: vertical
 ---
+
+```{r, echo = F, include = F}
+library(ggplot2)
+theme_set(theme_bw())
+library(datasauRus)
+library(tibble)
+library(dplyr)
+library(tidyr)
+library(magrittr)
+```
+```{python, echo = F, include = F}
+import matplotlib.pyplot as plt
+import seaborn as sns
+import seaborn.objects as so
+```
+```{r new-data-setup, eval = F, include = F}
+convert_groups <- tibble(orig = unique(datasaurus_dozen$dataset), new = LETTERS[1:13])
+
+add_missing <- function(data, n_na_v1, n_na_v2) {
+  missing_v1 <- slice_sample(data, n = n_na_v1) |>
+    mutate(V1 = NA)
+  missing_v2 <- slice_sample(data, n = n_na_v2) |>
+    mutate(V2 = NA)
+  return(bind_rows(data, missing_v1, missing_v2))
+}
+
+set.seed(23409234)
+new_data <- datasaurus_dozen |>
+  set_names(c("group", "V1", "V2")) |> 
+  left_join(convert_groups, by = c("group" = "orig")) |>
+  select(-group) |>
+  rename(group = new) |>
+  select(group, V1, V2) |>
+  nest(data = -group) |>
+  mutate(n_na_v1 = sample(1:20, n(), replace = T),
+         n_na_v2 = sample(1:20, n(), replace = T)) |>
+  mutate(data = purrr::pmap(list(data, n_na_v1, n_na_v2), add_missing)) |>
+  select(-starts_with("n_na_")) |>
+  unnest(data) |>
+  slice_sample(prop = 1, replace = F)
+
+write.csv(new_data, "../data/new_data.csv", row.names = F)
+```
+
+```{r, include = F}
+new_data <- read.csv("../data/new_data.csv")
+new_data_na_omit <- na.omit(new_data)
+```
 
 > "Far better an approximate answer to the right question, which is often vague, than an exact answer to the wrong question, which can always be made precise."
 > 
@@ -36,17 +85,36 @@ format:
     - missingness
     - relationships with other variables
 
-## Numerical EDA
+
+## Your Turn {.inverse}
+
+Dataset: US County-level data, https://shorturl.at/U9KUO
+
+About the data: https://github.com/evangambit/JsonOfCounties
+
+Read in the data in your favorite software and pick an interesting set of variables.
+
+Generate some questions to explore using EDA skills.
+
+Options: 
+- County geometry
+- Weather (NOAA)
+- Demographics (Census)
+- Cause of death (CDC, averaged 1999-2019)
+- Employment (BLS)
+- Police Shootings (Wash Post)
+- Average Income (BEA)
+- COVID deaths (USAFacts/CDC)
+- Election Results
+
+
+
+
+# Numerical EDA
 
 - Basic summary statistics
 
 - Made easier with tools like `skimr` and `skimpy` that tabulate summaries and sparkline charts
-
-```{r, include = F}
-library(datasauRus)
-new_data <- datasaurus_dozen
-names(new_data) <- c("group", "V1", "V2")
-```
 
 ```{r}
 #| echo: true
@@ -67,7 +135,7 @@ summary(skim(new_data))
 
 ```{r}
 #| echo: false
-#| results: markup
+#| include: false
 library(skimr)
 get_first_bit <- function(x) {
   tmp <- partition(x)[[1]]
@@ -75,6 +143,11 @@ get_first_bit <- function(x) {
   list(tmp[,1:3], tmp[,c(1, 4:8)])
 }
 res <- skim(new_data) |> get_first_bit() |> purrr::map(knitr::kable) 
+```
+
+```{r}
+#| echo: false
+#| results: markup
 res[[1]]
 ```
 ```{r}
@@ -88,7 +161,7 @@ res[[2]]
 
 ```{r}
 #| echo: false
-#| results: markup
+#| include: false
 library(skimr)
 get_sec_bit <- function(x) {
   tmp <- partition(x)[[2]]
@@ -96,6 +169,123 @@ get_sec_bit <- function(x) {
   list(tmp[,1:5], tmp[,c(1, 6:11)])
 }
 res <- skim(new_data) |> get_sec_bit() |> purrr::map(knitr::kable) 
+```
+```{r}
+#| echo: false
+#| results: markup
 res[[1]]
+```
+```{r}
+#| echo: false
+#| results: markup
 res[[2]]
 ```
+
+
+# Graphical EDA
+
+- Start with single variables (1D summaries)
+
+- Add in factor variables (Conditional 1D summaries)
+
+- Move to 2D summaries and pairwise scatterplots
+
+- For high dimensional numerical data, consider dimension reduction techniques (PCA, t-SNE, UMAP)
+
+- Be careful to notice/account for missing values
+    - `naniar` and `visdat` R packages
+    - `missingno` in python
+
+
+## Graphical EDA
+
+```{r}
+#| echo: true
+#| fig-width: 9
+#| fig-height: 4.5
+#| out-width: 100%
+library(visdat)
+vis_dat(new_data) + 
+  # Make color values a bit more colorblind friendly
+  scale_fill_manual(values = c("#d73027", "#4575b4"), 
+                    na.value = "#AAAAAA")
+```
+
+
+## Graphical EDA
+
+```{r}
+#| fig-width: 9
+#| fig-height: 4.5
+#| out-width: 100%
+#| echo: true
+#| output-location: fragment
+new_data |> 
+  pivot_longer(-group, names_to = "var", values_to = "value") |>
+  ggplot() + geom_boxplot(aes(x = value)) + facet_grid(var~.)
+```
+
+## Graphical EDA
+
+```{r}
+#| fig-width: 9
+#| fig-height: 4.5
+#| out-width: 100%
+#| echo: true
+#| output-location: fragment
+new_data |>
+  pivot_longer(-group, names_to = "var", values_to = "value") |>
+  ggplot() + geom_boxplot(aes(x = group, y = value)) + facet_grid(var~.)
+```
+
+
+
+## Graphical EDA
+
+```{r}
+#| echo: true
+#| fig-width: 9
+#| fig-height: 4.5
+#| output-location: fragment
+new_data |>
+  mutate(missing_val = is.na(V1) | is.na(V2)) |>
+  ggplot() + geom_bar(aes(x = group, fill = missing_val))
+```
+
+
+## Graphical EDA
+
+```{r}
+#| fig-width: 4.5
+#| fig-height: 4.5
+#| out-width: 100%
+#| echo: true
+#| output-location: column-fragment
+library(naniar)
+new_data |>
+  ggplot(aes(x = V1, y = V2)) + 
+  geom_miss_point() + 
+  ggtitle(paste(
+    "naniar package:",
+    "Include missing vars")) + 
+  theme(legend.position = 
+          "bottom")
+```
+
+
+## Graphical EDA
+
+```{r}
+#| fig-width: 9
+#| fig-height: 4
+#| out-width: 100%
+#| echo: true
+#| output-location: fragment
+new_data |>
+  ggplot(aes(x = V1, y = V2)) + geom_miss_point(size = .6) + 
+  facet_wrap(~group, nrow = 2) + 
+  ggtitle("naniar package: Include missing variables") + 
+  theme(legend.position = c(1, 1.25), legend.justification = c(1, 1.25),
+        legend.direction = "horizontal")
+```
+

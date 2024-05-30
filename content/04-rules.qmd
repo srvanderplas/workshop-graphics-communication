@@ -1,3 +1,238 @@
 ---
 title: "The Rules, and when to break them..."
 ---
+
+# Rules and Guidelines for Graphics
+
+There have been many sets of guidelines published about how to create charts and graphs, as far back as at least 1915 [@JointCommitteeStandards1915]. 
+Other useful references for creating "good" graphics are @wilkeFundamentalsDataVisualization2019 and @kosslynGraphDesignEye2006. Many people also like @tufteVisualDisplayQuantitative2001, which advocates for extreme minimalism in graphs well beyond what is supported by empirical research. 
+
+
+The 1915 guidelines are universal enough that most of the guidelines are still relevant today, despite the vast technological changes in chart creation in the last 100 years. The biggest oversight present in these recommendations is the lack of any attention to color; this is reasonable given that color charts produced during that era required the use of lithography. Where appropriate, I have rephrased, clarified language, or made a connection to a more general or modern principle below the original. Sketches are provided in the [original paper](doi.org/10.1080/15225445.1915.10503668) to illustrate each recommendation. 
+
+1. The general arrangement of a diagram should proceed from left to right.
+
+> That is, the x-axis should be increasing when moving right. 
+
+2. Where possible, represent quantities by linear magnitudes as areas or volumes are more likely to be misinterpreted.
+
+> Use the simplest representation of the data possible to convey the information. Ensure comparisons for which higher accuracy is required are represented spatially, using other aesthetics to represent variables where numerical precision is less relevant.
+
+> Principle of "proportional ink" - the ink dedicated to a quantity should be equivalent to the quantity.
+
+3. For a curve, the vertical scale, whenever practicable, should be selected so that the zero line will appear on the diagram.
+
+> Ensure that the natural range of the data is clearly indicated. 
+
+
+4. If the zero line of the vertical scale will not normally appear on the curve diagram, the zero line should be shown by the use of a horizontal break in the diagram.
+
+> More generally, use axis ranges that are relevant for the comparisons you wish to highlight. If comparisons are to be made on multiple scales, use inset graphs to show both the wider context and the zoomed-in details.
+
+5. The zero lines of the scales for a curve should be sharply distinguished from the other coordinate lines.
+
+> The axes should be visually distinguishable from the data.
+
+6. For curves having a scale representing percentages, it is usually desirable to emphasize in some distinctive way the 100% line or other line used as a basis of comparison.
+
+> Reference lines should be provided to make obvious comparisons easier.
+
+7. When the scale of a diagram refers to dates and the period represented is not a complete unit, it is better not to emphasize the first and last ordinates, since a diagram does not represent the beginning or end of time. 
+
+8. When curves are drawn on logarithmic coordinates, the limiting lines of the diagram should each be at some power of ten on the logarithmic scales.
+
+> Axis breaks should be meaningful and "round". When transforms are used, minor breaks should indicate the presence of the transform through uneven spacing.
+
+9. It is advisable not to show any more coordinate lines than necessary to guide the eye in reading the diagram.
+
+> Make the plot as simple as possible without over-simplifying. Provide only necessary grid lines and other visual annotations.
+
+10. The curve lines of a diagram should be sharply distinguished from the ruling.
+
+> Grid lines should be visually distinguishable from the data.
+
+11. In curves representing a series of observations, it is advisable, whenever possible, to indicate clearly on the diagram all the points representing the separate observations.
+
+> Show both the data and the summary statistics created using the data when possible.
+
+12. The horizontal scale for curves should usually be read from left to right, and the vertical scale from bottom to top.
+
+> Use conventional data representations to best fit into the Gestalt heuristics expected by viewers.
+
+13. Figures for the scales of a diagram should be placed at the left and bottom, or along the respective axes.
+
+> Use conventional layouts and positioning of axis elements to adhere to viewer expectations. 
+
+14. It is often desirable to include in the diagram the numerical data or formulae represented.
+
+> Where possible, provide the numerical data as a table or annotations on the chart. When included as text, this makes the information available to screen reader users as well as enabling greater precision. 
+
+15. If numerical data are not included in the diagram it is desirable to give the data in tabular form accompanying the diagram.
+
+> Make your complete data available for reproducbility purposes. Provide numerical summary data that is shown visually in a table for accessibility and numerical precision. 
+
+16. All lettering and all figures on a diagram should be placed so as to be easily read from the base as the bottom or from the right hand edge of the diagram as the bottom.
+
+> Use either horizontal text or vertical text oriented so that it can be easily read by the viewer. 
+
+17. The title of a diagram should be made as clear and complete as possible. Sub-titles or descriptions should be added if necessary to ensure clearness.
+
+> Use descriptive titles, subtitles, and figure captions. Include in the subtitle or figure caption the source of the data and any context necessary to interpret the graph. In the caption or alt-text, explain what variables are represented using what aesthetics, and highlight interesting features that the viewer should notice.
+
+
+In addition to these guidelines, there are a few other considerations that often surface in general design guidelines:
+
+
+- Color choices [;@redaRainbowColormapsWhat2022]
+    - General guidance: @crameriMisuseColourScience2020, @simmonSubtletiesColor2013
+    
+    - For categorical variables, **use no more than 7 distinct categories**. @harrowerColorBrewerOrgOnline2003 contains a number of different categorical schemes validated for use in maps (but that are often used for other data visualizations as well).
+    
+    - For continuous variables, consider using a **transformation to maximize order-of-magnitude discrimination**. Log2, Log10, and square root transformations are common depending on the range of the data represented. 
+    
+    - **Leverage common associations** (e.g. cold = blue, hot = red for temperature) to minimize cognitive and working memory load. Note that these may be culturally dependent. Avoid pink = female, blue = male color scales - not all common representations are good to reinforce or produce useful associations.
+    
+    - **Don't use rainbow color schemes** - they're bad for colorblindness and perceptually nonuniform [@lightEndRainbowColor2004;@borlandRainbowColorMap2007;@liuSomewhereRainbowEmpirical2018]. Some studies found (limited) advantages to these color schemes [@wareColorSequencesUnivariate1988;@redaRainbowsRevisitedModeling2021].
+    
+    - Where possible, **vary either hue or value, but not both**. Varying hue but not saturation results in a uniform intensity color scheme, such as those in the viridis palette [@@garnierViridisDefaultColor2018]. Varying value (color brightness) results in a sequential, monochrome gradient (e.g. from light blue to dark blue). Both viridis and monochrome color schemes have lower error than schemes that vary both hue and saturation [@liuSomewhereRainbowEmpirical2018]. When using grey monochrome gradients, the darker half of the spectrum has higher error than the lighter half [@liuSomewhereRainbowEmpirical2018]. 
+
+
+- **Show the difference between two curves** rather than showing both curves and relying on the viewer to subtract them - this visual subtraction is prone to optical illusions. Similarly, it is better to show variability and the trend line separately when the trend does not have approximately constant absolute slope. [@clevelandGraphicalPerceptionTheory1984;@vanderplasSignsSineIllusion2015]
+
+
+- **Aspect ratios are important** [@clevelandShapeParameterTwoVariable1988]
+    - Bank to $45^\circ$: when showing a trend, it is helpful to set the aspect ratio of the chart so that a line tangent to the curve is at approximately $45^\circ$. 
+    - Your aspect ratio should account for your data ranges. If your y-axis varies by 3 units and your x-axis varies over 8 units, you should have a wide, short chart. 
+
+- **Avoid using a third dimension**, either as a gratuitous enhancement or to represent additional data [@haemerPseudoThirdDimension1951;@spenceVisualPsychophysicsSimple1990;@popelkaEyetrackingStudyDifferent2013;@brath3DInfoVisHere2014;@dubel2D3DPresentation2014]. Exceptions:
+    - Naturally 3D data, such as surface topology
+    - Interactive 3D graphics that can be manipulated by the viewer and use realistic visual effects (e.g. are similar to natural 3D visual perception). 
+
+
+# Case Study: Rainbow Color Schemes
+While generally speaking, rainbow color schemes aren't recommended because they're not perceptually uniform, there are some studies suggesting that they help with identification of global data features, at the cost of local difference detection.
+
+In what circumstances could you justify breaking the "No rainbows" design guideline?
+
+```{r}
+library(ggplot2)
+library(palmerpenguins)
+data("penguins")
+theme_set(theme_bw())
+```
+
+::: panel-tabset
+
+## Perceptually Uniform
+
+```{r}
+ggplot(penguins) + 
+  geom_point(aes(x = bill_length_mm, 
+                 y = bill_depth_mm, 
+                 color = body_mass_g)) + 
+  scale_color_viridis_c()
+```
+
+## Single-Hue
+
+```{r}
+library(colorspace)
+endpoints <- polarLUV(L=c(90, 40), C=50, H=120) |> as("sRGB") |> hex()
+ggplot(penguins) + 
+  geom_point(aes(x = bill_length_mm, 
+                 y = bill_depth_mm, 
+                 color = body_mass_g)) + 
+  scale_color_gradient(low = endpoints[1], 
+                       high = endpoints[2], 
+                       trans = "log10")
+```
+
+## Rainbow
+
+
+```{r}
+ggplot(penguins) + 
+  geom_point(aes(x = bill_length_mm, 
+                 y = bill_depth_mm, 
+                 color = body_mass_g)) + 
+  scale_color_gradientn(colors = rainbow(30))
+```
+
+## Turbo (Better Rainbow)
+
+
+
+```{r}
+library(viridis)
+ggplot(penguins) + 
+  geom_point(aes(x = bill_length_mm, 
+                 y = bill_depth_mm, 
+                 color = body_mass_g)) + 
+  scale_color_viridis(option = "turbo")
+```
+:::
+
+Does your answer change if we plot each species separately, to emphasize within-species variation?
+
+
+::: panel-tabset
+
+## Perceptually Uniform
+
+```{r}
+ggplot(penguins) + 
+  geom_point(aes(x = bill_length_mm, 
+                 y = bill_depth_mm, 
+                 color = body_mass_g)) + 
+  facet_wrap(~species) + 
+  scale_color_viridis_c()
+```
+
+## Single-Hue
+
+```{r}
+ggplot(penguins) + 
+  geom_point(aes(x = bill_length_mm, 
+                 y = bill_depth_mm, 
+                 color = body_mass_g)) + 
+  facet_wrap(~species) + 
+  scale_color_gradient(low = endpoints[1], 
+                       high = endpoints[2], 
+                       trans = "log10")
+```
+
+## Rainbow
+
+
+```{r}
+library(viridis)
+ggplot(penguins) + 
+  geom_point(aes(x = bill_length_mm, 
+                 y = bill_depth_mm, 
+                 color = body_mass_g)) + 
+  facet_wrap(~species) + 
+  scale_color_gradientn(colors = rainbow(30))
+```
+## Turbo (Better Rainbow)
+
+
+
+```{r}
+library(viridis)
+ggplot(penguins) + 
+  geom_point(aes(x = bill_length_mm, 
+                 y = bill_depth_mm, 
+                 color = body_mass_g)) + 
+  facet_wrap(~species) + 
+  scale_color_viridis(option = "turbo")
+```
+:::
+
+
+# Case Study: Polar Charts
+
+Comparisons on polar scales are typically less accurate than comparisons on Cartesian scales, because positions are aligned and of parallel information [. 
+
+
+# Case Study: 
+
