@@ -532,16 +532,154 @@ div.csl-indent {
 <section id="case-study-polar-charts" class="level1">
 <h1>Case Study: Polar Charts</h1>
 <p>Comparisons on polar scales are typically less accurate than comparisons on Cartesian scales, because positions are aligned along a common scale and take place over a single direction <span class="citation" data-cites="hofmannGraphicalTestsPower2012">(<a href="#ref-hofmannGraphicalTestsPower2012" role="doc-biblioref">Hofmann et al. 2012</a>)</span>.</p>
-<p>You are working for an institution whose employees are largely ex-military, and familiar with navigating via compass. You want to provide information on the average direction of high wind speeds (gusts <span class="math inline">\(\geq 50\)</span> mph) in a location over the course of a year, to assist with placement of two sets of emergency equipment to minimize the probability that a single high-wind event compromises both locations.</p>
+<p>You are working for an institution whose employees are largely ex-military, and familiar with navigating via compass. You want to provide information on the average direction of high wind speeds (gusts <span class="math inline">\(\geq 50\)</span> mph or 80 kph) in a location over the course of a year, to assist with placement of two sets of emergency equipment to minimize the probability that a single high-wind event compromises both locations.</p>
 <p>Data source: <a href="https://open-meteo.com/en/docs/historical-weather-api#latitude=40.3978&amp;longitude=-95.6581&amp;start_date=2000-01-01&amp;end_date=2009-12-31&amp;hourly=temperature_2m,weather_code,wind_speed_10m,wind_speed_100m,wind_direction_10m,wind_direction_100m,wind_gusts_10m">Open-Meteo.com</a>. <a href="../data/open-meteo-40.39N95.70W305m.csv">Link to saved CSV</a></p>
-<p>You do some initial data cleaning and preparation to answer your question</p>
+<p>You do some initial data cleaning and preparation to answer your question, but when it comes time to plot the data, you start to consider whether it’s worth considering breaking the polar visualization rule. After all, your audience has some basic familiarity with compass directions, so plotting your data that way leverages their expectations of how directional data will be represented.</p>
 <p>::: panel-tabset</p>
 <section id="r" class="level2">
 <h2 class="anchored" data-anchor-id="r">R</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'lubridate'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    date, intersect, setdiff, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>keys <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://srvanderplas.github.io/workshop-graphics-communication/data/open-meteo-40.39N95.70W305m.csv"</span>, <span class="at">n_max =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 1 Columns: 6</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (2): timezone, timezone_abbreviation
+dbl (4): latitude, longitude, elevation, utc_offset_seconds
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>wind <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://srvanderplas.github.io/workshop-graphics-communication/data/open-meteo-40.39N95.70W305m.csv"</span>, <span class="at">skip =</span> <span class="dv">3</span>) <span class="sc">|&gt;</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time =</span> <span class="fu">force_tz</span>(time, keys<span class="sc">$</span>timezone), </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">is_high =</span> <span class="st">`</span><span class="at">wind_gusts_10m (km/h)</span><span class="st">`</span><span class="sc">&gt;=</span><span class="dv">80</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 87672 Columns: 8
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+dbl  (7): temperature_2m (°C), weather_code (wmo code), wind_speed_10m (km/h...
+dttm (1): time
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
 </section>
 <section id="python" class="level2">
 <h2 class="anchored" data-anchor-id="python">Python</h2>
-<p>Consider the following two versions of the same chart:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>wind <span class="op">=</span> pd.read_csv(<span class="st">"https://srvanderplas.github.io/workshop-graphics-communication/data/open-meteo-40.39N95.70W305m.csv"</span>, skiprows<span class="op">=</span> <span class="dv">3</span>)</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>wind[<span class="st">'is_high'</span>] <span class="op">=</span> wind[<span class="st">"wind_gusts_10m (km/h)"</span>] <span class="op">&gt;=</span> <span class="dv">80</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Consider the following two versions of the same plot:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Cartesian</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Polar</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(wind, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">wind_direction_10m (°)</span><span class="st">`</span>, </span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">y =</span> <span class="st">`</span><span class="at">wind_gusts_10m (km/h)</span><span class="st">`</span>)) <span class="sc">+</span> </span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Represent low wind gust speed data on the plot</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary_bin</span>(<span class="at">data =</span> <span class="fu">filter</span>(wind, <span class="sc">!</span>is_high), </span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">binwidth =</span> <span class="fl">2.5</span>,</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>                   <span class="at">fun.min =</span> <span class="st">"min"</span>, <span class="at">fun.max =</span> <span class="st">"max"</span>, </span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>                   <span class="at">geom =</span> <span class="st">"ribbon"</span>, <span class="at">fill =</span> <span class="st">"grey"</span>, <span class="at">alpha =</span> .<span class="dv">25</span>) <span class="sc">+</span> </span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Emphasize direction while showing gust speed </span></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># by dropping vertical line</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">data =</span> <span class="fu">filter</span>(wind, is_high), </span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>               <span class="fu">aes</span>(<span class="at">xend =</span> <span class="st">`</span><span class="at">wind_direction_10m (°)</span><span class="st">`</span>, </span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>                   <span class="at">yend =</span> <span class="dv">0</span>), </span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>               <span class="at">color =</span> <span class="st">"grey40"</span>) <span class="sc">+</span>  </span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> <span class="fu">filter</span>(wind, is_high)) <span class="sc">+</span> </span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Scale breaks that are sensible</span></span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="st">"Wind Direction (°)</span><span class="sc">\n</span><span class="st">at 10m altitude"</span>, </span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>                     <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">360</span>), </span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">45</span>, <span class="dv">90</span>, <span class="dv">135</span>, <span class="dv">180</span>, <span class="dv">225</span>, <span class="dv">270</span>, <span class="dv">315</span>, <span class="dv">360</span>), </span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"N"</span>, <span class="st">"NE"</span>, <span class="st">"E"</span>, <span class="st">"SE"</span>, <span class="st">"S"</span>, <span class="st">"SW"</span>, <span class="st">"W"</span>, <span class="st">"NW"</span>, <span class="st">"N"</span>), </span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>                     <span class="at">minor_breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">360</span>, <span class="at">by =</span> <span class="fl">22.5</span>)) <span class="sc">+</span> </span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="st">"Wind Gust Speed (km/h)</span><span class="sc">\n</span><span class="st">at 10m altitude"</span>) <span class="sc">+</span></span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Annotations to explain different treatment of high gust speeds</span></span>
+<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">aes.inherit =</span> F, <span class="at">yintercept =</span> <span class="dv">80</span>, <span class="at">color =</span> <span class="st">"grey20"</span>) <span class="sc">+</span> </span>
+<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">10</span>, <span class="at">y =</span> <span class="dv">80</span>, <span class="at">label =</span> <span class="st">"High Wind</span><span class="sc">\n</span><span class="st">(&gt;80 km/h)"</span>, <span class="at">hjust=</span><span class="sc">-</span><span class="fl">0.1</span>, <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in geom_hline(aes.inherit = F, yintercept = 80, color = "grey20"):
+Ignoring unknown parameters: `aes.inherit`</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="04-rules_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(wind, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">wind_direction_10m (°)</span><span class="st">`</span>, </span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">y =</span> <span class="st">`</span><span class="at">wind_gusts_10m (km/h)</span><span class="st">`</span>)) <span class="sc">+</span> </span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Represent low wind gust speed data on the plot</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary_bin</span>(<span class="at">data =</span> <span class="fu">filter</span>(wind, <span class="sc">!</span>is_high), </span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">binwidth =</span> <span class="fl">2.5</span>,</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>                   <span class="at">fun.min =</span> <span class="st">"min"</span>, <span class="at">fun.max =</span> <span class="st">"max"</span>, </span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>                   <span class="at">geom =</span> <span class="st">"ribbon"</span>, <span class="at">fill =</span> <span class="st">"grey"</span>, <span class="at">alpha =</span> .<span class="dv">25</span>) <span class="sc">+</span> </span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Emphasize direction while showing gust speed </span></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># by dropping vertical line</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">data =</span> <span class="fu">filter</span>(wind, is_high), </span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>               <span class="fu">aes</span>(<span class="at">xend =</span> <span class="st">`</span><span class="at">wind_direction_10m (°)</span><span class="st">`</span>, </span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>                   <span class="at">yend =</span> <span class="dv">0</span>), </span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>               <span class="at">color =</span> <span class="st">"grey40"</span>) <span class="sc">+</span>  </span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> <span class="fu">filter</span>(wind, is_high)) <span class="sc">+</span> </span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Scale breaks that are sensible</span></span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="st">"Wind Direction (°)</span><span class="sc">\n</span><span class="st">at 10m altitude"</span>, </span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>                     <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">360</span>), </span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">45</span>, <span class="dv">90</span>, <span class="dv">135</span>, <span class="dv">180</span>, <span class="dv">225</span>, <span class="dv">270</span>, <span class="dv">315</span>, <span class="dv">360</span>), </span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"NE"</span>, <span class="st">"E"</span>, <span class="st">"SE"</span>, <span class="st">"S"</span>, <span class="st">"SW"</span>, <span class="st">"W"</span>, <span class="st">"NW"</span>, <span class="st">"N"</span>), </span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>                     <span class="at">minor_breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">360</span>, <span class="at">by =</span> <span class="fl">22.5</span>)) <span class="sc">+</span> </span>
+<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="st">"Wind Gust Speed (km/h)</span><span class="sc">\n</span><span class="st">at 10m altitude"</span>) <span class="sc">+</span></span>
+<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Annotations to explain different treatment of high gust speeds</span></span>
+<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">aes.inherit =</span> F, <span class="at">yintercept =</span> <span class="dv">80</span>, <span class="at">color =</span> <span class="st">"grey20"</span>) <span class="sc">+</span> </span>
+<span id="cb35-24"><a href="#cb35-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">10</span>, <span class="at">y =</span> <span class="dv">80</span>, <span class="at">label =</span> <span class="st">"High Wind</span><span class="sc">\n</span><span class="st">(&gt;80 km/h)"</span>, <span class="at">hjust=</span><span class="sc">-</span><span class="fl">0.1</span>, <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb35-25"><a href="#cb35-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="at">theta =</span> <span class="st">"x"</span>, <span class="at">start =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in geom_hline(aes.inherit = F, yintercept = 80, color = "grey20"):
+Ignoring unknown parameters: `aes.inherit`</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="04-rules_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Which do you prefer? Why? Is it justifiable to break the “polar = bad” rule?</p>
+<p>Can you think of any alternatives or modifications that might provide similar contextual cues without using polar coordinates?</p>
 </section>
 </section>
 <section id="case-study" class="level1">

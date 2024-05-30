@@ -234,31 +234,103 @@ ggplot(penguins) +
 Comparisons on polar scales are typically less accurate than comparisons on Cartesian scales, because positions are aligned along a common scale and take place over a single direction [@hofmannGraphicalTestsPower2012]. 
 
 You are working for an institution whose employees are largely ex-military, and familiar with navigating via compass. 
-You want to provide information on the average direction of high wind speeds (gusts $\geq 50$ mph) in a location over the course of a year, to assist with placement of two sets of emergency equipment to minimize the probability that a single high-wind event compromises both locations.
+You want to provide information on the average direction of high wind speeds (gusts $\geq 50$ mph or 80 kph) in a location over the course of a year, to assist with placement of two sets of emergency equipment to minimize the probability that a single high-wind event compromises both locations.
 
 Data source: [Open-Meteo.com](https://open-meteo.com/en/docs/historical-weather-api#latitude=40.3978&longitude=-95.6581&start_date=2000-01-01&end_date=2009-12-31&hourly=temperature_2m,weather_code,wind_speed_10m,wind_speed_100m,wind_direction_10m,wind_direction_100m,wind_gusts_10m). [Link to saved CSV](../data/open-meteo-40.39N95.70W305m.csv)
 
-You do some initial data cleaning and preparation to answer your question
+You do some initial data cleaning and preparation to answer your question, but when it comes time to plot the data, you start to consider whether it's worth considering breaking the polar visualization rule. 
+After all, your audience has some basic familiarity with compass directions, so plotting your data that way leverages their expectations of how directional data will be represented.
 
 ::: panel-tabset
 
 ## R
 ```{r}
+library(readr)
+library(dplyr)
+library(lubridate)
 
+keys <- read_csv("https://srvanderplas.github.io/workshop-graphics-communication/data/open-meteo-40.39N95.70W305m.csv", n_max = 1)
+wind <- read_csv("https://srvanderplas.github.io/workshop-graphics-communication/data/open-meteo-40.39N95.70W305m.csv", skip = 3) |>
+  mutate(time = force_tz(time, keys$timezone), 
+         is_high = `wind_gusts_10m (km/h)`>=80)
 ```
 
 ## Python
 ```{python}
+import pandas as pd
 
+wind = pd.read_csv("https://srvanderplas.github.io/workshop-graphics-communication/data/open-meteo-40.39N95.70W305m.csv", skiprows= 3)
+wind['is_high'] = wind["wind_gusts_10m (km/h)"] >= 80
 ```
 
 
-Consider the following two versions of the same chart:
+Consider the following two versions of the same plot:
+
+::: panel-tabset
+## Cartesian
 
 ```{r}
-
+ggplot(wind, aes(x = `wind_direction_10m (°)`, 
+                      y = `wind_gusts_10m (km/h)`)) + 
+  # Represent low wind gust speed data on the plot
+  stat_summary_bin(data = filter(wind, !is_high), 
+                   binwidth = 2.5,
+                   fun.min = "min", fun.max = "max", 
+                   geom = "ribbon", fill = "grey", alpha = .25) + 
+  # Emphasize direction while showing gust speed 
+  # by dropping vertical line
+  geom_segment(data = filter(wind, is_high), 
+               aes(xend = `wind_direction_10m (°)`, 
+                   yend = 0), 
+               color = "grey40") +  
+  geom_point(data = filter(wind, is_high)) + 
+  # Scale breaks that are sensible
+  scale_x_continuous("Wind Direction (°)\nat 10m altitude", 
+                     limits = c(0, 360), 
+                     breaks = c(0, 45, 90, 135, 180, 225, 270, 315, 360), 
+                     labels = c("N", "NE", "E", "SE", "S", "SW", "W", "NW", "N"), 
+                     minor_breaks = seq(0, 360, by = 22.5)) + 
+  scale_y_continuous("Wind Gust Speed (km/h)\nat 10m altitude") +
+  # Annotations to explain different treatment of high gust speeds
+  geom_hline(aes.inherit = F, yintercept = 80, color = "grey20") + 
+  annotate("text", x = 10, y = 80, label = "High Wind\n(>80 km/h)", hjust=-0.1, vjust = -0.1)
 ```
 
+## Polar
+
+```{r}
+ggplot(wind, aes(x = `wind_direction_10m (°)`, 
+                      y = `wind_gusts_10m (km/h)`)) + 
+  # Represent low wind gust speed data on the plot
+  stat_summary_bin(data = filter(wind, !is_high), 
+                   binwidth = 2.5,
+                   fun.min = "min", fun.max = "max", 
+                   geom = "ribbon", fill = "grey", alpha = .25) + 
+  # Emphasize direction while showing gust speed 
+  # by dropping vertical line
+  geom_segment(data = filter(wind, is_high), 
+               aes(xend = `wind_direction_10m (°)`, 
+                   yend = 0), 
+               color = "grey40") +  
+  geom_point(data = filter(wind, is_high)) + 
+  # Scale breaks that are sensible
+  scale_x_continuous("Wind Direction (°)\nat 10m altitude", 
+                     limits = c(0, 360), 
+                     breaks = c(45, 90, 135, 180, 225, 270, 315, 360), 
+                     labels = c("NE", "E", "SE", "S", "SW", "W", "NW", "N"), 
+                     minor_breaks = seq(0, 360, by = 22.5)) + 
+  scale_y_continuous("Wind Gust Speed (km/h)\nat 10m altitude") +
+  # Annotations to explain different treatment of high gust speeds
+  geom_hline(aes.inherit = F, yintercept = 80, color = "grey20") + 
+  annotate("text", x = 10, y = 80, label = "High Wind\n(>80 km/h)", hjust=-0.1, vjust = -0.1) +
+  coord_polar(theta = "x", start = 0)
+```
+
+:::
+
+Which do you prefer? Why? Is it justifiable to break the "polar = bad" rule?
+
+Can you think of any alternatives or modifications that might provide similar contextual cues without using polar coordinates?
 
 # Case Study: 
 
