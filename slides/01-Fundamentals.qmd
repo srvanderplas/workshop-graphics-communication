@@ -383,6 +383,54 @@ va_childcare <- full_join(counties,
 write_csv(va_childcare, here::here("data", "richmond-va-childcare.csv"))
 ```
 
+```{r}
+#| echo: false
+#| include: false
+
+richmond_childcare <- read_csv("https://raw.githubusercontent.com/earobinson95/data-for-download/main/richmond-va-childcare.csv")
+
+# designing the graph to follow Gestalt hierarchy aligned with RQ, utilize double encoding, label directly on the plot, etc.
+richmond_childcare |> 
+  filter(county_name == "Richmond County") |> 
+  ggplot(aes(x = study_year, 
+             y = median_weekly_childcare_cost,
+             color = center_type,
+             shape = center_type,
+             linetype = center_type
+             )
+         ) +
+  geom_point(show.legend = F,
+             size = 2) +
+  geom_line(show.legend = F) +
+  facet_wrap(~ development_stage) +
+  scale_x_continuous(limits = c(2008, 2018),
+                     breaks = seq(2008, 2018, 2)
+                     ) +
+  scale_y_continuous(limits = c(75,175),
+                     breaks = seq(0,200, 25),
+                     labels = scales::dollar) +
+  geom_text(data = . %>% filter(development_stage == "Infant"), 
+           x = 2011.5, 
+           y = 150, 
+           label = "Center", 
+           color = "#ff7400",
+           inherit.aes = FALSE
+           ) +
+  geom_text(data = . %>% filter(development_stage == "Infant"),
+            x = 2014, 
+            y = 130, 
+            label = "Family", 
+            color = "#056e76"
+            ) +
+  scale_color_manual(values = c("#ff7400", "#056e76")) +
+  labs(x = "Study Year",
+       y = "Median Weekly Childcare Cost",
+       color = "Center Type",
+       shape = "Center Type",
+       linetype = "Center Type") +
+  theme_bw()
+```
+
 ## The Data: Weekly Childcare Costs {.scrollable}
 
 Download data and/or read directly from URL at
