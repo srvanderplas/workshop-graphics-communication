@@ -255,7 +255,7 @@ Experimental evidence for analog encoding includes the mental rotation task, whe
 
 ![Rotation task from @shepardMentalRotationEffects1988. Are the two images the same? [[Image Source](https://en.wikipedia.org/wiki/Mental_rotation#/media/File:Mental_rotation_task_(diagram)_(cropped).jpg) [License](https://commons.wikimedia.org/wiki/File:Mental_rotation_task_(diagram)_(cropped).jpg?uselang=en#Licensing)]{.fig-citation}](../fig/Mental_rotation_task_(diagram)_(cropped).jpg){#fig-mentalRotation}
 
-In addition, @kosslyn1978visual showed that mental representation of distances in a figure are accurate and that the time to encode those distances is proportional to the distances in the actual figure. 
+In addition, @kosslynMeasuringVisualAngle1978 showed that mental representation of distances in a figure are accurate and that the time to encode those distances is proportional to the distances in the actual figure. 
 These studies suggest that the memory of an image (statistical graphic or otherwise) is a reasonably accurate facsimile of the original image (though the accuracy of the mental representation is of course likely to be moderated by attention and recall ability). 
 
 The analog encoding of mental images is stored alongside the *gist* of an image. 
