@@ -242,28 +242,28 @@ new_data |>
 
 ## Your Turn {.inverse}
 
+::: {.callout-note}
 Dataset: US County-level data, https://shorturl.at/U9KUO
 
 About the data: https://github.com/evangambit/JsonOfCounties
+:::
 
-Read in the data in your favorite software and pick an interesting set of variables.
+**Tasks**
 
-Generate some questions to explore using EDA skills.
+1. Read in the data in your favorite software and pick an interesting set of variables.
 
-Use numerical and graphical summaries to answer your questions.
+2. Generate some questions to explore using EDA skills.
+
+3. Use numerical and graphical summaries to answer your questions.
 
 
 ## Your Turn {.inverse}
 
+Try out a few of the following techniques:
 
-Options: 
-- County geometry
-- Weather (NOAA)
-- Demographics (Census)
-- Cause of death (CDC, averaged 1999-2019)
-- Employment (BLS)
-- Police Shootings (Wash Post)
-- Average Income (BEA)
-- COVID deaths (USAFacts/CDC)
-- Election Results
-
+  - Tabular summaries
+  - Visualizing missing data
+  - Univariate distributions
+  - Conditional distributions
+  - Bivariate distributions
+  - Scatterplot matrices
