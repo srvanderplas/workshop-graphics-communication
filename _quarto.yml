@@ -4,6 +4,9 @@ project:
   preview:
     port: 7777
 
+execute:
+  cache: true
+  freeze: auto  # re-render only when source changes
 
 website:
   title: "Workshop: Effective Graphics for Visual Communication with Data"

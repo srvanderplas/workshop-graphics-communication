@@ -1,6 +1,86 @@
 ---
-title: "Accessibility: More than just Alt-text"
+title: "Accessibility"
+subtitle: "More than just Alt-text"
 format: 
   revealjs:
     theme: [default, inverse.scss]
+include-before-body:
+  text: |
+    <!-- olli -->
+    <script src="https://cdn.jsdelivr.net/npm/olli@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/olli-adapters@2"></script>
+    <!-- scramble-script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="scramble.js"></script>
 ---
+
+# Human Minimum Specs
+
+## Perception requires
+
+::: {.columns}
+
+::: {.column}
+::: {.fragment}
+[Visual acuity]{style="vertical-align:middle;"} ![](../fig/magnifying-glass-text.png){style="width:30%;vertical-align:middle;"}
+:::
+
+::: {.fragment style="vertical-align:bottom;"}
+[Color Vision]{style="vertical-align:middle;text-align:right;"}
+
+![](../fig/Absorption-Spectra-Retina.svg){style="width:100%;vertical-align:middle;text-align:right;"} 
+:::
+:::
+
+::: {.column}
+::: {.fragment style="text-align:right;"}
+Feature Integration
+:::
+
+::: {.fragment style="vertical-align:bottom;text-align:center;"}
+
+![](../fig/gestalt.svg){style="width:100%;vertical-align:middle;text-align:right;"} 
+
+[Grouping & Sense-making]{style="vertical-align:middle;text-align:right;"}
+:::
+:::
+
+:::
+
+
+
+
+## Understanding Requires
+
+
+::: {.fragment fragment-index=0}
+
+Reading comprehension. [Most charts have some text: title, axis labels, legends, and annotations. Any perceptual issues that affect reading affect data communication.]{#scramble .small}
+
+<script type="text/javascript" src="scramble.js"></script>
+
+:::
+
+::: {.fragment fragment-index=5 style="text-align:right;"}
+Information retrieval from LTM
+:::
+
+[Numeracy]{.fragment fragment-index=4}
+
+::: {.fragment fragment-index=2 style="text-align: center;"}
+Associating text and graph features
+:::
+
+
+::: {.fragment fragment-index=1 style="position:absolute; bottom:10%;left:0%;height:3em;"}
+![](../fig/Working Memory.png){width="40%"}
+
+Working Memory
+:::
+
+::: {.fragment fragment-index=3 style="text-align:right;"}
+[Spatial reasoning]{style="vertical-align:middle;"} ![](https://upload.wikimedia.org/wikipedia/commons/9/98/Mental_rotation_task_%28diagram%29_%28cropped%29.jpg){style="display: table-cell;vertical-align: middle;width:30%;"}
+:::
+
+
+

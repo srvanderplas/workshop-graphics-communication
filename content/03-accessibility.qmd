@@ -418,6 +418,7 @@ with open(filename, "wb") as f:
 ```{bash}
 #| echo: false
 #| include: false
+#| eval: false
 timidity penguins_sonification.mid -Ow -o ../fig/penguins_sonification.mp3
 ```
 
