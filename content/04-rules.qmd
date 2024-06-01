@@ -245,13 +245,17 @@ After all, your audience has some basic familiarity with compass directions, so 
 
 ## R
 ```{r}
-library(readr)
-library(dplyr)
-library(lubridate)
+#| messages: false
+suppressPackageStartupMessages(library(readr))
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(lubridate))
 
-keys <- read_csv("https://srvanderplas.github.io/workshop-graphics-communication/data/open-meteo-40.39N95.70W305m.csv", n_max = 1)
-wind <- read_csv("https://srvanderplas.github.io/workshop-graphics-communication/data/open-meteo-40.39N95.70W305m.csv", skip = 3) |>
-  mutate(time = force_tz(time, keys$timezone), 
+url <- "https://srvanderplas.github.io/workshop-graphics-communication/data/open-meteo-40.39N95.70W305m.csv"
+
+# Read in units, station info, etc.
+station_info <- read_csv(url, n_max = 1)
+wind <- read_csv(url, skip = 3) |>
+  mutate(time = force_tz(time, station_info$timezone), 
          is_high = `wind_gusts_10m (km/h)`>=80)
 ```
 
@@ -263,13 +267,36 @@ wind = pd.read_csv("https://srvanderplas.github.io/workshop-graphics-communicati
 wind['is_high'] = wind["wind_gusts_10m (km/h)"] >= 80
 ```
 
+:::
 
 Consider the following two versions of the same plot:
 
 ::: panel-tabset
-## Cartesian
+## Plots
 
-```{r}
+::: {layout-ncol=2}
+
+```{r cartesian-wind-plot}
+#| fig-width: 6
+#| fig-height: 6
+#| fig-label: fig-cartesian-wind
+#| fig-cap: Plot of high wind gust directions and speed for Brownville, NE between 2000 and 2009, using Cartesian coordinates.
+#| echo: false
+```
+
+```{r polar-wind-plot}
+#| fig-width: 6
+#| fig-height: 6
+#| fig-label: fig-polar-wind
+#| fig-cap: Plot of high wind gust directions and speed for Brownville, NE between 2000 and 2009, using polar coordinates.
+#| echo: false
+```
+
+:::
+
+## Cartesian Code
+
+```{r cartesian-wind-plot}
 ggplot(wind, aes(x = `wind_direction_10m (°)`, 
                       y = `wind_gusts_10m (km/h)`)) + 
   # Represent low wind gust speed data on the plot
@@ -296,9 +323,9 @@ ggplot(wind, aes(x = `wind_direction_10m (°)`,
   annotate("text", x = 10, y = 80, label = "High Wind\n(>80 km/h)", hjust=-0.1, vjust = -0.1)
 ```
 
-## Polar
+## Polar Code
 
-```{r}
+```{r polar-wind-plot}
 ggplot(wind, aes(x = `wind_direction_10m (°)`, 
                       y = `wind_gusts_10m (km/h)`)) + 
   # Represent low wind gust speed data on the plot

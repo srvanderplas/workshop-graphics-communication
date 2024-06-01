@@ -20,34 +20,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import seaborn.objects as so
 ```
-```{r new-data-setup, eval = F, include = F}
-convert_groups <- tibble(orig = unique(datasaurus_dozen$dataset), new = LETTERS[1:13])
-
-add_missing <- function(data, n_na_v1, n_na_v2) {
-  missing_v1 <- slice_sample(data, n = n_na_v1) |>
-    mutate(V1 = NA)
-  missing_v2 <- slice_sample(data, n = n_na_v2) |>
-    mutate(V2 = NA)
-  return(bind_rows(data, missing_v1, missing_v2))
-}
-
-set.seed(23409234)
-new_data <- datasaurus_dozen |>
-  set_names(c("group", "V1", "V2")) |> 
-  left_join(convert_groups, by = c("group" = "orig")) |>
-  select(-group) |>
-  rename(group = new) |>
-  select(group, V1, V2) |>
-  nest(data = -group) |>
-  mutate(n_na_v1 = sample(1:20, n(), replace = T),
-         n_na_v2 = sample(1:20, n(), replace = T)) |>
-  mutate(data = purrr::pmap(list(data, n_na_v1, n_na_v2), add_missing)) |>
-  select(-starts_with("n_na_")) |>
-  unnest(data) |>
-  slice_sample(prop = 1, replace = F)
-
-write.csv(new_data, "../data/new_data.csv", row.names = F)
-```
 
 ```{r, include = F}
 new_data <- read.csv("../data/new_data.csv")
@@ -84,30 +56,6 @@ new_data_na_omit <- na.omit(new_data)
     - scale
     - missingness
     - relationships with other variables
-
-
-## Your Turn {.inverse}
-
-Dataset: US County-level data, https://shorturl.at/U9KUO
-
-About the data: https://github.com/evangambit/JsonOfCounties
-
-Read in the data in your favorite software and pick an interesting set of variables.
-
-Generate some questions to explore using EDA skills.
-
-Options: 
-- County geometry
-- Weather (NOAA)
-- Demographics (Census)
-- Cause of death (CDC, averaged 1999-2019)
-- Employment (BLS)
-- Police Shootings (Wash Post)
-- Average Income (BEA)
-- COVID deaths (USAFacts/CDC)
-- Election Results
-
-
 
 
 # Numerical EDA
@@ -288,4 +236,34 @@ new_data |>
   theme(legend.position = c(1, 1.25), legend.justification = c(1, 1.25),
         legend.direction = "horizontal")
 ```
+
+
+# Your Turn {.inverse}
+
+## Your Turn {.inverse}
+
+Dataset: US County-level data, https://shorturl.at/U9KUO
+
+About the data: https://github.com/evangambit/JsonOfCounties
+
+Read in the data in your favorite software and pick an interesting set of variables.
+
+Generate some questions to explore using EDA skills.
+
+Use numerical and graphical summaries to answer your questions.
+
+
+## Your Turn {.inverse}
+
+
+Options: 
+- County geometry
+- Weather (NOAA)
+- Demographics (Census)
+- Cause of death (CDC, averaged 1999-2019)
+- Employment (BLS)
+- Police Shootings (Wash Post)
+- Average Income (BEA)
+- COVID deaths (USAFacts/CDC)
+- Election Results
 
