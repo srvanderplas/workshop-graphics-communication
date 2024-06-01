@@ -94,7 +94,7 @@ Information embedded in visual design themes (font sizes, colors, nesting, space
 
 In addition to the information below, which includes some web references, there is a lovely series of Observable posts on accessibility, contrast, and color choice for data visualization. [Check it out!](https://observablehq.com/@frankelavsky/chartability-contrast-series)
 
-### Color selection
+red### Color selection
 
 We'll first approach color selection with color impairment (aka "colorblindness", though most color impaired people can see some colors) in mind, though many of the considerations here factor into contrast considerations later.
 There are several approaches to accommodating color impairment:
