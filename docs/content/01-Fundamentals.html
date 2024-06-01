@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.489">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,6 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -65,13 +64,7 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -96,9 +89,9 @@ div.csl-indent {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
+      <div class="navbar-brand-container">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Workshop: Effective Graphics for Visual Communication with Data</span>
     </a>
@@ -110,52 +103,52 @@ div.csl-indent {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
-<span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
-<span class="menu-text">Course Description</span></a>
+    <a class="nav-link" href="../about.html" rel="" target="">
+ <span class="menu-text">Course Description</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-materials" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-materials" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
  <span class="menu-text">Materials</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-materials">    
         <li>
-    <a class="dropdown-item" href="../content/contents.html">
+    <a class="dropdown-item" href="../content/contents.html" rel="" target="">
  <span class="dropdown-text">Workshop Materials</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../content/00-Setup.html">
+    <a class="dropdown-item" href="../content/00-Setup.html" rel="" target="">
  <span class="dropdown-text">Setting Up for the Workshop</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../content/01-Fundamentals.html">
+    <a class="dropdown-item" href="../content/01-Fundamentals.html" rel="" target="">
  <span class="dropdown-text">Fundamentals of Graphical Communication</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../content/02-eda.html">
+    <a class="dropdown-item" href="../content/02-eda.html" rel="" target="">
  <span class="dropdown-text">Exploratory Data Analysis</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../content/03-accessibility.html">
+    <a class="dropdown-item" href="../content/03-accessibility.html" rel="" target="">
  <span class="dropdown-text">Accessibility: More than just Alt-text</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../content/04-rules.html">
+    <a class="dropdown-item" href="../content/04-rules.html" rel="" target="">
  <span class="dropdown-text">The Rules, and when to break them…</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../content/05-workshop.html">
+    <a class="dropdown-item" href="../content/05-workshop.html" rel="" target="">
  <span class="dropdown-text">Workshop: Improving Our Graphics</span></a>
   </li>  
     </ul>
   </li>
 </ul>
-          </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools ms-auto">
 </div>
+          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -222,9 +215,7 @@ div.csl-indent {
   </div>
   
 
-
 </header>
-
 
 <section id="a-quick-introduction-to-perception-and-cognition" class="level1">
 <h1>A Quick Introduction to Perception and Cognition</h1>
@@ -235,29 +226,21 @@ div.csl-indent {
 <p>The physiology of perception is complex; what follows is a brief overview of the physiology of perception, focusing on the areas most important to the perception of statistical graphics. It is important to distinguish between the sensation (the retinal image) and the perception (the corresponding mental representation) of an object. This overview will entirely ignore the finer details of the organization of the brain: feature detector cells, specific processing units for certain types of visual stimuli, and most of the experiments and incidents that led to our current understanding of how the brain processes visual information. A more thorough presentation of these aspects of perception can be found in <span class="citation" data-cites="goldsteinSensationPerception2022">Goldstein and Cacciamani (<a href="#ref-goldsteinSensationPerception2022" role="doc-biblioref">2022</a>)</span>.</p>
 <section id="the-eye" class="level3">
 <h3 class="anchored" data-anchor-id="the-eye">The Eye</h3>
-<p>The eye is a complex apparatus, but for our purposes, the most important component of the eye is the retina, which contains the sensory cells responsible for transforming light waves into electrical information in the form of neural signals. These sensory cells are specialized neurons, known as rods and cones, which perceive light intensity (brightness) and wavelength (color), respectively. One section of the retina, known as the fovea, contains only cones; the rest of the retina contains a mixture of rods and cones. <a href="#fig-retina-diagram" class="quarto-xref">Figure&nbsp;1</a> depicts the structure of the eye with a closeup of the retina.</p>
+<p>The eye is a complex apparatus, but for our purposes, the most important component of the eye is the retina, which contains the sensory cells responsible for transforming light waves into electrical information in the form of neural signals. These sensory cells are specialized neurons, known as rods and cones, which perceive light intensity (brightness) and wavelength (color), respectively. One section of the retina, known as the fovea, contains only cones; the rest of the retina contains a mixture of rods and cones. <a href="#fig-retina-diagram">Figure&nbsp;1</a> depicts the structure of the eye with a closeup of the retina.</p>
 <div id="fig-retina-diagram" class="quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-retina-diagram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Figure_36_05_02.png" class="img-fluid figure-img">
-</div>
-<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-retina-diagram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: The human eye, with closeup of receptor cells in the retina. <span class="fig-citation"><a href="https://commons.wikimedia.org/wiki/File:Figure_36_05_02.png">Image Source</a> <a href="https://creativecommons.org/licenses/by/4.0/deed.en">License</a> Authors: OpenStax Copyright Holders: Rice University Publishers: OpenStax OpenStax Biology</span>
-</figcaption>
+<figure class="figure">
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Figure_36_05_02.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;1: The human eye, with closeup of receptor cells in the retina. <span class="fig-citation"><a href="https://commons.wikimedia.org/wiki/File:Figure_36_05_02.png">Image Source</a> <a href="https://creativecommons.org/licenses/by/4.0/deed.en">License</a> Authors: OpenStax Copyright Holders: Rice University Publishers: OpenStax OpenStax Biology</span></figcaption>
 </figure>
 </div>
 <p>Another important region of the retina is the blindspot, the area where the optic nerve exits the eye to connect the retina to the brain. There are no rods or cones in this region of the retina, and any vision in the region of space that maps onto this point is a result of two mechanisms: binocular vision (the other eye fills in the missing information) and your brain “filling in” what it believes should be there.</p>
 <div id="fig-color-range" class="quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-color-range-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../fig/Absorption-Spectra-Retina.svg" class="img-fluid figure-img">
-</div>
-<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-color-range-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: Absorption spectra of rods and short (blue), medium (green), and long (red) wave cones. <span class="fig-citation">Image modified from <a href="https://commons.wikimedia.org/wiki/File:Spectre_absorption_des_cones.svg">Pancrat’s Wikimedia Commons work</a>. <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">License</a>.</span>
-</figcaption>
+<figure class="figure">
+<p><img src="../fig/Absorption-Spectra-Retina.svg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;2: Absorption spectra of rods and short (blue), medium (green), and long (red) wave cones. <span class="fig-citation">Image modified from <a href="https://commons.wikimedia.org/wiki/File:Spectre_absorption_des_cones.svg">Pancrat’s Wikimedia Commons work</a>. <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">License</a>.</span></figcaption>
 </figure>
 </div>
-<p><a href="#fig-color-range" class="quarto-xref">Figure&nbsp;2</a> shows the responsiveness of rods and each of the three types of cones to wavelengths of light in the visual spectrum. As a result of the response of cone cells to different wavelengths of light, humans with normal color vision can better distinguish colors in the yellow-green portion of the color spectrum compared to colors in the red or blue portions of the spectrum.</p>
+<p><a href="#fig-color-range">Figure&nbsp;2</a> shows the responsiveness of rods and each of the three types of cones to wavelengths of light in the visual spectrum. As a result of the response of cone cells to different wavelengths of light, humans with normal color vision can better distinguish colors in the yellow-green portion of the color spectrum compared to colors in the red or blue portions of the spectrum.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -275,45 +258,30 @@ Implications for Color Schemes
 </section>
 <section id="the-brain" class="level3">
 <h3 class="anchored" data-anchor-id="the-brain">The Brain</h3>
-<p>Once light hits the retina and causes a signal in the receptor cells, the information travels along the optic nerve and into the brain. Multiple neighboring rods are connected to the same neuron, where each cone is connected to a single neuron. The combined wiring of rod cells is responsible for the <a href="https://en.wikipedia.org/wiki/Grid_illusion#Theories">Hermann grid illusion</a> and the <a href="https://en.wikipedia.org/wiki/Mach_bands">Mach bands</a> seen in <a href="#fig-inhibition-illusions" class="quarto-xref">Figure&nbsp;3</a>. Both of these illusions are a product of lateral inhibition, which is a result of the wiring of rod cells in the retina. Essentially, neurons can only fire at a specific rate, so when neighboring cells are all stimulated simultaneously, the combined neuron cannot fire fast enough to pass on all of the signals, causing <em>inhibition</em>. The <a href="https://en.wikipedia.org/wiki/Grid_illusion#Theories">specifics of this response</a> and its relationship with the wiring of the receptor cells are too complex for this summary.</p>
+<p>Once light hits the retina and causes a signal in the receptor cells, the information travels along the optic nerve and into the brain. Multiple neighboring rods are connected to the same neuron, where each cone is connected to a single neuron. The combined wiring of rod cells is responsible for the <a href="https://en.wikipedia.org/wiki/Grid_illusion#Theories">Hermann grid illusion</a> and the <a href="https://en.wikipedia.org/wiki/Mach_bands">Mach bands</a> seen in <a href="#fig-inhibition-illusions">Figure&nbsp;3</a>. Both of these illusions are a product of lateral inhibition, which is a result of the wiring of rod cells in the retina. Essentially, neurons can only fire at a specific rate, so when neighboring cells are all stimulated simultaneously, the combined neuron cannot fire fast enough to pass on all of the signals, causing <em>inhibition</em>. The <a href="https://en.wikipedia.org/wiki/Grid_illusion#Theories">specifics of this response</a> and its relationship with the wiring of the receptor cells are too complex for this summary.</p>
 <div id="fig-inhibition-illusions" class="quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-inhibition-illusions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div>
-
-</div>
-<div class="quarto-layout-panel" data-layout-ncol="2">
+<figure class="figure">
+<div class="quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
 <div id="fig-hermann-grid" class="quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-hermann-grid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="https://upload.wikimedia.org/wikipedia/commons/b/be/HermannGrid.svg" class="img-fluid figure-img" data-ref-parent="fig-inhibition-illusions">
-</div>
-<figcaption class="figure quarto-subfloat-caption quarto-subfloat-fig" id="fig-hermann-grid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(a) Hermann grid illusion <span class="fig-citation"><a href="https://en.wikipedia.org/wiki/File:HermannGrid.svg">Image Source</a>. <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en">License</a>.</span>
-</figcaption>
+<figure class="figure">
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/b/be/HermannGrid.svg" class="img-fluid figure-img" data-ref-parent="fig-inhibition-illusions"></p>
+<figcaption class="figure-caption">(a) Hermann grid illusion <span class="fig-citation"><a href="https://en.wikipedia.org/wiki/File:HermannGrid.svg">Image Source</a>. <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en">License</a>.</span></figcaption>
 </figure>
 </div>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
 <div id="fig-mach-bands" class="quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-mach-bands-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../fig/Mach-Bands.png" class="img-fluid figure-img" data-ref-parent="fig-inhibition-illusions">
-</div>
-<figcaption class="figure quarto-subfloat-caption quarto-subfloat-fig" id="fig-mach-bands-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(b) Mach Bands <span class="fig-citation"><a href="https://commons.wikimedia.org/wiki/File:Bandes_de_mach.PNG">Image Source</a>. <a href="https://en.wikipedia.org/wiki/en:Free_Art_License">License</a>.</span>
-</figcaption>
+<figure class="figure">
+<p><img src="../fig/Mach-Bands.png" class="img-fluid figure-img" data-ref-parent="fig-inhibition-illusions"></p>
+<figcaption class="figure-caption">(b) Mach Bands <span class="fig-citation"><a href="https://commons.wikimedia.org/wiki/File:Bandes_de_mach.PNG">Image Source</a>. <a href="https://en.wikipedia.org/wiki/en:Free_Art_License">License</a>.</span></figcaption>
 </figure>
 </div>
 </div>
 </div>
 </div>
-</div>
-<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-inhibition-illusions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: Illusions which are thought to arise due to inhibition. In the Hermann grid illusion, dark blobs appear at the intersection of the white lines. In the Mach band illusion, the region where different shaded bands meet seems to have more contrast than the middle of the bands.
-</figcaption>
+<figcaption class="figure-caption">Figure&nbsp;3: Illusions which are thought to arise due to inhibition. In the Hermann grid illusion, dark blobs appear at the intersection of the white lines. In the Mach band illusion, the region where different shaded bands meet seems to have more contrast than the middle of the bands.</figcaption>
 </figure>
 </div>
 <p>Once neural impulses have left the retina through the optic nerve, they travel to the visual cortex by way of several specialized structures within the brain that process lower-level signals. Receptor cells in the visual cortex respond to specific angles, spatial locations, colors, and intensities, and arrays of these special ‘feature detector cells’ process the information into a form used by higher-level processes <span class="citation" data-cites="hubelReceptiveFieldsBinocular1962">(<a href="#ref-hubelReceptiveFieldsBinocular1962" role="doc-biblioref">Hubel and Wiesel 1962</a>)</span>. These higher-level processes are what we have previously called ‘software’: they are not directly related to the physical brain, but they do process information heuristically to produce higher-level reasoning and conclusions. In the next section, we explore some of the higher-level processes responsible for visual perception.</p>
@@ -329,28 +297,21 @@ Figure&nbsp;3: Illusions which are thought to arise due to inhibition. In the He
 <p>Selective attention is generally necessary for perception to occur, though there is some information that is encoded automatically. The <a href="http://www.theinvisiblegorilla.com/videos.html">“gorilla” film</a> experiment demonstrates that even when there is attention focused on a task, information extraneous to that task is not always encoded, that is, when participants focused on counting the number of passes between players in the basketball game, many did not notice the gorilla walking through the middle of the court. It is important to understand which parts of a visual stimulus are the focus of a given perceptual task, because most of the information encoded by the brain is a result of selective attention. Eye-tracking can be an important tool useful to understand these perceptual processes, but participants may also be able to self-report which parts of a stimulus contributed to their decision.</p>
 <p>Within the brain, attention is important because it allows different regions of the brain which process color, shape, and position to integrate these perceptions into a multifaceted mental representation of the object <span class="citation" data-cites="goldsteinSensationPerception2022">(<a href="#ref-goldsteinSensationPerception2022" role="doc-biblioref">Goldstein and Cacciamani 2022</a>)</span>. This process, known as binding, is essential to coherently encode a scene into working memory. Feature integration theory <span class="citation" data-cites="treismanFeatureIntegrationTheoryAttention1980">(<a href="#ref-treismanFeatureIntegrationTheoryAttention1980" role="doc-biblioref">Treisman 1980</a>)</span> suggests that these separate streams of information are initially encoded in the preattentive stage of object perception; focusing on the object triggers the binding of these separate streams into a single coherent stream of information. Many single features, such as color, length, and texture are <em>preattentive</em>, because they can be pinpointed in an image without focused attention (and thus can be located faster), but specific combinations of color and shape require attention (because the features must be bound together) and are thus more difficult to search. Preattentive features are generally processed in parallel (that is, the entire scene is processed nearly simultaneously), while features requiring attention are processed serially.</p>
 <div id="fig-parallel-serial" class="quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-parallel-serial-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div>
-
-</div>
-<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<figure class="figure">
+<div class="cell quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="01-Fundamentals_files/figure-html/parallel-serial-1.png" class="img-fluid figure-img" width="384"></p>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <p><img src="01-Fundamentals_files/figure-html/parallel-serial-2.png" class="img-fluid figure-img" width="384"></p>
 </div>
 </div>
 </div>
-</div>
-<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-parallel-serial-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4: Features detected serially or in parallel. In general, features detected in parallel are processed pre-attentively, while features detected serially require focused attention.
-</figcaption>
+<figcaption class="figure-caption">Figure&nbsp;4: Features detected serially or in parallel. In general, features detected in parallel are processed pre-attentively, while features detected serially require focused attention.</figcaption>
 </figure>
 </div>
-<p>Examples of features processed serially and in parallel are shown in <a href="#fig-parallel-serial" class="quarto-xref">Figure&nbsp;4</a> [<span class="citation" data-cites="helander1997handbook">Helander, Landauer, and Prabhu (<a href="#ref-helander1997handbook" role="doc-biblioref">1997</a>)</span>; Chapter 6].</p>
+<p>Examples of features processed serially and in parallel are shown in <a href="#fig-parallel-serial">Figure&nbsp;4</a> [<span class="citation" data-cites="helander1997handbook">Helander, Landauer, and Prabhu (<a href="#ref-helander1997handbook" role="doc-biblioref">1997</a>)</span>; Chapter 6].</p>
 <p>Feature integration as a result of attention enables the brain to process a figure holistically and integrate all of the separate aspects of the object into a single perceptual experience. This processing is important for the most basic visual processes we take for granted, including object perception.</p>
 </section>
 <section id="object-perception" class="level3">
@@ -368,41 +329,29 @@ Figure&nbsp;4: Features detected serially or in parallel. In general, features d
 <li><strong>Uniform Connectedness</strong> A connected region of objects is perceived as a single unit.</li>
 <li><strong>Synchrony</strong> Events occurring at the same time will be perceived as belonging together.</li>
 </ul>
-<p>These principles are demonstrated in <a href="#fig-gestalt" class="quarto-xref">Figure&nbsp;5</a>.</p>
+<p>These principles are demonstrated in <a href="#fig-gestalt">Figure&nbsp;5</a>.</p>
 <div id="fig-gestalt" class="quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-gestalt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../fig/gestalt.svg" class="img-fluid figure-img">
-</div>
-<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-gestalt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5: Gestalt principles of grouping
-</figcaption>
+<figure class="figure">
+<p><img src="../fig/gestalt.svg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;5: Gestalt principles of grouping</figcaption>
 </figure>
 </div>
 </section>
 <section id="visual-memory" class="level3">
 <h3 class="anchored" data-anchor-id="visual-memory">Visual Memory</h3>
-<p>We have discussed how visual stimuli are perceived and how objects are recognized; we now must examine how visual stimuli are encoded into memory. Visual perceptions are thought to be encoded in an analog fashion, so that the memory of an image is closely related to the perception of that same image. Other theories suggest that visual perceptions are encoded semantically, that is, the description of a visual scene would be encoded, rather than a mental ``image” of that scene. Both theories are likely at least partially correct, but the analog encoding of visual images is more relevant to statistical graphics because the accuracy of the stored image has the potential to affect recall of the contents of that image (and thus what people remember about a particular graphic). Experimental evidence for analog encoding includes the mental rotation task, where participants must determine whether or not a figure is a rotation of a target figure, as shown in <a href="#fig-mentalRotation" class="quarto-xref">Figure&nbsp;6</a>. <span class="citation" data-cites="shepardMentalRotationEffects1988">Shepard and Metzler (<a href="#ref-shepardMentalRotationEffects1988" role="doc-biblioref">1988</a>)</span> showed that reaction time was proportional to the angle of rotation of the stimuli, which suggests that participants were mentally rotating the figure as they would rotate a three-dimensional figure in space.</p>
+<p>We have discussed how visual stimuli are perceived and how objects are recognized; we now must examine how visual stimuli are encoded into memory. Visual perceptions are thought to be encoded in an analog fashion, so that the memory of an image is closely related to the perception of that same image. Other theories suggest that visual perceptions are encoded semantically, that is, the description of a visual scene would be encoded, rather than a mental ``image” of that scene. Both theories are likely at least partially correct, but the analog encoding of visual images is more relevant to statistical graphics because the accuracy of the stored image has the potential to affect recall of the contents of that image (and thus what people remember about a particular graphic). Experimental evidence for analog encoding includes the mental rotation task, where participants must determine whether or not a figure is a rotation of a target figure, as shown in <a href="#fig-mentalRotation">Figure&nbsp;6</a>. <span class="citation" data-cites="shepardMentalRotationEffects1988">Shepard and Metzler (<a href="#ref-shepardMentalRotationEffects1988" role="doc-biblioref">1988</a>)</span> showed that reaction time was proportional to the angle of rotation of the stimuli, which suggests that participants were mentally rotating the figure as they would rotate a three-dimensional figure in space.</p>
 <div id="fig-mentalRotation" class="quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-mentalRotation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../fig/Mental_rotation_task_(diagram)_(cropped).jpg" class="img-fluid figure-img">
-</div>
-<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-mentalRotation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6: Rotation task from <span class="citation" data-cites="shepardMentalRotationEffects1988">Shepard and Metzler (<a href="#ref-shepardMentalRotationEffects1988" role="doc-biblioref">1988</a>)</span>. Are the two images the same? <span class="fig-citation"><a href="https://en.wikipedia.org/wiki/Mental_rotation#/media/File:Mental_rotation_task_(diagram)_(cropped).jpg">Image Source</a> <a href="https://commons.wikimedia.org/wiki/File:Mental_rotation_task_(diagram)_(cropped).jpg?uselang=en#Licensing">License</a></span>
-</figcaption>
+<figure class="figure">
+<p><img src="../fig/Mental_rotation_task_(diagram)_(cropped).jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;6: Rotation task from <span class="citation" data-cites="shepardMentalRotationEffects1988">Shepard and Metzler (<a href="#ref-shepardMentalRotationEffects1988" role="doc-biblioref">1988</a>)</span>. Are the two images the same? <span class="fig-citation"><a href="https://en.wikipedia.org/wiki/Mental_rotation#/media/File:Mental_rotation_task_(diagram)_(cropped).jpg">Image Source</a> <a href="https://commons.wikimedia.org/wiki/File:Mental_rotation_task_(diagram)_(cropped).jpg?uselang=en#Licensing">License</a></span></figcaption>
 </figure>
 </div>
-<p>In addition, <span class="citation" data-cites="kosslyn1978visual">(<a href="#ref-kosslyn1978visual" role="doc-biblioref"><strong>kosslyn1978visual?</strong></a>)</span> showed that mental representation of distances in a figure are accurate and that the time to encode those distances is proportional to the distances in the actual figure. These studies suggest that the memory of an image (statistical graphic or otherwise) is a reasonably accurate facsimile of the original image (though the accuracy of the mental representation is of course likely to be moderated by attention and recall ability).</p>
-<p>The analog encoding of mental images is stored alongside the <em>gist</em> of an image. That is, a semantic (textual) description of the image is stored alongside its’ analog representation in memory. In some cases, recall ability is more consistent with the semantic encoding of images; that is, when shown an ambiguous figure and immediately asked for a description, participants could not give an alternate interpretation of the figure after the experiment was complete. In the case of figure <a href="#fig-ambiguousrabbit" class="quarto-xref">Figure&nbsp;7</a>, participants who initially said the figure was a duck did not report having viewed a picture of a rabbit after the experiment, even though the image is consistent with either interpretation. This suggests that in some cases, verbal encoding of a figure (i.e.&nbsp;describing it as a duck) disrupts the mental representation of the picture. This is common in other types of memories as well: when the gist of a passage is stored, the actual content of the passage is no longer accessible. In other words, we would expect that if someone had to interpret a graph, they would remember the interpretation much more strongly than the actual graph, even if that interpretation was incorrect or incomplete.</p>
+<p>In addition, <span class="citation" data-cites="kosslynMeasuringVisualAngle1978">Kosslyn (<a href="#ref-kosslynMeasuringVisualAngle1978" role="doc-biblioref">1978</a>)</span> showed that mental representation of distances in a figure are accurate and that the time to encode those distances is proportional to the distances in the actual figure. These studies suggest that the memory of an image (statistical graphic or otherwise) is a reasonably accurate facsimile of the original image (though the accuracy of the mental representation is of course likely to be moderated by attention and recall ability).</p>
+<p>The analog encoding of mental images is stored alongside the <em>gist</em> of an image. That is, a semantic (textual) description of the image is stored alongside its’ analog representation in memory. In some cases, recall ability is more consistent with the semantic encoding of images; that is, when shown an ambiguous figure and immediately asked for a description, participants could not give an alternate interpretation of the figure after the experiment was complete. In the case of figure <a href="#fig-ambiguousrabbit">Figure&nbsp;7</a>, participants who initially said the figure was a duck did not report having viewed a picture of a rabbit after the experiment, even though the image is consistent with either interpretation. This suggests that in some cases, verbal encoding of a figure (i.e.&nbsp;describing it as a duck) disrupts the mental representation of the picture. This is common in other types of memories as well: when the gist of a passage is stored, the actual content of the passage is no longer accessible. In other words, we would expect that if someone had to interpret a graph, they would remember the interpretation much more strongly than the actual graph, even if that interpretation was incorrect or incomplete.</p>
 <div id="fig-ambiguousrabbit" class="quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-ambiguousrabbit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../fig/duck-rabbit.svg" class="img-fluid figure-img">
-</div>
-<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-ambiguousrabbit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7: An ambiguous image that could be either a rabbit or a duck. When participants were asked to identify the image initially, they could not provide an alternate interpretation of the figure later. <span class="fig-citation">Redrawn by the author, <a href="https://printerval.com/uk/rabbit-duck-bunny-bird-optical-illusion-funny-gift-t-shirt-p519851">inspired by</a></span>
-</figcaption>
+<figure class="figure">
+<p><img src="../fig/duck-rabbit.svg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;7: An ambiguous image that could be either a rabbit or a duck. When participants were asked to identify the image initially, they could not provide an alternate interpretation of the figure later. <span class="fig-citation">Redrawn by the author, <a href="https://printerval.com/uk/rabbit-duck-bunny-bird-optical-illusion-funny-gift-t-shirt-p519851">inspired by</a></span></figcaption>
 </figure>
 </div>
 <p>The “software” of the visual system much more complex than the few topics discussed here, but understanding attention, object perception, and how images are stored for later retrieval in the brain will make designing statistical graphics for the visual system easier and will also help with evaluating graphics based on the capabilities of the human visual system.</p>
@@ -432,70 +381,50 @@ Figure&nbsp;7: An ambiguous image that could be either a rabbit or a duck. When 
 <p>Graphics are useful in part because they summarize information in a form which is easier to understand and mentally manipulate. Thus, graphics serve as a form of <strong>external cognition</strong> - pre-processing information in a form that is (or should be) easier to digest and understand.</p>
 <section id="preattentive-perception" class="level2">
 <h2 class="anchored" data-anchor-id="preattentive-perception">Preattentive Perception</h2>
-<p>As discussed in <a href="#fig-parallel-serial" class="quarto-xref">Figure&nbsp;4</a>, some features are processed pre-attentively, in parallel, while some features require conscious attention. When choosing features for data display, viewers will have an easier time when the feature chosen is processed in parallel than if the same data is shown using a feature that is processed serially.</p>
+<p>As discussed in <a href="#fig-parallel-serial">Figure&nbsp;4</a>, some features are processed pre-attentively, in parallel, while some features require conscious attention. When choosing features for data display, viewers will have an easier time when the feature chosen is processed in parallel than if the same data is shown using a feature that is processed serially.</p>
 <p>However, it is important not to overdo it! Combinations of preattentive features used to show different dimensions of the data are processed serially, requiring much more effort, in an effect known as <em>interference</em>.</p>
-<div id="fig-preattentive" class="quarto-layout-panel">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-preattentive-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="fig-preattentive" class="cell quarto-layout-panel">
+<figure class="figure">
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-preattentive" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-preattentive-1" class="quarto-figure quarto-figure-center anchored" width="672">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-preattentive-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="01-Fundamentals_files/figure-html/fig-preattentive-1.png" class="img-fluid figure-img" data-ref-parent="fig-preattentive" width="672">
-</div>
-<figcaption class="figure quarto-subfloat-caption quarto-subfloat-fig" id="fig-preattentive-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(a) Color
-</figcaption>
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-preattentive-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="01-Fundamentals_files/figure-html/fig-preattentive-1.png" class="img-fluid figure-img" data-ref-parent="fig-preattentive" width="672"></p>
+<figcaption class="figure-caption">(a) Color</figcaption>
 </figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-preattentive" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-preattentive-2" class="quarto-figure quarto-figure-center anchored" width="672">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-preattentive-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="01-Fundamentals_files/figure-html/fig-preattentive-2.png" class="img-fluid figure-img" data-ref-parent="fig-preattentive" width="672">
-</div>
-<figcaption class="figure quarto-subfloat-caption quarto-subfloat-fig" id="fig-preattentive-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(b) Shape
-</figcaption>
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-preattentive-2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="01-Fundamentals_files/figure-html/fig-preattentive-2.png" class="img-fluid figure-img" data-ref-parent="fig-preattentive" width="672"></p>
+<figcaption class="figure-caption">(b) Shape</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-preattentive" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-preattentive-3" class="quarto-figure quarto-figure-center anchored" width="672">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-preattentive-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="01-Fundamentals_files/figure-html/fig-preattentive-3.png" class="img-fluid figure-img" data-ref-parent="fig-preattentive" width="672">
-</div>
-<figcaption class="figure quarto-subfloat-caption quarto-subfloat-fig" id="fig-preattentive-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(c) Interference
-</figcaption>
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-preattentive-3" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="01-Fundamentals_files/figure-html/fig-preattentive-3.png" class="img-fluid figure-img" data-ref-parent="fig-preattentive" width="672"></p>
+<figcaption class="figure-caption">(c) Interference</figcaption>
 </figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-preattentive" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-preattentive-4" class="quarto-figure quarto-figure-center anchored" width="672">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-preattentive-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="01-Fundamentals_files/figure-html/fig-preattentive-4.png" class="img-fluid figure-img" data-ref-parent="fig-preattentive" width="672">
-</div>
-<figcaption class="figure quarto-subfloat-caption quarto-subfloat-fig" id="fig-preattentive-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(d) Dual Encoding
-</figcaption>
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-preattentive-4" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="01-Fundamentals_files/figure-html/fig-preattentive-4.png" class="img-fluid figure-img" data-ref-parent="fig-preattentive" width="672"></p>
+<figcaption class="figure-caption">(d) Dual Encoding</figcaption>
 </figure>
 </div>
 </div>
 </div>
-</div>
-<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-preattentive-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8: Shape and color are detected preattentively, but when used to encode different information, the combination is no longer preattentive. When shape and color are used to encode the same information (dual encoding), the combination is detected preattentively and is more accessible to individuals with perceptual disabilities such as colorblindness.
-</figcaption>
+<p></p><figcaption class="figure-caption">Figure&nbsp;8: Shape and color are detected preattentively, but when used to encode different information, the combination is no longer preattentive. When shape and color are used to encode the same information (dual encoding), the combination is detected preattentively and is more accessible to individuals with perceptual disabilities such as colorblindness.</figcaption><p></p>
 </figure>
 </div>
-<p>Interference is demonstrated in <a href="#fig-preattentive" class="quarto-xref">Figure&nbsp;8</a>; the different point in (a) and (b) is easy to pick out, but it is much harder in (c) to separate shape and color in order to pick out differences. This is because when color and shape are used to show different features, we must consider every combination of color and shape used and individually search for points matching that description – an operation which requires a lot of time and cognitive effort. Not all combinations of color and shape are problematic, however: (d) uses color and shape to show the same variable (<em>dual-encoding</em>), which is useful for individuals who are color blind or may have trouble perceiving shapes. The two preattentive features support each other when used in this way, making it even easier to pick out the one mismatched point than in conditions (a), (b), or (c).</p>
+<p>Interference is demonstrated in <a href="#fig-preattentive">Figure&nbsp;8</a>; the different point in (a) and (b) is easy to pick out, but it is much harder in (c) to separate shape and color in order to pick out differences. This is because when color and shape are used to show different features, we must consider every combination of color and shape used and individually search for points matching that description – an operation which requires a lot of time and cognitive effort. Not all combinations of color and shape are problematic, however: (d) uses color and shape to show the same variable (<em>dual-encoding</em>), which is useful for individuals who are color blind or may have trouble perceiving shapes. The two preattentive features support each other when used in this way, making it even easier to pick out the one mismatched point than in conditions (a), (b), or (c).</p>
 </section>
 <section id="conscious-perception" class="level2">
 <h2 class="anchored" data-anchor-id="conscious-perception">Conscious Perception</h2>
@@ -508,17 +437,13 @@ Figure&nbsp;8: Shape and color are detected preattentively, but when used to enc
 <p>Several different types of models have been proposed to describe this process, but overall, “task models” and “integration models” are most consistent with available empirical evidence.</p>
 <section id="task-based-processing" class="level3">
 <h3 class="anchored" data-anchor-id="task-based-processing">Task Based Processing</h3>
-<p>An example of task-based processing <span class="citation" data-cites="ratwani2008thinking">(<a href="#ref-ratwani2008thinking" role="doc-biblioref">Ratwani, Trafton, and Boehm-Davis 2008</a>)</span> is shown in <a href="#fig-task-steps" class="quarto-xref">Figure&nbsp;9</a>.</p>
+<p>An example of task-based processing <span class="citation" data-cites="ratwani2008thinking">(<a href="#ref-ratwani2008thinking" role="doc-biblioref">Ratwani, Trafton, and Boehm-Davis 2008</a>)</span> is shown in <a href="#fig-task-steps">Figure&nbsp;9</a>.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-task-steps" class="quarto-figure quarto-figure-center anchored" width="50%">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-task-steps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="01-Fundamentals_files/figure-html/fig-task-steps-1.png" class="img-fluid figure-img" style="width:50.0%">
-</div>
-<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-task-steps-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9: Task-based steps for evaluating the relationship between eruption length and time between eruptions for Old Faithful?
-</figcaption>
+<div id="fig-task-steps" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="01-Fundamentals_files/figure-html/fig-task-steps-1.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;9: Task-based steps for evaluating the relationship between eruption length and time between eruptions for Old Faithful?</figcaption>
 </figure>
 </div>
 </div>
@@ -550,79 +475,55 @@ Figure&nbsp;9: Task-based steps for evaluating the relationship between eruption
 <section id="information-integration-1" class="level3">
 <h3 class="anchored" data-anchor-id="information-integration-1">Information Integration</h3>
 <p>Charts designed to promote chunking do so by providing viewers with cues for important features. This can help participants come to conclusions supported by the data and statistical modeling underlying the visual representation, reducing cognitive load.</p>
-<p><a href="#fig-grouping-help" class="quarto-xref">Figure&nbsp;10</a> shows the same data using three different representations, with an additional representation illustrating the viewer’s mental model. In the first figure, (a), viewers are provided with no additional information and must group points together mentally to make sense of the data; this grouping action takes some cognitive effort, producing something like the second figure, (b). The designer could make this chunking effort less resource-intensive by explicitly coloring by the variable determining groups (if it is known) or by e.g.&nbsp;k-means output, if the clustering is important to the problem at hand.</p>
-<div id="fig-grouping-help" class="quarto-layout-panel">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-grouping-help-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p><a href="#fig-grouping-help">Figure&nbsp;10</a> shows the same data using three different representations, with an additional representation illustrating the viewer’s mental model. In the first figure, (a), viewers are provided with no additional information and must group points together mentally to make sense of the data; this grouping action takes some cognitive effort, producing something like the second figure, (b). The designer could make this chunking effort less resource-intensive by explicitly coloring by the variable determining groups (if it is known) or by e.g.&nbsp;k-means output, if the clustering is important to the problem at hand.</p>
+<div id="fig-grouping-help" class="cell quarto-layout-panel">
+<figure class="figure">
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-grouping-help" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-grouping-help-1" class="quarto-figure quarto-figure-center anchored" width="672">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-grouping-help-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="01-Fundamentals_files/figure-html/fig-grouping-help-1.png" class="img-fluid figure-img" data-ref-parent="fig-grouping-help" width="672">
-</div>
-<figcaption class="figure quarto-subfloat-caption quarto-subfloat-fig" id="fig-grouping-help-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(a) Data with no additional aesthetics
-</figcaption>
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-grouping-help-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="01-Fundamentals_files/figure-html/fig-grouping-help-1.png" class="img-fluid figure-img" data-ref-parent="fig-grouping-help" width="672"></p>
+<figcaption class="figure-caption">(a) Data with no additional aesthetics</figcaption>
 </figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-grouping-help" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-grouping-help-2" class="quarto-figure quarto-figure-center anchored" width="672">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-grouping-help-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="01-Fundamentals_files/figure-html/fig-grouping-help-2.png" class="img-fluid figure-img" data-ref-parent="fig-grouping-help" width="672">
-</div>
-<figcaption class="figure quarto-subfloat-caption quarto-subfloat-fig" id="fig-grouping-help-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(b) Perceived chunks in mental representation
-</figcaption>
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-grouping-help-2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="01-Fundamentals_files/figure-html/fig-grouping-help-2.png" class="img-fluid figure-img" data-ref-parent="fig-grouping-help" width="672"></p>
+<figcaption class="figure-caption">(b) Perceived chunks in mental representation</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-grouping-help" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-grouping-help-3" class="quarto-figure quarto-figure-center anchored" width="672">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-grouping-help-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="01-Fundamentals_files/figure-html/fig-grouping-help-3.png" class="img-fluid figure-img" data-ref-parent="fig-grouping-help" width="672">
-</div>
-<figcaption class="figure quarto-subfloat-caption quarto-subfloat-fig" id="fig-grouping-help-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(c) Data, color used to provide chunking information
-</figcaption>
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-grouping-help-3" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="01-Fundamentals_files/figure-html/fig-grouping-help-3.png" class="img-fluid figure-img" data-ref-parent="fig-grouping-help" width="672"></p>
+<figcaption class="figure-caption">(c) Data, color used to provide chunking information</figcaption>
 </figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-grouping-help" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-grouping-help-4" class="quarto-figure quarto-figure-center anchored" width="672">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-grouping-help-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="01-Fundamentals_files/figure-html/fig-grouping-help-4.png" class="img-fluid figure-img" data-ref-parent="fig-grouping-help" width="672">
-</div>
-<figcaption class="figure quarto-subfloat-caption quarto-subfloat-fig" id="fig-grouping-help-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(d) Data, color + shape used to provide chunking information
-</figcaption>
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-grouping-help-4" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="01-Fundamentals_files/figure-html/fig-grouping-help-4.png" class="img-fluid figure-img" data-ref-parent="fig-grouping-help" width="672"></p>
+<figcaption class="figure-caption">(d) Data, color + shape used to provide chunking information</figcaption>
 </figure>
 </div>
 </div>
 </div>
-</div>
-<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-grouping-help-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10: When graphical features such as clustering are important, using aesthetics to promote chunking of the information can help readers make sense of the data more efficiently.
-</figcaption>
+<p></p><figcaption class="figure-caption">Figure&nbsp;10: When graphical features such as clustering are important, using aesthetics to promote chunking of the information can help readers make sense of the data more efficiently.</figcaption><p></p>
 </figure>
 </div>
-<p>Analyzing graphs using task-based models emphasizes the importance of spatial relationships between graphical elements. The gestalt laws of proximity and similarity dictate that items which are close together or physically similar (the same shape or color) are perceived as a group; this spatial perception creates “chunks” of the graph which may be encoded as single objects and thus reduce the mental bandwidth necessary to process the image. <a href="#fig-grouping-help" class="quarto-xref">Figure&nbsp;10</a> shows the advantage of “chunks” in graphs: in (a) there are 120 points that could be grouped into the three clusters shown in (b), but when the clustering is provided using aesthetics, the Gestalt similarity heuristic naturally groups the points for us, without much additional labor.</p>
+<p>Analyzing graphs using task-based models emphasizes the importance of spatial relationships between graphical elements. The gestalt laws of proximity and similarity dictate that items which are close together or physically similar (the same shape or color) are perceived as a group; this spatial perception creates “chunks” of the graph which may be encoded as single objects and thus reduce the mental bandwidth necessary to process the image. <a href="#fig-grouping-help">Figure&nbsp;10</a> shows the advantage of “chunks” in graphs: in (a) there are 120 points that could be grouped into the three clusters shown in (b), but when the clustering is provided using aesthetics, the Gestalt similarity heuristic naturally groups the points for us, without much additional labor.</p>
 <p>As charts become more complex, it can be difficult to consider all of the perceptual processes which might affect perception and use of a specific visualization. In these cases, cognitive models and frameworks can be extremely useful <span class="citation" data-cites="padillaCaseCognitiveModels2018 padillaDecisionMakingVisualizations2018">(<a href="#ref-padillaCaseCognitiveModels2018" role="doc-biblioref">Padilla 2018</a>; <a href="#ref-padillaDecisionMakingVisualizations2018" role="doc-biblioref">Padilla et al. 2018</a>)</span>. By assessing the interactions between the visualization and the cognitive model, it may be possible to identify potential areas of difficulty that can be addressed in a revised design.</p>
-<p><strong>Graphical conventions</strong> are another form of chunking strategy we all use. <a href="#fig-inverse-y" class="quarto-xref">Figure&nbsp;11</a> is one example of what happens when such conventions are violated - the chart inverts the y-axis so that 0 is at the top of the chart and 1000 is at the bottom. When combined with the area chart type, this initially gives the impression of a decline in the population shown on the y-axis, rather than an increase.</p>
+<p><strong>Graphical conventions</strong> are another form of chunking strategy we all use. <a href="#fig-inverse-y">Figure&nbsp;11</a> is one example of what happens when such conventions are violated - the chart inverts the y-axis so that 0 is at the top of the chart and 1000 is at the bottom. When combined with the area chart type, this initially gives the impression of a decline in the population shown on the y-axis, rather than an increase.</p>
 <div id="fig-inverse-y" class="quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-inverse-y-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../fig/Padilla-Inverse-y.png" class="img-fluid figure-img">
-</div>
-<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-inverse-y-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;11: Adherence to graphical conventions facilitates fast and accurate chart comprehension. Violating these conventions can result in misunderstandings and increased comprehension time. <span class="fig-citation">Figure from <span class="citation" data-cites="padillaDecisionMakingVisualizations2018">Padilla et al. (<a href="#ref-padillaDecisionMakingVisualizations2018" role="doc-biblioref">2018</a>)</span>.</span>
-</figcaption>
+<figure class="figure">
+<p><img src="../fig/Padilla-Inverse-y.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;11: Adherence to graphical conventions facilitates fast and accurate chart comprehension. Violating these conventions can result in misunderstandings and increased comprehension time. <span class="fig-citation">Figure from <span class="citation" data-cites="padillaDecisionMakingVisualizations2018">Padilla et al. (<a href="#ref-padillaDecisionMakingVisualizations2018" role="doc-biblioref">2018</a>)</span>.</span></figcaption>
 </figure>
 </div>
 <p>Of graphics that present information of similar complexity, graphics that require less effort to understand and search for relevant information are preferable <span class="citation" data-cites="clevelandElementsGraphingData1985">(<a href="#ref-clevelandElementsGraphingData1985" role="doc-biblioref">William S. Cleveland 1985</a>)</span>. More complex models of the graphical perception process suggest that data are integrated on a visual level and then on a cognitive level, to form successive clusters of information. Once these clusters are formed, additional information can be integrated by comparing and contrasting different clusters to understand the higher-level meaning in the graph <span class="citation" data-cites="ratwani2008thinking">(<a href="#ref-ratwani2008thinking" role="doc-biblioref">Ratwani, Trafton, and Boehm-Davis 2008</a>)</span>. Graph types which cater to this hierarchical clustering mechanism may be more easily understood by viewers than graphs that do not provide information in a manner easily assimilated by the human brain. Facetted charts may be particularly useful for mapping multidimensional data to provide “chunks” of information in a relevant manner, pre-digested for integration into the viewer’s working conceptual understanding of the dataset. Additionally, color schemes and appropriate labeling of graph features which reduce the amount of work necessary to integrate numerical information from a legend into the visual representation of the graph facilitate graphical inference <span class="citation" data-cites="carpenter1998model">(<a href="#ref-carpenter1998model" role="doc-biblioref">Carpenter and Shah 1998</a>)</span>.</p>
@@ -630,14 +531,10 @@ Figure&nbsp;11: Adherence to graphical conventions facilitates fast and accurate
 </section>
 <section id="simple-charts" class="level2">
 <h2 class="anchored" data-anchor-id="simple-charts">Simple Charts</h2>
-<p>A series of experiments by <span class="citation" data-cites="clevelandGraphicalPerceptionTheory1984 clevelandGraphicalPerceptionGraphical1985 clevelandGraphicalPerceptionVisual1987">(<a href="#ref-clevelandGraphicalPerceptionTheory1984" role="doc-biblioref">William S. Cleveland and McGill 1984</a>, <a href="#ref-clevelandGraphicalPerceptionGraphical1985" role="doc-biblioref">1985</a>, <a href="#ref-clevelandGraphicalPerceptionVisual1987" role="doc-biblioref">1987</a>)</span> examined basic perceptual tasks, establishing the relative accuracy of comparisons made using different graphical elements. This ranking is shown in <a href="#tbl-task-hierarchy" class="quarto-xref">Table&nbsp;1</a>. Other researchers <span class="citation" data-cites="carswellChoosingSpecifiersEvaluation1992">(<a href="#ref-carswellChoosingSpecifiersEvaluation1992" role="doc-biblioref">C. M. Carswell 1992</a>)</span> have examined a wide range of studies beyond those conducted by Cleveland &amp; McGill and used meta-analysis to collapse this ranking into position/length/angle and area/volume, as the difference in accuracy between categories 1, 2, and 3 is small compared to categories 4 and 5.</p>
+<p>A series of experiments by <span class="citation" data-cites="clevelandGraphicalPerceptionTheory1984 clevelandGraphicalPerceptionGraphical1985 clevelandGraphicalPerceptionVisual1987">(<a href="#ref-clevelandGraphicalPerceptionTheory1984" role="doc-biblioref">William S. Cleveland and McGill 1984</a>, <a href="#ref-clevelandGraphicalPerceptionGraphical1985" role="doc-biblioref">1985</a>, <a href="#ref-clevelandGraphicalPerceptionVisual1987" role="doc-biblioref">1987</a>)</span> examined basic perceptual tasks, establishing the relative accuracy of comparisons made using different graphical elements. This ranking is shown in <a href="#tbl-task-hierarchy">Table&nbsp;1</a>. Other researchers <span class="citation" data-cites="carswellChoosingSpecifiersEvaluation1992">(<a href="#ref-carswellChoosingSpecifiersEvaluation1992" role="doc-biblioref">C. M. Carswell 1992</a>)</span> have examined a wide range of studies beyond those conducted by Cleveland &amp; McGill and used meta-analysis to collapse this ranking into position/length/angle and area/volume, as the difference in accuracy between categories 1, 2, and 3 is small compared to categories 4 and 5.</p>
 <div id="tbl-task-hierarchy" class="anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="table quarto-float-caption quarto-float-tbl" id="tbl-task-hierarchy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: Cleveland &amp; McGill’s ordering of graphical tasks by accuracy. Higher ranking tasks are easier for viewers than low-ranking tasks and should be preferred in graphical design.
-</figcaption>
-<div aria-describedby="tbl-task-hierarchy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table">
+<caption>Table&nbsp;1: Cleveland &amp; McGill’s ordering of graphical tasks by accuracy. Higher ranking tasks are easier for viewers than low-ranking tasks and should be preferred in graphical design.</caption>
 <thead>
 <tr class="header">
 <th>Rank</th>
@@ -672,12 +569,10 @@ Table&nbsp;1: Cleveland &amp; McGill’s ordering of graphical tasks by accuracy
 </tbody>
 </table>
 </div>
-</figure>
-</div>
 <p>It is important to note that the task asked of participants and the type of chart are both important: when presented with a line graph, viewers are more likely to summarize the graph in terms of the slope of the trend line (even when the x-axis is discrete); when presented with a bar graph, viewers summarize the information using discrete comparisons <span class="citation" data-cites="carswell1987information shah2005cambridge">(<a href="#ref-carswell1987information" role="doc-biblioref">M. C. Carswell and Wickens 1987</a>; <a href="#ref-shah2005cambridge" role="doc-biblioref">Shah and Miyake 2005</a>)</span>. The task and the graph format interact to influence viewer perceptions, thus, when creating graphics, statisticians should match appropriate graphical formats to meaningful conclusions about the data.</p>
 <section id="color-shape-and-discriminability" class="level3">
 <h3 class="anchored" data-anchor-id="color-shape-and-discriminability">Color, Shape, and Discriminability</h3>
-<p>While shading, color saturation, and color hue rank poorly in the task hierarchy, this does not mean that they should be used to display information. Rather, it is important to remember that the feature hierarchy in <a href="#tbl-task-hierarchy" class="quarto-xref">Table&nbsp;1</a> was assembled based on numerical estimation accuracy. Estimation accuracy is not the only purpose of a chart - in fact, in general, if estimation accuracy is the only goal, a table is a better representation. While viewers may not be able to correlate a specific color to a specific numerical value, color is capable of providing ordinal information (this point is more saturated than that point) and even order of magnitude level comparisons. As color is a pre-attentive feature processed in parallel, the use of color is a trade-off between numerical precision and cognitive resources (speed and working memory).</p>
+<p>While shading, color saturation, and color hue rank poorly in the task hierarchy, this does not mean that they should be used to display information. Rather, it is important to remember that the feature hierarchy in <a href="#tbl-task-hierarchy">Table&nbsp;1</a> was assembled based on numerical estimation accuracy. Estimation accuracy is not the only purpose of a chart - in fact, in general, if estimation accuracy is the only goal, a table is a better representation. While viewers may not be able to correlate a specific color to a specific numerical value, color is capable of providing ordinal information (this point is more saturated than that point) and even order of magnitude level comparisons. As color is a pre-attentive feature processed in parallel, the use of color is a trade-off between numerical precision and cognitive resources (speed and working memory).</p>
 <p>It is important to consider working memory when constructing graphical scales (particularly when utilizing a discrete scale for categorical data), but it is also important to consider feature selection and discriminability as well. Color is generally believed to be preferrable for representing strata on a scatterplot <span class="citation" data-cites="clevelandGraphicalPerceptionTheory1984">(<a href="#ref-clevelandGraphicalPerceptionTheory1984" role="doc-biblioref">William S. Cleveland and McGill 1984</a>)</span>, but <span class="citation" data-cites="lewandowsky1989discriminating">Lewandowsky and Spence (<a href="#ref-lewandowsky1989discriminating" role="doc-biblioref">1989</a>)</span> found that if color is not available or appropriate, shapes, intensity, or discriminable letters may be utilized without a significant decrease in accuracy.</p>
 <p>Discriminable letters are those which do not share physical features such as closure and symmetry, such as the letters H, Q, and X; confusable letters, such as H, E, and F, are associated with significantly less accurate perception. <span class="citation" data-cites="demiralpLearningPerceptualKernels2014">Demiralp, Bernstein, and Heer (<a href="#ref-demiralpLearningPerceptualKernels2014" role="doc-biblioref">2014</a>)</span> synthesized experimental evaluations of stimuli to create “perceptual kernels” describing the perceived distance between values; multidimensional scaling of the resulting distance matrix produces four distinct groups of shapes which share features (triangles with various degrees of rotation, squares and diamonds, and non-convex shapes such as x, +, and *). This separation suggests that feature integration underlies many of the processing speed effects found in studies examining discrete palettes and scales: palettes which are composed of confusable shapes, letters, or colors will require more processing time (and decrease accuracy) compared with discriminable palettes.</p>
 </section>
@@ -688,21 +583,17 @@ Table&nbsp;1: Cleveland &amp; McGill’s ordering of graphical tasks by accuracy
 </section>
 <section id="example---palmer-penguin-species" class="level3">
 <h3 class="anchored" data-anchor-id="example---palmer-penguin-species">Example - Palmer Penguin Species</h3>
-<p>Consider the process of assessing the average of two bars in a bar chart such as <a href="#fig-penguin-introspection" class="quarto-xref">Figure&nbsp;12</a>. <a href="#fig-cognitive-model-bar-avg" class="quarto-xref">Figure&nbsp;13</a> (2nd tab) shows the cognitive operations one might require to understand the chart and compute the numerical average between the bars. <a href="#fig-cognitive-model-memory" class="quarto-xref">Figure&nbsp;14</a> shows a more conceptual model that includes information storage and access from working memory.</p>
+<p>Consider the process of assessing the average of two bars in a bar chart such as <a href="#fig-penguin-introspection">Figure&nbsp;12</a>. <a href="#fig-cognitive-model-bar-avg">Figure&nbsp;13</a> (2nd tab) shows the cognitive operations one might require to understand the chart and compute the numerical average between the bars. <a href="#fig-cognitive-model-memory">Figure&nbsp;14</a> shows a more conceptual model that includes information storage and access from working memory.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Plot</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Cognitive Processes</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Working Memory</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-penguin-introspection" class="quarto-figure quarto-figure-center anchored" width="75%">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-penguin-introspection-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="01-Fundamentals_files/figure-html/fig-penguin-introspection-1.png" class="img-fluid figure-img" style="width:75.0%">
-</div>
-<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-penguin-introspection-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;12: Palmer Penguin data collected by species. What is the average number of Adelie and Chinstrap Penguins measured? What steps do you go through to calculate this average?
-</figcaption>
+<div id="fig-penguin-introspection" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="01-Fundamentals_files/figure-html/fig-penguin-introspection-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Figure&nbsp;12: Palmer Penguin data collected by species. What is the average number of Adelie and Chinstrap Penguins measured? What steps do you go through to calculate this average?</figcaption>
 </figure>
 </div>
 </div>
@@ -710,25 +601,17 @@ Figure&nbsp;12: Palmer Penguin data collected by species. What is the average nu
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div id="fig-cognitive-model-bar-avg" class="quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-cognitive-model-bar-avg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../fig/padilla-vis-comprehension.png" class="img-fluid figure-img">
-</div>
-<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-cognitive-model-bar-avg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13: A cognitive model of processes involved in computing the average height of two bars. <span class="fig-citation">From Padilla et al (2018), an adaptation of Pinker (1990)</span>
-</figcaption>
+<figure class="figure">
+<p><img src="../fig/padilla-vis-comprehension.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;13: A cognitive model of processes involved in computing the average height of two bars. <span class="fig-citation">From Padilla et al (2018), an adaptation of Pinker (1990)</span></figcaption>
 </figure>
 </div>
 </div>
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
 <div id="fig-cognitive-model-memory" class="quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-cognitive-model-memory-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../fig/padilla-vis-decision-making.png" class="img-fluid figure-img">
-</div>
-<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-cognitive-model-memory-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;14: A more abstract cognitive model that includes working memory <span class="fig-citation">From Padilla et al.&nbsp;(2018)</span>
-</figcaption>
+<figure class="figure">
+<p><img src="../fig/padilla-vis-decision-making.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;14: A more abstract cognitive model that includes working memory <span class="fig-citation">From Padilla et al.&nbsp;(2018)</span></figcaption>
 </figure>
 </div>
 </div>
@@ -742,7 +625,7 @@ Figure&nbsp;14: A more abstract cognitive model that includes working memory <sp
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../fig/penguin-bar-annotated.svg" class="img-fluid figure-img"></p>
-<figcaption>Annotated illustration of cognitive processes for estimating average bar height.</figcaption>
+<figcaption class="figure-caption">Annotated illustration of cognitive processes for estimating average bar height.</figcaption>
 </figure>
 </div>
 </div>
@@ -750,7 +633,7 @@ Figure&nbsp;14: A more abstract cognitive model that includes working memory <sp
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../fig/penguin-stacked-bar-annotated.svg" class="img-fluid figure-img"></p>
-<figcaption>Annotated illustration of cognitive processes for estimating average bar height in a stacked bar chart.</figcaption>
+<figcaption class="figure-caption">Annotated illustration of cognitive processes for estimating average bar height in a stacked bar chart.</figcaption>
 </figure>
 </div>
 </div>
@@ -758,7 +641,7 @@ Figure&nbsp;14: A more abstract cognitive model that includes working memory <sp
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../fig/penguin-pie-annotated.svg" class="img-fluid figure-img"></p>
-<figcaption>Annotated illustration of cognitive processes for estimating average slice size in a pie chart.</figcaption>
+<figcaption class="figure-caption">Annotated illustration of cognitive processes for estimating average slice size in a pie chart.</figcaption>
 </figure>
 </div>
 </div>
@@ -784,7 +667,7 @@ Figure&nbsp;14: A more abstract cognitive model that includes working memory <sp
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-borlandRainbowColorMap2007" class="csl-entry" role="listitem">
 Borland, D., and R. M. Taylor. 2007. <span>“Rainbow <span>Color Map</span> (<span>Still</span>) <span>Considered Harmful</span>.”</span> <em>IEEE Computer Graphics and Applications</em> 27 (2): 14–17. <a href="https://doi.org/10.1109/mcg.2007.323435">https://doi.org/10.1109/mcg.2007.323435</a>.
 </div>
@@ -832,6 +715,9 @@ Helander, M. G., T. K. Landauer, and P. V. Prabhu. 1997. <em>Handbook of Human-C
 </div>
 <div id="ref-hubelReceptiveFieldsBinocular1962" class="csl-entry" role="listitem">
 Hubel, D. H., and T. N. Wiesel. 1962. <span>“Receptive Fields, Binocular Interaction and Functional Architecture in the Cat’s Visual Cortex.”</span> <em>The Journal of Physiology</em> 160 (1): 106–54. <a href="https://doi.org/10.1113/jphysiol.1962.sp006837">https://doi.org/10.1113/jphysiol.1962.sp006837</a>.
+</div>
+<div id="ref-kosslynMeasuringVisualAngle1978" class="csl-entry" role="listitem">
+Kosslyn, Stephen Michael. 1978. <span>“Measuring the Visual Angle of the Mind’s Eye.”</span> <em>Cognitive Psychology</em> 10 (3): 356–89. <a href="https://doi.org/10.1016/0010-0285(78)90004-X">https://doi.org/10.1016/0010-0285(78)90004-X</a>.
 </div>
 <div id="ref-lewandowsky1989discriminating" class="csl-entry" role="listitem">
 Lewandowsky, Stephan, and Ian Spence. 1989. <span>“Discriminating Strata in Scatterplots.”</span> <em>Journal of the American Statistical Association</em> 84 (407): 682–88.
@@ -961,9 +847,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -973,17 +860,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -996,128 +874,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    const typesetMath = (el) => {
-      if (window.MathJax) {
-        // MathJax Typeset
-        window.MathJax.typeset([el]);
-      } else if (window.katex) {
-        // KaTeX Render
-        var mathElements = el.getElementsByClassName("math");
-        var macros = [];
-        for (var i = 0; i < mathElements.length; i++) {
-          var texText = mathElements[i].firstChild;
-          if (mathElements[i].tagName == "SPAN") {
-            window.katex.render(texText.data, mathElements[i], {
-              displayMode: mathElements[i].classList.contains('display'),
-              throwOnError: false,
-              macros: macros,
-              fleqn: false
-            });
-          }
-        }
-      }
-    }
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        for (let i = 0; i < 2; i++) {
-          container.appendChild(note.children[i].cloneNode(true));
-        }
-        typesetMath(container);
-        return container.innerHTML
-      } else {
-        typesetMath(note);
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      typesetMath(note);
-      return note.innerHTML;
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1161,7 +917,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1187,32 +942,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1273,7 +1002,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-
 
 
 
