@@ -14,31 +14,31 @@ include-before-body:
     <script src="scramble.js"></script>
 ---
 
-# [Human Minimum Specs]{.smaller}
+# Data Vis:    
+[Minimum Human Specs]{.emph .cerulean style="font-size:2em;float:right;"}
 
 ## Perception requires {auto-animate=true}
 
 ::: {.columns}
 
 ::: {.column}
-::: {.fragment}
+::: {.fragment style="min-height:5em"}
 [Visual acuity]{data-id="acuity" style="vertical-align:middle;"} ![](../fig/magnifying-glass-text.png){style="width:30%;vertical-align:middle;"}
 :::
 
-::: {.fragment style="vertical-align:bottom;"}
-[Color Vision]{data-id="color" style="vertical-align:middle;text-align:left;"}
-
+::: {.fragment style="vertical-align:bottom;min-height:5em;"}
+[Color Vision]{data-id="color" style="vertical-align:middle;text-align:left;"}    
 ![](../fig/Absorption-Spectra-Retina.svg){style="width:100%;vertical-align:middle;text-align:left;"} 
 :::
 :::
 
 ::: {.column}
-::: {.fragment style="text-align:right;"}
+::: {.fragment style="text-align:right;min-height:5em"}
 [Feature Integration]{data-id="attn"}    
 (& focused attention!)
 :::
 
-::: {.fragment style="vertical-align:bottom;text-align:center;"}
+::: {.fragment style="vertical-align:bottom;text-align:center;min-height:5em;margin-top:1em;"}
 [Grouping & Sense-making]{data-id="grouping"  style="vertical-align:middle;text-align:right;"}    
 ![](../fig/gestalt.svg){style="width:100%;vertical-align:middle;text-align:right;"}
 :::
@@ -53,16 +53,16 @@ include-before-body:
 ::: {.columns}
 
 ::: {.column}
-::: {style="width=100%;padding-bottom:3em"}
-[Far-sightedness]{.emph .darkgrey}    
-[Visual acuity]{data-id="acuity" style="vertical-align:middle;"}     
-[Macular degeneration]{.emph .red} 
+::: {style="display:block;width=100%;padding-bottom:3em"}
+[Far-sightedness]{.emph .darkgrey style="float:left"}     
+[Vision]{data-id="acuity" style="vertical-align:middle;float:left;"}[Blind/Low Vision]{.emph .blue style="float:left;padding-left:2%;"}     
+[Macular degeneration]{.emph .red style="float:left"} 
 :::
 
 ::: {style="vertical-align:bottom;width=100%"} 
-[Tritanopia]{.emph .blue}    
-[Color Vision]{data-id="color"  style="vertical-align:middle;"}    
-[Protanopia]{.emph .red} [Deuteranopia]{.emph .green}
+[Protanopia]{.emph .red style="padding-left:10%;float:left;"}    
+[Color Vision]{data-id="color"  style="float:left;"} [Deuteranopia]{.emph .green style="float:left;padding-left:10%;"}    
+[Tritanopia]{.emph .blue style="padding-left:10%;"}
 :::
 :::
 
@@ -74,78 +74,123 @@ include-before-body:
 :::
 
 ::: {style="vertical-align:bottom;text-align:right;"}
-[Grouping & Sense-making]{data-id="grouping"  style="vertical-align:middle;text-align:right;"}    
-[Schizophrenia]{.emph .cerulean}
+[&nbsp;]{style="float:left;"}    
+[Grouping & Sense-making]{data-id="grouping"  style="vertical-align:middle;float:right;"}    
+[Schizophrenia]{.emph .cerulean style="vertical-align:middle;float:right;"}
 :::
 :::
 
 :::
 
 
+::: notes
+When you step back and think about everything that can go wrong with the process of perceiving, understanding, and interacting with a data visualization, it's a bit of a miracle that these things are useful!
+
+For each of these steps, I've listed conditions that may impact the underlying cognitive processes - this is not a clinical definition, because every person and their symptoms are different, but a way to make you aware of the challenges your audience may face.
+
+Some of these issues are obviously harder to work around than others: if you are entirely blind, for instance, the information presented visually isn't going to have a chance to make it to working memory; if you're color vision impaired, you may have to expend more effort to figure out what a chart is saying, and you may get things wrong.
+
+If you have problems with grouping and sense-making, you may be able to get some information off of the axes and the chart title, but not be able to make full use of the data represented.
+:::
 
 ## Understanding Requires {auto-animate=true}
 
-<script type="text/javascript" src="scramble.js"></script>
 
-::: {.fragment fragment-index=0}
-[Reading comprehension. [Most charts have some text: title, axis labels, legends, and annotations. Any perceptual issues that affect reading affect data communication.]{#scramble .small}]{data-id="reading"}
+::: {.fragment fragment-index=0"}
+[**Reading comprehension**. [Most charts have some text: title, axis labels, legends, and annotations. Any perceptual issues that affect reading affect data communication.]{#scramble .small}]{data-id="reading"}
+<script type="text/javascript" src="scramble.js"></script>
 :::
 
-::: {style="display:block;padding-bottom:2em;"}
+::: {style="display:inline-block;padding-bottom:2em;width:100%"}
 ::: {.fragment fragment-index=1 style="float:left;text-align:left;width:50%;vertical-align:middle;"}
-[Working Memory]{data-id="wm" style="vertical-align:middle;"}  ![](../fig/Working Memory.png){style="vertical-align: middle;width:30%;padding-left:5px;"}
+[**Working Memory**]{data-id="wm" style="vertical-align:middle;"}  ![](../fig/Working Memory.png){style="vertical-align: middle;width:30%;padding-left:5px;"}
 :::
 
 ::: {.fragment fragment-index=2 style="float:right;text-align:right;width:50%;vertical-align:middle;"}
-![](https://upload.wikimedia.org/wikipedia/commons/9/98/Mental_rotation_task_%28diagram%29_%28cropped%29.jpg){style="display: table-cell;vertical-align:middle;width:30%;padding-right:5px;"} [Spatial reasoning]{data-id="spatial" style="vertical-align:middle;"}
+[![](https://upload.wikimedia.org/wikipedia/commons/9/98/Mental_rotation_task_%28diagram%29_%28cropped%29.jpg){style="vertical-align:middle;width:30%;padding-right:5px;"} [**Spatial reasoning**]{data-id="spatial" style="vertical-align:middle;"}]{style="text-align:right;"}
 :::
 :::
 
-::: {style="display:block;padding-top:2em"}
-::: {.fragment fragment-index=4 style="float:left;text-align:left;"}
-[Information retrieval from LTM]{data-id="ltm"}
+::: {style="display:inline-block;width:100%"}
+
+::: {.fragment fragment-index=3 style="float:right;text-align:right;vertical-align:top;width:50%;"}
+[**Numeracy**]{data-id="num"}
 :::
 
-::: {.fragment fragment-index=3 style="float:right;"}
-[Numeracy]{data-id="num"}
+::: {.fragment fragment-index=4 style="float:left;vertical-align:top;width:50%;"}
+[**Information from LTM**]{data-id="ltm"}
 :::
+
 :::
 
 
 ## Understanding Requires {auto-animate=true}
 
-::: {style="display:block;width:100%"}
-[Reading comprehension. [Most charts have some text: title, axis labels, legends, and annotations. Any perceptual issues that affect reading affect data communication.]{.small}]{data-id="reading"} 
-[Dyslexia]{.emph .cerulean style="float:right;"}[Low Literacy]{.emph .orange style="float:right;padding-right:10%;"} [Language Learner]{.emph .green style="float:right;padding-left:5%;padding-right:5%;"}
+::: {style="display:block;width:100%;padding-bottom:2em;"}
+[**Reading comprehension**.]{data-id="reading"}    
+[Language Learner]{.emph .green style="float:left;padding-right:10%;"} [Low Literacy]{.emph .red style="float:left;padding-right:10%;padding-left:10%;"} [Dyslexia]{.emph .cerulean style="float:right;"} 
 :::
 
 
-::: {style="display:block;width:100%;vertical-align:bottom;padding-bottom:1em;"}
+::: {style="display:inline-block;width:100%;padding-bottom:2em;"}
 ::: {style="float:left;text-align:left;width:50%;vertical-align:bottom;"}
 [Long COVID]{.emph .orange style="float:left;"}      
-[Working Memory]{data-id="wm"} [ADHD]{.emph .purple style="float:right;padding-right:10%;"}     
+[**Working Memory**]{data-id="wm"} [ADHD]{.emph .purple style="float:right;padding-right:10%;"}     
 [Dementia]{.emph .darkgrey style="float:left;"} [Multitasking]{.emph .blue style="float:right;padding-right:20%;"}
 :::
 
 ::: {style="float:right;text-align:center;width:50%;"}
 [Dyslexia]{.emph .cerulean style="float:right;"}    
-[ADHD]{.emph .purple style="float:left;padding-left:10%;"} [Spatial reasoning]{data-id="spatial" style="float:right;vertical-align:middle;"}    
-
+[ADHD]{.emph .purple style="float:left;padding-left:10%;"} [**Spatial reasoning**]{data-id="spatial" style="float:right;vertical-align:middle;"}    
+:::
 :::
 
-:::
-
-::: {style="display:block;width:100%";vertical-align:bottom;"}
+::: {style="display:inline-block;width:100%;"}
 ::: {style="float:left;text-align:left;width:60%;vertical-align:bottom;"}
 [Dementia]{.emph .darkgrey style="float:left"}     
-[Information retrieval from LTM]{data-id="ltm"}    
+[**Information from LTM**]{data-id="ltm"}    
 [New parent]{.emph .red style="float:left;padding-left:30%;"}
 :::
 
 ::: {style="float:right;text-align:center;vertical-align:bottom;width:40%;"}
-[&nbsp;]{style="float:left;"}    
-[Numeracy]{data-id="num" style="float:right;"}      
+[Math Phobia]{.emph .orange style="float:right;"}    
+[**Numeracy**]{data-id="num" style="float:right;"}      
 [Dyscalculia]{.emph .green style="float:right;"}
 :::
 :::
 
+
+::: notes
+The biggest point I want to emphasize here is that challenges related to graphical perception are not necessarily traditional semi-permanent or permanent disabilities - a new parent might have transient, sleep-deprivation related memory loss that has just as much impact as dementia might have on an older adult. 
+
+You'll notice that some conditions show up more often - ADHD impacts attention, but also working memory; Dementia obviously impacts many different aspects of perception. Similarly, the steps you might take to design for a population that includes nonnative speakers or language learners may be similar to the steps you take to support people with low literacy or dyslexia. 
+
+The last thing I have to say in this introduction is that there are no silver bullets or magic fixes - making accessible data visualizations is hard, and you have to know your audience and be willing to test things out - on yourself first, but then on populations you hope to target design changes towards.
+:::
+
+
+# [Adapting Existing Graphics]{.slightly-small}
+
+[Let's go from easy to hard...]{.emph .cerulean style="font-size:2em"}
+
+## Color Vision Impairment
+
+- Avoid red/green combinations (rainbows, stoplights)
+- Use palettes designed to be more accessible to people with impaired color vision [\[Good: [Okabe-Ito](https://jfly.uni-koeln.de/color/), [Tol](https://thenode.biologists.com/data-visualization-with-flying-colors/research/). Avoid ColorBrewer.\]]{.small}
+
+- Dual encode colors with other attributes (shape, linetype)
+
+- Design your chart to be black-and-white printer compatible
+
+## Blind and Low-Vision Users
+
+- Can screen reader users 
+    - navigate the document/site using a keyboard?
+    - 'see' that a chart exists? 
+    - access a basic summary of the chart?
+    - examine the data or summary stats directly?
+
+- Accessibility Audit tools:
+    - [Chartability](https://chartability.fizz.studio/) accessibility audit (top to bottom)
+    - [https://www.accessibilitychecker.org/](https://www.accessibilitychecker.org/) (W3C specs)
+    

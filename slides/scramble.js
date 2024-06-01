@@ -51,4 +51,4 @@
     return messyPart.slice(0, a) + messyPart[b] + messyPart.slice(a+1, b) + messyPart[a] + messyPart.slice(b+1);
   }
   setTimeout(messUpWords, 5000);
-  setInterval(messUpWords, 1500);
+  setInterval(messUpWords, 1000);
