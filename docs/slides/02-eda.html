@@ -433,14 +433,14 @@
 <li><p>Basic summary statistics</p></li>
 <li><p>Made easier with tools like <code>skimr</code> and <code>skimpy</code> that tabulate summaries and sparkline charts</p></li>
 </ul>
-<div class="cell">
+<div class="cell" data-hash="02-eda_cache/revealjs/unnamed-chunk-4_a6e444319399ed85931ccbd3d6aedb4a">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(skimr)</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="fu">skim</span>(new_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="numerical-eda-1" class="slide level2 smaller">
 <h2>Numerical EDA</h2>
-<div class="cell">
+<div class="cell" data-hash="02-eda_cache/revealjs/unnamed-chunk-5_921af457b40ba91eced3619379e33b36">
 <div class="cell-output-display">
 <table>
 <caption>Data summary</caption>
@@ -488,7 +488,7 @@
 </section>
 <section id="numerical-eda-2" class="slide level2 smaller">
 <h2>Numerical EDA</h2>
-<div class="cell">
+<div class="cell" data-hash="02-eda_cache/revealjs/unnamed-chunk-7_65c8439c3e2636a0873f208b3d509094">
 <div class="cell-output-display">
 <table>
 <thead>
@@ -508,7 +508,7 @@
 </table>
 </div>
 </div>
-<div class="cell">
+<div class="cell" data-hash="02-eda_cache/revealjs/unnamed-chunk-8_c638d12c780866c76be3ee90fc85d6d6">
 <div class="cell-output-display">
 <table>
 <thead>
@@ -537,7 +537,7 @@
 </section>
 <section id="numerical-eda-3" class="slide level2 smaller">
 <h2>Numerical EDA</h2>
-<div class="cell">
+<div class="cell" data-hash="02-eda_cache/revealjs/unnamed-chunk-10_10b2472055e60db57c9fdcc9cab80a3d">
 <div class="cell-output-display">
 <table>
 <thead>
@@ -568,7 +568,7 @@
 </table>
 </div>
 </div>
-<div class="cell">
+<div class="cell" data-hash="02-eda_cache/revealjs/unnamed-chunk-11_b43c476b2719401f1fa26d06c491bbd8">
 <div class="cell-output-display">
 <table>
 <thead>
@@ -623,7 +623,7 @@
 </section>
 <section id="graphical-eda-1" class="slide level2">
 <h2>Graphical EDA</h2>
-<div class="cell">
+<div class="cell" data-hash="02-eda_cache/revealjs/unnamed-chunk-12_2fbd7454f7e0d75cff13c112fff913c0">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(visdat)</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="fu">vis_dat</span>(new_data) <span class="sc">+</span> </span>
 <span id="cb2-3"><a href="#cb2-3"></a>  <span class="co"># Make color values a bit more colorblind friendly</span></span>
@@ -634,12 +634,12 @@
 <img data-src="02-eda_files/figure-revealjs/unnamed-chunk-12-1.png" style="width:100.0%" class="r-stretch"></section>
 <section id="graphical-eda-2" class="slide level2">
 <h2>Graphical EDA</h2>
-<div class="cell">
+<div class="cell" data-hash="02-eda_cache/revealjs/unnamed-chunk-13_ed40a33475aa871eaa2c6048905efc35">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>new_data <span class="sc">|&gt;</span> </span>
 <span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>group, <span class="at">names_to =</span> <span class="st">"var"</span>, <span class="at">values_to =</span> <span class="st">"value"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> value)) <span class="sc">+</span> <span class="fu">facet_grid</span>(var<span class="sc">~</span>.)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell fragment">
+<div class="cell fragment" data-hash="02-eda_cache/revealjs/unnamed-chunk-13_ed40a33475aa871eaa2c6048905efc35">
 <div class="cell-output-display">
 <p><img data-src="02-eda_files/figure-revealjs/unnamed-chunk-13-1.png" style="width:100.0%"></p>
 </div>
@@ -647,12 +647,12 @@
 </section>
 <section id="graphical-eda-3" class="slide level2">
 <h2>Graphical EDA</h2>
-<div class="cell">
+<div class="cell" data-hash="02-eda_cache/revealjs/unnamed-chunk-14_3fc6d69ad23e7bef472a0480dca947a7">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>new_data <span class="sc">|&gt;</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>group, <span class="at">names_to =</span> <span class="st">"var"</span>, <span class="at">values_to =</span> <span class="st">"value"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> group, <span class="at">y =</span> value)) <span class="sc">+</span> <span class="fu">facet_grid</span>(var<span class="sc">~</span>.)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell fragment">
+<div class="cell fragment" data-hash="02-eda_cache/revealjs/unnamed-chunk-14_3fc6d69ad23e7bef472a0480dca947a7">
 <div class="cell-output-display">
 <p><img data-src="02-eda_files/figure-revealjs/unnamed-chunk-14-1.png" style="width:100.0%"></p>
 </div>
@@ -660,12 +660,12 @@
 </section>
 <section id="graphical-eda-4" class="slide level2">
 <h2>Graphical EDA</h2>
-<div class="cell">
+<div class="cell" data-hash="02-eda_cache/revealjs/unnamed-chunk-15_5c3293513269058a0ab54cb9fbcdef37">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>new_data <span class="sc">|&gt;</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">mutate</span>(<span class="at">missing_val =</span> <span class="fu">is.na</span>(V1) <span class="sc">|</span> <span class="fu">is.na</span>(V2)) <span class="sc">|&gt;</span></span>
 <span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> group, <span class="at">fill =</span> missing_val))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell fragment">
+<div class="cell fragment" data-hash="02-eda_cache/revealjs/unnamed-chunk-15_5c3293513269058a0ab54cb9fbcdef37">
 <div class="cell-output-display">
 <p><img data-src="02-eda_files/figure-revealjs/unnamed-chunk-15-1.png" width="864"></p>
 </div>
@@ -673,7 +673,7 @@
 </section>
 <section id="graphical-eda-5" class="slide level2">
 <h2>Graphical EDA</h2>
-<div class="cell columns column-output-location">
+<div class="cell columns column-output-location" data-hash="02-eda_cache/revealjs/unnamed-chunk-16_2c962c23f5cafb07e5252f05c965a4c9">
 <div class="column">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">library</span>(naniar)</span>
 <span id="cb6-2"><a href="#cb6-2"></a>new_data <span class="sc">|&gt;</span></span>
@@ -693,7 +693,7 @@
 </section>
 <section id="graphical-eda-6" class="slide level2">
 <h2>Graphical EDA</h2>
-<div class="cell">
+<div class="cell" data-hash="02-eda_cache/revealjs/unnamed-chunk-17_4bac38e87b424d736fda59a96cdeb72f">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>new_data <span class="sc">|&gt;</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> V1, <span class="at">y =</span> V2)) <span class="sc">+</span> <span class="fu">geom_miss_point</span>(<span class="at">size =</span> .<span class="dv">6</span>) <span class="sc">+</span> </span>
 <span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>group, <span class="at">nrow =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
@@ -701,7 +701,7 @@
 <span id="cb7-5"><a href="#cb7-5"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">1.25</span>), <span class="at">legend.justification =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">1.25</span>),</span>
 <span id="cb7-6"><a href="#cb7-6"></a>        <span class="at">legend.direction =</span> <span class="st">"horizontal"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell fragment">
+<div class="cell fragment" data-hash="02-eda_cache/revealjs/unnamed-chunk-17_4bac38e87b424d736fda59a96cdeb72f">
 <div class="cell-output-display">
 <p><img data-src="02-eda_files/figure-revealjs/unnamed-chunk-17-1.png" style="width:100.0%"></p>
 </div>

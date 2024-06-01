@@ -514,6 +514,7 @@ write.csv(new_data, "../data/new_data.csv", row.names = F)
 ### R
 
 ```{r}
+#| cache: false
 # Data manipulation
 library(tibble) # data frame++
 library(dplyr) # wrangling
@@ -529,6 +530,7 @@ theme_set(theme_bw())
 ### Python
 
 ```{python}
+#| cache: false
 # Data manipulation
 import pandas as pd
 import numpy as np
@@ -548,6 +550,7 @@ import seaborn.objects as so
 ### R
 
 ```{r}
+#| cache: false
 library(skimr)
 new_data <- read.csv("../data/new_data.csv")
 skim(new_data)
@@ -556,6 +559,7 @@ skim(new_data)
 ### Python
 
 ```{python}
+#| cache: false
 from skimpy import skim
 new_data = pd.read_csv("../data/new_data.csv")
 skim(new_data)

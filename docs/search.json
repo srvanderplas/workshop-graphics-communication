@@ -172,7 +172,7 @@
     "href": "content/03-accessibility.html#physicalization",
     "title": "Accessibility: More than just Alt-text",
     "section": "Physicalization",
-    "text": "Physicalization\nThere are a number of ways to create accessible tactile charts using embossing machines, capsule paper (Brauner 2023), or 3D printers. Tactile graphics have higher performance than tactile tables or electronic tables accessed via screen reader (Watanabe and Mizukami 2018), in addition, tactile bar charts presented either alone or with auditory information have higher performance than audio-only presentation (Goncu, Marriott, and Hurst 2010).\nR packages like rayshader can be used to convert ggplot2 plots into 3D-printable STL files (Morgan-Wall 2024). This produces a STL file that has some tactile information, without requiring too much specialized software; it could be made more accessible by using a Braille font. One downside is that the height of the plot object is mapped to color/fill, and does not accommodate categorical mappings.\n\n\n\n\n\n\nRayshader demo\n\n\n\n\n\n\ndata &lt;- read.csv(\"../data/penguins.csv\")\nlibrary(ggplot2)\nplot &lt;- ggplot(data) + \n  stat_density_2d(aes(x = bill_length_mm, y = bill_depth_mm, \n                      fill = after_stat(!!str2lang(\"density\"))),\n                  contour = F, geom = \"raster\") +\n  scale_x_continuous(expand=c(0,0)) +\n  scale_y_continuous(expand=c(0,0))\n\nlibrary(rayshader)\nplot_gg(plot, emboss_text = .05)\n\nWarning: Removed 2 rows containing non-finite outside the scale range\n(`stat_density2d()`).\nRemoved 2 rows containing non-finite outside the scale range\n(`stat_density2d()`).\n\nrgl::rglwidget() \n\n\n\n\n\n\nsave_3dprint(\"../fig/penguins-density-plot.stl\", maxwidth = 125, unit = \"mm\", rotate = TRUE)\n\nDimensions of model are: 125.0 mm x 125.0 mm x 25.0 mm"
+    "text": "Physicalization\nThere are a number of ways to create accessible tactile charts using embossing machines, capsule paper (Brauner 2023), or 3D printers. Tactile graphics have higher performance than tactile tables or electronic tables accessed via screen reader (Watanabe and Mizukami 2018), in addition, tactile bar charts presented either alone or with auditory information have higher performance than audio-only presentation (Goncu, Marriott, and Hurst 2010).\nR packages like rayshader can be used to convert ggplot2 plots into 3D-printable STL files (Morgan-Wall 2024). This produces a STL file that has some tactile information, without requiring too much specialized software; it could be made more accessible by using a Braille font. One downside is that the height of the plot object is mapped to color/fill, and does not accommodate categorical mappings.\n\n\n\n\n\n\nRayshader demo\n\n\n\n\n\n\ndata &lt;- read.csv(\"../data/penguins.csv\")\nlibrary(ggplot2)\nplot &lt;- ggplot(data) + \n  stat_density_2d(aes(x = bill_length_mm, y = bill_depth_mm, \n                      fill = after_stat(!!str2lang(\"density\"))),\n                  contour = F, geom = \"raster\") +\n  scale_x_continuous(expand=c(0,0)) +\n  scale_y_continuous(expand=c(0,0))\n\nlibrary(rayshader)\nplot_gg(plot, emboss_text = .05)\n\nWarning: Removed 2 rows containing non-finite outside the scale range\n(`stat_density2d()`).\nRemoved 2 rows containing non-finite outside the scale range\n(`stat_density2d()`).\n\n\nThis is an untitled chart with no subtitle or caption.\nIt has x-axis 'bill_length_mm' with labels 40 and 50.\nIt has y-axis 'bill_depth_mm' with labels 14, 16, 18 and 20.\nThere is a legend indicating fill is used to show density, ranging from 5.50919365996529e-09 represented by fill dark purplish blue to 0.0160915333509369 shown as fill brilliant blue.\nThe chart is a raster graph that VI cannot process.\n\n\nWarning: Removed 2 rows containing non-finite outside the scale range\n(`stat_density2d()`).\n\nrgl::rglwidget() \n\n\n\n\n\n\nsave_3dprint(\"../fig/penguins-density-plot.stl\", maxwidth = 125, unit = \"mm\", rotate = TRUE)\n\nDimensions of model are: 125.0 mm x 125.0 mm x 25.0 mm"
   },
   {
     "objectID": "content/05-workshop.html",
@@ -466,14 +466,28 @@
     "href": "slides/03-accessibility.html#perception-requires",
     "title": "Accessibility",
     "section": "Perception requires",
-    "text": "Perception requires\n\n\n\nVisual acuity \n\n\nColor Vision\n\n\n\n\nFeature Integration\n\n\n\nGrouping & Sense-making"
+    "text": "Perception requires\n\n\n\nVisual acuity \n\n\nColor Vision\n\n\n\n\nFeature Integration\n(& focused attention!)\n\n\nGrouping & Sense-making"
+  },
+  {
+    "objectID": "slides/03-accessibility.html#perception-requires-1",
+    "href": "slides/03-accessibility.html#perception-requires-1",
+    "title": "Accessibility",
+    "section": "Perception requires",
+    "text": "Perception requires\n\n\n\nFar-sightedness\nVisual acuity\nMacular degeneration\n\n\nTritanopia\nColor Vision\nProtanopia Deuteranopia\n\n\n\nADHD Feature Integration\n(& focused attention!)\nSensory Processing Disorder\n\n\nGrouping & Sense-making\nSchizophrenia"
   },
   {
     "objectID": "slides/03-accessibility.html#understanding-requires",
     "href": "slides/03-accessibility.html#understanding-requires",
     "title": "Accessibility",
     "section": "Understanding Requires",
-    "text": "Understanding Requires\n\nReading comprehension. Most charts have some text: title, axis labels, legends, and annotations. Any perceptual issues that affect reading affect data communication.\n\n\n\nInformation retrieval from LTM\n\nNumeracy\n\nAssociating text and graph features\n\n\n\nWorking Memory\n\n\nSpatial reasoning"
+    "text": "Understanding Requires\n\n\nReading comprehension. Most charts have some text: title, axis labels, legends, and annotations. Any perceptual issues that affect reading affect data communication.\n\n\n\nWorking Memory \n\n\n Spatial reasoning\n\n\n\n\nInformation retrieval from LTM\n\n\nNumeracy"
+  },
+  {
+    "objectID": "slides/03-accessibility.html#understanding-requires-1",
+    "href": "slides/03-accessibility.html#understanding-requires-1",
+    "title": "Accessibility",
+    "section": "Understanding Requires",
+    "text": "Understanding Requires\n\nReading comprehension. Most charts have some text: title, axis labels, legends, and annotations. Any perceptual issues that affect reading affect data communication. DyslexiaLow Literacy Language Learner\n\n\n\nLong COVID\nWorking Memory ADHD\nDementia Multitasking\n\n\nDyslexia\nADHD Spatial reasoning\n\n\n\n\nDementia\nInformation retrieval from LTM\nNew parent\n\n\n \nNumeracy\nDyscalculia"
   },
   {
     "objectID": "demo/penguins-ggplot2.html",

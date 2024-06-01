@@ -354,7 +354,7 @@ div.csl-indent {
 <h1>Case Study: Rainbow Color Schemes</h1>
 <p>While generally speaking, rainbow color schemes aren’t recommended because they’re not perceptually uniform, there are some studies suggesting that they help with identification of global data features, at the cost of local difference detection.</p>
 <p>In what circumstances could you justify breaking the “No rainbows” design guideline?</p>
-<div class="cell">
+<div class="cell" data-hash="04-rules_cache/html/unnamed-chunk-1_8b73bcc106661e03cf7fbbe30c4a90f8">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"penguins"</span>)</span>
@@ -364,7 +364,7 @@ div.csl-indent {
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Perceptually Uniform</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Single-Hue</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Rainbow</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">Turbo (Better Rainbow)</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<div class="cell">
+<div class="cell" data-hash="04-rules_cache/html/unnamed-chunk-2_748a835b68904e1f8789e64b99def225">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span> </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, </span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">y =</span> bill_depth_mm, </span>
@@ -380,7 +380,7 @@ div.csl-indent {
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<div class="cell">
+<div class="cell" data-hash="04-rules_cache/html/unnamed-chunk-3_b97945d35a102760d923eb1dae7bd14d">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(colorspace)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>endpoints <span class="ot">&lt;-</span> <span class="fu">polarLUV</span>(<span class="at">L=</span><span class="fu">c</span>(<span class="dv">90</span>, <span class="dv">40</span>), <span class="at">C=</span><span class="dv">50</span>, <span class="at">H=</span><span class="dv">120</span>) <span class="sc">|&gt;</span> <span class="fu">as</span>(<span class="st">"sRGB"</span>) <span class="sc">|&gt;</span> <span class="fu">hex</span>()</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span> </span>
@@ -400,7 +400,7 @@ div.csl-indent {
 </div>
 </div>
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
-<div class="cell">
+<div class="cell" data-hash="04-rules_cache/html/unnamed-chunk-4_c62b66288968409456fe90915bb7b5e4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span> </span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, </span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">y =</span> bill_depth_mm, </span>
@@ -416,7 +416,7 @@ div.csl-indent {
 </div>
 </div>
 <div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
-<div class="cell">
+<div class="cell" data-hash="04-rules_cache/html/unnamed-chunk-5_a05ed5cd68cdb579e929b6bfb4950b76">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(viridis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: viridisLite</code></pre>
@@ -442,7 +442,7 @@ div.csl-indent {
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Perceptually Uniform</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Single-Hue</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">Rainbow</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-4" role="tab" aria-controls="tabset-2-4" aria-selected="false">Turbo (Better Rainbow)</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
-<div class="cell">
+<div class="cell" data-hash="04-rules_cache/html/unnamed-chunk-6_8f6544224f6193d3a6c249af05ce51cf">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span> </span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, </span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">y =</span> bill_depth_mm, </span>
@@ -459,7 +459,7 @@ div.csl-indent {
 </div>
 </div>
 <div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
-<div class="cell">
+<div class="cell" data-hash="04-rules_cache/html/unnamed-chunk-7_78230e104155df5153537510a855c063">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span> </span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, </span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">y =</span> bill_depth_mm, </span>
@@ -478,7 +478,7 @@ div.csl-indent {
 </div>
 </div>
 <div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
-<div class="cell">
+<div class="cell" data-hash="04-rules_cache/html/unnamed-chunk-8_c40317689ad64e1bc5469ee76bafeb31">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(viridis)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span> </span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, </span>
@@ -496,7 +496,7 @@ div.csl-indent {
 </div>
 </div>
 <div id="tabset-2-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-4-tab">
-<div class="cell">
+<div class="cell" data-hash="04-rules_cache/html/unnamed-chunk-9_d9df62f2013a1af2be6e3a0c7d065aba">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(viridis)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins) <span class="sc">+</span> </span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, </span>
@@ -526,7 +526,7 @@ div.csl-indent {
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
-<div class="cell" data-messages="false">
+<div class="cell" data-messages="false" data-hash="04-rules_cache/html/unnamed-chunk-10_28482ebc974701a10f9b546d4baa347b">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>(<span class="fu">library</span>(readr))</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>(<span class="fu">library</span>(dplyr))</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>(<span class="fu">library</span>(lubridate))</span>
@@ -561,7 +561,7 @@ dttm (1): time
 </div>
 </div>
 <div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
-<div class="cell">
+<div class="cell" data-hash="04-rules_cache/html/unnamed-chunk-11_49a9744a49371f2eec49e9d1e90bdaeb">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>wind <span class="op">=</span> pd.read_csv(<span class="st">"https://srvanderplas.github.io/workshop-graphics-communication/data/open-meteo-40.39N95.70W305m.csv"</span>, skiprows<span class="op">=</span> <span class="dv">3</span>)</span>
@@ -577,7 +577,7 @@ dttm (1): time
 <div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
 <div class="quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell quarto-layout-cell" data-fig-label="fig-cartesian-wind" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell quarto-layout-cell" data-fig-label="fig-cartesian-wind" data-hash="04-rules_cache/html/cartesian-wind-plot_2d9c49c506d69f3253c19c354fbb619c" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in geom_hline(aes.inherit = F, yintercept = 80, color = "grey20"):
 Ignoring unknown parameters: `aes.inherit`</code></pre>
@@ -591,7 +591,7 @@ Ignoring unknown parameters: `aes.inherit`</code></pre>
 </div>
 </div>
 </div>
-<div class="cell quarto-layout-cell" data-fig-label="fig-polar-wind" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell quarto-layout-cell" data-fig-label="fig-polar-wind" data-hash="04-rules_cache/html/polar-wind-plot_786a4cb87920c3161b76c52810bf9c79" style="flex-basis: 50.0%;justify-content: center;">
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in geom_hline(aes.inherit = F, yintercept = 80, color = "grey20"):
 Ignoring unknown parameters: `aes.inherit`</code></pre>
@@ -609,7 +609,7 @@ Ignoring unknown parameters: `aes.inherit`</code></pre>
 </div>
 </div>
 <div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
-<div class="cell">
+<div class="cell" data-hash="04-rules_cache/html/cartesian-wind-plot_d05499d8f295db31c7c63a4013205790">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(wind, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">wind_direction_10m (°)</span><span class="st">`</span>, </span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">y =</span> <span class="st">`</span><span class="at">wind_gusts_10m (km/h)</span><span class="st">`</span>)) <span class="sc">+</span> </span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Represent low wind gust speed data on the plot</span></span>
@@ -644,7 +644,7 @@ Ignoring unknown parameters: `aes.inherit`</code></pre>
 </div>
 </div>
 <div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
-<div class="cell">
+<div class="cell" data-hash="04-rules_cache/html/polar-wind-plot_d55c0a3afd1478f985e8e1bb6ea19040">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(wind, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">wind_direction_10m (°)</span><span class="st">`</span>, </span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">y =</span> <span class="st">`</span><span class="at">wind_gusts_10m (km/h)</span><span class="st">`</span>)) <span class="sc">+</span> </span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Represent low wind gust speed data on the plot</span></span>
