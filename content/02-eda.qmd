@@ -12,6 +12,7 @@ You may have prepared ahead of time - you may have a map, hiking boots, and so o
 Throughout this section, we'll use the `palmerpenguins` data to illustrate different ways to explore data.
 
 ::: panel-tabset
+
 ## R
 
 ```{r}
@@ -69,13 +70,13 @@ It is often good to calculate some basic summary statistics for each variable, a
 ::: panel-tabset
 
 ## R
+
 The `skimr` package in R produces very visually appealing numerical summaries.
 
 ```{r}
 library(skimr)
 skim(penguins)
 ```
-
 
 ## Python
 
@@ -130,7 +131,9 @@ The following examples show exploratory plots for the `palmerpenguins` data.
 ### Boxplots
 
 ::: panel-tabset
+
 #### R
+
 ```{r}
 ggplot(penguins) + geom_boxplot(aes(y = body_mass_g))
 ggplot(penguins) + geom_boxplot(aes(x = sex, y = body_mass_g))
@@ -141,21 +144,34 @@ ggplot(penguins) + geom_boxplot(aes(x = species, y = body_mass_g))
 #### Python
 
 ```{python}
-
 sns.boxplot(data = penguins, y = "body_mass_g")
 plt.show()
-plt.close()
+```
 
-sns.boxplot(data = penguins, x = "sex", y = "body_mass_g")
-plt.show()
-plt.close()
-
-
-sns.boxplot(data = penguins, x = "species", y = "body_mass_g")
-plt.show()
+```{python}
+#| echo: false
 plt.close()
 ```
 
+```{python}
+sns.boxplot(data = penguins, x = "sex", y = "body_mass_g")
+plt.show()
+```
+
+```{python}
+#| echo: false
+plt.close()
+```
+
+```{python}
+sns.boxplot(data = penguins, x = "species", y = "body_mass_g")
+plt.show()
+```
+
+```{python}
+#| echo: false
+plt.close()
+```
 
 :::
 
@@ -166,9 +182,16 @@ plt.close()
 #### R
 
 ```{r}
-ggplot(penguins) + geom_histogram(aes(x = body_mass_g))
-ggplot(penguins) + geom_histogram(aes(x = body_mass_g, fill = sex), alpha = .5, position = "identity")
-ggplot(penguins) + geom_histogram(aes(x = body_mass_g, fill = species), alpha = .5, position = "identity")
+ggplot(penguins) + 
+  geom_histogram(aes(x = body_mass_g))
+
+ggplot(penguins) + 
+  geom_histogram(aes(x = body_mass_g, fill = sex), 
+                 alpha = .5, position = "identity")
+
+ggplot(penguins) + 
+  geom_histogram(aes(x = body_mass_g, fill = species), 
+                 alpha = .5, position = "identity")
 ```
 
 
@@ -180,22 +203,39 @@ ggplot(penguins) + geom_histogram(aes(x = body_mass_g, fill = species), alpha = 
     .add(so.Bars(), so.Hist(bins=30))
     .show()
 )
-plt.close()
+```
 
+```{python}
+#| echo: false
+plt.close()
+```
+
+```{python}
 (
   so.Plot(penguins, x = "body_mass_g", color = "sex")
     .add(so.Bars(alpha=.5), so.Hist(bins=30))
     .show()
 )
-plt.close()
+```
 
+```{python}
+#| echo: false
+plt.close()
+```
+
+```{python}
 (
   so.Plot(penguins, x = "body_mass_g", color = "species")
     .add(so.Bars(alpha=.5), so.Hist(bins=30))
     .show()
 )
+```
+
+```{python}
+#| echo: false
 plt.close()
 ```
+
 :::
 
 ### Density Plots
@@ -206,9 +246,16 @@ plt.close()
 #### R
 
 ```{r}
-ggplot(penguins) + geom_density(aes(x = body_mass_g))
-ggplot(penguins) + geom_density(aes(x = body_mass_g, fill = sex), alpha = .5)
-ggplot(penguins) + geom_density(aes(x = body_mass_g, fill = species), alpha = .5)
+ggplot(penguins) + 
+  geom_density(aes(x = body_mass_g))
+
+ggplot(penguins) + 
+  geom_density(aes(x = body_mass_g, fill = sex), 
+               alpha = .5)
+
+ggplot(penguins) + 
+  geom_density(aes(x = body_mass_g, fill = species), 
+               alpha = .5)
 ```
 
 
@@ -216,22 +263,40 @@ ggplot(penguins) + geom_density(aes(x = body_mass_g, fill = species), alpha = .5
 
 ```{python}
 so.Plot(penguins, x = "body_mass_g").add(so.Area(), so.KDE()).show()
-plt.close()
+```
 
+```{python}
+#| echo: false
+plt.close()
+```
+
+```{python}
 (
   so.Plot(penguins, x = "body_mass_g", color = "sex")
     .add(so.Area(), so.KDE(common_norm=False))
     .show()
 )
-plt.close()
+```
 
+```{python}
+#| echo: false
+plt.close()
+```
+
+```{python}
 (
   so.Plot(penguins, x = "body_mass_g", color = "species")
     .add(so.Area(), so.KDE(common_norm=False))
     .show()
 )
+
+```
+
+```{python}
+#| echo: false
 plt.close()
 ```
+
 :::
 
 ### Bar Plots
@@ -242,9 +307,15 @@ plt.close()
 #### R
 
 ```{r}
-ggplot(penguins) + geom_bar(aes(x = species))
-ggplot(penguins) + geom_bar(aes(x = species, fill = sex), position = "dodge")
-ggplot(penguins) + geom_bar(aes(x = species, fill = island))
+ggplot(penguins) + 
+  geom_bar(aes(x = species))
+
+ggplot(penguins) + 
+  geom_bar(aes(x = species, fill = sex), 
+           position = "dodge")
+
+ggplot(penguins) + 
+  geom_bar(aes(x = species, fill = island))
 ```
 
 
@@ -256,22 +327,38 @@ ggplot(penguins) + geom_bar(aes(x = species, fill = island))
     .add(so.Bar(), so.Count())
     .show()
 )
-plt.close()
+```
 
+```{python}
+#| echo: false
+plt.close()
+```
+
+```{python}
 (
   so.Plot(penguins, x = "species", color = "sex")
     .add(so.Bar(), so.Count(), so.Dodge())
     .show()
 )
-plt.close()
+```
 
+```{python}
+#| echo: false
+plt.close()
+```
+
+```{python}
 (
   so.Plot(penguins, x = "species", color = "island")
     .add(so.Bar(), so.Count(), so.Stack())
     .show()
 )
+```
+```{python}
+#| echo: false
 plt.close()
 ```
+
 :::
 
 
@@ -287,13 +374,18 @@ Other two-dimensional summaries require different types of plots: for instance, 
 #### R
 
 ```{r}
-ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm)) +
+ggplot(penguins, 
+       aes(x = bill_length_mm, y = bill_depth_mm)) +
   geom_point() 
 
-ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm, color = species)) +
+ggplot(penguins, 
+       aes(x = bill_length_mm, y = bill_depth_mm, 
+           color = species)) +
   geom_point() 
 
-ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm, color = species)) +
+ggplot(penguins, 
+       aes(x = bill_length_mm, y = bill_depth_mm, 
+           color = species)) +
   geom_point() +
   facet_wrap(~year)
 ```
@@ -306,21 +398,37 @@ ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm, color = species)) +
     .add(so.Dot())
     .show()
 )
-plt.close()
+```
 
+```{python}
+#| echo: false
+plt.close()
+```
+
+```{python}
 (
   so.Plot(penguins, x = "bill_length_mm", y = "bill_depth_mm", color = "species")
     .add(so.Dot())
     .show()
 )
-plt.close()
+```
 
+```{python}
+#| echo: false
+plt.close()
+```
+
+```{python}
 (
   so.Plot(penguins, x = "bill_length_mm", y = "bill_depth_mm", color = "species")
     .facet("year")
     .add(so.Dot())
     .show()
 )
+```
+
+```{python}
+#| echo: false
 plt.close()
 ```
 
@@ -339,7 +447,9 @@ Scatter plot matrices allow us to examine relationships between many sets of two
 #| fig-width: 8
 #| fig-height: 8
 #| out-width: 100%
+
 library(GGally)
+
 ggpairs(penguins, columns = 3:6, aes(color = species))
 ```
 
@@ -351,18 +461,22 @@ ggpairs(penguins, columns = 3:6, aes(color = species))
 #| out-width: 100%
 penguin_measures = penguins.drop("year", axis = 1)
 sns.pairplot(penguin_measures, hue = "species")
+```
+```{python}
+#| echo: false
 plt.close()
 ```
 
 :::
 
-# Example EDA
+# Analyzing An Example Dataset
 
 An exploration of an interesting [dataset](../data/new_data.csv) showing the value of different types of plots for understanding your data.
 
-## Setup
+```{r new-data-setup}
+#| eval: false
+#| include: false
 
-```{r new-data-setup, eval = F, include = F}
 # Create new data
 library(datasauRus)
 convert_groups <- tibble(orig = unique(datasaurus_dozen$dataset), new = LETTERS[1:13])
@@ -393,20 +507,25 @@ new_data <- datasaurus_dozen |>
 write.csv(new_data, "../data/new_data.csv", row.names = F)
 ```
 
+## Setup
+
 ::: panel-tabset
+
 ### R
+
 ```{r}
-#| echo: true
 # Data manipulation
 library(tibble) # data frame++
 library(dplyr) # wrangling
 library(tidyr) # reshaping
 library(magrittr) # pipes
+library(forcats) # factors
 
 # Graphics
 library(ggplot2)
 theme_set(theme_bw())
 ```
+
 ### Python
 
 ```{python}
@@ -419,19 +538,21 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import seaborn.objects as so
 ```
-:::
 
+:::
 
 ## Numerical EDA
 
 ::: panel-tabset
+
 ### R
+
 ```{r}
-#| echo: true
 library(skimr)
 new_data <- read.csv("../data/new_data.csv")
 skim(new_data)
 ```
+
 ### Python
 
 ```{python}
@@ -439,10 +560,10 @@ from skimpy import skim
 new_data = pd.read_csv("../data/new_data.csv")
 skim(new_data)
 ```
+
 :::
 
 ## Graphical EDA
-
 
 ### Missing Data
 
@@ -452,6 +573,7 @@ skim(new_data)
 
 ```{r}
 library(visdat)
+
 vis_dat(new_data) + 
   # Make color values a bit more colorblind friendly
   scale_fill_manual(values = c("#d73027", "#4575b4"), 
@@ -461,7 +583,13 @@ vis_dat(new_data) +
 #### Python
 
 ```{python}
-
+import missingno as msno
+msno.matrix(new_data, label_rotation = 0)
+plt.show()
+```
+```{python}
+#| echo: false
+plt.close()
 ```
 
 :::
@@ -475,21 +603,41 @@ vis_dat(new_data) +
 ```{r}
 new_data |> 
   pivot_longer(-group, names_to = "var", values_to = "value") |>
-  ggplot() + geom_boxplot(aes(x = value)) + facet_grid(var~.)
-```
+  ggplot() + 
+    geom_boxplot(aes(x = value)) + 
+    facet_grid(var~.)
 
-```{r}
 new_data |>
   mutate(missing_val = is.na(V1) | is.na(V2)) |>
-  ggplot() + geom_bar(aes(x = group, fill = missing_val))
+  mutate(missing_val = c("NO", "YES")[missing_val+1] |>
+                       fct_relevel("YES")) |>
+  ggplot() + 
+  geom_bar(aes(x = group, fill = missing_val))
 ```
-
 
 #### Python
 
 ```{python}
-
+new_data = new_data.sort_values(['group', 'V1', 'V2'])
+new_data_long = pd.melt(new_data, id_vars = 'group', value_vars = ['V1', 'V2'], var_name = 'var')
+sns.catplot(data = new_data_long, x = 'value', y = 'var', kind = 'box')
+plt.show()
 ```
+```{python}
+#| echo: false
+plt.close()
+```
+
+```{python}
+new_data['missing_val'] = pd.isna(new_data.V1) | pd.isna(new_data.V2)
+so.Plot(new_data, x = 'group', color = 'missing_val').add(so.Bar(), so.Hist(), so.Stack()).show()
+```
+```{python}
+#| echo: false
+plt.close()
+```
+
+
 
 :::
 
@@ -502,17 +650,23 @@ new_data |>
 ```{r}
 new_data |>
   pivot_longer(-group, names_to = "var", values_to = "value") |>
-  ggplot() + geom_boxplot(aes(x = group, y = value)) + facet_grid(var~.)
+  ggplot() + 
+    geom_boxplot(aes(x = group, y = value)) + 
+    facet_grid(var~.)
 ```
 
 #### Python
 
 ```{python}
-
+sns.catplot(data = new_data_long, x = 'group', y = 'value', row = 'var', kind = "box")
+plt.show()
+```
+```{python}
+#| echo: false
+plt.close()
 ```
 
 :::
-
 
 ### Bivariate Distributions
 
@@ -541,35 +695,58 @@ new_data |>
         legend.direction = "horizontal")
 ```
 
-
 #### Python
 
-```{python}
+Python, to the best of my knowledge, doesn't have a way to show scatterplots with missing data outside the range of the non-missing data. We'll have to be content with a normal scatterplot to see the bivariate relationship.
 
+```{python}
+so.Plot(new_data, x = 'V1', y = 'V2').add(so.Dots()).show()
+```
+```{python}
+#| echo: false
+plt.close()
 ```
 
-:::
+```{python}
+#| fig-width: 8
+#| fig-height: 3
 
+so.Plot(new_data, x = 'V1', y = 'V2').add(so.Dots()).facet(row = 'group', wrap = 2).show()
+```
+```{python}
+#| echo: false
+plt.close()
+```
+:::
 
 # Your Turn
 
-Use the [US county-level data](../data/)
+Use the [US county-level data](../data/counties.csv)
 
-Dataset: US County-level data, https://shorturl.at/U9KUO
+Dataset: US County-level data, https://shorturl.at/U9KUO    
+(You should be able to read this in directly from the URL)
 
 About the data: https://github.com/evangambit/JsonOfCounties
 
-Read in the data in your favorite software and pick an interesting set of variables.
+1. Read in the data in your favorite software and pick an interesting set of variables.    
+Options:    
+  
+  - County geometry
+  - Weather (NOAA)
+  - Demographics (Census)
+  - Cause of death (CDC, averaged 1999-2019)
+  - Employment (BLS)
+  - Police Shootings (Wash Post)
+  - Average Income (BEA)
+  - COVID deaths (USAFacts/CDC)
+  - Election Results
 
-Generate some questions to explore using EDA skills.
+2. Generate some questions to explore using EDA skills.
 
-Options: 
-- County geometry
-- Weather (NOAA)
-- Demographics (Census)
-- Cause of death (CDC, averaged 1999-2019)
-- Employment (BLS)
-- Police Shootings (Wash Post)
-- Average Income (BEA)
-- COVID deaths (USAFacts/CDC)
-- Election Results
+3. Try out a few of the following techniques:
+  - Tabular summaries
+  - Visualizing missing data
+  - Univariate distributions
+  - Conditional distributions
+  - Bivariate distributions
+  - Scatterplot matrices
