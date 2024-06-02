@@ -6,10 +6,15 @@ title: "Course Description"
 
 -   [Susan Vanderplas](mailto:susan.vanderplas@unl.edu)\
     Assistant Professor, University of Nebraska Lincoln
--   [Heike Hofmann](mailto:hofmann@iastate.edu)\
-    Professor, Iowa State University
+<!-- -   [Heike Hofmann](mailto:hofmann@iastate.edu)\ -->
+<!--     Professor, Iowa State University -->
 -   [Emily Robinson](mailto:erobin17@calpoly.edu)\
     Assistant Professor, California Polytechnic University
+-   [Kelly Bodwin](mailto:kbodwin@calpoly.edu)\
+    Assistant Professor, California Polytechnic University
+
+-   Rachel Rogers, Teaching Assistant
+    Postdoc, University of Nebraska Lincoln
 
 ## Target Audience
 
