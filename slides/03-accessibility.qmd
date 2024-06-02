@@ -193,4 +193,85 @@ The last thing I have to say in this introduction is that there are no silver bu
 - Accessibility Audit tools:
     - [Chartability](https://chartability.fizz.studio/) accessibility audit (top to bottom)
     - [https://www.accessibilitychecker.org/](https://www.accessibilitychecker.org/) (W3C specs)
-    
+
+
+## W3C (A) Guidelines
+
+- Color is not the only visual indicator for information    
+  [Dual encoding by another name]{.emph .purple}
+  
+- Audio: if plays automatically, controls are provided:
+    - Pause/Stop
+    - Volume (independent of system volume)
+
+
+## W3C (AA) Guidelines
+
+- Contrast: ratio of 4.5:1, or 3:1 for large text
+- Text settings can change without loss of function:
+  - 200% magnification
+  - 1.5x line spacing, 2x paragraph spacing
+- Use text, rather than images of text
+- Responsive content: no 2d scrolling required
+- User Interface and graphical objects have 3:1 contrast
+- Hover/focus content is persistent but can be dismissed
+
+
+## W3C (AAA) Guidelines
+
+- Enhanced Contrast (7:1) for text and images of text
+  - 4.5:1 for large text
+  
+- Low/No background audio
+
+- Text blocks:
+  - User-selectable foreground/background color
+  - No more than 80 characters wide
+  - 1.5x line spacing within paragraphs
+  - 1.5 x (line spacing) between paragraphs
+  - 200% text zoom does not require horizontal scrolling
+  
+## Testing Contrast Values
+
+```{r}
+#| echo: false
+library(colorspace)
+library(tibble)
+library(gt)
+library(dplyr)
+library(tidyr)
+df <- tibble(
+  is_col = rep(c(T, F), c(7, 3)),
+  colors = c("#d00000", "#f58a1f", "#ffd74f", "#1b8500", 
+             "#249ab5", "#005d84", "#a5228d", 
+             "#ffffff", "#777879", "black"),
+  white = contrast_ratio(col = colors),
+  black = contrast_ratio(col = colors, col2 = "black")) |>
+  pivot_longer(c(white, black), names_to = "background", values_to = "contrast") |>
+  mutate(contrast_md = sprintf("[%02.02f]{style='color:%s;background-color:%s'}", contrast, colors, background)) 
+  
+df1_format <- df |> 
+  filter(is_col) |> 
+  select(-c(contrast, is_col)) |> 
+  pivot_wider(names_from = colors, values_from = contrast_md)
+  
+df2_format <- df |> 
+  filter(!is_col) |> 
+  select(-c(contrast, is_col)) |> 
+  pivot_wider(names_from = colors, values_from = contrast_md)
+
+res1 <- df1_format[,-1] 
+names(res1) <- NULL
+res1 <- as.matrix(res1)
+
+res2 <- df2_format[,-1] 
+names(res2) <- NULL
+res2 <- as.matrix(res2)
+
+knitr::kable(res1, row.names = F, format = "pipe")
+knitr::kable(res2, row.names = F, format = "pipe")
+
+```
+
+- `colorspace` R package will calculate this for you
+- https://cliambrown.com/contrast/
