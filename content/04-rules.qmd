@@ -359,5 +359,3 @@ Which do you prefer? Why? Is it justifiable to break the "polar = bad" rule?
 
 Can you think of any alternatives or modifications that might provide similar contextual cues without using polar coordinates?
 
-# Case Study: 
-

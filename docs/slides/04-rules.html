@@ -330,13 +330,125 @@
 </div>
 
 </section>
-<section class="slide level2">
+<section>
+<section id="what-are-the-rules" class="title-slide slide level1 center">
+<h1>What are the rules?</h1>
 
+</section>
+<section id="some-basics" class="slide level2">
+<h2>Some basics</h2>
+<ul>
+<li><p>Amount of ink used to represent a value should be proportional to the value</p></li>
+<li><p>Use the simplest representation you can to convey the data</p></li>
+</ul>
+</section>
+<section id="some-basics-1" class="slide level2">
+<h2>Some basics</h2>
+<ul>
+<li><p>Balance complexity and cognitive load</p></li>
+<li><p>Grid lines are helpful, but not too many</p></li>
+<li><p>Show data + summary statistics (if not too crowded)</p></li>
+<li><p>Use direct labels instead of legends (where space allows)</p></li>
+</ul>
+</section>
+<section id="some-basics-2" class="slide level2">
+<h2>Some basics</h2>
+<p>Use the typical range of the data/measurement for context</p>
+<div class="cell quarto-layout-panel" data-hash="04-rules_cache/revealjs/unnamed-chunk-2_56b64d5a929bf754895eb3585b97f030">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="04-rules_files/figure-revealjs/unnamed-chunk-2-1.png" width="384"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="04-rules_files/figure-revealjs/unnamed-chunk-2-2.png" width="384"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="some-basics-3" class="slide level2">
+<h2>Some basics</h2>
+<p>Aspect ratios are important!</p>
+
+<img data-src="04-rules_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
+<section id="color-choices" class="slide level2">
+<h2>Color Choices</h2>
+<ul>
+<li><p>Categorical scales: Use no more than 7 categories</p></li>
+<li><p>Leverage common associations</p></li>
+<li><p>Transition through a neutral color (white/light yellow)</p></li>
+<li><p>Vary hue or lightness/saturation, but not both</p>
+<ul>
+<li>Hue:
+<div id="gradient-css-generator-demo" style="background: linear-gradient(90deg, rgb(68, 1, 84) 0%, rgb(72, 33, 115) 9%, rgb(67, 62, 133) 18%, rgb(56, 89, 140) 27%, rgb(45, 112, 142) 36%, rgb(37,133, 142) 45%, rgb(30, 155, 138) 55%, rgb(43, 176, 127) 64%, rgb(81, 197, 106) 73%, rgb(133, 213, 74) 82%, rgb(194, 223, 35) 91%, rgb(253, 231, 37) 100%);min-width:20em;min-height:0.5em;"></div></li>
+<li>Saturation:
+<div id="gradient-css-generator-demo" style="background: linear-gradient(90deg, hsl(10 0 50) 0%, hsl(10 50 50) 50%, hsl(10 100 50) 100%);min-width:20em;min-height:0.5em;">
+
+</div></li>
+<li>Lightness:
+<div id="gradient-css-generator-demo" style="background: linear-gradient(90deg, hsl(10 100 100) 0%, hsl(10 100 50) 50%, hsl(10 100 0) 100%);min-width:20em;min-height:0.5em;">
+
+</div></li>
+</ul></li>
+</ul>
+</section>
+<section id="case-study-color-schemes" class="slide level2">
+<h2>Case Study: Color Schemes</h2>
+<div class="cell quarto-layout-panel" data-hash="04-rules_cache/revealjs/unnamed-chunk-4_fec723ec9d516be3caa7aca9ec1d4604">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="04-rules_files/figure-revealjs/unnamed-chunk-4-1.png" width="576"></p>
+<figcaption>Single-Hue</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="04-rules_files/figure-revealjs/unnamed-chunk-4-2.png" width="576"></p>
+<figcaption>Rainbow</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="04-rules_files/figure-revealjs/unnamed-chunk-4-3.png" width="576"></p>
+<figcaption>Perceptually Uniform</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="04-rules_files/figure-revealjs/unnamed-chunk-4-4.png" width="576"></p>
+<figcaption>Turbo (Better Rainbow)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="case-study-polar-charts" class="slide level2">
+<h2>Case Study: Polar Charts</h2>
+<div class="cell quarto-layout-panel" data-messages="false" data-hash="04-rules_cache/revealjs/unnamed-chunk-5_123f1c07673aed5ee166be7db81da26a">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="04-rules_files/figure-revealjs/unnamed-chunk-5-1.png" width="384"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img data-src="04-rules_files/figure-revealjs/unnamed-chunk-5-2.png" width="384"></p>
+</div>
+</div>
+</div>
 
 <div class="footer footer-default">
 
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
@@ -548,6 +660,44 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

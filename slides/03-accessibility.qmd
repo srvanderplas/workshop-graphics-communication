@@ -288,6 +288,30 @@ knitr::kable(res2, row.names = F, format = "pipe")
 - Graphics need to be "visible" 
 - Alt-text provides basic information to screen reader users
 
+## BrailleR
+
+
+```{r}
+#| message: false
+library(BrailleR)
+
+data <- read.csv("../data/penguins.csv")
+library(ggplot2)
+scatterplot <- ggplot(data, 
+                      aes(x = bill_length_mm, 
+                          y = bill_depth_mm, 
+                          color = species)) + 
+  geom_point()
+
+scatterplot
+```
+
+```{r}
+#| include: false
+detach(package:BrailleR)
+```
+
+
 ## More Accessible Graphics
 
 - `d3`, `Observable.js`, `Highcharts.js` 
@@ -305,3 +329,41 @@ knitr::kable(res2, row.names = F, format = "pipe")
 - [ggplot2](../demo/penguins-ggplot2.html)
 - [Observable.js](../demo/penguins-obs.html)
 - [Observable.js + OLLi](../demo/penguins-obs-olli.html)
+
+
+# Other Options
+
+- Sonification
+- Physicalization
+
+## Sonification
+
+```{r}
+#| echo: false
+
+htmltools::tags$audio(controls="", htmltools::tags$source(src="../fig/penguins_sonification.mp3", type="audio/mpeg"))
+```
+
+
+## Physicalization
+
+- 3D printers, embossers, etc.
+
+
+```{r}
+#| echo: false
+#| out-width: 50%
+
+data <- read.csv("../data/penguins.csv")
+library(ggplot2)
+plot <- ggplot(data) + 
+  stat_density_2d(aes(x = bill_depth_mm, y = bill_length_mm, 
+                      fill = after_stat(!!str2lang("density"))),
+                  contour = F, geom = "raster") +
+  scale_x_continuous(expand=c(0,0)) +
+  scale_y_continuous(expand=c(0,0))
+
+library(rayshader) 
+plot_gg(plot, emboss_text = .05, width = 8, height = 4)
+rgl::rglwidget() 
+```

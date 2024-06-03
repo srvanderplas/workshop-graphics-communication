@@ -4,3 +4,191 @@ format:
   revealjs:
     theme: [default, inverse.scss]
 ---
+
+```{r}
+#| include: false
+library(ggplot2)
+theme_set(theme_bw())
+```
+
+# What are the rules?
+
+## Some basics
+
+- Amount of ink used to represent a value should be proportional to the value
+
+- Use the simplest representation you can to convey the data
+
+## Some basics
+
+- Balance complexity and cognitive load
+
+- Grid lines are helpful, but not too many
+
+- Show data + summary statistics (if not too crowded)
+
+- Use direct labels instead of legends (where space allows)
+
+## Some basics
+
+Use the typical range of the data/measurement for context
+
+```{r}
+#| layout-ncol: 2
+#| fig-width: 4
+#| fig-height: 4
+#| 
+library(ggplot2)
+library(palmerpenguins)
+ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm, color = species)) + 
+  geom_point() + 
+  scale_x_continuous(limits = c(0, max(penguins$bill_depth_mm))) + 
+  scale_y_continuous(limits = c(0, max(penguins$bill_length_mm))) +
+  guides(color = 'none')
+
+ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm, color = species)) + 
+  geom_point()  +
+  guides(color = 'none')
+```
+
+
+
+## Some basics
+
+Aspect ratios are important!
+
+```{r}
+
+ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm, color = species)) + 
+  geom_point()  +
+  guides(color = 'none') + 
+  coord_fixed()
+```
+
+## Color Choices
+
+- Categorical scales: Use no more than 7 categories
+- Leverage common associations
+- Transition through a neutral color (white/light yellow)
+- Vary hue or lightness/saturation, but not both
+
+    - Hue: 
+        <div id="gradient-css-generator-demo" style="background: linear-gradient(90deg, rgb(68, 1, 84) 0%, rgb(72, 33, 115) 9%, rgb(67, 62, 133) 18%, rgb(56, 89, 140) 27%, rgb(45, 112, 142) 36%, rgb(37,133, 142) 45%, rgb(30, 155, 138) 55%, rgb(43, 176, 127) 64%, rgb(81, 197, 106) 73%, rgb(133, 213, 74) 82%, rgb(194, 223, 35) 91%, rgb(253, 231, 37) 100%);min-width:20em;min-height:0.5em;">
+    - Saturation: 
+    <div id="gradient-css-generator-demo" style="background: linear-gradient(90deg, hsl(10 0 50) 0%, hsl(10 50 50) 50%, hsl(10 100 50) 100%);min-width:20em;min-height:0.5em;">
+        </div>
+    - Lightness: 
+    <div id="gradient-css-generator-demo" style="background: linear-gradient(90deg, hsl(10 100 100) 0%, hsl(10 100 50) 50%, hsl(10 100 0) 100%);min-width:20em;min-height:0.5em;">
+        </div>
+
+
+## Case Study: Color Schemes {.r-fit-text}
+
+
+```{r}
+#| fig-cap: ["Single-Hue", "Rainbow", "Perceptually Uniform", "Turbo (Better Rainbow)"]
+#| layout-ncol: 2
+#| fig-width: 6
+#| fig-height: 2
+
+library(colorspace)
+endpoints <- polarLUV(L=c(90, 40), C=50, H=120) |> as("sRGB") |> hex()
+ggplot(penguins) + 
+  geom_point(aes(x = bill_length_mm, 
+                 y = bill_depth_mm, 
+                 color = body_mass_g), size = 2) + 
+  scale_color_gradient(low = endpoints[1], 
+                       high = endpoints[2], 
+                       trans = "log10")
+
+ggplot(penguins) + 
+  geom_point(aes(x = bill_length_mm, 
+                 y = bill_depth_mm, 
+                 color = body_mass_g), size = 2) + 
+  scale_color_gradientn(colors = rainbow(30))
+
+ggplot(penguins) + 
+  geom_point(aes(x = bill_length_mm, 
+                 y = bill_depth_mm, 
+                 color = body_mass_g), size = 2) + 
+  scale_color_viridis_c()
+
+library(viridis)
+ggplot(penguins) + 
+  geom_point(aes(x = bill_length_mm, 
+                 y = bill_depth_mm, 
+                 color = body_mass_g), size = 2) + 
+  scale_color_viridis(option = "turbo")
+```
+
+
+## Case Study: Polar Charts
+
+```{r}
+#| messages: false
+#| echo: false
+#| layout-ncol: 2
+#| fig-width: 4
+#| fig-height: 4
+suppressPackageStartupMessages(library(readr))
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(lubridate))
+
+url <- "https://srvanderplas.github.io/workshop-graphics-communication/data/open-meteo-40.39N95.70W305m.csv"
+
+# Read in units, station info, etc.
+station_info <- read_csv(url, n_max = 1)
+wind <- read_csv(url, skip = 3) |>
+  mutate(time = force_tz(time, station_info$timezone), 
+         is_high = `wind_gusts_10m (km/h)`>=80)
+
+ggplot(wind, aes(x = `wind_direction_10m (°)`, 
+                      y = `wind_gusts_10m (km/h)`)) + 
+  # Represent low wind gust speed data on the plot
+  stat_summary_bin(data = filter(wind, !is_high), 
+                   binwidth = 2.5,
+                   fun.min = "min", fun.max = "max", 
+                   geom = "ribbon", fill = "grey", alpha = .25) + 
+  # Emphasize direction while showing gust speed 
+  # by dropping vertical line
+  geom_segment(data = filter(wind, is_high), 
+               aes(xend = `wind_direction_10m (°)`, 
+                   yend = 0), 
+               color = "grey40") +  
+  geom_point(data = filter(wind, is_high)) + 
+  # Scale breaks that are sensible
+  scale_x_continuous("Wind Direction (°)\nat 10m altitude", 
+                     limits = c(0, 360), 
+                     breaks = c(0, 45, 90, 135, 180, 225, 270, 315, 360), 
+                     labels = c("N", "NE", "E", "SE", "S", "SW", "W", "NW", "N"), 
+                     minor_breaks = seq(0, 360, by = 22.5)) + 
+  scale_y_continuous("Wind Gust Speed (km/h)\nat 10m altitude") +
+  # Annotations to explain different treatment of high gust speeds
+  geom_hline(aes.inherit = F, yintercept = 80, color = "grey20") + 
+  annotate("text", x = 10, y = 80, label = "High Wind\n(>80 km/h)", hjust=-0.1, vjust = -0.1)
+ggplot(wind, aes(x = `wind_direction_10m (°)`, 
+                      y = `wind_gusts_10m (km/h)`)) + 
+  # Represent low wind gust speed data on the plot
+  stat_summary_bin(data = filter(wind, !is_high), 
+                   binwidth = 2.5,
+                   fun.min = "min", fun.max = "max", 
+                   geom = "ribbon", fill = "grey", alpha = .25) + 
+  # Emphasize direction while showing gust speed 
+  # by dropping vertical line
+  geom_segment(data = filter(wind, is_high), 
+               aes(xend = `wind_direction_10m (°)`, 
+                   yend = 0), 
+               color = "grey40") +  
+  geom_point(data = filter(wind, is_high)) + 
+  # Scale breaks that are sensible
+  scale_x_continuous("Wind Direction (°)\nat 10m altitude", 
+                     limits = c(0, 360), 
+                     breaks = c(45, 90, 135, 180, 225, 270, 315, 360), 
+                     labels = c("NE", "E", "SE", "S", "SW", "W", "NW", "N"), 
+                     minor_breaks = seq(0, 360, by = 22.5)) + 
+  scale_y_continuous("Wind Gust Speed (km/h)\nat 10m altitude") +
+  # Annotations to explain different treatment of high gust speeds
+  geom_hline(aes.inherit = F, yintercept = 80, color = "grey20") + 
+  annotate("text", x = 10, y = 80, label = "High Wind\n(>80 km/h)", hjust=-0.1, vjust = -0.1) +
+  coord_polar(theta = "x", start = 0)
+```
