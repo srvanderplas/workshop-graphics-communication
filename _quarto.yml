@@ -3,6 +3,12 @@ project:
   output-dir: docs
   preview:
     port: 7777
+  render:
+    - content/*.qmd
+    - slides/*.qmd
+    - about.qmd
+    - index.qmd
+    - demo/*.qmd
 
 execute:
   cache: true

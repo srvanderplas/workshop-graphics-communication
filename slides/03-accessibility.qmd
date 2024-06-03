@@ -169,7 +169,7 @@ The last thing I have to say in this introduction is that there are no silver bu
 :::
 
 
-# [Adapting Existing Graphics]{.slightly-small}
+# Adapting Graphics for Accessibility
 
 [Let's go from easy to hard...]{.emph .cerulean style="font-size:2em"}
 
@@ -207,28 +207,32 @@ The last thing I have to say in this introduction is that there are no silver bu
 
 ## W3C (AA) Guidelines
 
-- Contrast: ratio of 4.5:1, or 3:1 for large text
-- Text settings can change without loss of function:
+- Contrast: 
+    - 4.5:1 or 3:1 (large text)
+    - 3:1 for UI and graphical elements
+
+- Text adjustments:
   - 200% magnification
   - 1.5x line spacing, 2x paragraph spacing
-- Use text, rather than images of text
-- Responsive content: no 2d scrolling required
-- User Interface and graphical objects have 3:1 contrast
+  
+- Text, not images of text
+
+- No 2d scrolling required (responsive layout)
+
 - Hover/focus content is persistent but can be dismissed
 
 
 ## W3C (AAA) Guidelines
 
-- Enhanced Contrast (7:1) for text and images of text
-  - 4.5:1 for large text
+- Contrast: 7:1 or 4.5:1 (large text)
   
 - Low/No background audio
 
-- Text blocks:
+- Text:
   - User-selectable foreground/background color
   - No more than 80 characters wide
-  - 1.5x line spacing within paragraphs
-  - 1.5 x (line spacing) between paragraphs
+  - 1.5x line spacing w/i paragraphs
+  - 1.5 x (line spacing) b/w paragraphs
   - 200% text zoom does not require horizontal scrolling
   
 ## Testing Contrast Values
@@ -275,3 +279,29 @@ knitr::kable(res2, row.names = F, format = "pipe")
 
 - `colorspace` R package will calculate this for you
 - https://cliambrown.com/contrast/
+
+# Accessibility for Screen Readers
+
+## Alt Text
+
+- `ggplot2`, `seaborn`, `matplotlib`, `SAS Graphics`  create images
+- Graphics need to be "visible" 
+- Alt-text provides basic information to screen reader users
+
+## More Accessible Graphics
+
+- `d3`, `Observable.js`, `Highcharts.js` 
+- SVG-based graphics can be navigated by screen readers
+- Utility depends on how the SVG elements are arranged
+
+- `OLLi`: a toolkit for Observable and VegaLite graphics
+  - structure svg graphics for screen-reader use 
+  - keyboard navigation
+  - includes data tables and layered descriptions (overview, filter, details on demand)
+
+
+## Screen Reader Demo
+
+- [ggplot2](../demo/penguins-ggplot2.html)
+- [Observable.js](../demo/penguins-obs.html)
+- [Observable.js + OLLi](../demo/penguins-obs-olli.html)

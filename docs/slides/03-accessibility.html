@@ -478,8 +478,8 @@
       }</style></aside>
 </section></section>
 <section>
-<section id="adapting-existing-graphics" class="title-slide slide level1 center">
-<h1><span class="slightly-small">Adapting Existing Graphics</span></h1>
+<section id="adapting-graphics-for-accessibility" class="title-slide slide level1 center">
+<h1>Adapting Graphics for Accessibility</h1>
 <p><span class="emph cerulean" style="font-size:2em">Let’s go from easy to hard…</span></p>
 </section>
 <section id="color-vision-impairment" class="slide level2">
@@ -523,32 +523,32 @@
 <section id="w3c-aa-guidelines" class="slide level2">
 <h2>W3C (AA) Guidelines</h2>
 <ul>
-<li>Contrast: ratio of 4.5:1, or 3:1 for large text</li>
-<li>Text settings can change without loss of function:
+<li><p>Contrast:</p>
+<ul>
+<li>4.5:1 or 3:1 (large text)</li>
+<li>3:1 for UI and graphical elements</li>
+</ul></li>
+<li><p>Text adjustments:</p>
 <ul>
 <li>200% magnification</li>
 <li>1.5x line spacing, 2x paragraph spacing</li>
 </ul></li>
-<li>Use text, rather than images of text</li>
-<li>Responsive content: no 2d scrolling required</li>
-<li>User Interface and graphical objects have 3:1 contrast</li>
-<li>Hover/focus content is persistent but can be dismissed</li>
+<li><p>Text, not images of text</p></li>
+<li><p>No 2d scrolling required (responsive layout)</p></li>
+<li><p>Hover/focus content is persistent but can be dismissed</p></li>
 </ul>
 </section>
 <section id="w3c-aaa-guidelines" class="slide level2">
 <h2>W3C (AAA) Guidelines</h2>
 <ul>
-<li><p>Enhanced Contrast (7:1) for text and images of text</p>
-<ul>
-<li>4.5:1 for large text</li>
-</ul></li>
+<li><p>Contrast: 7:1 or 4.5:1 (large text)</p></li>
 <li><p>Low/No background audio</p></li>
-<li><p>Text blocks:</p>
+<li><p>Text:</p>
 <ul>
 <li>User-selectable foreground/background color</li>
 <li>No more than 80 characters wide</li>
-<li>1.5x line spacing within paragraphs</li>
-<li>1.5 x (line spacing) between paragraphs</li>
+<li>1.5x line spacing w/i paragraphs</li>
+<li>1.5 x (line spacing) b/w paragraphs</li>
 <li>200% text zoom does not require horizontal scrolling</li>
 </ul></li>
 </ul>
@@ -614,6 +614,41 @@
 <ul>
 <li><code>colorspace</code> R package will calculate this for you</li>
 <li>https://cliambrown.com/contrast/</li>
+</ul>
+</section></section>
+<section>
+<section id="accessibility-for-screen-readers" class="title-slide slide level1 center">
+<h1>Accessibility for Screen Readers</h1>
+
+</section>
+<section id="alt-text" class="slide level2">
+<h2>Alt Text</h2>
+<ul>
+<li><code>ggplot2</code>, <code>seaborn</code>, <code>matplotlib</code>, <code>SAS Graphics</code> create images</li>
+<li>Graphics need to be “visible”</li>
+<li>Alt-text provides basic information to screen reader users</li>
+</ul>
+</section>
+<section id="more-accessible-graphics" class="slide level2">
+<h2>More Accessible Graphics</h2>
+<ul>
+<li><p><code>d3</code>, <code>Observable.js</code>, <code>Highcharts.js</code></p></li>
+<li><p>SVG-based graphics can be navigated by screen readers</p></li>
+<li><p>Utility depends on how the SVG elements are arranged</p></li>
+<li><p><code>OLLi</code>: a toolkit for Observable and VegaLite graphics</p>
+<ul>
+<li>structure svg graphics for screen-reader use</li>
+<li>keyboard navigation</li>
+<li>includes data tables and layered descriptions (overview, filter, details on demand)</li>
+</ul></li>
+</ul>
+</section>
+<section id="screen-reader-demo" class="slide level2">
+<h2>Screen Reader Demo</h2>
+<ul>
+<li><a href="../demo/penguins-ggplot2.html">ggplot2</a></li>
+<li><a href="../demo/penguins-obs.html">Observable.js</a></li>
+<li><a href="../demo/penguins-obs-olli.html">Observable.js + OLLi</a></li>
 </ul>
 
 <div class="footer footer-default">

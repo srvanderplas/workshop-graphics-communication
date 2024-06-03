@@ -29,6 +29,7 @@ penguinChart = ({
 
 ```{ojs}
 //| label: fig-penguin-plot
+//| fig-cap: Bill length and depth in mm for three different species of penguins.
 //| code-fold: show
 
 // Create plot with specification
