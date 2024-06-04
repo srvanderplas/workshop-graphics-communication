@@ -34,7 +34,7 @@ new_theme_empty <- theme_void(base_size=16)
 
 ## The Eye
 
-![The human eye, with closeup of receptor cells in the retina. [[Image Source](https://commons.wikimedia.org/wiki/File:Figure_36_05_02.png) [License](https://creativecommons.org/licenses/by/4.0/deed.en) Authors: OpenStax Copyright Holders: Rice University Publishers: OpenStax OpenStax Biology]{.fig-citation}](https://upload.wikimedia.org/wikipedia/commons/9/9e/Figure_36_05_02.png){#fig-retina-diagram}
+![The human eye, with closeup of receptor cells in the retina. [[Image Source](https://commons.wikimedia.org/wiki/File:Figure_36_05_02.png) [License](https://creativecommons.org/licenses/by/4.0/deed.en) Authors: OpenStax Copyright Holders: Rice University Publishers: OpenStax OpenStax Biology]{.fig-citation}](../fig/Eye-layout.png){#fig-retina-diagram}
 
 ::: notes
 
