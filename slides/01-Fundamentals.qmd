@@ -45,6 +45,7 @@ Important parts:
   - cones: light wavelength (color)
 - blindspot - region where the optic nerve exits the back of the eye. We don't notice this because our brain compensates.
 - fovea - region of mostly cones, highest acuity, but you can't notice e.g. faint stars because you have so many fewer rods in this area. Focusing on a point involves looking at it with your fovea, generally speaking.
+
 :::
 
 ## Color Vision
