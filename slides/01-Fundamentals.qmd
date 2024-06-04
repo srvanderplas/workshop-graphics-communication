@@ -599,3 +599,5 @@ print(p2)
 ## Share yours!
 
 Upload your redesigned graphic (even if you sketched or critiqued it!) to <https://bit.ly/sdss-redesign-the-graphic>.
+
+## References
